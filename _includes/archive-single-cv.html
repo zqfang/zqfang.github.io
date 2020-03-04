@@ -1,0 +1,17 @@
+<div>
+  <article class="post h-entry" itemscope itemtype="http://schema.org/CreativeWork">
+    <li>
+    <h4 class="post-title p-name" itemprop="name headline">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      {% else %}
+        <a href="{{ post.url }}" rel="permalink">{{ post.title }}</a>
+      {% endif %}
+    </h4>
+    {% if post.read_time %}
+      <p class="page-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include reading_time.html %}</p>
+    {% endif %}
+    {% if post.venue%}<p class="post-meta-description" itemprop="description">{{ post.citation }}</p> {% endif %}
+    </li>
+ </article>
+</div>

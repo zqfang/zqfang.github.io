@@ -51,11 +51,13 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
   </div>
-  {%- if page.comments -%}
-    {%- include utterances.html -%}
-  {%- endif -%}
-  {%- if site.disqus.shortname -%}
+  <br>
+  {%- if page.comments and site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
+  {%- elsif page.comments -%}
+    {%- include utterances.html -%}
+  {%- else -%}
+     <br>
   {%- endif -%}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

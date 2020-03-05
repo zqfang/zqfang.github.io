@@ -392,12 +392,14 @@ table {
   white-space: nowrap;
   // font-size: 75%;
   border:none;
+  width: 100%;
+  border-collapse: collapse;
   th{
     text-align: center! important;
   }
   td{
     text-overflow:ellipsis;
-    overflow:hidden;
+    //overflow:hidden;
     max-width: 15em;
   }
 }

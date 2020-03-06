@@ -38,17 +38,40 @@ jobs:
         path: 'current_files'
         persist-credentials: false
 
+    - name: compare versions
+      id: check_version
+      run: |
+        from pathlib import Path
+        new_version = Path('new_files/_fastpages_docs/version.txt')
+        old_version = Path('current_files/_fastpages_docs/version.txt')
+
+        if old_version.exists():
+          old_num = old_version.read_text().strip()
+          new_num = new_version.read_text().strip()
+          print(f'Old version: {old_num}')
+          print(f'New version: {new_num}')
+          if old_num == new_num:
+            print('::set-output name=vbump::false')
+          else:
+            print('::set-output name=vbump::true')
+        else:
+          print('::set-output name=vbump::true')
+      shell: python
+
     - name: copy new files
+      if: steps.check_version.outputs.vbump == 'true'
       run: |
         # remove files you don't want to copy from current version of fastpages
         cd new_files        
         rm -rf _posts _notebooks _word images
         rm *.md CNAME action.yml _config.yml LICENSE
         rm .github/workflows/chatops.yaml
+        rm .github/workflows/docker-nbdev.yaml
+        rm .github/workflows/docker.yaml
         rm .github/ISSUE_TEMPLATE/bug.md .github/ISSUE_TEMPLATE/feature_request.md
         
         # copy new files from fastpages into your repo
-        for file in $(ls | egrep -v "(assets)"); do 
+        for file in $(ls | egrep -v "(assets|_sass)"); do 
           if [[ -f "$file" ]] || [[ -d "$file" ]] 
           then
             echo "copying $file"; 
@@ -56,10 +79,10 @@ jobs:
           fi
         done
         
-        # copy select files in assets
-        cp assets/main.scss ../current_files/assets
+        # copy select files in assets and _sass
         cp -r assets/js ../current_files/assets
         cp -r assets/badges ../current_files/assets
+        cp _sass/minima/fastpages-styles.scss ../current_files/_sass/minima/
         
         # copy action workflows
         cp -r .github ../current_files
@@ -68,6 +91,7 @@ jobs:
         pip3 install pyyaml
 
     - name: sync baseurl
+      if: steps.check_version.outputs.vbump == 'true'
       run: |
         import re, os, yaml
         from pathlib import Path
@@ -105,10 +129,12 @@ jobs:
       shell: python
 
     - uses: webfactory/ssh-agent@v0.2.0
+      if: steps.check_version.outputs.vbump == 'true'
       with:
           ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
                         
     - name: push changes to branch
+      if: steps.check_version.outputs.vbump == 'true'
       run: |
         # commit changes
         cd current_files
@@ -126,6 +152,7 @@ jobs:
         GH_USERNAME: ${{ github.event.issue.user.login }}
 
     - name: Open a PR
+      if: steps.check_version.outputs.vbump == 'true'
       id: pr
       uses: actions/github-script@0.6.0
       with:
@@ -144,7 +171,7 @@ jobs:
                       .then(result => console.log(`::set-output name=pr_num::${result.data.number}`))
   
     - name: Comment on issue if failure
-      if: failure()     
+      if: failure()  && (steps.check_version.outputs.vbump == 'true')
       uses: actions/github-script@0.6.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
@@ -159,9 +186,10 @@ jobs:
           })
       env:
         PR_NUM: ${{ steps.pr.outputs.pr_num }}
-        REPO: ${{ github.repository }} 
+        REPO: ${{ github.repository }}
 
-    - name: Comment on issue     
+    - name: Comment on issue 
+      if: steps.check_version.outputs.vbump == 'true'    
       uses: actions/github-script@0.6.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
@@ -177,6 +205,19 @@ jobs:
       env:
         PR_NUM: ${{ steps.pr.outputs.pr_num }}
         REPO: ${{ github.repository }}
+
+    - name: Comment on issue if version has not changed
+      if: steps.check_version.outputs.vbump == 'false'    
+      uses: actions/github-script@0.6.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `Your version of fastpages is up to date.  There is nothing to change.`
+          })
           
     - name: Close Issue
       if: always()

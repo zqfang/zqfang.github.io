@@ -1,26 +1,16 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
-
-@import "{{ site.theme }}";
-
-/*
- * Variables
- */
-
- $dt-gray-dark: #282a36;  // Background
- $dt-code-cell-background: #323443;
- $dt-gray: #44475a;       // Current Line & Selection
- $dt-gray-light: #f8f8f2; // Foreground
- $dt-blue: #6272a4;       // Comment
- $dt-cyan: #8be9fd;
- $dt-green: #50fa7b;
- $dt-orange: #ffb86c;
- $dt-pink: #ff79c6;
- $dt-purple: #bd93f9;
- $dt-red: #ff5555;
- $dt-yellow: #f1fa8c;
- $dt-green-light: rgb(172, 229, 145);
+$dt-gray-dark: #282a36;  // Background
+$dt-code-cell-background: #323443;
+$dt-gray: #44475a;       // Current Line & Selection
+$dt-gray-light: #f8f8f2; // Foreground
+$dt-blue: #6272a4;       // Comment
+$dt-cyan: #8be9fd;
+$dt-green: #50fa7b;
+$dt-orange: #ffb86c;
+$dt-pink: #ff79c6;
+$dt-purple: #bd93f9;
+$dt-red: #ff5555;
+$dt-yellow: #f1fa8c;
+$dt-green-light: rgb(172, 229, 145);
 
 .post img {
         display: block;
@@ -42,11 +32,12 @@
         margin-left: 1rem !important;
 }
 
-// ensure dark background for code
+// ensure dark background for code in markdown
 [class^="language-"]:not(.language-plaintext) pre,
 [class^="language-"]:not(.language-plaintext) code
+// .highlight.[class^="h1-"]
 {
-  background-color: #323443 !important;
+  background-color: $dt-code-cell-background !important;
   color: $dt-gray-light;
 }
 
@@ -65,6 +56,7 @@
         text-rendering: optimizeLegibility;
         font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace;
         border-radius: 5px;
+        font-size: 100%;
 }
 .output_area pre, .output_area div {
         margin-bottom:1rem !important;
@@ -85,7 +77,7 @@
 .page-content {
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
-        font-family: "Segoe UI", SegoeUI, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif;
+        font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
 }
 
 // make non-headings slightly lighter
@@ -94,9 +86,13 @@
    color: #515151;
 }
 
+.post-link{
+    font-weight: normal;
+}
+
 // change padding of headings
 h1 {
-    margin-top:2.5rem !important;      
+    margin-top:2.5rem !important;
 }
 
 h2 {
@@ -105,6 +101,20 @@ h2 {
 
 h3, h4 {
     margin-top:1.5rem !important;      
+}
+
+p {
+    margin-top:1rem !important; 
+    margin-bottom:1rem !important;   
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal !important;
+    margin-bottom:0.5rem !important;  
+}
+
+pre {
+    margin-bottom:1.5rem !important; 
 }
 
 // make sure the post title doesn't have too much spacing
@@ -118,6 +128,7 @@ li {
   .post-meta-description {
     color: rgb(88, 88, 88);
     font-size: 15px;
+    margin-top:.05rem !important;
     margin-bottom:.05rem !important;
   }
 }
@@ -137,8 +148,12 @@ li {
   */
  
  .highlight {
-//    background: $dt-gray-dark;
-//    color: $dt-gray-light;
+   background: $dt-code-cell-background !important;
+   color: $dt-gray-light !important;
+   pre, code {
+    background: $dt-code-cell-background;
+    color: $dt-gray-light;
+   }
   
    .hll,
    .s,
@@ -297,14 +312,17 @@ details.description:not([open]) summary::after {
 // Adjust font size for footnotes.
 .footnotes {
   font-size: 12px !important;
-  p{
+  p, li{
     font-size: 12px !important;
- }
+ } 
 }
 
 // Adjust with of social media icons were getting cut off
-.social.svg-icon {
-  width: 21px !important;
+.social-media-list{
+  .svg-icon {
+    width: 25px !important;
+    height: 23px !important;
+  }
 }
 
 // Make Anchor Links Appear Only on Hover
@@ -332,17 +350,21 @@ h6:hover .anchor-link {
 .category-tags {
   margin-top: .25rem !important;
   margin-bottom: .25rem !important;
+  font-size: 105%;
 }
 
 // Custom styling for homepage post previews
-.post-meta-title{
-  margin-top: .25em;
-  margin-bottom: .25em;
+.post-meta-title, .post-meta{
+  margin-top: .25em !important;
+  margin-bottom: .25em !important;
+  font-size: 105%;
 }
 
 .page-description {
+  margin-top: .5rem !important;
+  margin-bottom: .5rem !important;
   color: #585858;
-  font-size: 110%;
+  font-size: 115%;
 }
 
 // Custom styling for category tags
@@ -390,17 +412,15 @@ table {
   display: block !important;
   overflow-x: auto;
   white-space: nowrap;
-  // font-size: 75%;
+  font-size: 75%;
   border:none;
-  width: 100%;
-  border-collapse: collapse;
   th{
     text-align: center! important;
   }
   td{
     text-overflow:ellipsis;
-    //overflow:hidden;
-    //max-width: 15em;
+    overflow:hidden;
+    max-width: 15em;
   }
 }
 

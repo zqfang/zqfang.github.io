@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "YOLOv3 Inference Framework C++"
 excerpt: "Torch (C++) implementation of YOLOv3, which works on Windows, Mac, Linux.<br/><img src='/images/yolo_arch1.png'>"
 collection: portfolio

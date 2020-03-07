@@ -35,9 +35,7 @@ url: "https://zqfang.github.io" # the base hostname & protocol for your site, e.
 #
 baseurl: "" # the subpath of your site, e.g. "/blog".  WARNING: if you are not using a custom domain, the baseurl *must* be set to your repo name.
 
-# Email and twitter are optional:
-
-# 
+# author infomation
 author:
   name: "Zhuoqing Fang"
   email:
@@ -130,8 +128,3 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-
-# Sass/SCSS
-# sass:
-#   sass_dir: _sass
-#   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style

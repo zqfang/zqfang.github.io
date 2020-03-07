@@ -7,12 +7,16 @@ date: 2016-01-02
 permalink: /portfolio/portfolio-1
 ---
 
-I would like to use Pandas to explore my data, but I did not find a convenient tool to do gene set enrichment analysis in python. So, here are my reasons:
 
-* Ability to run inside python interactive console without having to switch to R!!!
+
+I would like to use `pandas` to explore my data, but I did not find a convenient tool to do gene set enrichment analysis in python. 
+
+I want something like this:
+
+* Ability to run inside python console without switching to R.
 * User friendly for both wet and dry lab users.
 * Produce or reproduce publishable figures.
 * Perform batch jobs easy.
-* Easy to use in bash shell or your data analysis workflow, e.g. snakemake.
+* Command line support (Win, Mac, Linux).
 
-That's why GSEApy comes to play.
+That's why GSEApy comes to play. See code [here](https://github.com/zqfang/GSEApy)

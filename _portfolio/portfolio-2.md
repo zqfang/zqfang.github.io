@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "YOLOv3 Inference Framework C++"
+title: "YOLOv3 Inference Framework in C++"
 excerpt: "Torch (C++) implementation of YOLOv3, which works on Windows, Mac, Linux.<br/><img src='/images/yolo_arch1.png'>"
 collection: portfolio
 date: 2019-08-12
 permalink: /portfolio/portfolio-2
 ---
 
-A good example to learn deep learning model which is coded in C++.
+My journey to object detection began with YOLOv3. I think it's really a good starting point for someone like me without computer vison background to understand what's going on behind the scence. While learning object detection, I made a simple modified C++ version (with LibTorch) based on others' work [^1] [^2] [^3].  
+
+See code [here](https://github.com/zqfang/YOLOv3_CPP)
 
 ## Performance
 test code:
@@ -39,7 +41,8 @@ Supports
 
 ## Credits
 
-This repo is created based on the implementations below:  
-[weixu000](https://github.com/weixu000/libtorch-yolov3-deepsort)  
-[PyTorch-YOLOv3](https://github.com/eriklindernoren/PyTorch-YOLOv3)  
-[YOLO_v3_tutorial_from_scratch](https://github.com/ayooshkathuria/YOLO_v3_tutorial_from_scratch)
+`YOLOv3_CPP` repo is created based on the implementations below:  
+ 
+[^1]: [weixu000](https://github.com/weixu000/libtorch-yolov3-deepsort).
+[^2]: [PyTorch-YOLOv3](https://github.com/eriklindernoren/PyTorch-YOLOv3).
+[^3]: [YOLO_v3_tutorial_from_scratch](https://github.com/ayooshkathuria/YOLO_v3_tutorial_from_scratch).

@@ -1,5 +1,5 @@
 <div>
-  <article class="post h-entry" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     <li>
     <h4 class="post-title p-name" itemprop="name headline">
       {% if post.link %}
@@ -11,7 +11,7 @@
     {% if post.read_time %}
       <p class="page-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include reading_time.html %}</p>
     {% endif %}
-    {% if post.venue%}<p class="post-meta-description" itemprop="description">{{ post.citation }}</p> {% endif %}
+    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p> {% endif %}
     </li>
  </article>
 </div>

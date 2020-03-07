@@ -2,7 +2,20 @@
 @import "minima/fastpages-styles";
 
 // Add your styles below
-.feed-subscribe .svg-icon {
-    padding: 5px 5px 2px 0
-  }
-  
+@import "reset";
+@import "base";
+
+@import "utilities";
+@import "animations";
+@import "tables";
+@import "buttons";
+@import "notices";
+@import "masthead";
+@import "navigation";
+@import "footer";
+@import "syntax";
+
+@import "forms";
+
+@import "page";
+@import "archive";

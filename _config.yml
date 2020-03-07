@@ -39,7 +39,10 @@ baseurl: "" # the subpath of your site, e.g. "/blog".  WARNING: if you are not u
 
 # Email and twitter are optional:
 
-
+# 
+author:
+  name: "Zhuoqing Fang"
+  email:
 # comment
 disqus:
   shortname: "bioninja-1"
@@ -49,7 +52,6 @@ minima:
   social_links:
     twitter: 
     github: zqfang
-    author: "Zhuoqing Fang"
     orcid: "0000-0002-7418-1313"
 
 

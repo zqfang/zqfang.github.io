@@ -5,9 +5,10 @@ permalink: /about/
 search_exclude: true
 ---
 
-My name is Zhuoqing Fang  
-I'm now a postdoc working on computational genomics at Stanford.  
-I like traveling, hiking, sleeping.  
+My name is Zhuoqing Fang.
+I like traveling, hiking, sleeping.   
+I'm now a postdoc working on computational genomics (半路出家做计算的生物狗).  
+I open this blog to keep track of my hardship with machine learning. 
 
 
 ### Education

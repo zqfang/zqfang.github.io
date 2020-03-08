@@ -5,6 +5,11 @@ permalink: /about/
 search_exclude: true
 ---
 
+My name is Zhuoqing Fang  
+I'm now a postdoc working on computational genomics at Stanford.  
+I like traveling, hiking, sleeping.  
+
+
 ### Education
 
 * Ph.D., Developmental Biology, Shanghai Institutes for Biological Sciences, University of Chinese Academy of Science

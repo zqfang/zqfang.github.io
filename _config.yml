@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Max
-description: "My Computational Genomics Playground"
+description: "My Computational Genomic Playground"
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "zqfang.github.io"
 

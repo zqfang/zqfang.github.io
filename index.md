@@ -6,10 +6,7 @@ layout: home
 search_exclude: true
 ---
 
-My name is Zhuoqing Fang  
-I'm now a postdoc working on computational genomics at Stanford.  
-I like traveling, hiking, sleeping.  
-I open this blog to keep track of my hardship while learning machine learning (also computer science)!
-
+## Welcome to my playground.  
+I open this blog to keep track of my hardship with machine learning (and computer science)!
 
 # Posts

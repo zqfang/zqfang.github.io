@@ -5,7 +5,7 @@ permalink: /about/
 search_exclude: true
 ---
 
-My name is Zhuoqing Fang.
+This is Max.
 I like traveling, hiking, sleeping.   
-I'm now a postdoc working on computational genomics.  
+I'm a researcher working on computational genomics.  
 I open this blog to keep track of my hardship with machine learning. 

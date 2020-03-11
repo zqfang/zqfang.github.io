@@ -7,14 +7,22 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
+  {{ content | markdownify }}
 
 
   {% if site.paginate %}
-    {% assign posts = paginator.posts %}
+    {% assign rawposts = paginator.posts %}
   {% else %}
-    {% assign posts = site.posts %}
+    {% assign rawposts = site.posts %}
   {% endif %}
+
+  <!-- Hide posts if front matter flag hide:true -->
+  {% assign posts = ''|split:'' %}
+  {% for post in rawposts %}
+    {% if post.hide != true %}
+      {% assign posts = posts|push:post%}
+    {% endif %}
+  {% endfor %}
 
 
   {%- if posts.size > 0 -%}
@@ -34,7 +42,7 @@ layout: default
       {%- endfor -%}
     </ul>
 
-    {% if site.paginate %}
+    {% if site.paginate and site.posts.size > site.paginate %}
       <div class="pager">
         <ul class="pagination">
         {%- if paginator.previous_page %}
@@ -55,4 +63,3 @@ layout: default
   {%- endif -%}
 
 </div>
-

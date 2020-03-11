@@ -55,9 +55,10 @@ layout: default
   {%- if page.comments and site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- elsif page.comments -%}
-    {%- include utterances.html -%}
+     {%- include utterances.html -%}
   {%- else -%}
-     <br>
+      <br>
   {%- endif -%}
+  <br>
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

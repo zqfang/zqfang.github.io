@@ -11,7 +11,7 @@ Collection of GATK4 Mouse Resource Bundle
 
 I found the resource [here](https://github.com/igordot/genomics/blob/master/workflows/gatk-mouse-mm10.md). However, the script is out of date. For GATK4, we have
 
-1. Genome
+### 1. Genome
 
 Download from NCBI ([mm10](https://www.ncbi.nlm.nih.gov/genome/52)) or Sanger Mouse Genetics Programme
 ```shell
@@ -22,7 +22,7 @@ wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.26_G
 wget ftp://ftp-mouse.sanger.ac.uk/ref/GRCm38_68.fa -O GRCm38_68.fa
 ```
 
-2. Known dbSNP
+### 2. Known dbSNP
 
 **Recommend**: Download All in one vcf file from NCBI
 ```shell
@@ -50,7 +50,7 @@ gatk GatherVcfs -R GRCm38_68.dict $vcf_file_string -O dbsnp.vcf
 
 ```
 
-3. Indel
+### 3. Known Indels
 For mouse indels, the Sanger Mouse Genetics Programme (Sanger MGP) is probably the best resource.  
 Download all MGP indels (5/2015 release):  
 

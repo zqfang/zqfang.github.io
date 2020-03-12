@@ -1,7 +1,6 @@
 ---
 title: 'Loss function for multi-label classification'
 date: 2020-01-29
-permalink: /posts/2020/01/blog-post-7/
 categories: ["Machine Learning"]
 comments: true
 ---

@@ -24,7 +24,11 @@ wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.26_G
 wget ftp://ftp-mouse.sanger.ac.uk/ref/GRCm38_68.fa -O GRCm38_68.fa
 ```
 
-### 2. Known dbSNP
+### 2. dbSNP
+
+{% include alert.html text="Which strain's dbsnp to use?" %} 
+**Depends on your study design.**
+
 
 Download All in one vcf file from NCBI
 ```shell
@@ -32,10 +36,7 @@ wget ftp://ftp.ncbi.nih.gov/snp/organisms/archive/mouse_10090/VCF/00-All.vcf.gz 
      -O mouse.dbsnp.vcf.gz
 ```
 
-
 Download from the Sanger Mouse Genetics Programme (Sanger MGP)  
-{% include alert.html text="Which strain's dbsnp to use?" %}  
-Depends on your study.
 
 ```shell
 wget ftp://ftp-mouse.sanger.ac.uk/REL-1505-SNPs_Indels/mgp.v5.merged.snps_all.dbSNP142.vcf.gz

@@ -1,7 +1,6 @@
 ---
 title: 'Mento Carlos'
 date: 2020-01-26
-permalink: /posts/2020/01/blog-post-6/
 categories: ["Machine Learning"]
 comments: true
 ---

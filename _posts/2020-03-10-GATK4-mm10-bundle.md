@@ -2,7 +2,6 @@
 title: "GATK4 Mouse Resource Bundle"
 description: 'Creating GATK4 mm10 resource bundle'
 date: 2020-03-10
-permalink: /posts/2020/03/blog-post-1/
 categories: ["Make bioinfo uncool again"]
 comments: true
 ---

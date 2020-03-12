@@ -4,7 +4,7 @@
   1. Head over to https://realfavicongenerator.net/ to add your own favicons.
   2. Customize default _includes/custom-head.html in your source directory and insert the given code snippet.
 {% endcomment %}
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/academicons.min.css"/>
+
 
 {%- include favicons.html -%}
 {% seo %}
@@ -60,8 +60,5 @@ window.onload = wrap_img;
     // add link icon to anchor tags
     var elem = document.querySelectorAll(".anchor-link")
     elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
-    // remove paragraph tags in rendered toc (happens from notebooks)
-    var toctags = document.querySelectorAll(".toc-entry")
-    toctags.forEach(e => (e.firstElementChild.innerText = e.firstElementChild.innerText.replace('¶', '')))
     });
 </script>

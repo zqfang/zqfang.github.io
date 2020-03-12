@@ -2,10 +2,12 @@
 layout: page
 title: About Me
 permalink: /about/
-search_exclude: true
 ---
 
-My name is Zhuoqing Fang.  
-I like traveling, hiking, sleeping.  
-I'm now a postdoc working on computational genomics.  
-I open this blog to keep track of my hardship with machine learning. 
+This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+
+This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+
+
+
+[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.

@@ -3,7 +3,6 @@ layout: post
 title: "GSEApy"
 excerpt: "GSEApy is a python wrapper for GSEA and Enrichr<br/><img src='/images/gseapy_OCT4_KD.png'>"
 collection: portfolio
-date: 2016-01-02
 permalink: /portfolio/portfolio-1
 ---
 

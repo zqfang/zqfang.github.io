@@ -1,14 +1,27 @@
 ---
-title: "GATK4 Mouse Resource Bundle"
-description: 'Creating GATK4 mm10 resource bundle'
+title: "GATK for genetic analysis of inbred mouse is not good"
+description: 
 date: 2020-03-10
 categories: ["Make bioinfo uncool again"]
+published: false
 comments: true
 ---
 
-Collection of GATK4 Mouse Resource Bundle
+GATK is design for human genetics, it works poorly on homogeneous inbred mouse.  
+So better advoid using it.
 
-I found the resource [here](https://github.com/igordot/genomics/blob/master/workflows/gatk-mouse-mm10.md). However, the script is out of date. 
+One of my colleuge who studies mouse genetics, said, 
+
+> I tried the haplotype caller from GATK. But it seems that the haplotype caller is designed for heterogeneous genome like human than for mice. Therefore, the result coming out of HC is worse than samtools, as I manually inspected a few regions that HC calls didn't make sense.
+
+> In addition, in one of their mouse genomic paper that we reviewed, they even skipped the second recalibration step. We asked them why and they said it was because of the same reason: good for human but not that good for homogeneous inbred mouse.
+
+
+
+
+But we still could collect the resource bundle for mouse.
+
+I found the a workflow [here](https://github.com/igordot/genomics/blob/master/workflows/gatk-mouse-mm10.md). However, the script is out of date. 
 Also, see discussion [here](https://www.biostars.org/p/182917/)
 
 For GATK4, we have

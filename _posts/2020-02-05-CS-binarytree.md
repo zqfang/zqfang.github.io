@@ -1,14 +1,14 @@
 ---
 title: 'Binary tree'
 date: 2020-02-05
-image: "images/binarytree0.jpg"
+image: "/zqfang.github.io/images/binarytree0.jpg"
 show_image: true
 categories: ["Algorithm and data structure"]
 comments: true
 ---
 
 Binary trees  
-![Trees](images/binarytree0.jpg)
+![Trees](/zqfang.github.io/images/binarytree0.jpg)
 
 Difference
 ![Trees](/zqfang.github.io/images/binarytree.png)

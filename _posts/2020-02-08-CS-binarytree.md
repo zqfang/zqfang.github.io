@@ -1,17 +1,17 @@
 ---
 title: 'Binary tree'
-date: 2020-02-05
-image: "/zqfang.github.io/images/binarytree0.jpg"
+date: 2020-02-08
+image: "images/algorithm/binarytree0.jpg"
 show_image: true
 categories: ["Algorithm and data structure"]
 comments: true
 ---
 
 Binary trees  
-![Trees](/zqfang.github.io/images/binarytree0.jpg)
+![Trees](/zqfang.github.io/algorithm/images/binarytree0.jpg)
 
 Difference
-![Trees](/zqfang.github.io/images/binarytree.png)
+![Trees](/zqfang.github.io/algorithm/images/binarytree.png)
 
 
 ### Some data structures to keep in my mind.
@@ -120,7 +120,7 @@ public:
 ### 2. IndexMaxHeap  
 
 Need 3 vector: data, indexes, reverse
-![indexMaxHeap](/zqfang.github.io/images/IndexMaxHeap.png)
+![indexMaxHeap](/zqfang.github.io/images/algorithm/IndexMaxHeap.png)
 
 Code
 ```cpp

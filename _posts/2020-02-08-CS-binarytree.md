@@ -8,10 +8,10 @@ comments: true
 ---
 
 Binary trees  
-![Trees](/zqfang.github.io/algorithm/images/binarytree0.jpg)
+![Trees](/zqfang.github.io/images/algorithm/binarytree0.jpg)
 
 Difference
-![Trees](/zqfang.github.io/algorithm/images/binarytree.png)
+![Trees](/zqfang.github.io/images/algorithm/binarytree.png)
 
 
 ### Some data structures to keep in my mind.

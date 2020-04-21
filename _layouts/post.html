@@ -52,6 +52,9 @@ layout: default
     {{ content | toc  }}
   </div>
   <br>
+  {% include previousAndNext.html %}
+
+  <h2 id="comments">Comments</h2>
   {%- if site.disqus.shortname and page.comments -%}
     {%- include disqus_comments.html -%}
   {%- elsif page.comments -%}

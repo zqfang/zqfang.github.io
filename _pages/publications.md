@@ -2,7 +2,6 @@
 layout: post
 title: "Publications"
 permalink: /publications/
-search_exclude: true
 ---
 
 

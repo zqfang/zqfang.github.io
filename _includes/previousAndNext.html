@@ -1,16 +1,3 @@
-<!-- <div class="post-recent">
-    <div class="pre">
-        {% if page.previous %}
-        <p><strong>Previous</strong> <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }}</a></p>
-        {% endif %}
-    </div>
-    <div class="nex">
-
-        {% if page.next %}
-        <p><strong>Next</strong> <a href="{{ page.next.url | prepend: site.baseurl }}">{{ page.next.title }}</a></p>
-        {% endif %}
-    </div>
-</div> -->
 {% if page.previous or page.next %}
   <nav class="pagination">
     {% if page.previous %}

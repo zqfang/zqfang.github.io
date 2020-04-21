@@ -54,8 +54,8 @@ layout: default
   <br>
   {% include previousAndNext.html %}
 
-  <h2 id="comments">Comments</h2>
   {%- if site.disqus.shortname and page.comments -%}
+  <h2 id="comments">Comments</h2>
     {%- include disqus_comments.html -%}
   {%- elsif page.comments -%}
     {%- include utterances.html -%}

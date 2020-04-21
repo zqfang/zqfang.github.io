@@ -1,4 +1,4 @@
-<div class="post-recent">
+<!-- <div class="post-recent">
     <div class="pre">
         {% if page.previous %}
         <p><strong>Previous</strong> <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }}</a></p>
@@ -10,4 +10,18 @@
         <p><strong>Next</strong> <a href="{{ page.next.url | prepend: site.baseurl }}">{{ page.next.title }}</a></p>
         {% endif %}
     </div>
-</div>
+</div> -->
+{% if page.previous or page.next %}
+  <nav class="pagination">
+    {% if page.previous %}
+      <a href="{{ page.previous.url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
+    {% else %}
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
+    {% endif %}
+    {% if page.next %}
+      <a href="{{ page.next.url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
+    {% else %}
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
+    {% endif %}
+  </nav>
+{% endif %}

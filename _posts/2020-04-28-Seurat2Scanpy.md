@@ -28,6 +28,8 @@ os.environ['R_USER'] = '/home/fangzq/miniconda/lib/python3.7/site-packages/rpy2'
 import scanpy as sc
 import glob
 ```
+
+Install `anndata2ri` first
 ```python
 import anndata2ri
 from rpy2.robjects import r

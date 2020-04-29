@@ -50,10 +50,10 @@ for robj in robjs:
     adata.write_h5ad(filename=robj.replace("Robj","h5ad"))
 ```
 
-### 4. other
+### 4. other way
 seurat -> loom -> scanpy
 
-It's much easier, but I did not tested.
+It's much easier, but I did not test.
 
 1. save to `loom` format fist.
 ```R
@@ -62,14 +62,7 @@ pbmc.loom
 ```
 2. read into scanpy
 ```python
-sc.read_loom("../output/pbmc3k.loom")
+pbmc3k = sc.read_loom("../output/pbmc3k.loom")
 ```
 
-
-
-
-```python
-
-
-```
 

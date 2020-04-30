@@ -57,6 +57,9 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
   </div>
+  <br>
+  {% include previousAndNext.html %}
+
   {%- if site.disqus.shortname and page.comments -%}
   <h2 id="comments">Comments</h2>
     {%- include disqus_comments.html -%}

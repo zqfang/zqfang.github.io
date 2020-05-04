@@ -100,9 +100,12 @@ include:
 
 # This specifies what badges are turned on by default for notebook posts.
 default_badges:
-  github: true
+  github: false
   binder: true
   colab: true
+# Escape HTML in post descriptions
+# html_escape:
+#   description: false
 
 # Everything below here should be left alone. Modifications may break fastpages
 future: true

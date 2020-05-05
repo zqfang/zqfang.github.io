@@ -3,10 +3,10 @@ layout: home
 search_exclude: true
 ---
 
-<h2>Welcome to my playground</h2> 
+<h3 class="post-title p-name">Welcome to my playground</h3> 
 
 {% assign total = 0 %}
 {% for post in site.posts %}
   {% assign total = total | plus: 1 %}
 {% endfor %}
-<h2>Recent Posts ({{ total }})</h2>
+<h2class="post-title p-name" >Recent Posts ({{ total }})</h2>

@@ -1,10 +1,28 @@
 /* ==========================================================================
    TABLES
    ========================================================================== */
+// table {
+//     display: block !important;
+//     overflow-x: auto;
+//     white-space: nowrap;
+//     font-size: 110%;
+//     border:none;
+//     th{
+//       text-align: center! important;
+//     }
+//     // td{
+//     //   //text-overflow:ellipsis;
+//     //   //overflow:hidden;
+//     //   //max-width: 15em;
+//     // }
+//   }
+
 
 table {
+  overflow-x: visible;
+  //display: block !important;
   margin-bottom: 1em;
-  width: 100%;
+  //width: 100%;
   font-family: $global-font-family;
   font-size: $type-size-6;
   border-collapse: collapse;
@@ -21,6 +39,9 @@ thead {
 }
 
 th {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  max-width: none;
   padding: 0.5em;
   font-weight: bold;
   text-align: left;
@@ -36,3 +57,7 @@ td {
 tr, td, th {
   vertical-align: middle;
 }
+
+//     //   //text-overflow:ellipsis;
+//     //   //overflow:hidden;
+//     //   //

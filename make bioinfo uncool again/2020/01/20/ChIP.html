@@ -1,0 +1,102 @@
+<p>bowtie2-macs2-deeptools</p>
+<h3 id="21-genome-mapping">2.1 Genome mapping</h3>
+
+<p>Step 0: install software</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install miniconda, then call conda</span>
+conda <span class="nb">install</span> <span class="nt">-c</span> bioconda bowtie2 hisat2 samtools deeptools
+</code></pre></div></div>
+
+<p>step 1: build index</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bowtie2-build hg38.fa bowtie2_index/hg38
+</code></pre></div></div>
+<p>step 2: mapping</p>
+
+<p>Unpaired data</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bowtie2 <span class="nt">-p</span> <span class="k">${</span><span class="nv">threads</span><span class="k">}</span> <span class="nt">-x</span> index/hg38 <span class="se">\</span>
+         <span class="nt">-U</span> input.fastq.gz <span class="se">\</span>
+         <span class="nt">-S</span> ouput.sam
+</code></pre></div></div>
+
+<p>Paired data</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bowtie2 <span class="nt">-p</span> 4 <span class="nt">-x</span> index/hg38 <span class="se">\</span>
+         <span class="nt">-1</span> input_R1.fastq.gz <span class="se">\</span>
+         <span class="nt">-2</span> input_R2.fastq.gz <span class="se">\</span>
+         <span class="nt">-S</span> ouput.sam
+</code></pre></div></div>
+
+<p>step 3: sam to bam</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>samtools view <span class="nt">-Sbh</span>  <span class="nt">-q</span> 25 <span class="se">\</span>
+              -@ <span class="k">${</span><span class="nv">threads</span><span class="k">}</span>  <span class="se">\</span>
+              <span class="nt">-o</span> ouput.bam <span class="se">\</span>
+              input.sam
+
+</code></pre></div></div>
+
+<p>step 4: bam sort and index</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>samtools <span class="nb">sort</span> -@ <span class="k">${</span><span class="nv">threads</span><span class="k">}</span> input.bam <span class="o">&gt;</span> output.sorted.bam 
+samtools index input.sorted.bam <span class="c">#generate input.sorted.bam.bai</span>
+
+</code></pre></div></div>
+
+<p>step 5: bam to bigwig</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bamCoverage <span class="nt">-p</span> <span class="k">${</span><span class="nv">threads</span><span class="k">}</span> <span class="se">\</span>
+            <span class="nt">--normalizeUsing</span> RPKM <span class="se">\ </span><span class="c"># note: other normalization options </span>
+            <span class="nt">--centerReads</span>  <span class="se">\</span>
+            <span class="nt">-e</span> 200 <span class="se">\</span>
+            <span class="nt">-b</span> input.sorted.bam <span class="se">\</span>
+            <span class="nt">-o</span> output.bw
+
+</code></pre></div></div>
+
+<h3 id="22-peaks-analysis">2.2 Peaks analysis</h3>
+
+<p><strong>note:</strong>: macs2 (&gt;v2.2.x) supports python 3.</p>
+
+<p>step 0: install tools</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>macs2 bedtools pygenometracks 
+</code></pre></div></div>
+
+<p>step 1: callpeaks
+(1) narrow peaks, e.g. TFs, h3k4m3</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># bam file input</span>
+macs2 callpeak <span class="nt">-t</span> ChIP.elute.sorted.bam  <span class="se">\</span>
+               <span class="nt">-c</span> ChIP.input.sorted.bam <span class="se">\</span>
+               <span class="nt">-f</span> BAM <span class="se">\</span>
+               <span class="nt">-g</span> hs <span class="c"># organism \ </span>
+               <span class="nt">-B</span>  <span class="nt">-q</span> 0.05 <span class="se">\</span>
+               <span class="nt">-n</span>  <span class="k">${</span><span class="nv">outFileName</span><span class="k">}</span><span class="se">\</span>
+               <span class="nt">--outdir</span> macs_out
+</code></pre></div></div>
+
+<p>(2) Broad peaks, e.g. h3k27me3</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># sam file also works fine</span>
+macs2 callpeak <span class="nt">-t</span> ./bowtie_out/WTme2ChIP.sam  <span class="se">\</span>
+               <span class="nt">-c</span> ./bowtie_out/ESCInput.sam <span class="se">\</span>
+               <span class="nt">-f</span> SAM <span class="se">\</span>
+               <span class="nt">-g</span> mm <span class="se">\</span>
+               <span class="nt">-B</span> <span class="nt">--SPMR</span> <span class="se">\</span>
+               <span class="nt">--nomodel</span> <span class="nt">--extsize</span> 147 <span class="se">\</span>
+               <span class="nt">--broad</span>
+               <span class="nt">-n</span> WTme2ChIP
+               <span class="nt">--outdir</span> macs_out
+</code></pre></div></div>
+
+<p>step 2: advanced analysis</p>
+
+<ul>
+  <li>tools: bedtools, deeptools, pyGenomeTracks, igv</li>
+  <li>genome algebra
+    <ul>
+      <li>overlap with other peaks: bedtools</li>
+      <li></li>
+    </ul>
+  </li>
+  <li>visualization
+    <ul>
+      <li>heatmap: deeptools</li>
+      <li>signal tracks: pyGenomeTracks, igv</li>
+    </ul>
+  </li>
+</ul>

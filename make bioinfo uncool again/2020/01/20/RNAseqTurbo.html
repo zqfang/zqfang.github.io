@@ -1,0 +1,74 @@
+<p>salmon-tximport-deseq2</p>
+<h3 id="step-0-install-salmon-and-download-transcriptome-cdna-from-gencode">Step 0: install salmon and download transcriptome cdna from gencode</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>salmon
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_32/gencode.v32.transcripts.fa.gz
+</code></pre></div></div>
+
+<h3 id="step-1-build-salmon-index">Step 1. build salmon index</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>salmon index <span class="nt">-p</span> 8 <span class="nt">--gencode</span> <span class="nt">-t</span> gencode.v32.transcripts.fa.gz <span class="nt">-i</span> salmonIndex_hg38
+</code></pre></div></div>
+
+<h3 id="step-2-quantification">Step 2: quantification</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>salmon quant <span class="nt">-i</span> salmonIndex_hg38 <span class="nt">-l</span> A <span class="se">\</span>
+         <span class="nt">-1</span> <span class="k">${</span><span class="nv">fn</span><span class="k">}</span>/<span class="k">${</span><span class="nv">samp</span><span class="k">}</span>_1.fastq.gz <span class="se">\</span>
+         <span class="nt">-2</span> <span class="k">${</span><span class="nv">fn</span><span class="k">}</span>/<span class="k">${</span><span class="nv">samp</span><span class="k">}</span>_2.fastq.gz <span class="se">\</span>
+         <span class="nt">-p</span> 8 <span class="nt">--validateMappings</span> <span class="nt">-o</span> quants/<span class="k">${</span><span class="nv">samp</span><span class="k">}</span>_quant
+</code></pre></div></div>
+
+<h3 id="step-3-merge-quantification-outputs">Step 3: merge quantification outputs</h3>
+
+<p>use tximport in R</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="c1"># R code</span><span class="w">
+  </span><span class="n">library</span><span class="p">(</span><span class="n">tximport</span><span class="p">)</span><span class="w">
+  </span><span class="n">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span><span class="w">
+  </span><span class="n">suppressMessages</span><span class="p">(</span><span class="n">library</span><span class="p">(</span><span class="s1">'EnsDb.Hsapiens.v86'</span><span class="p">))</span><span class="w">
+
+  </span><span class="n">txdb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">EnsDb.Hsapiens.v86</span><span class="w">
+  </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">keys</span><span class="p">(</span><span class="n">txdb</span><span class="p">,</span><span class="w"> </span><span class="n">keytype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GENEID"</span><span class="p">)</span><span class="w">
+  </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">txdb</span><span class="p">,</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">keytype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GENEID"</span><span class="p">,</span><span class="w"> </span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"TXID"</span><span class="p">,</span><span class="s2">"GENEID"</span><span class="p">))</span><span class="w">
+  </span><span class="n">tx2gene</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="c1"># tx ID, then gene ID</span><span class="w">
+
+  </span><span class="c1">#tx2gene &lt;- read.table(tx2gene, header= T, sep="\t", stringsAsFactors = F)</span><span class="w">
+  </span><span class="n">samples</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">strsplit</span><span class="p">(</span><span class="n">sample_ids</span><span class="p">,</span><span class="s2">","</span><span class="p">))</span><span class="w">
+  </span><span class="n">salmon.files</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="s1">'salmon'</span><span class="p">,</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="s2">"quant.sf"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">names</span><span class="p">(</span><span class="n">salmon.files</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">samples</span><span class="w">
+  </span><span class="nf">all</span><span class="p">(</span><span class="n">file.exists</span><span class="p">(</span><span class="n">salmon.files</span><span class="p">))</span><span class="w">
+  </span><span class="c1"># get transcript level results</span><span class="w">
+  </span><span class="n">txi.transcripts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tximport</span><span class="p">(</span><span class="n">salmon.files</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"salmon"</span><span class="p">,</span><span class="w"> 
+                              </span><span class="n">txOut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">tx2gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx2gene</span><span class="p">,)</span><span class="w">
+                         </span><span class="c1">#     ignoreTxVersion = TRUE)</span><span class="w">
+  </span><span class="c1"># get gene level results</span><span class="w">
+  </span><span class="n">txi.salmon</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">summarizeToGene</span><span class="p">(</span><span class="n">txi.transcripts</span><span class="p">,</span><span class="w"> </span><span class="n">tx2gene</span><span class="p">)</span><span class="w">
+
+  </span><span class="c1">#save raw counts </span><span class="w">
+  </span><span class="n">salmon.counts</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">txi.salmon</span><span class="o">$</span><span class="n">counts</span><span class="w">
+  </span><span class="n">salmon.counts</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">salmon.counts</span><span class="p">)</span><span class="w">
+  </span><span class="n">write.table</span><span class="p">(</span><span class="n">salmon.counts</span><span class="p">,</span><span class="w"> </span><span class="n">out_counts</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+  
+  </span><span class="c1">#save gene tpms</span><span class="w">
+  </span><span class="n">salmon.TPM</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">txi.salmon</span><span class="o">$</span><span class="n">abundance</span><span class="w">
+  </span><span class="n">salmon.TPM</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">salmon.TPM</span><span class="p">)</span><span class="w">
+  </span><span class="n">write.table</span><span class="p">(</span><span class="n">salmon.TPM</span><span class="p">,</span><span class="w"> </span><span class="n">out_tpm</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+  </span><span class="c1">#save transcripts tpms</span><span class="w">
+  </span><span class="n">salmon.trans.TPM</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">txi.transcripts</span><span class="o">$</span><span class="n">abundance</span><span class="w">
+  </span><span class="n">salmon.trans.TPM</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">salmon.trans.TPM</span><span class="p">)</span><span class="w">
+  </span><span class="n">write.table</span><span class="p">(</span><span class="n">salmon.trans.TPM</span><span class="p">,</span><span class="w"> </span><span class="n">outTrans_tpm</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+   
+  </span><span class="n">save</span><span class="p">(</span><span class="n">txi.salmon</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">=</span><span class="s2">"txi.salmon.RData"</span><span class="p">)</span><span class="w">
+
+</span></code></pre></div></div>
+
+<h3 id="step-4-differentially-expressed-gene-analysis">Step 4: Differentially expressed gene analysis</h3>
+
+<p>DESeq2 pipeline demo</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s2">"txi.salmon.RData"</span><span class="p">)</span><span class="w">
+</span><span class="n">dds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DESeqDataSetFromTximport</span><span class="p">(</span><span class="n">txi.salmon</span><span class="p">,</span><span class="w"> </span><span class="n">sampleTable</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="n">condition</span><span class="p">)</span><span class="w">
+</span><span class="n">dds</span><span class="o">$</span><span class="n">condition</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">relevel</span><span class="p">(</span><span class="n">dds</span><span class="o">$</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">ref</span><span class="o">=</span><span class="n">ctrl</span><span class="p">)</span><span class="w">
+</span><span class="n">dds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DESeq</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">parallel</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">res</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">results</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span><span class="w"> </span><span class="n">contrast</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"condition"</span><span class="p">,</span><span class="w"> </span><span class="n">treat</span><span class="p">,</span><span class="w"> </span><span class="n">ctrl</span><span class="p">))</span><span class="w">
+</span><span class="n">resOrdered</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">res</span><span class="p">[</span><span class="n">order</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">padj</span><span class="p">),]</span><span class="w">
+</span><span class="n">resOrdered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">resOrdered</span><span class="p">)</span><span class="w">
+</span><span class="n">write.table</span><span class="p">(</span><span class="n">resOrdered</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">=</span><span class="s2">"degs.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>

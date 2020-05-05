@@ -1,0 +1,57 @@
+<p>It costed me a lot of time to convert seurat objects to scanpy. It’s not a pleasant experience.<br />
+Finally, I solved it.</p>
+
+<h3 id="1-install-seurat-v302-or-python-kernel-will-always-died">1. Install <code class="highlighter-rouge">Seurat v3.0.2</code>, or python kernel will always died!!!</h3>
+<p>Don’t know why latest seurat not work.</p>
+
+<h3 id="2-set-the-r-version-for-rpy2">2. Set the R version for <code class="highlighter-rouge">rpy2</code></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># user defined R installation
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># path to your libR.so, only Seurat v3.0.2 works! 
+# create a conda R env for seurat 3.0.2 first
+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'R_HOME'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'/home/fangzq/miniconda/envs/seurat/lib/R'</span> 
+<span class="c1"># path depends on where you installed Python.
+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'R_USER'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'/home/fangzq/miniconda/lib/python3.7/site-packages/rpy2'</span> 
+</code></pre></div></div>
+<h3 id="3-now-youer-good-to-go">3. Now, you’er good to go</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="n">sc</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+</code></pre></div></div>
+
+<p>Install <code class="highlighter-rouge">anndata2ri</code> first</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">anndata2ri</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects</span> <span class="kn">import</span> <span class="n">r</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects.conversion</span> <span class="kn">import</span> <span class="n">localconverter</span>
+<span class="c1"># activate rpy2 env
+</span><span class="n">anndata2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">robjs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">"data/*Robj"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Convert to h5ad</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span><span class="p">(</span><span class="s">'library(Seurat)'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">robj</span> <span class="ow">in</span> <span class="n">robjs</span><span class="p">:</span>
+    <span class="n">r</span><span class="p">(</span><span class="n">f</span><span class="s">'x&lt;-load("{robj}")'</span><span class="p">)</span>
+    <span class="n">r</span><span class="p">(</span><span class="s">'y=get(x)'</span><span class="p">)</span>
+    <span class="n">r</span><span class="p">(</span><span class="s">'rm(x)'</span><span class="p">)</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">r</span><span class="p">(</span><span class="s">'as.SingleCellExperiment(UpdateSeuratObject(y))'</span><span class="p">)</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">robj</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"Robj"</span><span class="p">,</span><span class="s">"h5ad"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="4-other-way">4. other way</h3>
+<p>seurat -&gt; loom -&gt; scanpy</p>
+
+<p>It’s much easier, but I did not test.</p>
+
+<ol>
+  <li>save to <code class="highlighter-rouge">loom</code> format fist.
+    <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pbmc.loom</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.loom</span><span class="p">(</span><span class="n">pbmc.seurat</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../output/pbmc3k.loom"</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">pbmc.loom</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>read into scanpy
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pbmc3k</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_loom</span><span class="p">(</span><span class="s">"../output/pbmc3k.loom"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+

@@ -7,9 +7,9 @@
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li>{{ site.title }}</li>
+          <li>{{ site.author.name }}</li>
           <!-- <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li> -->
-          <!-- <li><a href="https://zqfang.github.io/"></a></li> -->
+          <!-- <li><a href="https://zqfang.github.io/">{{site.author.name}}</a></li> -->
         </ul>
       </div>
 
@@ -21,15 +21,16 @@
               <span class="purple-icon icon--github">
                   {% include purple-icon-github.svg %}
               </span>
-              <span class="username">
-                  {{ site.minima.social_links.github }}
-              </span>
           </a>
           </li>
           {% endif %}
           {% if site.minima.social_links.twitter %}
           <li>
-            <a href="https://twitter.com/{{ include.username }}"><span class="icon icon--twitter">{% include icon-twitter.svg %}</span><span class="username">{{ include.username }}</span></a>
+            <a href="https://twitter.com/{{ include.username }}">
+              <span class="icon icon--twitter">
+                {% include icon-twitter.svg %}
+              </span>
+            </a>
           </li>
           {% endif %}
           {% if site.minima.social_links.linkedin %}
@@ -38,10 +39,16 @@
               <span class="icon icon--github">
                   {% include link.svg %}
               </span>
-              <span class="username">
-                  {{site.minima.social_links.linkedin}}
-              </span>
           </a>
+          </li>
+          {% endif %}
+          {% if site.minima.social_links.orcid %}
+          <li>
+            <a href="https://orcid.org/{{ site.minima.social_links.orcid }}">
+              <span class="icon icon--github">
+                  {% include ORCIDid.svg %}
+              </span>
+            </a>
           </li>
           {% endif %}
         </ul>

@@ -1,0 +1,61 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">{{ site.title }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>{{ site.title }}</li>
+          <!-- <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li> -->
+          <!-- <li><a href="https://zqfang.github.io/"></a></li> -->
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          {% if site.minima.social_links.github %}
+          <li>
+            <a href="https://github.com/{{ site.minima.social_links.github }}">
+              <span class="purple-icon icon--github">
+                  {% include purple-icon-github.svg %}
+              </span>
+              <span class="username">
+                  {{ site.minima.social_links.github }}
+              </span>
+          </a>
+          </li>
+          {% endif %}
+          {% if site.minima.social_links.twitter %}
+          <li>
+            <a href="https://twitter.com/{{ include.username }}"><span class="icon icon--twitter">{% include icon-twitter.svg %}</span><span class="username">{{ include.username }}</span></a>
+          </li>
+          {% endif %}
+          {% if site.minima.social_links.linkedin %}
+          <li>
+            <a href="https://www.linkedin.com/in/{{ site.minima.social_links.linkedin }}">
+              <span class="icon icon--github">
+                  {% include link.svg %}
+              </span>
+              <span class="username">
+                  {{site.minima.social_links.linkedin}}
+              </span>
+          </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% if site.description %}
+      <div class="footer-col footer-col-3">
+        <p>{{ site.description }}</p>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+</footer>
+
+
+

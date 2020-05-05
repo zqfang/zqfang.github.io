@@ -483,8 +483,37 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 .highlight .gd { color: #ff5555; }
 
-table { display: block !important; overflow-x: auto; white-space: nowrap; font-size: 110%; border: none; }
+/* ========================================================================== Variables ========================================================================== */
+/* Typography ========================================================================== */
+/* paragraph indention */
+/* system typefaces */
+/* sans serif typefaces */
+/* serif typefaces */
+/* type scale */
+/* Colors ========================================================================== */
+/* brands */
+/* links */
+/* Breakpoints ========================================================================== */
+/*
+$small                      : 400px;
+$medium                     : 500px;
+$medium-wide                : 550px;
+$large                      : 1200px;
+$x-large                    : 1800px;
+*/
+/* Grid ========================================================================== */
+/* Other ========================================================================== */
+/* ========================================================================== TABLES ========================================================================== */
+table { margin-bottom: 1em; width: 100%; font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; font-size: 0.75em; border-collapse: collapse; border: 1px solid #bdc1c4; }
 
-table th { text-align: center !important; }
+table + table { margin-top: 1em; }
+
+thead { background-color: #f2f3f3; border-bottom: 1px solid #bdc1c4; }
+
+th { padding: 0.5em; font-weight: bold; text-align: left; border-right: 1px solid #bdc1c4; }
+
+td { padding: 0.5em; border-bottom: 1px solid #bdc1c4; border-right: 1px solid #bdc1c4; }
+
+tr, td, th { vertical-align: middle; }
 
 /*# sourceMappingURL=style.css.map */

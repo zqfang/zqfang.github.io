@@ -504,11 +504,11 @@ $x-large                    : 1800px;
 /* Grid ========================================================================== */
 /* Other ========================================================================== */
 /* ========================================================================== TABLES ========================================================================== */
-table { overflow-x: visible; margin-bottom: 1em; font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; font-size: 0.75em; border-collapse: collapse; border: 1px solid #bdc1c4; }
+table { overflow-x: visible; display: block !important; margin-bottom: 1em; font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; font-size: 0.75em; }
 
 table + table { margin-top: 1em; }
 
-thead { background-color: #f2f3f3; border-bottom: 1px solid #bdc1c4; }
+thead { background-color: #f2f3f3; }
 
 th { text-overflow: ellipsis; overflow: hidden; max-width: none; padding: 0.5em; font-weight: bold; text-align: left; border-right: 1px solid #bdc1c4; }
 

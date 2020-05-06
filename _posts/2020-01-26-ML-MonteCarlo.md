@@ -53,3 +53,6 @@ P\left(X_{t} | X_{0}, X_{1}, \cdots, X_{t-1}\right)=P\left(X_{t} | X_{t-1}\right
 $$
 
  
+
+
+参考： 李航《统计学习方法》

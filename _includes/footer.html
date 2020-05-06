@@ -18,15 +18,26 @@
           {% if site.minima.social_links.github %}
           <li>
             <a href="https://github.com/{{ site.minima.social_links.github }}">
-              <span class="purple-icon icon--github">
-                  {% include purple-icon-github.svg %}
-              </span> <span class="username"></span>
+              <span class="icon icon--github">
+                  {% include icon-github.svg %}
+              </span> 
+              <span class="username">{{site.minima.social_links.github}}</span>
+          </a>
+          </li>
+          {% endif %}
+          {% if site.minima.social_links.github %}
+          <li>
+            <a href="https://github.com/{{ site.minima.social_links.orcid }}">
+              <span class="icon icon--orcid">
+                  {% include orcid.svg %}
+              </span> 
+              <span class="username">zqfang</span>
           </a>
           </li>
           {% endif %}
           {% if site.minima.social_links.twitter %}
           <li>
-            <a href="https://twitter.com/{{ include.username }}">
+            <a href="https://twitter.com/{{ site.minima.social_links.twitter }}">
               <span class="icon icon--twitter">
                 {% include icon-twitter.svg %}
               </span>

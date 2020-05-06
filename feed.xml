@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-05T20:26:12-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Zhuoqing Fang</name></author><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-05T20:43:00-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Zhuoqing Fang</name></author><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
 
 &lt;h2 id=&quot;1-adaboost&quot;&gt;1. AdaBoost&lt;/h2&gt;
 &lt;p&gt;AdaBoost通过提高被前一轮弱分类器错误分类样本的权值，从而降低被正确分类样本的权值，并采取甲醛多数表决的方法达到分类目的。&lt;/p&gt;
@@ -1080,6 +1080,7 @@ Code snippets are taken from &lt;a href=&quot;https://github.com/liuyubobobo/Pla
 &lt;h3 id=&quot;some-algorithm-to-keep-in-my-mind&quot;&gt;Some algorithm to keep in my mind.&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;selectionSort&lt;/li&gt;
+  &lt;li&gt;insertionSort&lt;/li&gt;
   &lt;li&gt;mergeSort&lt;/li&gt;
   &lt;li&gt;quickSort
     &lt;ul&gt;
@@ -1090,7 +1091,7 @@ Code snippets are taken from &lt;a href=&quot;https://github.com/liuyubobobo/Pla
   &lt;li&gt;heapSort&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;1-selectionsort&quot;&gt;1. selectionSort&lt;/h3&gt;
+&lt;h3 id=&quot;1-insertionsort&quot;&gt;1. insertionSort&lt;/h3&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
 #include &amp;lt;algorithm&amp;gt;
@@ -1317,7 +1318,7 @@ Code snippets are taken from &lt;a href=&quot;https://github.com/liuyubobobo/Pla
         &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxheap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extractMax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Zhuoqing Fang</name></author><summary type="html">Sort algorithms Code snippets are taken from Play with Algorithm Some algorithm to keep in my mind. selectionSort mergeSort quickSort two way three way heapSort</summary></entry><entry><title type="html">Binary tree</title><link href="https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree.html" rel="alternate" type="text/html" title="Binary tree" /><published>2020-02-08T00:00:00-06:00</published><updated>2020-02-08T00:00:00-06:00</updated><id>https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree</id><content type="html" xml:base="https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree.html">&lt;p&gt;Binary trees&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Zhuoqing Fang</name></author><summary type="html">Sort algorithms Code snippets are taken from Play with Algorithm Some algorithm to keep in my mind. selectionSort insertionSort mergeSort quickSort two way three way heapSort</summary></entry><entry><title type="html">Binary tree</title><link href="https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree.html" rel="alternate" type="text/html" title="Binary tree" /><published>2020-02-08T00:00:00-06:00</published><updated>2020-02-08T00:00:00-06:00</updated><id>https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree</id><content type="html" xml:base="https://zqfang.github.io/algorithm%20and%20data%20structure/2020/02/08/CS-binarytree.html">&lt;p&gt;Binary trees&lt;br /&gt;
 &lt;img src=&quot;/zqfang.github.io/images/algorithm/binarytree0.jpg&quot; alt=&quot;Trees&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Difference

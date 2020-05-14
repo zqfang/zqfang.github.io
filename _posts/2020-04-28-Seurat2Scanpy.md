@@ -48,7 +48,10 @@ for robj in robjs:
     r(f'x<-load("{robj}")')
     r('y=get(x)')
     r('rm(x)')
-    adata = r('as.SingleCellExperiment(UpdateSeuratObject(y))')
+    r('DefaultAssay(y) <- "RNA"') # get raw count matrix to save
+    # seurat2 object
+    # adata = r('as.SingleCellExperiment(UpdateSeuratObject(y))')
+    adata = r('as.SingleCellExperiment(y)')
     adata.write_h5ad(filename=robj.replace("Robj","h5ad"))
 ```
 
@@ -62,9 +65,9 @@ It's much easier, but I did not test.
 pbmc.loom <- as.loom(pbmc.seurat, filename = "../output/pbmc3k.loom", verbose = FALSE)
 pbmc.loom
 ```
-2. read into scanpy
+read into scanpy
 ```python
 pbmc3k = sc.read_loom("../output/pbmc3k.loom")
 ```
-
+2. use ``sceasy`` to save h5ad.
 

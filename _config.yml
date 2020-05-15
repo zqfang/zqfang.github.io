@@ -45,6 +45,7 @@ disqus:
 
 # Github and twitter are optional:
 minima:
+  skin: dark
   social_links:
     twitter: 
     github: zqfang
@@ -88,6 +89,9 @@ collections:
   #   output: true
   #   permalink: /:collection/:path/
 
+# header_pages:
+#   - about.md
+#   - portfolio.md
 
 exclude:
   - docker-compose.yml

@@ -45,7 +45,7 @@ disqus:
 
 # Github and twitter are optional:
 minima:
-  skin: dark
+  #skin: dark
   social_links:
     twitter: 
     github: zqfang

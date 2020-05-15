@@ -37,7 +37,7 @@ baseurl: "" # the subpath of your site, e.g. "/blog".  WARNING: if you are not u
 
 # author infomation
 author:
-  name: "Zhuoqing Fang"
+  name: "Try Again"
   email:
 # comment
 disqus:
@@ -48,8 +48,8 @@ minima:
   #skin: dark
   social_links:
     twitter: 
-    github: zqfang
-    orcid: "0000-0002-7418-1313"
+    #github: zqfang
+    #orcid: "0000-0002-7418-1313"
     linkedin: 
     facebook:
     youtube:

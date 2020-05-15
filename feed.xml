@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-15T13:25:26-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Zhuoqing Fang</name></author><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-15T14:54:59-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Zhuoqing Fang</name></author><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
 
 &lt;h2 id=&quot;1-adaboost&quot;&gt;1. AdaBoost&lt;/h2&gt;
 &lt;p&gt;AdaBoost通过提高被前一轮弱分类器错误分类样本的权值，从而降低被正确分类样本的权值，并采取甲醛多数表决的方法达到分类目的。&lt;/p&gt;
@@ -573,6 +573,41 @@ y_{k 1} &amp;amp; y_{k 2} &amp;amp; \cdots &amp;amp; y_{k n}
 
 &lt;p&gt;概率无向图模型Probabilistic undirected graphical model(Markov random field)&lt;br /&gt;
 是一个可以由无向图表示的联合概率分布&lt;/p&gt;
+
+&lt;h3 id=&quot;0-概率图模型分类&quot;&gt;0. 概率图模型分类&lt;/h3&gt;
+&lt;p&gt;概率图模型（probabilistic graphical model, PGM），是一种学习任务的框架描述，它将学习任务归结为计算变量的概率分布。&lt;/p&gt;
+
+&lt;p&gt;按照概率图中变量关系的不同，概率图模型可以大致分为两类：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;贝叶斯网络：有向图模型，使用有向无环图表达关系（通常，变量间存在显式的因果关系）&lt;/li&gt;
+  &lt;li&gt;马尔科夫网络：无向图模型，使用无图表达关系（通常，变量间存有关系，但是难以显式表达）&lt;/li&gt;
+  &lt;li&gt;同时存有有向边和无向边的模型，如条件随机场（conditional random field）和链图（chain graph），单独看做一类局部有向模型。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;贝叶斯网络&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;可以分为静态贝叶斯网络和动态贝叶斯网络。相比于静态贝叶斯网络，动态（dynamic）贝叶斯网络主要用于时序数据建模（如语音识别、自然语言处理、轨迹数据挖掘等）。其中，一种结构最简单的动态贝叶斯网络就是隐马尔可夫模型（hidden markov model, HMM）。一般来说，贝叶斯网络中每一个结点都对应于一个先验概率分布或者条件概率分布，因此整体的联合分布可以直接分解为所有单个结点所对应的分布的乘积。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;马尔可夫网&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;由于变量之间没有明确的因果关系，它的联合概率分布通常会表达为一系列势函数（potential function）的乘积。通常情况下，这些乘积的积分并不等于1，因此，还要对其进行归一化才能形成一个有效的概率分布——这一点往往在实际应用中给参数估计造成非常大的困难。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;按照表示的抽象级别不同，概率图模型可以分为：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;基于随机变量的概率图模型，如贝叶斯网、马尔可夫网、条件随机场和链图等&lt;/li&gt;
+  &lt;li&gt;基于&lt;strong&gt;模板&lt;/strong&gt;的概率图模型．这类模型根据应用场景不同又可分为两种：
+    &lt;ul&gt;
+      &lt;li&gt;暂态模型，包括动态贝叶斯网（Dynamic Bayesian Network, DBN）和状态观测模型，其中状态观测模型又包括线性动态系统（Linear Dynamic System, LDS）如卡尔曼滤波器，还有隐马尔可夫模型（Hidden Markov Model, HMM）；&lt;/li&gt;
+      &lt;li&gt;对象关系领域的概率图模型，包括盘模型（Plate Model，PM）、概率关系模型（Probabilistic Relational Model, PRM）和关系马尔可夫网（Relational Markov Network, RMN）。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;https://longaspire.github.io/blog/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B%E6%80%BB%E8%A7%88/&quot;&gt;概率图模型总览&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;1-模型定义&quot;&gt;1. 模型定义&lt;/h3&gt;
 &lt;p&gt;概率图模型：由图（Graph）表示的概率分布。&lt;/p&gt;
 

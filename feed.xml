@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-30T15:07:47-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">Swift Cheat Sheet</title><link href="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html" rel="alternate" type="text/html" title="Swift Cheat Sheet" /><published>2020-05-30T00:00:00-05:00</published><updated>2020-05-30T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html">&lt;h1 id=&quot;swift-cheat-sheet&quot;&gt;Swift Cheat Sheet&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-30T15:13:18-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">Swift Cheat Sheet</title><link href="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html" rel="alternate" type="text/html" title="Swift Cheat Sheet" /><published>2020-05-30T00:00:00-05:00</published><updated>2020-05-30T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html">&lt;h1 id=&quot;swift-cheat-sheet&quot;&gt;Swift Cheat Sheet&lt;/h1&gt;
 &lt;p&gt;Stolen from &lt;a href=&quot;https://github.com/iwasrobbed/Swift-CheatSheet&quot;&gt;iwasrobbed&lt;/a&gt;, and I simplify it and add some more.&lt;/p&gt;
 
 &lt;p&gt;It’s a high level and a quick reference to Swift.
@@ -81,7 +81,7 @@ func doWork() {
 &lt;p&gt;&lt;strong&gt;Auto-generating method documentation:&lt;/strong&gt;
 In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quot;&gt;⌥ Option + ⌘ Command + /&lt;/code&gt; to automatically generate a documentation stub for your method.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;data-types&quot;&gt;Data Types&lt;/h2&gt;
 
@@ -145,89 +145,72 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;C Type&lt;/th&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Swift Type&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;bool&lt;/td&gt;
-      &lt;td&gt;CBool&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CBool&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;char, signed char&lt;/td&gt;
-      &lt;td&gt;CChar&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CChar&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;unsigned char&lt;/td&gt;
-      &lt;td&gt;CUnsignedChar&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CUnsignedChar&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;short&lt;/td&gt;
-      &lt;td&gt;CShort&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CShort&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;unsigned short&lt;/td&gt;
-      &lt;td&gt;CUnsignedShort&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CUnsignedShort&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;int&lt;/td&gt;
-      &lt;td&gt;CInt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CInt&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;unsigned int&lt;/td&gt;
-      &lt;td&gt;CUnsignedInt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CUnsignedInt&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;long&lt;/td&gt;
-      &lt;td&gt;CLong&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CLong&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;unsigned long&lt;/td&gt;
-      &lt;td&gt;CUnsignedLong&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CUnsignedLong&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;long long&lt;/td&gt;
-      &lt;td&gt;CLongLong&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CLongLong&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;unsigned long long&lt;/td&gt;
-      &lt;td&gt;CUnsignedLongLong&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CUnsignedLongLong&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;wchar_t&lt;/td&gt;
-      &lt;td&gt;CWideChar&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CWideChar&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;char16_t&lt;/td&gt;
-      &lt;td&gt;CChar16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CChar16&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;char32_t&lt;/td&gt;
-      &lt;td&gt;CChar32&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CChar32&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;float&lt;/td&gt;
-      &lt;td&gt;CFloat&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CFloat&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;double&lt;/td&gt;
-      &lt;td&gt;CDouble&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CDouble&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -417,7 +400,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;aString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;operators&quot;&gt;Operators&lt;/h2&gt;
 
@@ -471,53 +454,43 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;==&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;==&lt;/td&gt;
       &lt;td&gt;Equal to&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;===&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;===&lt;/td&gt;
       &lt;td&gt;Identical to&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;!=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;!=&lt;/td&gt;
       &lt;td&gt;Not equal to&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;!==&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;!==&lt;/td&gt;
       &lt;td&gt;Not identical to&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;~=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;~=&lt;/td&gt;
       &lt;td&gt;Pattern match&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;gt;&lt;/td&gt;
       &lt;td&gt;Greater than&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;lt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;lt;&lt;/td&gt;
       &lt;td&gt;Less than&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;gt;=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;gt;=&lt;/td&gt;
       &lt;td&gt;Greater than or equal to&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;lt;=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;lt;=&lt;/td&gt;
       &lt;td&gt;Less than or equal to&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -530,63 +503,51 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;=&lt;/td&gt;
       &lt;td&gt;Assign&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;+=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;+=&lt;/td&gt;
       &lt;td&gt;Addition&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;-=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-=&lt;/td&gt;
       &lt;td&gt;Subtraction&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;*=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*=&lt;/td&gt;
       &lt;td&gt;Multiplication&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;/=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;/=&lt;/td&gt;
       &lt;td&gt;Division&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;%=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;%=&lt;/td&gt;
       &lt;td&gt;Remainder&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;=&lt;/td&gt;
       &lt;td&gt;Bitwise AND&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;|=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;|=&lt;/td&gt;
       &lt;td&gt;Bitwise Inclusive OR&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;^=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;^=&lt;/td&gt;
       &lt;td&gt;Exclusive OR&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;«=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;«=&lt;/td&gt;
       &lt;td&gt;Shift Left&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;»=&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;»=&lt;/td&gt;
       &lt;td&gt;Shift Right&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -599,23 +560,19 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;!&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;!&lt;/td&gt;
       &lt;td&gt;NOT&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;&amp;amp;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;&amp;amp;&lt;/td&gt;
       &lt;td&gt;Logical AND&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;||&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;||&lt;/td&gt;
       &lt;td&gt;Logical OR&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -628,18 +585,15 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;..&amp;lt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;..&amp;lt;&lt;/td&gt;
       &lt;td&gt;Half-open range&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;…&lt;/td&gt;
       &lt;td&gt;Closed range&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -652,38 +606,31 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;&lt;/td&gt;
       &lt;td&gt;Bitwise AND&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;|&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;|&lt;/td&gt;
       &lt;td&gt;Bitwise Inclusive OR&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;^&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;^&lt;/td&gt;
       &lt;td&gt;Exclusive OR&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;~&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;~&lt;/td&gt;
       &lt;td&gt;Unary complement (bit inversion)&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;«&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;«&lt;/td&gt;
       &lt;td&gt;Shift Left&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;»&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;»&lt;/td&gt;
       &lt;td&gt;Shift Right&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -698,23 +645,19 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;+&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;+&lt;/td&gt;
       &lt;td&gt;Addition&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;-&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;-&lt;/td&gt;
       &lt;td&gt;Subtraction&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&amp;amp;*&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&amp;amp;*&lt;/td&gt;
       &lt;td&gt;Multiplication&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -740,34 +683,29 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;??&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;??&lt;/td&gt;
       &lt;td&gt;Nil coalescing&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;?:&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?:&lt;/td&gt;
       &lt;td&gt;Ternary conditional&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;!&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;!&lt;/td&gt;
       &lt;td&gt;Force unwrap object value&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
       &lt;td&gt;Safely unwrap object value&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;operator-overloading&quot;&gt;Operator Overloading&lt;/h2&gt;
 
@@ -823,7 +761,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;see also &lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41&quot;&gt;docs&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;declaring-classes&quot;&gt;Declaring Classes&lt;/h2&gt;
 
@@ -873,7 +811,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;where &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; are variables that are passed in at the time of instantiation.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;declarations&quot;&gt;Declarations&lt;/h2&gt;
 
@@ -888,28 +826,23 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;#if&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;#if&lt;/td&gt;
       &lt;td&gt;An &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; conditional statement&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;#elif&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;#elif&lt;/td&gt;
       &lt;td&gt;An &lt;code class=&quot;highlighter-rouge&quot;&gt;else if&lt;/code&gt; conditional statement&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;#else&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;#else&lt;/td&gt;
       &lt;td&gt;An &lt;code class=&quot;highlighter-rouge&quot;&gt;else&lt;/code&gt; conditional statement&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;#endif&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;#endif&lt;/td&gt;
       &lt;td&gt;An &lt;code class=&quot;highlighter-rouge&quot;&gt;end if&lt;/code&gt; conditional statement&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -922,13 +855,11 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;import&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;import&lt;/td&gt;
       &lt;td&gt;Imports a framework&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -941,28 +872,23 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;let&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;let&lt;/td&gt;
       &lt;td&gt;Declares local or global constant&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;var&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;var&lt;/td&gt;
       &lt;td&gt;Declares a local or global variable&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;class&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;class&lt;/td&gt;
       &lt;td&gt;Declares a class-level constant or variable&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;static&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;static&lt;/td&gt;
       &lt;td&gt;Declares a static type&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -975,78 +901,63 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;typealias&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;typealias&lt;/td&gt;
       &lt;td&gt;Introduces a named alias of an existing type&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;enum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;enum&lt;/td&gt;
       &lt;td&gt;Introduces a named enumeration&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;struct&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;struct&lt;/td&gt;
       &lt;td&gt;Introduces a named structure&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;class&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;class&lt;/td&gt;
       &lt;td&gt;Begins the declaration of a class&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;init&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;init&lt;/td&gt;
       &lt;td&gt;Introduces an initializer for a class, struct or enum&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;init?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;init?&lt;/td&gt;
       &lt;td&gt;Produces an optional instance or an implicitly unwrapped optional instance; can return &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;deinit&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;deinit&lt;/td&gt;
       &lt;td&gt;Declares a function called automatically when there are no longer any references to a class object, just before the class object is deallocated&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;func&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;func&lt;/td&gt;
       &lt;td&gt;Begins the declaration of a function&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;protocol&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;protocol&lt;/td&gt;
       &lt;td&gt;Begins the declaration of a formal protocol&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;static&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;static&lt;/td&gt;
       &lt;td&gt;Defines as type-level within struct or enum&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;convenience&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;convenience&lt;/td&gt;
       &lt;td&gt;Delegate the init process to another initializer or to one of the class’s designated initializers&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;extension&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;extension&lt;/td&gt;
       &lt;td&gt;Extend the behavior of class, struct, or enum&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;subscript&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;subscript&lt;/td&gt;
       &lt;td&gt;Adds subscripting support for objects of a particular type, normally for providing a convenient syntax for accessing elements in a collective, list or sequence&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;override&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;override&lt;/td&gt;
       &lt;td&gt;Marks overriden initializers&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1059,13 +970,11 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;operator&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;operator&lt;/td&gt;
       &lt;td&gt;Introduces a new infix, prefix, or postfix operator&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1078,38 +987,31 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;dynamic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dynamic&lt;/td&gt;
       &lt;td&gt;Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;final&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;final&lt;/td&gt;
       &lt;td&gt;Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;lazy&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;lazy&lt;/td&gt;
       &lt;td&gt;Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;optional&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optional&lt;/td&gt;
       &lt;td&gt;Specifies that a protocol’s property, function, or subscript isn’t required to be implemented by conforming members&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;required&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;required&lt;/td&gt;
       &lt;td&gt;Marks the initializer so that every subclass must implement it&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;weak&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;weak&lt;/td&gt;
       &lt;td&gt;Indicates that the variable or property has a weak reference to the object stored as its value&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1122,33 +1024,27 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Directive&lt;/th&gt;
       &lt;th&gt;Purpose&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;open&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;open&lt;/td&gt;
       &lt;td&gt;Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;public&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;public&lt;/td&gt;
       &lt;td&gt;Can only be subclassed by its own module or have its methods overridden by others within the same module&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;internal&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;internal&lt;/td&gt;
       &lt;td&gt;(Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;fileprivate&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;fileprivate&lt;/td&gt;
       &lt;td&gt;Indicates the entities are available only from within the source file where they are defined&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;private&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;private&lt;/td&gt;
       &lt;td&gt;Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt; brackets only)&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1169,7 +1065,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;somePrivateMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;literals&quot;&gt;Literals&lt;/h2&gt;
 
@@ -1180,53 +1076,43 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;tr&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Syntax&lt;/th&gt;
       &lt;th&gt;What it does&lt;/th&gt;
-      &lt;th&gt; &lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;string&quot;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;string&quot;&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; object&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;28&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;28&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns an &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;3.14&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;0xFp2&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;1.25e2&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;3.14&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;0xFp2&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;1.25e2&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a &lt;code class=&quot;highlighter-rouge&quot;&gt;Double&lt;/code&gt; object&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a &lt;code class=&quot;highlighter-rouge&quot;&gt;Bool&lt;/code&gt; object&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns an &lt;code class=&quot;highlighter-rouge&quot;&gt;Array&lt;/code&gt; object&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[keyName:value]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[keyName:value]&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt; object&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0b&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0b&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a binary digit&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0o&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0o&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns an octal digit&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Returns a hexadecimal digit&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -1270,7 +1156,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;For mutable literals, declare it with &lt;code class=&quot;highlighter-rouge&quot;&gt;var&lt;/code&gt;; immutable with &lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;functions&quot;&gt;Functions&lt;/h2&gt;
 
@@ -1391,7 +1277,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;At times, it is necessary to call a function in the superclass using &lt;code class=&quot;highlighter-rouge&quot;&gt;super.someMethod()&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;constants-and-variables&quot;&gt;Constants and Variables&lt;/h2&gt;
 
@@ -1464,7 +1350,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;n&quot;&gt;bulb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;bulb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;lazy-property&quot;&gt;Lazy Property&lt;/h4&gt;
 &lt;ul&gt;
@@ -1504,7 +1390,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;span class=&quot;n&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;accessing&quot;&gt;Accessing&lt;/h4&gt;
 
@@ -1518,7 +1404,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;naming-conventions&quot;&gt;Naming Conventions&lt;/h2&gt;
 
@@ -1552,7 +1438,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;closures&quot;&gt;Closures&lt;/h2&gt;
 
@@ -1670,13 +1556,13 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;Reference: &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html&quot;&gt;Apple: Automatic Reference Counting&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;generics&quot;&gt;Generics&lt;/h2&gt;
 
 &lt;p&gt;Coming soon…&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;control-statements&quot;&gt;Control Statements&lt;/h2&gt;
 
@@ -1809,7 +1695,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;break&lt;/code&gt; : Used to stop the execution of a loop.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;extension&quot;&gt;Extension&lt;/h2&gt;
 &lt;p&gt;Extensions add new functionality to an existing class, structure, enumeration or protocol type&lt;/p&gt;
@@ -1823,7 +1709,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;isTrue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;boolValue&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;protocol&quot;&gt;Protocol&lt;/h2&gt;
 &lt;p&gt;Define&lt;/p&gt;
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Codable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1872,7 +1758,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;error-handling&quot;&gt;Error Handling&lt;/h2&gt;
 
 &lt;p&gt;Representing an Error&lt;/p&gt;
@@ -1906,13 +1792,13 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try!&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;selectBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;passing-information&quot;&gt;Passing Information&lt;/h2&gt;
 
 &lt;p&gt;Coming soon…&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;user-defaults&quot;&gt;User Defaults&lt;/h2&gt;
 
@@ -1932,7 +1818,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;There are also other convenience functions on &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDefaults&lt;/code&gt; instances such as &lt;code class=&quot;highlighter-rouge&quot;&gt;bool(forKey:...)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;string(forKey:...)&lt;/code&gt;, etc.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;common-patterns&quot;&gt;Common Patterns&lt;/h2&gt;
 
@@ -1972,7 +1858,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Are you ready to rock and roll? &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;unicode-support&quot;&gt;Unicode Support&lt;/h2&gt;
 
@@ -1980,7 +1866,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;More info from Apple &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;</content><author><name>Try Again</name></author><summary type="html">Get answers for Swift within 10s</summary></entry><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;</content><author><name>Try Again</name></author><summary type="html">Get answers for Swift within 10s</summary></entry><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
 
 &lt;h2 id=&quot;1-adaboost&quot;&gt;1. AdaBoost&lt;/h2&gt;
 &lt;p&gt;AdaBoost通过提高被前一轮弱分类器错误分类样本的权值，从而降低被正确分类样本的权值，并采取甲醛多数表决的方法达到分类目的。&lt;/p&gt;

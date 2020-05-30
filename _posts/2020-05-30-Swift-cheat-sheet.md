@@ -91,7 +91,7 @@ Using `TODO` to remember to add, delete, or generally refactor your code:
 **Auto-generating method documentation:**
 In a method's preceding line, press `⌥ Option + ⌘ Command + /` to automatically generate a documentation stub for your method.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Data Types
 
@@ -151,8 +151,8 @@ print("C unsigned long long size: \(MemoryLayout.size(ofValue: unsignedLongLong)
 
 From the [docs](https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/InteractingWithCAPIs.html):
 
-C Type | Swift Type
-:---: | :---:
+| C Type | Swift Type
+| :---: | :---:
 | bool | CBool
 | char, signed char | CChar
 | unsigned char | CUnsignedChar
@@ -365,7 +365,7 @@ let anInt: Int = Int(aDifferentDataType)
 let aString: String = String(anInt)
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Operators
 
@@ -376,7 +376,7 @@ Arithmetic operators (`+`, `-`, `*`, `/`, `%`) detect and disallow value overflo
 #### Arithmetic Operators
 
 Operator | Purpose
-:---: | ---
+| :---: | ---
 | + | Addition
 | - | Subtraction
 | * | Multiplication
@@ -385,8 +385,8 @@ Operator | Purpose
 
 #### Comparative Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | == | Equal to
 | === | Identical to
 | != | Not equal to
@@ -399,8 +399,8 @@ Operator | Purpose
 
 #### Assignment Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | = | Assign
 | += | Addition
 | -= | Subtraction
@@ -415,23 +415,23 @@ Operator | Purpose
 
 #### Logical Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | ! | NOT
 | && | Logical AND
 | &#124;&#124; | Logical OR
 
 #### Range Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | ..< | Half-open range
 | ... | Closed range
 
 #### Bitwise Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | & | Bitwise AND
 | &#124; | Bitwise Inclusive OR
 | ^ | Exclusive OR
@@ -443,8 +443,8 @@ Operator | Purpose
 
 Typically, assigning or incrementing an integer, float, or double past it's range would result in a runtime error. However, if you'd instead prefer to safely truncate the number of available bits, you can opt-in to have the variable overflow or underflow using the following operators:
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | &+ | Addition
 | &- | Subtraction
 | &* | Multiplication
@@ -465,14 +465,14 @@ willUnderflow = willUnderflow &- 1
 
 #### Other Operators
 
-Operator | Purpose
-:---: | ---
+| Operator | Purpose
+| :---: | ---
 | ?? | Nil coalescing
 | ?: | Ternary conditional
 | ! | Force unwrap object value
 | ? | Safely unwrap object value
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Operator Overloading
 
@@ -527,7 +527,7 @@ infix func ** (x: Double, p: Double) -> Double {
 
 see also [docs](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Declaring Classes
 
@@ -577,7 +577,7 @@ let myClass = MyClass(x: 1, y: 2)
 
 where `x` and `y` are variables that are passed in at the time of instantiation.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Declarations
 
@@ -587,8 +587,8 @@ More info [here in the docs](https://developer.apple.com/library/ios/documentati
 
 Swift doesn't come with a preprocessor so it only supports a limited number of statements for build time. Things like `#define` have been replaced with global constants defined outside of a class.
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | #if | An `if` conditional statement
 | #elif | An `else if` conditional statement
 | #else | An `else` conditional statement
@@ -596,14 +596,14 @@ Directive | Purpose
 
 #### Imports
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | import | Imports a framework
 
 #### Constants & Variables
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | let | Declares local or global constant
 | var | Declares a local or global variable
 | class | Declares a class-level constant or variable
@@ -611,8 +611,8 @@ Directive | Purpose
 
 #### Classes, Structure, Functions and Protocols
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | typealias | Introduces a named alias of an existing type
 | enum | Introduces a named enumeration
 | struct | Introduces a named structure
@@ -630,14 +630,14 @@ Directive | Purpose
 
 #### Operators
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | operator | Introduces a new infix, prefix, or postfix operator
 
 #### Declaration Modifiers
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | dynamic | Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler
 | final | Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass
 | lazy | Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed
@@ -647,8 +647,8 @@ Directive | Purpose
 
 #### Access Control
 
-Directive | Purpose
-:---: | ---
+| Directive | Purpose
+| :---: | ---
 | open | Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders
 | public | Can only be subclassed by its own module or have its methods overridden by others within the same module
 | internal | (Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target
@@ -672,14 +672,14 @@ public class AccessLevelsShowCase {
     private func somePrivateMethod() {}
 }
 ```
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Literals
 
 Literals are compiler directives which provide a shorthand notation for creating common objects.
 
-Syntax | What it does
-:---: | ---
+| Syntax | What it does
+| :---: | ---
 | `"string"` | Returns a `String` object
 | `28` | Returns an `Int`
 | `3.14`, `0xFp2`, `1.25e2` | Returns a `Double` object
@@ -729,7 +729,7 @@ if let value = example["hi"] {
 
 For mutable literals, declare it with `var`; immutable with `let`.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Functions
 
@@ -863,7 +863,7 @@ Functions are called using dot syntax: `myClass.doWork()` or `self.sayHelloToMyL
 
 At times, it is necessary to call a function in the superclass using `super.someMethod()`.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Constants and Variables
 
@@ -938,7 +938,7 @@ bulb.current = 20
 bulb.current = 30
 bulb.current = 40
 ```
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 
 #### Lazy Property
@@ -978,7 +978,7 @@ if let range = ClosedRange(start: 0, end: 10_000) {
     range.sum // 
 }
 ```
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 #### Accessing
 
@@ -993,7 +993,7 @@ func doWork() {
 }
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Naming Conventions
 
@@ -1028,7 +1028,7 @@ func moveBetweenPoints(from start: Point, to end: Point) {}
 func move(x: Point, y: Point) {}
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Closures
 
@@ -1151,13 +1151,13 @@ class SomeClass {
 
 Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Generics
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Control Statements
 
@@ -1298,7 +1298,7 @@ Although `break` is not required in Swift, you can still use a `break` statement
 * `return` : Stops execution and returns to the calling function.  It can also be used to return a value from a function.
 * `break` : Used to stop the execution of a loop.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Extension
 Extensions add new functionality to an existing class, structure, enumeration or protocol type
@@ -1313,7 +1313,7 @@ extension String {
 }
 let isTrue = "0".boolValue
 ```
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 ## Protocol
 Define
 ```swift
@@ -1366,7 +1366,7 @@ extension PrettyTextRepresentable  {
 }
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 ## Error Handling
 
 Representing an Error
@@ -1401,13 +1401,13 @@ let message = try? selectBeverage(10)
 let message = try! selectBeverage(10)
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Passing Information
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## User Defaults
 
@@ -1429,7 +1429,7 @@ let someValue = userDefaults.value(forKey: "RPSomeUserPreference") as AnyObject?
 
 There are also other convenience functions on `UserDefaults` instances such as `bool(forKey:...)`, `string(forKey:...)`, etc.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Common Patterns
 
@@ -1471,7 +1471,7 @@ let answer = myClass.isReady ? "Yep!" : "Nope!"
 print("Are you ready to rock and roll? \(answer)")
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)
 
 ## Unicode Support
 
@@ -1479,4 +1479,4 @@ Although I don't recommend this, Swift will compile even if you use emoji's in y
 
 More info from Apple [here](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#table-of-contents)

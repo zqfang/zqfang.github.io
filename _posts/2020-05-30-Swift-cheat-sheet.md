@@ -21,7 +21,7 @@ The purpose of this cheat sheet is to teach myself and get answers from it withi
 * [Operator Overloading](#operator-overloading)
 * [Declaring Classes](#declaring-classes)
 * [Declarations](#declarations)
-* [Lazzy Property](#lazzy-property)
+* [Lazy Property](#lazy-property)
 * [Property Observer](#property-observer)
 * [Literals](#literals)
 * [Functions](#functions)

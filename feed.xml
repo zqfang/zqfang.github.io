@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-30T15:01:40-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">Swift Cheat Sheet</title><link href="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html" rel="alternate" type="text/html" title="Swift Cheat Sheet" /><published>2020-05-30T00:00:00-05:00</published><updated>2020-05-30T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html">&lt;h1 id=&quot;swift-3-cheat-sheet&quot;&gt;Swift 3+ Cheat Sheet&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-30T15:07:47-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">Swift Cheat Sheet</title><link href="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html" rel="alternate" type="text/html" title="Swift Cheat Sheet" /><published>2020-05-30T00:00:00-05:00</published><updated>2020-05-30T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html">&lt;h1 id=&quot;swift-cheat-sheet&quot;&gt;Swift Cheat Sheet&lt;/h1&gt;
 &lt;p&gt;Stolen from &lt;a href=&quot;https://github.com/iwasrobbed/Swift-CheatSheet&quot;&gt;iwasrobbed&lt;/a&gt;, and I simplify it and add some more.&lt;/p&gt;
 
 &lt;p&gt;It’s a high level and a quick reference to Swift.
@@ -81,7 +81,7 @@ func doWork() {
 &lt;p&gt;&lt;strong&gt;Auto-generating method documentation:&lt;/strong&gt;
 In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quot;&gt;⌥ Option + ⌘ Command + /&lt;/code&gt; to automatically generate a documentation stub for your method.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;data-types&quot;&gt;Data Types&lt;/h2&gt;
 
@@ -417,7 +417,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;aString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;operators&quot;&gt;Operators&lt;/h2&gt;
 
@@ -767,7 +767,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;operator-overloading&quot;&gt;Operator Overloading&lt;/h2&gt;
 
@@ -821,8 +821,9 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;mf&quot;&gt;5*2*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;3*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 2560&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;see also &lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41&quot;&gt;docs&lt;/a&gt;:
-&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;see also &lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41&quot;&gt;docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;declaring-classes&quot;&gt;Declaring Classes&lt;/h2&gt;
 
@@ -872,7 +873,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;where &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; are variables that are passed in at the time of instantiation.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;declarations&quot;&gt;Declarations&lt;/h2&gt;
 
@@ -1168,7 +1169,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;somePrivateMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;literals&quot;&gt;Literals&lt;/h2&gt;
 
@@ -1269,7 +1270,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;For mutable literals, declare it with &lt;code class=&quot;highlighter-rouge&quot;&gt;var&lt;/code&gt;; immutable with &lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;functions&quot;&gt;Functions&lt;/h2&gt;
 
@@ -1390,7 +1391,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;At times, it is necessary to call a function in the superclass using &lt;code class=&quot;highlighter-rouge&quot;&gt;super.someMethod()&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;constants-and-variables&quot;&gt;Constants and Variables&lt;/h2&gt;
 
@@ -1463,7 +1464,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;n&quot;&gt;bulb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;bulb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;lazy-property&quot;&gt;Lazy Property&lt;/h4&gt;
 &lt;ul&gt;
@@ -1503,7 +1504,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
     &lt;span class=&quot;n&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;accessing&quot;&gt;Accessing&lt;/h4&gt;
 
@@ -1517,7 +1518,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;naming-conventions&quot;&gt;Naming Conventions&lt;/h2&gt;
 
@@ -1551,7 +1552,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;move&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;closures&quot;&gt;Closures&lt;/h2&gt;
 
@@ -1669,13 +1670,13 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;Reference: &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html&quot;&gt;Apple: Automatic Reference Counting&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;generics&quot;&gt;Generics&lt;/h2&gt;
 
 &lt;p&gt;Coming soon…&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;control-statements&quot;&gt;Control Statements&lt;/h2&gt;
 
@@ -1808,7 +1809,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;break&lt;/code&gt; : Used to stop the execution of a loop.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;extension&quot;&gt;Extension&lt;/h2&gt;
 &lt;p&gt;Extensions add new functionality to an existing class, structure, enumeration or protocol type&lt;/p&gt;
@@ -1822,7 +1823,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;isTrue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;boolValue&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;protocol&quot;&gt;Protocol&lt;/h2&gt;
 &lt;p&gt;Define&lt;/p&gt;
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Codable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1871,7 +1872,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;error-handling&quot;&gt;Error Handling&lt;/h2&gt;
 
 &lt;p&gt;Representing an Error&lt;/p&gt;
@@ -1905,13 +1906,13 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try!&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;selectBeverage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;passing-information&quot;&gt;Passing Information&lt;/h2&gt;
 
 &lt;p&gt;Coming soon…&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;user-defaults&quot;&gt;User Defaults&lt;/h2&gt;
 
@@ -1931,7 +1932,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;There are also other convenience functions on &lt;code class=&quot;highlighter-rouge&quot;&gt;UserDefaults&lt;/code&gt; instances such as &lt;code class=&quot;highlighter-rouge&quot;&gt;bool(forKey:...)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;string(forKey:...)&lt;/code&gt;, etc.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;common-patterns&quot;&gt;Common Patterns&lt;/h2&gt;
 
@@ -1971,7 +1972,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Are you ready to rock and roll? &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;unicode-support&quot;&gt;Unicode Support&lt;/h2&gt;
 
@@ -1979,7 +1980,7 @@ In a method’s preceding line, press &lt;code class=&quot;highlighter-rouge&quo
 
 &lt;p&gt;More info from Apple &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#swift-3-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;</content><author><name>Try Again</name></author><summary type="html">Get answers for Swift within 10s</summary></entry><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#swift-cheat-sheet&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;</content><author><name>Try Again</name></author><summary type="html">Get answers for Swift within 10s</summary></entry><entry><title type="html">Boosting</title><link href="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html" rel="alternate" type="text/html" title="Boosting" /><published>2020-05-05T00:00:00-05:00</published><updated>2020-05-05T00:00:00-05:00</updated><id>https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting</id><content type="html" xml:base="https://zqfang.github.io/machine%20learning/2020/05/05/ML-Boosting.html">&lt;p&gt;提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。&lt;/p&gt;
 
 &lt;h2 id=&quot;1-adaboost&quot;&gt;1. AdaBoost&lt;/h2&gt;
 &lt;p&gt;AdaBoost通过提高被前一轮弱分类器错误分类样本的权值，从而降低被正确分类样本的权值，并采取甲醛多数表决的方法达到分类目的。&lt;/p&gt;

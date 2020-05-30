@@ -6,7 +6,7 @@ comments: true
 excerpt: "Get answers for Swift within 10s"
 ---
 
-# Swift 3+ Cheat Sheet
+# Swift Cheat Sheet
 Stolen from [iwasrobbed](https://github.com/iwasrobbed/Swift-CheatSheet), and I simplify it and add some more. 
 
 It's a high level and a quick reference to Swift.
@@ -91,7 +91,7 @@ Using `TODO` to remember to add, delete, or generally refactor your code:
 **Auto-generating method documentation:**
 In a method's preceding line, press `⌥ Option + ⌘ Command + /` to automatically generate a documentation stub for your method.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Data Types
 
@@ -365,7 +365,7 @@ let anInt: Int = Int(aDifferentDataType)
 let aString: String = String(anInt)
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Operators
 
@@ -472,7 +472,7 @@ Operator | Purpose
 | ! | Force unwrap object value
 | ? | Safely unwrap object value
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Operator Overloading
 
@@ -525,8 +525,9 @@ infix func ** (x: Double, p: Double) -> Double {
 5*2**3**2  // 2560
 ```
 
-see also [docs](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41):
-[Back to top](#swift-3-cheat-sheet)
+see also [docs](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41)
+
+[Back to top](#swift-cheat-sheet)
 
 ## Declaring Classes
 
@@ -576,7 +577,7 @@ let myClass = MyClass(x: 1, y: 2)
 
 where `x` and `y` are variables that are passed in at the time of instantiation.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Declarations
 
@@ -671,7 +672,7 @@ public class AccessLevelsShowCase {
     private func somePrivateMethod() {}
 }
 ```
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Literals
 
@@ -728,7 +729,7 @@ if let value = example["hi"] {
 
 For mutable literals, declare it with `var`; immutable with `let`.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Functions
 
@@ -862,7 +863,7 @@ Functions are called using dot syntax: `myClass.doWork()` or `self.sayHelloToMyL
 
 At times, it is necessary to call a function in the superclass using `super.someMethod()`.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Constants and Variables
 
@@ -937,7 +938,7 @@ bulb.current = 20
 bulb.current = 30
 bulb.current = 40
 ```
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 
 #### Lazy Property
@@ -977,7 +978,7 @@ if let range = ClosedRange(start: 0, end: 10_000) {
     range.sum // 
 }
 ```
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 #### Accessing
 
@@ -992,7 +993,7 @@ func doWork() {
 }
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Naming Conventions
 
@@ -1027,7 +1028,7 @@ func moveBetweenPoints(from start: Point, to end: Point) {}
 func move(x: Point, y: Point) {}
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Closures
 
@@ -1150,13 +1151,13 @@ class SomeClass {
 
 Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Generics
 
 Coming soon...
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Control Statements
 
@@ -1297,7 +1298,7 @@ Although `break` is not required in Swift, you can still use a `break` statement
 * `return` : Stops execution and returns to the calling function.  It can also be used to return a value from a function.
 * `break` : Used to stop the execution of a loop.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Extension
 Extensions add new functionality to an existing class, structure, enumeration or protocol type
@@ -1312,7 +1313,7 @@ extension String {
 }
 let isTrue = "0".boolValue
 ```
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 ## Protocol
 Define
 ```swift
@@ -1365,7 +1366,7 @@ extension PrettyTextRepresentable  {
 }
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 ## Error Handling
 
 Representing an Error
@@ -1400,13 +1401,13 @@ let message = try? selectBeverage(10)
 let message = try! selectBeverage(10)
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Passing Information
 
 Coming soon...
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## User Defaults
 
@@ -1428,7 +1429,7 @@ let someValue = userDefaults.value(forKey: "RPSomeUserPreference") as AnyObject?
 
 There are also other convenience functions on `UserDefaults` instances such as `bool(forKey:...)`, `string(forKey:...)`, etc.
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Common Patterns
 
@@ -1470,7 +1471,7 @@ let answer = myClass.isReady ? "Yep!" : "Nope!"
 print("Are you ready to rock and roll? \(answer)")
 ```
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)
 
 ## Unicode Support
 
@@ -1478,4 +1479,4 @@ Although I don't recommend this, Swift will compile even if you use emoji's in y
 
 More info from Apple [here](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html)
 
-[Back to top](#swift-3-cheat-sheet)
+[Back to top](#swift-cheat-sheet)

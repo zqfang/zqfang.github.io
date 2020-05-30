@@ -1,0 +1,1982 @@
+<h1 id="swift-3-cheat-sheet">Swift 3+ Cheat Sheet</h1>
+<p>Stolen from <a href="https://github.com/iwasrobbed/Swift-CheatSheet">iwasrobbed</a>, and I simplify it and add some more.</p>
+
+<p>It’s a high level and a quick reference to Swift.
+The purpose of this cheat sheet is to teach myself and get answers from it within 10s.</p>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<ul>
+  <li><a href="#commenting">Commenting</a></li>
+  <li><a href="#data-types">Data Types</a></li>
+  <li><a href="#operators">Operators</a></li>
+  <li><a href="#operator-overloading">Operator Overloading</a></li>
+  <li><a href="#declaring-classes">Declaring Classes</a></li>
+  <li><a href="#declarations">Declarations</a></li>
+  <li><a href="#lazzy-property">Lazzy Property</a></li>
+  <li><a href="#property-observer">Property Observer</a></li>
+  <li><a href="#literals">Literals</a></li>
+  <li><a href="#functions">Functions</a></li>
+  <li><a href="#constants-and-variables">Constants and Variables</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#closures">Closures</a></li>
+  <li><a href="#generics">Generics</a></li>
+  <li><a href="#control-statements">Control Statements</a></li>
+  <li><a href="#extension">Extension</a></li>
+  <li><a href="#protocol">Protocol</a></li>
+  <li><a href="#protocol-extension">Protocol Extension</a></li>
+  <li><a href="#error-handling">Error Handling</a></li>
+  <li><a href="#passing-information">Passing Information</a></li>
+  <li><a href="#user-defaults">User Defaults</a></li>
+  <li><a href="#common-patterns">Common Patterns</a></li>
+  <li><a href="#unicode-support">Unicode Support</a>
+    <h2 id="commenting">Commenting</h2>
+    <p>Two ways of commenting:</p>
+  </li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is an inline comment</span>
+
+<span class="cm">/* This is a block comment
+   and it can span multiple lines. */</span>
+
+<span class="c1">// You can also use it to comment out code</span>
+<span class="cm">/*
+func doWork() {
+  // Implement this
+}
+*/</span>
+</code></pre></div></div>
+
+<h3 id="mark">MARK</h3>
+
+<p>Using <code class="highlighter-rouge">MARK</code> to organize your code:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MARK: - Use mark to logically organize your code</span>
+<span class="c1">// Declare some functions or variables here</span>
+<span class="c1">// MARK: - They also show up nicely in the properties/functions list in Xcode</span>
+<span class="c1">// Declare some more functions or variables here</span>
+</code></pre></div></div>
+
+<h3 id="fixme">FIXME</h3>
+
+<p>Using <code class="highlighter-rouge">FIXME</code> to remember to fix your code:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Some broken code might be here</span>
+<span class="c1">// FIXME: Use fixme to create a reminder to fix broken code later</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">FIXME</code> works a lot like <code class="highlighter-rouge">MARK</code> because it makes organizing code easier, but it’s used exclusively when you need to remember to fix something.</p>
+
+<h3 id="todo">TODO</h3>
+
+<p>Using <code class="highlighter-rouge">TODO</code> to remember to add, delete, or generally refactor your code:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Some incomplete code might be here</span>
+<span class="c1">// TODO: Use todo to create a reminder to finish things up later</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">TODO</code> is very similar to <code class="highlighter-rouge">FIXME</code> and <code class="highlighter-rouge">MARK</code>, but it’s used exclusively when you need to remember to add, delete, or change your code later.</p>
+
+<p><strong>Auto-generating method documentation:</strong>
+In a method’s preceding line, press <code class="highlighter-rouge">⌥ Option + ⌘ Command + /</code> to automatically generate a documentation stub for your method.</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="data-types">Data Types</h2>
+
+<h3 id="size">Size</h3>
+
+<p>Permissible sizes of data types are determined by how many bytes of memory are allocated for that specific type and whether it’s a 32-bit or 64-bit environment.  In a 32-bit environment, <code class="highlighter-rouge">long</code> is given 4 bytes, which equates to a total range of <code class="highlighter-rouge">2^(4*8)</code> (with 8 bits in a byte) or <code class="highlighter-rouge">4294967295</code>.  In a 64-bit environment, <code class="highlighter-rouge">long</code> is given 8 bytes, which equates to <code class="highlighter-rouge">2^(8*8)</code> or <code class="highlighter-rouge">1.84467440737096e19</code>.</p>
+
+<p>For a complete guide to 64-bit changes, please <a href="https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/64bitPorting/transition/transition.html#//apple_ref/doc/uid/TP40001064-CH207-TPXREF101">see the transition document</a>.</p>
+
+<h3 id="c-primitives">C Primitives</h3>
+
+<p>Unless you have a good reason to use C primitives, you should just use the Swift types to ensure compability going foward.</p>
+
+<p>In fact, Swift just aliases C types to a Swift equivalent:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C char is aliased as an Int8 and unsigned as UInt8</span>
+<span class="k">let</span> <span class="nv">aChar</span> <span class="o">=</span> <span class="kt">CChar</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">anUnsignedChar</span> <span class="o">=</span> <span class="kt">CUnsignedChar</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C char size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aChar</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">Int8</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">Int8</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C char size: 1 with min: -128 and max: 127</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C unsigned char size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">anUnsignedChar</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">UInt8</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">UInt8</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C unsigned char size: 1 with min: 0 and max: 255</span>
+
+<span class="c1">// C short is aliased as an Int16 and unsigned as UInt16</span>
+<span class="k">let</span> <span class="nv">aShort</span> <span class="o">=</span> <span class="kt">CShort</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">unsignedShort</span> <span class="o">=</span> <span class="kt">CUnsignedShort</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C short size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aShort</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">Int16</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">Int16</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C short size: 2 with min: -32768 and max: 32767</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C unsigned short size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">unsignedShort</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">UInt16</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">UInt16</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C unsigned short size: 2 with min: 0 and max: 65535</span>
+
+<span class="c1">// C int is aliased as an Int32 and unsigned as UInt32</span>
+<span class="k">let</span> <span class="nv">anInt</span> <span class="o">=</span> <span class="kt">CInt</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">unsignedInt</span> <span class="o">=</span> <span class="kt">CUnsignedInt</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C int size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">anInt</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">Int32</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">Int32</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C int size: 4 with min: -2147483648 and max: 2147483647</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C unsigned int size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">unsignedInt</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">UInt32</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">UInt32</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C unsigned int size: 4 with min: 0 and max: 4294967295</span>
+
+<span class="c1">// C long is aliased as an Int and unsigned as UInt</span>
+<span class="k">let</span> <span class="nv">aLong</span> <span class="o">=</span> <span class="kt">CLong</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">unsignedLong</span> <span class="o">=</span> <span class="kt">CUnsignedLong</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C long size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aLong</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">Int</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">Int</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C long size: 8 with min: -9223372036854775808 and max: 9223372036854775807</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C unsigned long size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">unsignedLong</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">UInt</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">UInt</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C unsigned long size: 8 with min: 0 and max: 18446744073709551615</span>
+
+<span class="c1">// C long long is aliased as an Int64 and unsigned as UInt64</span>
+<span class="k">let</span> <span class="nv">aLongLong</span> <span class="o">=</span> <span class="kt">CLongLong</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">unsignedLongLong</span> <span class="o">=</span> <span class="kt">CUnsignedLongLong</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C long long size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aLongLong</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">Int64</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">Int64</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C long long size: 8 with min: -9223372036854775808 and max: 9223372036854775807</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"C unsigned long long size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">unsignedLongLong</span><span class="p">)</span><span class="se">)</span><span class="s"> with min: </span><span class="se">\(</span><span class="kt">UInt64</span><span class="o">.</span><span class="n">min</span><span class="se">)</span><span class="s"> and max: </span><span class="se">\(</span><span class="kt">UInt64</span><span class="o">.</span><span class="n">max</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// C unsigned long long size: 8 with min: 0 and max: 18446744073709551615</span>
+</code></pre></div></div>
+
+<p>From the <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/InteractingWithCAPIs.html">docs</a>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">C Type</th>
+      <th style="text-align: center">Swift Type</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">bool</td>
+      <td>CBool</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">char, signed char</td>
+      <td>CChar</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">unsigned char</td>
+      <td>CUnsignedChar</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">short</td>
+      <td>CShort</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">unsigned short</td>
+      <td>CUnsignedShort</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">int</td>
+      <td>CInt</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">unsigned int</td>
+      <td>CUnsignedInt</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">long</td>
+      <td>CLong</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">unsigned long</td>
+      <td>CUnsignedLong</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">long long</td>
+      <td>CLongLong</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">unsigned long long</td>
+      <td>CUnsignedLongLong</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">wchar_t</td>
+      <td>CWideChar</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">char16_t</td>
+      <td>CChar16</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">char32_t</td>
+      <td>CChar32</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">float</td>
+      <td>CFloat</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">double</td>
+      <td>CDouble</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="integers">Integers</h4>
+
+<p>Integers can be signed or unsigned.  When signed, they can be either positive or negative and when unsigned, they can only be positive.</p>
+
+<p>Apple states: <em>Unless you need to work with a specific size of integer, always use <code class="highlighter-rouge">Int</code> for integer values in your code. This aids code consistency and interoperability. Even on 32-bit platforms, <code class="highlighter-rouge">Int</code> […] is large enough for many integer ranges.</em></p>
+
+<p><strong>Fixed width integer types with their accompanying byte sizes as the variable names:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Exact integer types</span>
+<span class="k">let</span> <span class="nv">aOneByteInt</span><span class="p">:</span> <span class="kt">Int8</span> <span class="o">=</span> <span class="mi">127</span>
+<span class="k">let</span> <span class="nv">aOneByteUnsignedInt</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="k">let</span> <span class="nv">aTwoByteInt</span><span class="p">:</span> <span class="kt">Int16</span> <span class="o">=</span> <span class="mi">32767</span>
+<span class="k">let</span> <span class="nv">aTwoByteUnsignedInt</span><span class="p">:</span> <span class="kt">UInt16</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="k">let</span> <span class="nv">aFourByteInt</span><span class="p">:</span> <span class="kt">Int32</span> <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="k">let</span> <span class="nv">aFourByteUnsignedInt</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">4294967295</span>
+<span class="k">let</span> <span class="nv">anEightByteInt</span><span class="p">:</span> <span class="kt">Int64</span> <span class="o">=</span> <span class="mi">9223372036854775807</span>
+<span class="k">let</span> <span class="nv">anEightByteUnsignedInt</span><span class="p">:</span> <span class="kt">UInt64</span> <span class="o">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// Minimum integer types</span>
+<span class="k">let</span> <span class="nv">aTinyInt</span><span class="p">:</span> <span class="kt">Int8</span> <span class="o">=</span> <span class="mi">127</span>
+<span class="k">let</span> <span class="nv">aTinyUnsignedInt</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="k">let</span> <span class="nv">aMediumInt</span><span class="p">:</span> <span class="kt">Int16</span> <span class="o">=</span> <span class="mi">32767</span>
+<span class="k">let</span> <span class="nv">aMediumUnsignedInt</span><span class="p">:</span> <span class="kt">UInt16</span>  <span class="o">=</span> <span class="mi">65535</span>
+<span class="k">let</span> <span class="nv">aNormalInt</span><span class="p">:</span> <span class="kt">Int32</span>  <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="k">let</span> <span class="nv">aNormalUnsignedInt</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">4294967295</span>
+<span class="k">let</span> <span class="nv">aBigInt</span><span class="p">:</span> <span class="kt">Int64</span> <span class="o">=</span> <span class="mi">9223372036854775807</span>
+<span class="k">let</span> <span class="nv">aBigUnsignedInt</span><span class="p">:</span> <span class="kt">UInt64</span> <span class="o">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// The largest supported integer type</span>
+<span class="k">let</span> <span class="nv">theBiggestInt</span><span class="p">:</span> <span class="kt">IntMax</span> <span class="o">=</span> <span class="mi">9223372036854775807</span>
+<span class="k">let</span> <span class="nv">theBiggestUnsignedInt</span><span class="p">:</span> <span class="kt">UIntMax</span> <span class="o">=</span> <span class="mi">18446744073709551615</span>
+</code></pre></div></div>
+
+<h4 id="floating-point">Floating Point</h4>
+
+<p>Floats cannot be signed or unsigned.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Single precision (32-bit) floating-point. Use it when floating-point values do not require 64-bit precision.</span>
+<span class="k">let</span> <span class="nv">aFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Float size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aFloat</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Float size: 4</span>
+
+<span class="c1">// Double precision (64-bit) floating-point. Use it when floating-point values must be very large or particularly precise.</span>
+<span class="k">let</span> <span class="nv">aDouble</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Double size: </span><span class="se">\(</span><span class="kt">MemoryLayout</span><span class="o">.</span><span class="nf">size</span><span class="p">(</span><span class="nv">ofValue</span><span class="p">:</span> <span class="n">aDouble</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// Double size: 8</span>
+</code></pre></div></div>
+
+<h4 id="boolean">Boolean</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Boolean</span>
+<span class="k">let</span> <span class="nv">isBool</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span> <span class="c1">// Or false</span>
+</code></pre></div></div>
+
+<p>In Objective-C comparative statements, <code class="highlighter-rouge">0</code> and <code class="highlighter-rouge">nil</code> were considered <code class="highlighter-rouge">false</code> and any non-zero/non-nil values were considered <code class="highlighter-rouge">true</code>. However, this is not the case in Swift. Instead, you’ll need to directly check their value such as <code class="highlighter-rouge">if x == 0</code> or <code class="highlighter-rouge">if object != nil</code></p>
+
+<h4 id="primitives">Primitives</h4>
+
+<p><strong>nil</strong> : Used to specify a null object pointer.  When classes are first initialized, all properties of the class point to <code class="highlighter-rouge">nil</code>.</p>
+
+<h3 id="enum--bitmask-types">Enum &amp; Bitmask Types</h3>
+
+<p>Enumeration types can be defined as follows:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Specifying a typed enum with a name (recommended way)</span>
+<span class="kd">enum</span> <span class="kt">UITableViewCellStyle</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="k">default</span><span class="p">,</span> <span class="n">valueOne</span><span class="p">,</span> <span class="n">valueTwo</span><span class="p">,</span> <span class="n">subtitle</span>
+<span class="p">}</span>
+
+<span class="c1">// Accessing it:</span>
+<span class="k">let</span> <span class="nv">cellStyle</span><span class="p">:</span> <span class="kt">UITableViewCellStyle</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span>
+</code></pre></div></div>
+
+<p>As of Swift 3, all enum options should be named in lowerCamelCased.</p>
+
+<h4 id="working-with-bitmasks">Working with Bitmasks</h4>
+
+<p>Newer Swift versions have a nice substitute for the old <code class="highlighter-rouge">NS_OPTIONS</code> macro for creating bitmasks to compare to.</p>
+
+<p>An example for posterity:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Options</span><span class="p">:</span> <span class="kt">OptionSet</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">rawValue</span> <span class="o">=</span> <span class="n">rawValue</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">OptionOne</span> <span class="o">=</span> <span class="kt">Options</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">OptionTwo</span> <span class="o">=</span> <span class="kt">Options</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">OptionThree</span> <span class="o">=</span> <span class="kt">Options</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">Options</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="kt">OptionOne</span><span class="p">,</span> <span class="o">.</span><span class="kt">OptionTwo</span><span class="p">]</span>
+
+<span class="n">options</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="o">.</span><span class="kt">OptionOne</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="n">options</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="o">.</span><span class="kt">OptionThree</span><span class="p">)</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h3 id="type-casting">Type Casting</h3>
+
+<p>Sometimes it is necessary to cast an object into a specific class or data type.  Examples of this would be casting from a <code class="highlighter-rouge">Float</code> to an <code class="highlighter-rouge">Int</code> or from a <code class="highlighter-rouge">UITableViewCell</code> to a subclass such as <code class="highlighter-rouge">RPTableViewCell</code>.</p>
+
+<h4 id="checking-types">Checking Types</h4>
+
+<p>Swift uses <code class="highlighter-rouge">is</code> and <code class="highlighter-rouge">as</code> both for checking object types as well as conformance to a given protocol.</p>
+
+<h4 id="operator-is">Operator: is</h4>
+
+<p>Checking object type using <code class="highlighter-rouge">is</code>:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="kt">Movie</span> <span class="p">{</span>
+    <span class="n">movieCount</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It is a movie."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="kt">Song</span> <span class="p">{</span>
+    <span class="n">songCount</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It is a song."</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">is</code> operator returns <code class="highlighter-rouge">true </code>if an instance is of that object type, or conforms to the specified protocol, and returns <code class="highlighter-rouge">false</code> if it does not.</p>
+
+<h4 id="operators-as-and-as">Operators: as? and as!</h4>
+
+<p>If you want to be able to easily access the data during one of these checks, you can use <code class="highlighter-rouge">as?</code> to optionally (or <code class="highlighter-rouge">as!</code> to force) unwrap the object when necessary:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="k">as?</span> <span class="kt">Movie</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Director: </span><span class="se">\(</span><span class="n">movie</span><span class="o">.</span><span class="n">director</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">song</span> <span class="o">=</span> <span class="n">item</span> <span class="k">as?</span> <span class="kt">Song</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Artist: </span><span class="se">\(</span><span class="n">song</span><span class="o">.</span><span class="n">artist</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">as?</code> version of the downcast operator returns an optional value of the object or protocol’s type, and this value is <code class="highlighter-rouge">nil</code> if the downcast fails or this instance does not conform to the specified protocol.</p>
+
+<p>The <code class="highlighter-rouge">as!</code> version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.</p>
+
+<h4 id="casting-from-generic-types">Casting from Generic Types</h4>
+
+<p>If you’re working with <code class="highlighter-rouge">AnyObject</code> objects given from the Cocoa API, you can use:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="k">as!</span> <span class="p">[</span><span class="kt">Movie</span><span class="p">]</span> <span class="p">{</span>
+    <span class="c1">// do stuff</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If given an array with <code class="highlighter-rouge">Any</code> objects, you can use a <code class="highlighter-rouge">switch</code> statement with the type defined for each <code class="highlighter-rouge">case</code>:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">things</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Any</span><span class="p">]()</span>
+
+<span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">as</span> <span class="kt">Int</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Zero as an Int"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="k">let</span> <span class="nv">someString</span> <span class="k">as!</span> <span class="kt">String</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"S string value of </span><span class="se">\"\(</span><span class="n">someString</span><span class="se">)\"</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="k">let</span> <span class="p">(</span><span class="nv">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">)</span> <span class="nf">as</span><span class="o">!</span> <span class="p">(</span><span class="kt">Double</span><span class="p">,</span> <span class="kt">Double</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"An (x, y) point at </span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="k">let</span> <span class="nv">movie</span> <span class="k">as!</span> <span class="kt">Movie</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"A movie called '</span><span class="se">\(</span><span class="n">movie</span><span class="o">.</span><span class="n">name</span><span class="se">)</span><span class="s">' by director </span><span class="se">\(</span><span class="n">movie</span><span class="o">.</span><span class="n">director</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Didn't match any of the cases specified"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="basic-casting">Basic Casting</h4>
+
+<p>Swift also offers some simple methods of casting between it’s given data types.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Example 1:</span>
+<span class="k">let</span> <span class="nv">aDifferentDataType</span><span class="p">:</span> <span class="kt">Float</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="k">let</span> <span class="nv">anInt</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">aDifferentDataType</span><span class="p">)</span>
+
+<span class="c1">// Example 2:</span>
+<span class="k">let</span> <span class="nv">aString</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="n">anInt</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="operators">Operators</h2>
+
+<p>Swift supports most standard C operators and improves several capabilities to eliminate common coding errors. The assignment operator <code class="highlighter-rouge">=</code> does not return a value, to prevent it from being mistakenly used when the equal to operator <code class="highlighter-rouge">==</code> is intended.</p>
+
+<p>Arithmetic operators (<code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">/</code>, <code class="highlighter-rouge">%</code>) detect and disallow value overflow, to avoid unexpected results when working with numbers that become larger or smaller than the allowed value range of the type that stores them.</p>
+
+<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>+</td>
+      <td>Addition</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>-</td>
+      <td>Subtraction</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>*</td>
+      <td>Multiplication</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>/</td>
+      <td>Division</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>%</td>
+      <td>Remainder</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="comparative-operators">Comparative Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>==</td>
+      <td>Equal to</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>===</td>
+      <td>Identical to</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>!=</td>
+      <td>Not equal to</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>!==</td>
+      <td>Not identical to</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>~=</td>
+      <td>Pattern match</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&gt;</td>
+      <td>Greater than</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&lt;</td>
+      <td>Less than</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&gt;=</td>
+      <td>Greater than or equal to</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&lt;=</td>
+      <td>Less than or equal to</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="assignment-operators">Assignment Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>=</td>
+      <td>Assign</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>+=</td>
+      <td>Addition</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>-=</td>
+      <td>Subtraction</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>*=</td>
+      <td>Multiplication</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>/=</td>
+      <td>Division</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>%=</td>
+      <td>Remainder</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;=</td>
+      <td>Bitwise AND</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>|=</td>
+      <td>Bitwise Inclusive OR</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>^=</td>
+      <td>Exclusive OR</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>«=</td>
+      <td>Shift Left</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>»=</td>
+      <td>Shift Right</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="logical-operators">Logical Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>!</td>
+      <td>NOT</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;&amp;</td>
+      <td>Logical AND</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>||</td>
+      <td>Logical OR</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="range-operators">Range Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>..&lt;</td>
+      <td>Half-open range</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>…</td>
+      <td>Closed range</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="bitwise-operators">Bitwise Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;</td>
+      <td>Bitwise AND</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>|</td>
+      <td>Bitwise Inclusive OR</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>^</td>
+      <td>Exclusive OR</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>~</td>
+      <td>Unary complement (bit inversion)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>«</td>
+      <td>Shift Left</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>»</td>
+      <td>Shift Right</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="overflow-and-underflow-operators">Overflow and Underflow Operators</h4>
+
+<p>Typically, assigning or incrementing an integer, float, or double past it’s range would result in a runtime error. However, if you’d instead prefer to safely truncate the number of available bits, you can opt-in to have the variable overflow or underflow using the following operators:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;+</td>
+      <td>Addition</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;-</td>
+      <td>Subtraction</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>&amp;*</td>
+      <td>Multiplication</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example for unsigned integers (works similarly for signed):</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">willOverflow</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">max</span>
+<span class="c1">// willOverflow equals 255, which is the largest value a UInt8 can hold</span>
+<span class="n">willOverflow</span> <span class="o">=</span> <span class="n">willOverflow</span> <span class="o">&amp;+</span> <span class="mi">1</span>
+<span class="c1">// willOverflow is now equal to 0</span>
+
+<span class="k">var</span> <span class="nv">willUnderflow</span> <span class="o">=</span> <span class="kt">UInt8</span><span class="o">.</span><span class="n">min</span>
+<span class="c1">// willUnderflow equals 0, which is the smallest value a UInt8 can hold</span>
+<span class="n">willUnderflow</span> <span class="o">=</span> <span class="n">willUnderflow</span> <span class="o">&amp;-</span> <span class="mi">1</span>
+<span class="c1">// willUnderflow is now equal to 255</span>
+</code></pre></div></div>
+
+<h4 id="other-operators">Other Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Operator</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>??</td>
+      <td>Nil coalescing</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>?:</td>
+      <td>Ternary conditional</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>!</td>
+      <td>Force unwrap object value</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>?</td>
+      <td>Safely unwrap object value</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="operator-overloading">Operator Overloading</h2>
+
+<p>Swift allows you to overwrite existing operators or define new operators for existing or custom types. For example, this is why in Swift you can join strings using the <code class="highlighter-rouge">+</code> operator, even though it is typically used for math.</p>
+
+<p>Operator overloading is limited to the following symbols, <code class="highlighter-rouge">/ = - + * % &lt; &gt; ! &amp; | ^ . ~</code>, however you cannot overload the <code class="highlighter-rouge">=</code> operator by itself (it must be combined with another symbol).</p>
+
+<p>Operators can be specified as:</p>
+<ul>
+  <li><code class="highlighter-rouge">prefix</code>: goes before an object such as <code class="highlighter-rouge">-negativeNumber</code></li>
+  <li><code class="highlighter-rouge">infix</code>: goes between two objects, such as <code class="highlighter-rouge">a + b</code></li>
+  <li><code class="highlighter-rouge">postfix</code>: goes after an object, such as <code class="highlighter-rouge">unwrapMe!</code></li>
+</ul>
+
+<h3 id="custom-operators">Custom operators</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">associativity</code>: defines how operators of the same precedence are grouped together (left, right)</li>
+  <li><code class="highlighter-rouge">precedence</code>: gives some operators higher priority than others; these operators are applied first.</li>
+</ul>
+
+<p>Refer <a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations">Operator Declarations</a> to see full details about operator <code class="highlighter-rouge">associativity</code> and <code class="highlighter-rouge">precedence</code>.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>DefaultPrecedence group</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// declare first and set rules with a precedence group</span>
+<span class="k">infix</span> <span class="k">operator</span> <span class="o">**</span> <span class="c1">// use DefaultPrecedence group</span>
+</code></pre></div></div>
+
+<p>Custom Precedence group</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// define a custom precedence group</span>
+<span class="k">precedencegroup</span> <span class="kt">ExponentiationPrecedence</span> <span class="p">{</span>
+    <span class="nv">higherThan</span><span class="p">:</span> <span class="kt">MultiplicationPrecedence</span>
+    <span class="nv">associativity</span><span class="p">:</span> <span class="n">right</span> <span class="c1">// none, left, right</span>
+    <span class="c1">//assignment: false</span>
+<span class="p">}</span>
+
+<span class="c1">// now, replace original declaration of ** with </span>
+<span class="k">infix</span> <span class="k">operator</span> <span class="o">**</span><span class="p">:</span> <span class="kt">ExponentiationPrecedence</span>
+</code></pre></div></div>
+<p>That’s it.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// impelment </span>
+<span class="k">infix</span> <span class="kd">func</span> <span class="o">**</span> <span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">p</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">}</span> 
+<span class="mf">2*</span><span class="o">*</span><span class="mi">3</span>  <span class="c1">// 8</span>
+<span class="mf">2*</span><span class="o">*</span><span class="mf">3*</span><span class="o">*</span><span class="mi">2</span> <span class="c1">// 512</span>
+<span class="mi">1</span><span class="o">+</span><span class="mf">2*</span><span class="o">*</span><span class="mf">3*</span><span class="o">*</span><span class="mi">2</span> <span class="c1">// 513</span>
+<span class="mf">5*2*</span><span class="o">*</span><span class="mf">3*</span><span class="o">*</span><span class="mi">2</span>  <span class="c1">// 2560</span>
+</code></pre></div></div>
+
+<p>see also <a href="https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41">docs</a>:
+<a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="declaring-classes">Declaring Classes</h2>
+
+<p>Classes are typically declared using separate <code class="highlighter-rouge">.swift</code> files, but multiple classes can also be created within the same file if you’d like to organize it that way.</p>
+
+<p>Unlike Objective-C, there’s no need for an interface file (<code class="highlighter-rouge">.h</code>) in Swift.</p>
+
+<p>The implementation file should contain (in this order):</p>
+<ul>
+  <li>Any needed <code class="highlighter-rouge">import</code> statements</li>
+  <li>A <code class="highlighter-rouge">class</code> declaration which contains any constants or variables necessary for the class</li>
+  <li>All public and private functions</li>
+</ul>
+
+<p>Example:</p>
+
+<p>MyClass.swift</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+
+<span class="kd">class</span> <span class="kt">MyClass</span> <span class="p">{</span>
+    <span class="c1">// Declare any constants or variables at the top</span>
+    <span class="k">let</span> <span class="nv">kRPErrorDomain</span> <span class="o">=</span> <span class="s">"com.myIncredibleApp.errors"</span>
+    <span class="k">var</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="c1">// MARK: - Class Methods, e.g. MyClass.functionName()</span>
+    <span class="kd">class</span> <span class="kd">func</span> <span class="nf">alert</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"This is a class function."</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// MARK: - Instance Methods, e.g. myClass.functionName()</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="p">}</span>
+    <span class="c1">// MARK: - Private Methods</span>
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">pointLocation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"x: </span><span class="se">\(</span><span class="n">x</span><span class="se">)</span><span class="s">, y: </span><span class="se">\(</span><span class="n">y</span><span class="se">)</span><span class="s">"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="instantiation">Instantiation</h4>
+
+<p>When you want to create a new instance of a class, you use the syntax:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">myClass</span> <span class="o">=</span> <span class="kt">MyClass</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>where <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> are variables that are passed in at the time of instantiation.</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="declarations">Declarations</h2>
+
+<p>More info <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-XID_704">here in the docs</a>.</p>
+
+<h4 id="preprocessor">Preprocessor</h4>
+
+<p>Swift doesn’t come with a preprocessor so it only supports a limited number of statements for build time. Things like <code class="highlighter-rouge">#define</code> have been replaced with global constants defined outside of a class.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>#if</td>
+      <td>An <code class="highlighter-rouge">if</code> conditional statement</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>#elif</td>
+      <td>An <code class="highlighter-rouge">else if</code> conditional statement</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>#else</td>
+      <td>An <code class="highlighter-rouge">else</code> conditional statement</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>#endif</td>
+      <td>An <code class="highlighter-rouge">end if</code> conditional statement</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="imports">Imports</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>import</td>
+      <td>Imports a framework</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="constants--variables">Constants &amp; Variables</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>let</td>
+      <td>Declares local or global constant</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>var</td>
+      <td>Declares a local or global variable</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>class</td>
+      <td>Declares a class-level constant or variable</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>static</td>
+      <td>Declares a static type</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="classes-structure-functions-and-protocols">Classes, Structure, Functions and Protocols</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>typealias</td>
+      <td>Introduces a named alias of an existing type</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>enum</td>
+      <td>Introduces a named enumeration</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>struct</td>
+      <td>Introduces a named structure</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>class</td>
+      <td>Begins the declaration of a class</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>init</td>
+      <td>Introduces an initializer for a class, struct or enum</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>init?</td>
+      <td>Produces an optional instance or an implicitly unwrapped optional instance; can return <code class="highlighter-rouge">nil</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>deinit</td>
+      <td>Declares a function called automatically when there are no longer any references to a class object, just before the class object is deallocated</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>func</td>
+      <td>Begins the declaration of a function</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>protocol</td>
+      <td>Begins the declaration of a formal protocol</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>static</td>
+      <td>Defines as type-level within struct or enum</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>convenience</td>
+      <td>Delegate the init process to another initializer or to one of the class’s designated initializers</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>extension</td>
+      <td>Extend the behavior of class, struct, or enum</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>subscript</td>
+      <td>Adds subscripting support for objects of a particular type, normally for providing a convenient syntax for accessing elements in a collective, list or sequence</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>override</td>
+      <td>Marks overriden initializers</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="operators-1">Operators</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>operator</td>
+      <td>Introduces a new infix, prefix, or postfix operator</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="declaration-modifiers">Declaration Modifiers</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>dynamic</td>
+      <td>Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>final</td>
+      <td>Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>lazy</td>
+      <td>Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>optional</td>
+      <td>Specifies that a protocol’s property, function, or subscript isn’t required to be implemented by conforming members</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>required</td>
+      <td>Marks the initializer so that every subclass must implement it</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>weak</td>
+      <td>Indicates that the variable or property has a weak reference to the object stored as its value</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="access-control">Access Control</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Directive</th>
+      <th>Purpose</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>open</td>
+      <td>Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>public</td>
+      <td>Can only be subclassed by its own module or have its methods overridden by others within the same module</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>internal</td>
+      <td>(Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>fileprivate</td>
+      <td>Indicates the entities are available only from within the source file where they are defined</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td>private</td>
+      <td>Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the <code class="highlighter-rouge">{ }</code> brackets only)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AccessLevelsShowCase</span> <span class="p">{</span>
+    
+    <span class="c1">// Property accessible for other modules</span>
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">somePublicProperty</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1">// Property accessible from the module </span>
+    <span class="k">var</span> <span class="nv">someInternelProperty</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">// Property accessible from its own defining source file</span>
+    <span class="kd">fileprivate</span> <span class="kd">func</span> <span class="nf">someFilePrivateMethod</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="c1">// Property accessible fro its enclosing declaration</span>
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">somePrivateMethod</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="literals">Literals</h2>
+
+<p>Literals are compiler directives which provide a shorthand notation for creating common objects.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Syntax</th>
+      <th>What it does</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">"string"</code></td>
+      <td>Returns a <code class="highlighter-rouge">String</code> object</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">28</code></td>
+      <td>Returns an <code class="highlighter-rouge">Int</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">3.14</code>, <code class="highlighter-rouge">0xFp2</code>, <code class="highlighter-rouge">1.25e2</code></td>
+      <td>Returns a <code class="highlighter-rouge">Double</code> object</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">true</code>, <code class="highlighter-rouge">false</code></td>
+      <td>Returns a <code class="highlighter-rouge">Bool</code> object</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">[]</code></td>
+      <td>Returns an <code class="highlighter-rouge">Array</code> object</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">[keyName:value]</code></td>
+      <td>Returns a <code class="highlighter-rouge">Dictionary</code> object</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">0b</code></td>
+      <td>Returns a binary digit</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">0o</code></td>
+      <td>Returns an octal digit</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td><code class="highlighter-rouge">0x</code></td>
+      <td>Returns a hexadecimal digit</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="strings">Strings</h4>
+
+<p>Special characters can be included:</p>
+
+<ul>
+  <li>Null Character: <code class="highlighter-rouge">\0</code></li>
+  <li>Backslash: <code class="highlighter-rouge">\\</code> (can be used to escape a double quote)</li>
+  <li>Horizontal Tab: <code class="highlighter-rouge">\t</code></li>
+  <li>Line Feed: <code class="highlighter-rouge">\n</code></li>
+  <li>Carriage Return: <code class="highlighter-rouge">\r</code></li>
+  <li>Double Quote: <code class="highlighter-rouge">\"</code></li>
+  <li>Single Quote: <code class="highlighter-rouge">\'</code></li>
+  <li>Unicode scalar: <code class="highlighter-rouge">\u{n}</code> where n is between one and eight hexadecimal digits</li>
+</ul>
+
+<p>Multiline string literal</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">json</span> <span class="o">=</span> <span class="s">"""
+{ "</span><span class="n">username</span><span class="s">": "</span><span class="kt">David</span><span class="s">", "</span><span class="n">loginCount</span><span class="s">": 2}
+"""</span>
+</code></pre></div></div>
+<h4 id="array-access-syntax">Array Access Syntax</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">example</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"hi"</span><span class="p">,</span> <span class="s">"there"</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="kc">true</span> <span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"item at index 0: </span><span class="se">\(</span><span class="n">example</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="dictionary-access-syntax">Dictionary Access Syntax</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">example</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"hi"</span> <span class="p">:</span> <span class="s">"there"</span><span class="p">,</span> <span class="s">"iOS"</span> <span class="p">:</span> <span class="s">"people"</span> <span class="p">]</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">example</span><span class="p">[</span><span class="s">"hi"</span><span class="p">]</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"hi </span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="mutability">Mutability</h4>
+
+<p>For mutable literals, declare it with <code class="highlighter-rouge">var</code>; immutable with <code class="highlighter-rouge">let</code>.</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="functions">Functions</h2>
+
+<h4 id="declaration-syntax">Declaration Syntax</h4>
+
+<p>Functions without a return type use this format:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Does not return anything or take any arguments</span>
+<span class="kd">func</span> <span class="nf">doWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">class</code> precedes declarations of class functions:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Call on a class, e.g. MyClass.someClassFunction()</span>
+<span class="kd">class</span> <span class="kd">func</span> <span class="nf">someClassFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">static</code> is similar to class functions where you don’t need an instance of the class or struct in order to call a method on it:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Call on a class/struct, e.g. MyStruct.someStaticFunction()</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">someStaticFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Declare instance functions:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Called on an instance of a class, e.g. myClass.someInstanceFunction()</span>
+<span class="kd">func</span> <span class="nf">doMoreWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Function arguments are declared within the parentheses:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Draws a point</span>
+<span class="kd">func</span> <span class="nf">draw</span><span class="p">(</span><span class="nv">point</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Return types are declared as follows:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Returns a String object for the given String argument</span>
+<span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Oh hello, </span><span class="se">\(</span><span class="n">lilFriendsName</span><span class="se">)</span><span class="s">. Cup of tea?"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You can have multiple return values, referred to as a tuple:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Returns multiple objects</span>
+<span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">msg</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">nameLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">return</span> <span class="p">(</span><span class="s">"Oh hello, </span><span class="se">\(</span><span class="n">lilFriendsName</span><span class="se">)</span><span class="s">. Cup of tea?"</span><span class="p">,</span> <span class="nf">countElements</span><span class="p">(</span><span class="n">lilFriendsName</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">hello</span> <span class="o">=</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">"Rob"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">hello</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span> <span class="c1">// "Oh hello, Rob. Cup of tea?"</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">hello</span><span class="o">.</span><span class="n">nameLength</span><span class="p">)</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>And those multiple return values can be optional:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">msg</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">nameLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)?</span>
+</code></pre></div></div>
+
+<p>By default, external parameter names are given when you call the function, but you can specify that one or more are not shown in the method signature by putting a <code class="highlighter-rouge">_</code> symbol in front of the parameter name:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">_</span> <span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">"Rob"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>or you can rename the variable once within the method scope:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">friendsName</span> <span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="nv">friendsName</span><span class="p">:</span> <span class="s">"Rob"</span><span class="p">)</span> <span class="c1">// and local variable is `lilFriendsName`</span>
+</code></pre></div></div>
+
+<p>You can also specify default values for the parameters:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">_</span> <span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Rob"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="nf">sayHelloToMyLilFriend</span><span class="p">()</span> <span class="c1">// "Oh hello, Rob. Cup of tea?"</span>
+<span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">"Jimbob"</span><span class="p">)</span> <span class="c1">// "Oh hello, Jimbob. Cup of tea?"</span>
+</code></pre></div></div>
+
+<p>Swift also supports variadic parameters so you can have an open-ended number of parameters passed in:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriends</span><span class="p">(</span><span class="n">_</span> <span class="nv">lilFriendsName</span><span class="p">:</span> <span class="kt">String</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="nf">sayHelloToMyLilFriends</span><span class="p">(</span><span class="s">"Rob"</span><span class="p">,</span> <span class="s">"Jimbob"</span><span class="p">,</span> <span class="s">"Cletus"</span><span class="p">)</span>
+<span class="c1">// "Oh hello, Rob, Jimbob and Cletus. Cup of tea?"</span>
+</code></pre></div></div>
+
+<p>And lastly, you can also use a prefix to declare input parameters as <code class="highlighter-rouge">inout</code>.</p>
+
+<p>An in-out parameter has a value that is passed in to the function, is modified by the function, and is passed back out of the function to replace the original value.</p>
+
+<p>You may remember <code class="highlighter-rouge">inout</code> parameters from Objective-C where you had to sometimes pass in an <code class="highlighter-rouge">&amp;error</code> parameter to certain methods, where the <code class="highlighter-rouge">&amp;</code> symbol specifies that you’re actually passing in a pointer to the object instead of the object itself. The same applies to Swift’s <code class="highlighter-rouge">inout</code> parameters now as well.</p>
+
+<h4 id="calling-functions">Calling Functions</h4>
+
+<p>Functions are called using dot syntax: <code class="highlighter-rouge">myClass.doWork()</code> or <code class="highlighter-rouge">self.sayHelloToMyLilFriend("Rob Phillips")</code></p>
+
+<p><code class="highlighter-rouge">self</code> is a reference to the function’s containing class.</p>
+
+<p>At times, it is necessary to call a function in the superclass using <code class="highlighter-rouge">super.someMethod()</code>.</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="constants-and-variables">Constants and Variables</h2>
+
+<p>Declaring a constant or variable allows you to maintain a reference to an object within a class or to pass objects between classes.</p>
+
+<p>Constants are defined with <code class="highlighter-rouge">let</code> and variables with <code class="highlighter-rouge">var</code>. By nature, constants are obviously immutable (i.e. cannot be changed once they are instantiated) and variables are mutable.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MyClass</span> <span class="p">{</span>
+	<span class="k">let</span> <span class="nv">text</span> <span class="o">=</span> <span class="s">"Hello"</span> <span class="c1">// Constant</span>
+	<span class="k">var</span> <span class="nv">isComplete</span><span class="p">:</span> <span class="kt">Bool</span> <span class="c1">// Variable</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are many ways to declare properties in Swift, so here are a few examples:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">myInt</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// inferred type</span>
+<span class="k">var</span> <span class="nv">myExplicitInt</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// explicit type</span>
+<span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">// declare multiple variables</span>
+
+<span class="k">let</span> <span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// declare multiple constants</span>
+</code></pre></div></div>
+
+<h4 id="getters-and-setters">Getters and Setters</h4>
+
+<p>In Objective-C, variables were backed by getters, setters, and private instance variables created at build time. However, in Swift getters and setters are only used for computed properties and constants actually don’t have a getter or setter at all.</p>
+
+<p>The getter is used to read the value, and the setter is used to write the value. The setter clause is optional, and when only a getter is needed, you can omit both clauses and simply return the requested value directly. However, if you provide a setter clause, you must also provide a getter clause.</p>
+
+<p>You can overrride the getter and setter of a property to create the illusion of the Objective-C property behavior, but you’d need to store them as a private property with a different name (not recommended for most scenarios):</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_x</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">var</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">get</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Accessing x..."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_x</span>
+    <span class="p">}</span>
+    <span class="k">set</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Setting x..."</span><span class="p">)</span>
+        <span class="n">_x</span> <span class="o">=</span> <span class="n">newValue</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="property-observer">Property Observer</h4>
+<p>Swift also has callbacks for when a property will be or was set using <code class="highlighter-rouge">willSet</code> and <code class="highlighter-rouge">didSet</code> shown below:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">willset</code>: before assignment</li>
+  <li><code class="highlighter-rouge">didSet</code>: after assignment</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">LightBulb</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">maxCurrent</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">var</span> <span class="nv">current</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nf">willSet</span><span class="p">(</span><span class="n">newCurrent</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// do something before value assignment</span>
+          <span class="c1">// newValue -&gt; newCurrent</span>
+          <span class="nf">print</span><span class="p">(</span><span class="s">"Current value changed, the change is </span><span class="se">\(</span><span class="nf">abs</span><span class="p">(</span><span class="n">current</span><span class="o">-</span> <span class="n">newCurrent</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">didSet</span> <span class="p">{</span> <span class="c1">// do somthing afther value assignment</span>
+          <span class="k">if</span> <span class="n">current</span> <span class="o">==</span> <span class="kt">LightBulb</span><span class="o">.</span><span class="n">maxCurrent</span> <span class="p">{</span> 
+              <span class="nf">print</span><span class="p">(</span><span class="s">"current get to maximum point"</span><span class="p">)</span>
+              <span class="p">}</span>
+            <span class="c1">// oldValue  </span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">bulb</span> <span class="o">=</span> <span class="kt">LightBulb</span><span class="p">()</span>
+<span class="n">bulb</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">bulb</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">bulb</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="mi">40</span>
+</code></pre></div></div>
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h4 id="lazy-property">Lazy Property</h4>
+<ul>
+  <li><code class="highlighter-rouge">lazy</code>: only compute once and remember the value, won’t re-compute if called again.</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ClosedRange</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="c1">// note the =</span>
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">sum</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">res</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"run"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="k">self</span><span class="o">.</span><span class="n">start</span><span class="o">...</span><span class="k">self</span><span class="o">.</span><span class="n">end</span><span class="p">{</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">return</span>
+    <span class="p">}()</span> <span class="c1">// don't forget ()</span>
+
+    <span class="nf">init</span><span class="p">?(</span><span class="nv">start</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Int</span><span class="p">){</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// example</span>
+<span class="k">if</span> <span class="k">let</span> <span class="nv">range</span> <span class="o">=</span> <span class="kt">ClosedRange</span><span class="p">(</span><span class="nv">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="mi">10_000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">range</span><span class="o">.</span><span class="n">width</span> <span class="c1">//1001</span>
+    <span class="n">range</span><span class="o">.</span><span class="n">sum</span> <span class="c1">// will print out "run"</span>
+    <span class="n">range</span><span class="o">.</span><span class="n">sum</span> <span class="c1">// </span>
+    <span class="n">range</span><span class="o">.</span><span class="n">sum</span> <span class="c1">// </span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h4 id="accessing">Accessing</h4>
+
+<h4 id="local-variables">Local Variables</h4>
+
+<p>Local variables and constants only exist within the scope of a function.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">doWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">localStringVariable</span> <span class="o">=</span> <span class="s">"Some local string variable."</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">doSomething</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="n">localStringVariable</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<p>The general rule of thumb: Clarity and brevity are both important, but clarity should never be sacrificed for brevity.</p>
+
+<h4 id="functions-and-properties">Functions and Properties</h4>
+
+<p>These both use <code class="highlighter-rouge">camelCase</code> where the first letter of the first word is lowercase and the first letter of each additional word is capitalized.</p>
+
+<h4 id="class-names-and-protocols">Class names and Protocols</h4>
+
+<p>These both use <code class="highlighter-rouge">CapitalCase</code> where the first letter of every word is capitalized.</p>
+
+<h3 id="enums">Enums</h3>
+
+<p>The options in an enum should be <code class="highlighter-rouge">lowerCamelCased</code></p>
+
+<h4 id="functions-1">Functions</h4>
+
+<p>These should use verbs if they perform some action (e.g. <code class="highlighter-rouge">performInBackground</code>).  You should be able to infer what is happening, what arguments a function takes, or what is being returned just by reading a function signature.</p>
+
+<p>Example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Correct</span>
+<span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">from</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">Point</span><span class="p">,</span> <span class="n">to</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Point</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="c1">// Incorrect (likely too expressive, but arguable)</span>
+<span class="kd">func</span> <span class="nf">moveBetweenPoints</span><span class="p">(</span><span class="n">from</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">Point</span><span class="p">,</span> <span class="n">to</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Point</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="c1">// Incorrect (not expressive enough and lacking argument clarity)</span>
+<span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Point</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Point</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="closures">Closures</h2>
+
+<p>Closures in Swift are similar to blocks in Objective-C and are essentially chunks of code, typically organized within a <code class="highlighter-rouge">{}</code> clause, that are passed between functions or to execute code as a callback within a function. Swift’s <code class="highlighter-rouge">func</code> functions are actually just a special case of a closure in use.</p>
+
+<h4 id="syntax">Syntax</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">returnType</span> <span class="k">in</span>
+    <span class="n">statements</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="examples">Examples</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Map just iterates over the array and performs whatever is in the closure on each item</span>
+<span class="k">let</span> <span class="nv">people</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Rob"</span><span class="p">,</span> <span class="s">"Jimbob"</span><span class="p">,</span> <span class="s">"Cletus"</span><span class="p">]</span>
+<span class="n">people</span><span class="o">.</span><span class="nf">map</span><span class="p">({</span>
+    <span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="k">in</span>
+    <span class="s">"Oh hai, </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">..."</span>
+<span class="p">})</span>
+<span class="c1">// Oh hai, Rob</span>
+<span class="c1">// Oh hai, Jimbob</span>
+<span class="c1">// Oh hai, Cletus</span>
+
+<span class="c1">// Closure for alphabetically reversing an array of names, where sorted is a Swift library function</span>
+<span class="k">let</span> <span class="nv">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Francesca"</span><span class="p">,</span> <span class="s">"Joe"</span><span class="p">,</span> <span class="s">"Bill"</span><span class="p">,</span> <span class="s">"Sally"</span><span class="p">,</span> <span class="p">]</span>
+<span class="k">var</span> <span class="nv">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span> <span class="p">(</span><span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+<span class="p">}</span>
+<span class="c1">// Or on a single line:</span>
+<span class="n">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span><span class="p">{</span> <span class="p">(</span><span class="nv">s1</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">s2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or because Swift can infer the Bool type:</span>
+<span class="n">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or because the return statement is implied:</span>
+<span class="n">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or even shorter using shorthand argument names, such as $0, $1, $2, etc.:</span>
+<span class="n">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
+<span class="c1">// Or just ridiculously short because Swift's String greater-than operator implementation exactly matches this function definition:</span>
+<span class="n">reversed</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="nf">sorted</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If the closure is the last parameter to the function, you can also use the trailing closure pattern. This is especially useful when the closure code is especially long and you’d like some extra space to organize it:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// function body goes here</span>
+<span class="p">}</span>
+
+<span class="c1">// Instead of calling like this:</span>
+<span class="nf">someFunctionThatTakesAClosure</span><span class="p">({</span>
+    <span class="c1">// closure's body goes here</span>
+<span class="p">})</span>
+
+<span class="c1">// You can use trailing closure like this:</span>
+<span class="nf">someFunctionThatTakesAClosure</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// trailing closure's body goes here</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h4 id="capturing-values">Capturing Values</h4>
+
+<p>A closure can capture constants and variables from the surrounding context in which it is defined. The closure can then refer to and modify the values of those constants and variables from within its body, even if the original scope that defined the constants and variables no longer exists.</p>
+
+<p>In Swift, the simplest form of a closure that can capture values is a nested function, written within the body of another function. A nested function can capture any of its outer function’s arguments and can also capture any constants and variables defined within the outer function.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="n">runningTotal</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">incrementor</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate a variable to say that they can be used within the nested function. Swift also handles all memory management involved in disposing of variables when they are no longer needed by the function.</p>
+
+<h4 id="capturing-self">Capturing Self</h4>
+
+<p>If you create a closure that references <code class="highlighter-rouge">self.*</code> it will capture <code class="highlighter-rouge">self</code> and retain a strong reference to it. This is sometimes the intended behavior, but often could lead to retain cycles where both objects won’t get deallocated at the end of their lifecycles.</p>
+
+<p>The two best options are to use <code class="highlighter-rouge">unowned</code> or <code class="highlighter-rouge">weak</code>. This might look a bit messy, but saves a lot of headache.</p>
+
+<p>Use <code class="highlighter-rouge">unowned</code> when you know the closure will only be called if <code class="highlighter-rouge">self</code> still exists, but you don’t want to create a strong (retain) reference.</p>
+
+<p>Use <code class="highlighter-rouge">weak</code> if there is a chance that <code class="highlighter-rouge">self</code> will not exist, or if the closure is not dependent upon <code class="highlighter-rouge">self</code> and will run without it. If you do use <code class="highlighter-rouge">weak</code> also remember that <code class="highlighter-rouge">self</code> will be an optional variable and should be checked for existence.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">typealias</span> <span class="kt">SomeClosureType</span> <span class="o">=</span> <span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span>
+
+<span class="kd">class</span> <span class="kt">SomeClass</span> <span class="p">{</span>
+    <span class="kd">fileprivate</span> <span class="k">var</span> <span class="nv">currentValue</span> <span class="o">=</span> <span class="s">""</span>
+
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// Retained self</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">currentValue</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">[</span><span class="k">unowned</span> <span class="k">self</span><span class="p">]</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// Not retained, but expected to exist</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">currentValue</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="p">}</span>
+
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">value</span> <span class="k">in</span> <span class="c1">// Not retained, not expected to exist</span>
+            <span class="c1">// Or, alternatively you could do</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">sSelf</span> <span class="o">=</span> <span class="k">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+            <span class="c1">// Or, alternatively use `self?` without the guard</span>
+            <span class="n">sSelf</span><span class="o">.</span><span class="n">currentValue</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">someMethod</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="kt">SomeClosureType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">closure</span><span class="p">(</span><span class="s">"Hai"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Reference: <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html">Apple: Automatic Reference Counting</a></p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="generics">Generics</h2>
+
+<p>Coming soon…</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="control-statements">Control Statements</h2>
+
+<p>Swift uses all of the same control statements that other languages have:</p>
+
+<h4 id="if-else-if-else">If-Else If-Else</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">someTestCondition</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the condition is true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">someOtherTestCondition</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the other test condition is true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the prior conditions are false</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see, parentheses are optional.</p>
+
+<h4 id="ternary-operators">Ternary Operators</h4>
+
+<p>The shorthand notation for an <code class="highlighter-rouge">if-else</code> statement is a ternary operator of the form: <code class="highlighter-rouge">someTestCondition ? doIfTrue : doIfFalse</code></p>
+
+<p>Example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">stringForTrueOrFalse</span><span class="p">(</span><span class="nv">trueOrFalse</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">trueOrFalse</span> <span class="p">?</span> <span class="s">"True"</span> <span class="p">:</span> <span class="s">"False"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="nil-coalescing-operators">Nil Coalescing Operators</h4>
+
+<p>In Swift, we need to consider the use of <code class="highlighter-rouge">optional</code> values. One very basic way to handle <code class="highlighter-rouge">nil</code> cases is with an <code class="highlighter-rouge">if-else</code> statement:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">stringForOptionalExistence</span><span class="p">(</span><span class="nv">optionalValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="n">optionalValue</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">optionalValue</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Empty"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this particular case, we are returning <code class="highlighter-rouge">optionalValue</code> if it is not <code class="highlighter-rouge">nil</code>, and <code class="highlighter-rouge">"Empty"</code> if <code class="highlighter-rouge">optionalValue</code> is <code class="highlighter-rouge">nil</code>. The shorthand notation for this type of <code class="highlighter-rouge">if(!=nil)-else</code> statement is a nil coalescing operator of the form: <code class="highlighter-rouge">optionalValue ?? nonOptionalValue</code></p>
+
+<p>Example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">stringForOptionalExistence</span><span class="p">(</span><span class="nv">optionalValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">optionalValue</span> <span class="p">??</span> <span class="s">"Empty"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="for-loops">For Loops</h4>
+
+<p>Swift enables you to use ranges inside of <code class="highlighter-rouge">for</code> loops now:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> times 5 is </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Or if you don't need the value of the index</span>
+<span class="k">let</span> <span class="nv">base</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">power</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">answer</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">power</span> <span class="p">{</span>
+    <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">base</span><span class="se">)</span><span class="s"> to the power of </span><span class="se">\(</span><span class="n">power</span><span class="se">)</span><span class="s"> is </span><span class="se">\(</span><span class="n">answer</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// prints "3 to the power of 10 is 59049"</span>
+</code></pre></div></div>
+
+<h4 id="enumerating-arrays--dictionaries">Enumerating arrays &amp; dictionaries</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// We explicitly cast to the Movie class from AnyObject class</span>
+<span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="k">as</span> <span class="p">[</span><span class="kt">Movie</span><span class="p">]</span> <span class="p">{</span>
+    <span class="c1">// Code to execute each time</span>
+<span class="p">}</span>
+
+<span class="c1">// Enumerating simple array</span>
+<span class="k">let</span> <span class="nv">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">,</span> <span class="s">"Jack"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">names</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Enumerating simple dictionary</span>
+<span class="k">let</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"spider"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"ant"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">animalName</span><span class="p">,</span> <span class="n">legCount</span><span class="p">)</span> <span class="k">in</span> <span class="n">numberOfLegs</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">animalName</span><span class="se">)</span><span class="s">s have </span><span class="se">\(</span><span class="n">legCount</span><span class="se">)</span><span class="s"> legs"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If you need to cast to a certain object type, see the earlier discussion about the <code class="highlighter-rouge">as!</code> and <code class="highlighter-rouge">as?</code> keywords.</p>
+
+<h4 id="while-loop">While Loop</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="n">someTestCondition</span> <span class="p">{</span>
+   <span class="c1">// Code to execute while the condition is true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="repeat-while-loop">Repeat While Loop</h4>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">repeat</span> <span class="p">{</span>
+    <span class="c1">// Code to execute while the condition is true</span>
+<span class="p">}</span> <span class="k">while</span> <span class="n">someTestCondition</span>
+</code></pre></div></div>
+
+<h4 id="switch">Switch</h4>
+
+<p>Switch statements are often used in place of <code class="highlighter-rouge">if</code> statements if there is a need to test if a certain variable matches the value of another constant or variable.  For example, you may want to test if an error code integer you received matches an existing constant value or if it’s a new error code.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="n">errorStatusCode</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">network</span><span class="p">:</span>
+        <span class="c1">// Code to execute if it matches</span>
+
+     <span class="k">case</span> <span class="o">.</span><span class="nv">wifi</span><span class="p">:</span>
+        <span class="c1">// Code to execute if it matches</span>
+
+     <span class="k">default</span><span class="p">:</span>
+        <span class="c1">// Code to execute if nothing else matched</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Switch statements in Swift do not fall through the bottom of each case and into the next one by default. Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit <code class="highlighter-rouge">break</code> statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.</p>
+
+<h4 id="exiting-loops">Exiting Loops</h4>
+
+<p>Although <code class="highlighter-rouge">break</code> is not required in Swift, you can still use a <code class="highlighter-rouge">break</code> statement to match and ignore a particular case, or to break out of a matched case before that case has completed its execution.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">return</code> : Stops execution and returns to the calling function.  It can also be used to return a value from a function.</li>
+  <li><code class="highlighter-rouge">break</code> : Used to stop the execution of a loop.</li>
+</ul>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="extension">Extension</h2>
+<p>Extensions add new functionality to an existing class, structure, enumeration or protocol type</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="c1">// Extending String type to calculate if a String instance is truthy of falsy</span>
+    <span class="k">var</span> <span class="nv">boolValue</span><span class="p">:</span><span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">self</span> <span class="o">==</span> <span class="s">"1"</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">isTrue</span> <span class="o">=</span> <span class="s">"0"</span><span class="o">.</span><span class="n">boolValue</span>
+</code></pre></div></div>
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+<h2 id="protocol">Protocol</h2>
+<p>Define</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="c1">// definitions</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> 
+    <span class="k">var</span> <span class="nv">mustBeSettable</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">doesNotNeedToBeSettable</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">dance</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Double</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">someTypeMethod</span><span class="p">()</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">toggle</span><span class="p">()</span> <span class="c1">// modify (or mutate) the instance it belongs to</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">someParameter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="c1">// require specific initializers </span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Usage</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+<span class="kd">struct</span> <span class="kt">UserInfo</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">loginCount</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">UserInfo</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"</span><span class="se">\(</span><span class="n">username</span><span class="se">)</span><span class="s"> has tried to login </span><span class="se">\(</span><span class="n">loginCount</span><span class="se">)</span><span class="s"> time(s)"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="protocol-extension">Protocol Extension</h3>
+<p>Protocols can be extended to provide method, initializer, subscript, and computed property implementations to conforming types.</p>
+
+<p><strong>Very Important and Useful:</strong>  <code class="highlighter-rouge">Implementation</code> to any <code class="highlighter-rouge">method</code> or computed <code class="highlighter-rouge">property</code> requirement of that <code class="highlighter-rouge">protocol</code> can only be in <code class="highlighter-rouge">extension</code></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">RandomNumberGenerator</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">randomBool</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>By creating an extension on the protocol, all conforming types automatically gain this method implementation without any additional modification.</p>
+
+<p>You can use protocol extensions to provide a default implementation to any method or computed property requirement of that protocol.</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">PrettyTextRepresentable</span>  <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">prettyTextualDescription</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">textualDescription</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+<h2 id="error-handling">Error Handling</h2>
+
+<p>Representing an Error</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">BeverageMachineError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">invalidSelection</span>
+    <span class="k">case</span> <span class="n">insufficientFunds</span>
+    <span class="k">case</span> <span class="n">outOfStock</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">selectBeverage</span> <span class="p">(</span><span class="n">_</span> <span class="nv">selection</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+    <span class="k">return</span> <span class="s">"Waiting for beverage..."</span>
+<span class="p">}</span>
+
+<span class="c1">// us do...catch to handle error throwed by func</span>
+<span class="k">let</span> <span class="nv">message</span><span class="p">:</span><span class="kt">String</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="k">try</span> <span class="nf">selectBeverage</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">BeverageMachineError</span><span class="o">.</span><span class="n">invalidSelection</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Invalid selection"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">BeverageMachineError</span><span class="o">.</span><span class="n">insufficientFunds</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Insufficient Funds"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">BeverageMachineError</span><span class="o">.</span><span class="n">outOfStock</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Out of Stock"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">print</span> <span class="p">(</span><span class="s">"Generic error"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// if throw error, return nil</span>
+<span class="k">let</span> <span class="nv">message</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="nf">selectBeverage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">// if throw error, get a runtime error</span>
+<span class="k">let</span> <span class="nv">message</span> <span class="o">=</span> <span class="k">try!</span> <span class="nf">selectBeverage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="passing-information">Passing Information</h2>
+
+<p>Coming soon…</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="user-defaults">User Defaults</h2>
+
+<p>User defaults are basically a way of storing simple preference values which can be saved and restored across app launches.  It is not meant to be used as a data storage layer, like Core Data or sqlite.</p>
+
+<h3 id="storing-values">Storing Values</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">userDefaults</span> <span class="o">=</span> <span class="kt">UserDefaults</span><span class="o">.</span><span class="n">standard</span>
+<span class="n">userDefaults</span><span class="o">.</span><span class="nf">setValue</span><span class="p">(</span><span class="s">"Some Value"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"RPSomeUserPreference"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="retrieving-values">Retrieving Values</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">userDefaults</span> <span class="o">=</span> <span class="kt">UserDefaults</span><span class="o">.</span><span class="n">standard</span>
+<span class="k">let</span> <span class="nv">someValue</span> <span class="o">=</span> <span class="n">userDefaults</span><span class="o">.</span><span class="nf">value</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"RPSomeUserPreference"</span><span class="p">)</span> <span class="k">as</span> <span class="kt">AnyObject</span><span class="p">?</span>
+</code></pre></div></div>
+
+<p>There are also other convenience functions on <code class="highlighter-rouge">UserDefaults</code> instances such as <code class="highlighter-rouge">bool(forKey:...)</code>, <code class="highlighter-rouge">string(forKey:...)</code>, etc.</p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="common-patterns">Common Patterns</h2>
+
+<p>For a comprehensive list of design patterns, as established by the Gang of Four, look here: <a href="https://github.com/ochococo/Design-Patterns-In-Swift">Design Patterns in Swift</a></p>
+
+<h3 id="singletons">Singletons</h3>
+
+<p>Singleton’s are a special kind of class where only one instance of the class exists for the current process. They are a convenient way to share data between different parts of an app without creating global variables or having to pass the data around manually, but they should be used sparingly since they often create tighter coupling between classes.</p>
+
+<p>To turn a class into a singleton, you use the following implementation where the function name is prefixed with <code class="highlighter-rouge">shared</code> plus another word which best describes your class.  For example, if the class is a network or location manager, you would name the function <code class="highlighter-rouge">sharedManager</code> instead of <code class="highlighter-rouge">sharedInstance</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MyClass</span> <span class="p">{</span>
+
+    <span class="c1">// MARK: - Instantiation</span>
+
+    <span class="c1">// Naming convention:</span>
+    <span class="c1">// sharedInstance, sharedManager, sharedController, etc.</span>
+    <span class="c1">// depending on the class type</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">sharedInstance</span> <span class="o">=</span> <span class="kt">MyClass</span><span class="p">()</span>
+
+    <span class="c1">// This prevents others from using the default '()' initializer for this class.</span>
+    <span class="kd">private</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="k">var</span> <span class="nv">isReady</span> <span class="o">=</span> <span class="kc">true</span>
+
+    <span class="c1">// More class code here</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation</strong>: The static constant <code class="highlighter-rouge">sharedInstance</code> is run as <code class="highlighter-rouge">dispatch_once</code> the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from <a href="http://krakendev.io/blog/the-right-way-to-write-a-singleton">here</a>.</p>
+
+<p><strong>Usage</strong>: You would get a reference to that singleton class in another class with the following code:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Now you could do</span>
+<span class="k">let</span> <span class="nv">myClass</span> <span class="o">=</span> <span class="kt">MyClass</span><span class="o">.</span><span class="n">sharedInstance</span>
+<span class="k">let</span> <span class="nv">answer</span> <span class="o">=</span> <span class="n">myClass</span><span class="o">.</span><span class="n">isReady</span> <span class="p">?</span> <span class="s">"Yep!"</span> <span class="p">:</span> <span class="s">"Nope!"</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Are you ready to rock and roll? </span><span class="se">\(</span><span class="n">answer</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>
+
+<h2 id="unicode-support">Unicode Support</h2>
+
+<p>Although I don’t recommend this, Swift will compile even if you use emoji’s in your code since it offers Unicode support.</p>
+
+<p>More info from Apple <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html">here</a></p>
+
+<p><a href="#swift-3-cheat-sheet">Back to top</a></p>

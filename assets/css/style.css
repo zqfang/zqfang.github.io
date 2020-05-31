@@ -411,11 +411,9 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .a
 
 .search-result-highlight { color: #2e0137; font-weight: bold; }
 
-table { display: block !important; overflow-x: auto; white-space: nowrap; font-size: 75%; border: none; }
+table { display: block !important; white-space: nowrap; font-size: 110%; border: none; }
 
 table th { text-align: center !important; }
-
-table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 ::-webkit-scrollbar { width: 14px; height: 18px; }
 
@@ -440,7 +438,7 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 .language-python + .language-plaintext pre { background-color: white !important; }
 
-.input_area pre, .input_area div { margin-bottom: 2rem !important; margin-top: 1.5rem !important; padding-bottom: 0 !important; padding-top: 0 !important; background: #323443 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace; border-radius: 5px; font-size: 100%; }
+.input_area pre, .input_area div { margin-bottom: 2rem !important; margin-top: 1.5rem !important; padding-bottom: 0 !important; padding-top: 0 !important; background: #323443 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace; border-radius: 5px; font-size: 110%; }
 
 .output_area pre, .output_area div { margin-bottom: 1rem !important; margin-top: 1rem !important; padding-bottom: 0 !important; padding-top: 0 !important; }
 

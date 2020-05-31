@@ -1,6 +1,6 @@
 ---
 title: 'C++ Notes'
-date: 2020-05-30
+date: 2020-05-31
 categories: ["Coding"]
 comments: true
 excerpt: "Get answers for C/C++ within ? s"
@@ -13,11 +13,10 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 [char to Int](#char-to-int)  
 [Pointer](#pointer)  
 [Return Reference](#return-reference)  
-[Array as Argument](#array)
+[Array as Argument](#array)  
 [Object Instantization](#object-instantization)  
-
 [Const](#const)  
-[Friend](#friend)
+[Friend](#friend)  
 [Singleton](#singleton)  
 
 
@@ -144,7 +143,6 @@ b. `() const`
  - could not change class variable, except static 
  - could get variable
 ```cpp
-#include<iostream>
 class Number {
 private:
   int a;
@@ -161,7 +159,6 @@ public:
 	}
 };
 
-
 const Number n;
 n.set(); // Error
 n.set2(); // OK
@@ -177,7 +174,7 @@ c. `() const` overloading
 
 [Back to top](#table-of-contents)
 ## Array
-### 1. Array as `formal arguments`  
+### Array as `formal arguments`  
 Array could not copy to anther Array directly, so `call-by-value` is not allowed.  
 So, use array pointer:  
 ```cpp
@@ -192,9 +189,9 @@ multi-dimension array
 void print(int (*p)[3],int rowsize);
 void print(int (p[][3],int rowsize);
 ``` 
-We use pointer to represent Array, but don't know the dimension. So, need an extra argument to specify it explicitly.
+When use pointer to an Array, the dimension is unknown. So, need an extra argument to specify it explicitly.
 
-Example
+Example:
 ```cpp
 void print1(int (*p)[3])
 {
@@ -208,9 +205,9 @@ void print2(int p[][3])
 int a[2][3]={{1,2},{3,4}};
 print1(a);
 print2(a);
-return 0;
 ``` 
 
+[Back to top](#table-of-contents)
 ## Object Instantization
 
 1. without new
@@ -262,8 +259,7 @@ private:
 
 // without the friend keyword 
 int getA_a(A &_classA)
-{   
-    //access member by formal arguments
+{   //access member by formal arguments
 	return _classA.a; 
 }
 
@@ -314,11 +310,11 @@ class Y {
     friend char* X::foo(int); // members of other classes can be friends too
     friend X::X(char), X::~X(); // constructors and destructors can be friends
 };
-// friend declaration does not declare a member function
+
 // this operator<< still needs to be defined, as a non-member
 std::ostream& operator<<(std::ostream& out, const Y& y)
-{
-    return out << y.data; // can access private member Y::data
+{   // can access private member Y::data
+    return out << y.data; 
 }
 ```
 
@@ -345,7 +341,8 @@ class Singleton
             return instance;
         }
 };
-
+```
+```cpp
 /* NULL, because instance will be initialized on demand. */
 Singleton* Singleton::instance = 0;
 

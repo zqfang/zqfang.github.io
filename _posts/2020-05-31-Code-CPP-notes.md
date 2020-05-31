@@ -92,7 +92,7 @@ RMB RMB::operator++(int)
 An Array could not copy to anther Array directly, so `call-by-value` is not allowed.  
 So, use array pointer:
 ```cpp
-//tthese are same 
+//these are same 
 void print(const int*);
 void print(const int[]);
 void print(const int[5]);
@@ -117,13 +117,10 @@ int a[2][3]={ {1,2},{3,4} };
 print1(a); // 4
 print2(a); // 1
 
-int b[2][4]={{1,2,5,6},{3,4,7,8}};
+int b[2][4]={ {1,2,5,6},{3,4,7,8} };
 print1(b); // error
 ```
 [Back to top](#table-of-contents)
-
-
-
 
 
 ## Const

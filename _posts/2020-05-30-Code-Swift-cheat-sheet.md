@@ -39,6 +39,8 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.
 * [User Defaults](#user-defaults)
 * [Common Patterns](#common-patterns)
 * [Unicode Support](#unicode-support)
+
+
 ## Code Documentation
 Two ways of commenting: 
   - //

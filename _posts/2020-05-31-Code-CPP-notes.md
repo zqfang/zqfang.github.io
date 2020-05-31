@@ -17,7 +17,9 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 [Object Instantization](#object-instantization)  
 [Const](#const)  
 [Friend](#friend)  
-[Singleton](#singleton)  
+[Design Pattern](#design-pattern)  
+  - [Singleton](#singleton)  
+  - [Delegate](#delegate)
 
 
 
@@ -48,7 +50,7 @@ int test[200] = {0};
 Test['A'] = 1; // legal
 Test['b'] = 2;  // legal
 ```
-
+[Back to top](#table-of-contents)
 ## Pointer
 Pointer syntax
 **Rule:** read from right to left
@@ -68,6 +70,9 @@ Declare two pointers
 int* a, b; // equal to int* a; int b;
 int *a, *b; // correct way
 ```
+
+[Back to top](#table-of-contents)
+
 ## Return Reference
 When Return Reference
 - return ref if given object's ref/pointer. 
@@ -246,8 +251,6 @@ std::unique_ptr<ClassName> object = std::make_unique<ClassName>(param);
 ```
 [Back to top](#table-of-contents)
 
-
-
 ## Friend
 The `friend` declaration appears in a `class body` and grants a `function` or `another class` **access** to `private` and `protected` **members** of the class where the friend declaration appears.
 
@@ -281,7 +284,7 @@ A _classA(3);
 std::cout<<getA_a(_classA); // 3
 ```
 
-
+[Back to top](#table-of-contents)
 ### 2. `friend class` 
 
 Delare inside class, define outside
@@ -315,6 +318,8 @@ B _classB(3);
 C _classC; // an instance of a friend class
 _classC.getB_b(_classB);
 ```
+
+[Back to top](#table-of-contents)
 ### 3. Others: friend ostream, friend template ...
 
 ```cpp
@@ -335,8 +340,8 @@ std::ostream& operator<<(std::ostream& out, const Y& y)
 
 [Back to top](#table-of-contents)
 
-## Singleton
-
+## Design Pattern
+### Singleton
 Define
 ```cpp
 class Singleton
@@ -374,5 +379,89 @@ int main()
     std::cout << r << std::endl;
 }
 ```
+
+[Back to top](#table-of-contents)
+### Delegate
+Don't confuse with delegate constructor!!!
+
+
+A delegate is a class that wraps a `pointer` or `reference` to an `object instance`, a member method of that object's class to be called on that object instance, and `provides a method to trigger` that call.
+
+Example 1
+```cpp
+#include <iostream>
+using namespace std;
+
+class RealPrinter {
+public:
+    void print() { std::cout << "real-printer" << std::endl; }
+};
+
+class Printer {
+public:
+    Printer() : p(RealPrinter()) {}
+    void print() { p.print(); }
+private:
+    RealPrinter p;
+};
+
+int main()
+{
+    Printer* printer = new Printer();
+    printer->print();
+}
+```
+
+Example 2:
+```cpp
+#include <iostream>
+class I //interface {
+public:
+    virtual void f() = 0;
+    virtual void g() = 0;
+};
+
+class A : public I {
+public:
+    void f(){std::cout << "A::f()" << std::endl;}
+    void g(){std::cout << "A::g()" << std::endl;}
+};
+
+class B : public I {
+public:
+    void f(){std::cout << "B::f()" << std::endl;}
+    void g(){std::cout << "B::g()" << std::endl;}
+};
+
+
+class C : public I {
+public:
+    C() { m_i = new A();/*delegation*/ }
+
+    void f(){ m_i->f(); }
+    void g(){ m_i->g(); }
+
+    // normal attributes
+    void toA(){ m_i = new A(); }
+    void toB(){ m_i = new B(); }
+
+private:
+    I* m_i;
+}
+
+int main()
+{
+    C cc = C();
+    cc.f();     // output: A::f()
+    cc.g();     // output: A::g()
+
+    cc.toB();
+    cc.f();     // output: B::f()
+    cc.g();     // output: B::g()
+}
+```
+
+### Composite
+Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.
 
 [Back to top](#table-of-contents)

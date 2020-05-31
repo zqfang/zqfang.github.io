@@ -25,12 +25,14 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 
 1. `Char` is `ASCII`
 C store `Char` as `ASCII` by default. So, `Char` is equal to ASCII code.
+
 ```cpp
 char a = 'A'; // 65
 int c = a; //c = 65
 ```
 
 2. `Char` to `Int`, and vice versa
+
 ```cpp
 char c='5'
 int res = c -'0' ; // 5
@@ -40,6 +42,7 @@ char res = I + '0'; // '5'
 ```
 
 3. `Char` as subscript of array: legal!
+
 ```cpp
 int test[200] = {0};
 Test['A'] = 1; // legal
@@ -70,6 +73,7 @@ int *a, *b; // correct way
 When Return Reference
 - return ref if given object's ref/pointer. 
 - return value if temp object created 
+
 ```cpp
 // ref
 RMB& RMB::operator++()
@@ -157,6 +161,7 @@ const int * const p4;
 a. `const object` 
 - could not change class variable
 - could not call `non-const` function
+
 ```cpp
 class Number
 {
@@ -176,8 +181,9 @@ n.get2(); // OK
 ```
 
 b. `() const`  
- - could not change class variable, except static 
- - could get variable
+- could not change class variable, except static 
+- could get variable
+
 ```cpp
 class Number {
 private:
@@ -213,22 +219,27 @@ c. `() const` overloading
 ## Object Instantization
 
 1. without new
+
 stack
 ```cpp
 ClassName object(param) //  A a(1);  
 ClassName object2 =  ClassName(param); //  A b = A(1);
 ```
 2. with new
+
+heap
 ```cpp
 ClassName *object = new ClassName(param);//A *a = new A();
 delete object;
 ```
 3. copy constructor
+
 ```cpp
 // 
 ```
 
 4. Smart Pointer
+
 ```cpp 
 std::unique_ptr<ClassName> object (new ClassName(param));
 // recommend this way of instantization
@@ -240,8 +251,8 @@ std::unique_ptr<ClassName> object = std::make_unique<ClassName>(param);
 
 ## Friend
 The `friend` declaration appears in a `class body` and grants a `function` or `another class` **access** to `private` and `protected` **members** of the class where the friend declaration appears.
-### `friend function`: 
-Declare anywhere inside a class, but define outside
+
+`friend function`: Declare anywhere inside a class, but define outside
 ```cpp
 // function
 friend <type> <Name>(<arguments>);
@@ -270,9 +281,7 @@ std::cout<<getA_a(_classA); // 3
 ```
 
 
-### `friend class`: 
-
-delare inside class, define outside
+`friend class`: Delare inside class, define outside
 ```cpp
 // class
 friend class <Name>;
@@ -304,6 +313,8 @@ C _classC; // an instance of a friend class
 _classC.getB_b(_classB);
 ```
 ### Others
+
+friend ostream
 ```cpp
 class Y {
     int data; 

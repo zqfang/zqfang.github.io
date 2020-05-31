@@ -9,7 +9,11 @@
 <a href="#object-instantization">Object Instantization</a><br />
 <a href="#const">Const</a><br />
 <a href="#friend">Friend</a><br />
-<a href="#singleton">Singleton</a></p>
+<a href="#design-pattern">Design Pattern</a></p>
+<ul>
+  <li><a href="#singleton">Singleton</a></li>
+  <li><a href="#delegate">Delegate</a></li>
+</ul>
 
 <h2 id="char-to-int">Char to Int</h2>
 
@@ -35,7 +39,7 @@
 <span class="n">Test</span><span class="p">[</span><span class="sc">'A'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// legal</span>
 <span class="n">Test</span><span class="p">[</span><span class="sc">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// legal</span>
 </code></pre></div></div>
-
+<p><a href="#table-of-contents">Back to top</a></p>
 <h2 id="pointer">Pointer</h2>
 <p>Pointer syntax
 <strong>Rule:</strong> read from right to left</p>
@@ -53,6 +57,9 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// equal to int* a; int b;</span>
 <span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span> <span class="c1">// correct way</span>
 </code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>
+
 <h2 id="return-reference">Return Reference</h2>
 <p>When Return Reference</p>
 <ul>
@@ -253,6 +260,7 @@ So, use array pointer:</p>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">getA_a</span><span class="p">(</span><span class="n">_classA</span><span class="p">);</span> <span class="c1">// 3</span>
 </code></pre></div></div>
 
+<p><a href="#table-of-contents">Back to top</a></p>
 <h3 id="2-friend-class">2. <code class="highlighter-rouge">friend class</code></h3>
 
 <p>Delare inside class, define outside</p>
@@ -284,6 +292,8 @@ So, use array pointer:</p>
 <span class="n">C</span> <span class="n">_classC</span><span class="p">;</span> <span class="c1">// an instance of a friend class</span>
 <span class="n">_classC</span><span class="p">.</span><span class="n">getB_b</span><span class="p">(</span><span class="n">_classB</span><span class="p">);</span>
 </code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>
 <h3 id="3-others-friend-ostream-friend-template-">3. Others: friend ostream, friend template …</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Y</span> <span class="p">{</span>
@@ -303,8 +313,8 @@ So, use array pointer:</p>
 
 <p><a href="#table-of-contents">Back to top</a></p>
 
-<h2 id="singleton">Singleton</h2>
-
+<h2 id="design-pattern">Design Pattern</h2>
+<h3 id="singleton">Singleton</h3>
 <p>Define</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Singleton</span>
 <span class="p">{</span>
@@ -340,5 +350,86 @@ So, use array pointer:</p>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">r</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>
+<h3 id="delegate">Delegate</h3>
+<p>Don’t confuse with delegate constructor!!!</p>
+
+<p>A delegate is a class that wraps a <code class="highlighter-rouge">pointer</code> or <code class="highlighter-rouge">reference</code> to an <code class="highlighter-rouge">object instance</code>, a member method of that object’s class to be called on that object instance, and <code class="highlighter-rouge">provides a method to trigger</code> that call.</p>
+
+<p>Example 1</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RealPrinter</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"real-printer"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Printer</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">Printer</span><span class="p">()</span> <span class="o">:</span> <span class="n">p</span><span class="p">(</span><span class="n">RealPrinter</span><span class="p">())</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span> <span class="p">}</span>
+<span class="nl">private:</span>
+    <span class="n">RealPrinter</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Printer</span><span class="o">*</span> <span class="n">printer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Printer</span><span class="p">();</span>
+    <span class="n">printer</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Example 2:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">class</span> <span class="nc">I</span> <span class="c1">//interface {</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">f</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">g</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="err">}</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">f</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A::f()"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="n">g</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A::g()"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">f</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B::f()"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="n">g</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B::g()"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">C</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">C</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">();</span><span class="cm">/*delegation*/</span> <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">f</span><span class="p">(){</span> <span class="n">m_i</span><span class="o">-&gt;</span><span class="n">f</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">g</span><span class="p">(){</span> <span class="n">m_i</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">();</span> <span class="p">}</span>
+
+    <span class="c1">// normal attributes</span>
+    <span class="kt">void</span> <span class="n">toA</span><span class="p">(){</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">toB</span><span class="p">(){</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">B</span><span class="p">();</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="n">I</span><span class="o">*</span> <span class="n">m_i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">C</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">C</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">f</span><span class="p">();</span>     <span class="c1">// output: A::f()</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">g</span><span class="p">();</span>     <span class="c1">// output: A::g()</span>
+
+    <span class="n">cc</span><span class="p">.</span><span class="n">toB</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">f</span><span class="p">();</span>     <span class="c1">// output: B::f()</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">g</span><span class="p">();</span>     <span class="c1">// output: B::g()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="composite">Composite</h3>
+<p>Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.</p>
 
 <p><a href="#table-of-contents">Back to top</a></p>

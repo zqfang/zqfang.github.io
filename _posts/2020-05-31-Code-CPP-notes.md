@@ -193,18 +193,19 @@ When use pointer to an Array, the dimension is unknown. So, need an extra argume
 
 Example:
 ```cpp
-void print1(int (*p)[3])
-{
-    cout<<p[1][1]<<endl;
+void print1(int (*p)[3]) {
+    cout <<p[1][1]>>endl;
 }
-void print2(int p[][3])
-{
-    cout<<p[0][0]<<endl;
+void print2(int p[][3]) {
+  cout<<p[0][0]>>endl;
 }
 
 int a[2][3]={{1,2},{3,4}};
-print1(a);
-print2(a);
+print1(a); // 4
+print2(a); // 1
+
+int b[2][4]={{1,2,5,6},{3,4,7,8}};
+print1(b); // error
 ```
 
 [Back to top](#table-of-contents)

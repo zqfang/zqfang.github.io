@@ -87,6 +87,45 @@ RMB RMB::operator++(int)
 ```
 [Back to top](#table-of-contents)
 
+## Array
+### Array as `formal arguments`  
+An Array could not copy to anther Array directly, so `call-by-value` is not allowed.  
+So, use array pointer:
+```cpp
+//tthese are same 
+void print(const int*);
+void print(const int[]);
+void print(const int[5]);
+```
+multi-dimension array
+```cpp
+void print(const int(*p)[3], int rowsize);
+void print(const int p[][5], int rowsize);
+```
+When use pointer to an Array, the dimension is unknown. So, need an extra argument to specify it explicitly.
+
+Example:
+```cpp
+void print1(int (*p)[3]) {
+    cout<<p[1][1]<<endl;
+}
+void print2(int p[][3]) {
+    cout<<p[0][0]<<endl;
+}
+
+int a[2][3]={ {1,2},{3,4} };
+print1(a); // 4
+print2(a); // 1
+
+int b[2][4]={{1,2,5,6},{3,4,7,8}};
+print1(b); // error
+```
+[Back to top](#table-of-contents)
+
+
+
+
+
 ## Const
 
 ### 1. `const` before or behind type/class, the syntax semantic are same

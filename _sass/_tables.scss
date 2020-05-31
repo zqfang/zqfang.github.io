@@ -6,11 +6,11 @@ table {
   overflow-x: visible;
   display: block !important;
   margin-bottom: 1em;
-  //width: 100%;
+  width: 100%;
   font-family: $global-font-family;
-  font-size: $type-size-6;
-  //border-collapse: collapse;
-  //border: 1px solid $light-gray;
+  font-size: 110%;
+  border-collapse: collapse;
+  border: 1px solid $light-gray;
 
   & + table {
     margin-top: 1em;
@@ -19,13 +19,13 @@ table {
 
 thead {
   background-color: $lighter-gray;
-  //border-bottom: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
 }
 
 th {
   text-overflow:ellipsis;
   overflow:hidden;
-  max-width: none;
+  max-width: 100%;
   padding: 0.5em;
   font-weight: bold;
   text-align: left;

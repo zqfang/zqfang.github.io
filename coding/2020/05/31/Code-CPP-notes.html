@@ -15,25 +15,31 @@
 
 <ol>
   <li><code class="highlighter-rouge">Char</code> is <code class="highlighter-rouge">ASCII</code>
-C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-rouge">ASCII</code> by default. So, <code class="highlighter-rouge">Char</code> is equal to ASCII code.
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="c1">// 65</span>
-<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//c = 65</span>
-</code></pre></div>    </div>
-  </li>
-  <li><code class="highlighter-rouge">Char</code> to <code class="highlighter-rouge">Int</code>, and vice versa
-```cpp
-char c=’5’
-int res = c -‘0’ ; // 5</li>
+C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-rouge">ASCII</code> by default. So, <code class="highlighter-rouge">Char</code> is equal to ASCII code.</li>
 </ol>
 
-<p>int i=5;
-char res = I + ‘0’; // ‘5’</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-3. `Char` as subscript of array: legal!
-```cpp
-int test[200] = {0};
-Test['A'] = 1; // legal
-Test['b'] = 2;  // legal
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="c1">// 65</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//c = 65</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="highlighter-rouge">Char</code> to <code class="highlighter-rouge">Int</code>, and vice versa</li>
+</ol>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span><span class="o">=</span><span class="sc">'5'</span>
+<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span><span class="sc">'0'</span> <span class="p">;</span> <span class="c1">// 5</span>
+
+<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">res</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="sc">'0'</span><span class="p">;</span> <span class="c1">// '5'</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="highlighter-rouge">Char</code> as subscript of array: legal!</li>
+</ol>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">test</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">Test</span><span class="p">[</span><span class="sc">'A'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// legal</span>
+<span class="n">Test</span><span class="p">[</span><span class="sc">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// legal</span>
 </code></pre></div></div>
 <p>This is useful when create <code class="highlighter-rouge">hashmap</code>. e.g. counting chars</p>
 
@@ -58,24 +64,24 @@ Test['b'] = 2;  // legal
 <p>When Return Reference</p>
 <ul>
   <li>return ref if given object’s ref/pointer.</li>
-  <li>return value if temp object created
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ref</span>
+  <li>return value if temp object created</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ref</span>
 <span class="n">RMB</span><span class="o">&amp;</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
-  <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// already existed object, created outside</span>
+    <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// already existed object, created outside</span>
 <span class="p">}</span>
 <span class="c1">// value</span>
 <span class="n">RMB</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">RMB</span> <span class="n">temp</span><span class="p">(</span><span class="n">yuan</span><span class="p">);</span><span class="c1">//create object</span>
-  <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">temp</span><span class="p">;</span><span class="c1">//return a copy of temp</span>
+    <span class="n">RMB</span> <span class="n">temp</span><span class="p">(</span><span class="n">yuan</span><span class="p">);</span><span class="c1">//create object</span>
+    <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">temp</span><span class="p">;</span><span class="c1">//return a copy of temp</span>
 <span class="p">}</span>
-</code></pre></div>    </div>
-    <p><a href="#table-of-contents">Back to top</a></p>
-  </li>
-</ul>
+</code></pre></div></div>
+<p><a href="#table-of-contents">Back to top</a></p>
 
 <h2 id="array">Array</h2>
 <h3 id="array-as-formal-arguments">Array as <code class="highlighter-rouge">formal arguments</code></h3>
@@ -140,49 +146,52 @@ So, use array pointer:</p>
 <p>a. <code class="highlighter-rouge">const object</code></p>
 <ul>
   <li>could not change class variable</li>
-  <li>could not call <code class="highlighter-rouge">non-const</code> function
-```cpp
-class Number
-{
-public:
-  void set(int num) { number = num; }
-  int get() { return number; }
-  int get2() const {return number;}
-  int number = 0;
-};</li>
+  <li>could not call <code class="highlighter-rouge">non-const</code> function</li>
 </ul>
 
-<p>// Example
-const Number n;
-n.number = 1; // Error, n is const
-n.set(1); // Error, n is const, non-const <code class="highlighter-rouge">set()</code>
-n.get(); // Error, non-const <code class="highlighter-rouge">get()</code>
-n.get2(); // OK</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-b. `() const`  
- - could not change class variable, except static 
- - could get variable
-```cpp
-class Number {
-private:
-  int a;
-  static int b;
-  const int c = 20;
-public:
-	void set() {  
-         a = 10; // error when `this` argument has type 'const'
-    void set2() const {
-        b = 20; // OK
-    }         	
-	int get() const {  // OK
-		return a; // did not change a
-	}
-};
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Number</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">set</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="n">number</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">get</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">number</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">get2</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">number</span><span class="p">;}</span>
+    <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
 
-const Number n;
-n.set(); // Error
-n.set2(); // OK
-n.get(); // OK
+<span class="c1">// Example</span>
+<span class="k">const</span> <span class="n">Number</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">n</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Error, n is const</span>
+<span class="n">n</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// Error, n is const, non-const `set()`</span>
+<span class="n">n</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="c1">// Error, non-const `get()`</span>
+<span class="n">n</span><span class="p">.</span><span class="n">get2</span><span class="p">();</span> <span class="c1">// OK</span>
+</code></pre></div></div>
+
+<p>b. <code class="highlighter-rouge">() const</code></p>
+<ul>
+  <li>could not change class variable, except static</li>
+  <li>could get variable</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Number</span> <span class="p">{</span>
+<span class="nl">private:</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+  <span class="k">static</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="nl">public:</span>
+	<span class="kt">void</span> <span class="n">set</span><span class="p">()</span> <span class="p">{</span>  
+         <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// error when `this` argument has type 'const'</span>
+    <span class="kt">void</span> <span class="n">set2</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// OK</span>
+    <span class="p">}</span>         	
+	<span class="kt">int</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>  <span class="c1">// OK</span>
+		<span class="k">return</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// did not change a</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">const</span> <span class="n">Number</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">n</span><span class="p">.</span><span class="n">set</span><span class="p">();</span> <span class="c1">// Error</span>
+<span class="n">n</span><span class="p">.</span><span class="n">set2</span><span class="p">();</span> <span class="c1">// OK</span>
+<span class="n">n</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="c1">// OK</span>
 </code></pre></div></div>
 
 <p>Easy to understand, when pointer <code class="highlighter-rouge">this</code> is const</p>
@@ -196,34 +205,42 @@ n.get(); // OK
 <h2 id="object-instantization">Object Instantization</h2>
 
 <ol>
-  <li>without new
-stack
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="nf">object</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="c1">//  A a(1)</span><span class="p">;</span><span class="err"> </span> 
+  <li>without new</li>
+</ol>
+
+<p>stack</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="nf">object</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="c1">//  A a(1)</span><span class="p">;</span><span class="err"> </span> 
 <span class="n">ClassName</span> <span class="n">object2</span> <span class="o">=</span>  <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span> <span class="c1">//  A b = A(1);</span>
-</code></pre></div>    </div>
-  </li>
-  <li>with new
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="o">*</span><span class="n">object</span> <span class="o">=</span> <span class="k">new</span><span class="err"> </span><span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="c1">//A *a = new A();</span>
+</code></pre></div></div>
+<ol>
+  <li>with new</li>
+</ol>
+
+<p>heap</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="o">*</span><span class="n">object</span> <span class="o">=</span> <span class="k">new</span><span class="err"> </span><span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="c1">//A *a = new A();</span>
 <span class="k">delete</span> <span class="n">object</span><span class="p">;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>copy constructor
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// </span>
-</code></pre></div>    </div>
-  </li>
-  <li>Smart Pointer
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="p">(</span><span class="k">new</span> <span class="nf">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">));</span>
+</code></pre></div></div>
+<ol>
+  <li>copy constructor</li>
+</ol>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// </span>
+</code></pre></div></div>
+
+<ol>
+  <li>Smart Pointer</li>
+</ol>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="p">(</span><span class="k">new</span> <span class="nf">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">));</span>
 <span class="c1">// recommend this way of instantization</span>
 <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span><span class="p">(</span><span class="n">param</span><span class="p">);</span>
-</code></pre></div>    </div>
-    <p><a href="#table-of-contents">Back to top</a></p>
-  </li>
-</ol>
+</code></pre></div></div>
+<p><a href="#table-of-contents">Back to top</a></p>
 
 <h2 id="friend">Friend</h2>
 <p>The <code class="highlighter-rouge">friend</code> declaration appears in a <code class="highlighter-rouge">class body</code> and grants a <code class="highlighter-rouge">function</code> or <code class="highlighter-rouge">another class</code> <strong>access</strong> to <code class="highlighter-rouge">private</code> and <code class="highlighter-rouge">protected</code> <strong>members</strong> of the class where the friend declaration appears.</p>
-<h3 id="friend-function"><code class="highlighter-rouge">friend function</code>:</h3>
-<p>Declare anywhere inside a class, but define outside</p>
+
+<p><code class="highlighter-rouge">friend function</code>: Declare anywhere inside a class, but define outside</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// function</span>
 <span class="k">friend</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">);</span>
 </code></pre></div></div>
@@ -249,9 +266,7 @@ stack
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">getA_a</span><span class="p">(</span><span class="n">_classA</span><span class="p">);</span> <span class="c1">// 3</span>
 </code></pre></div></div>
 
-<h3 id="friend-class"><code class="highlighter-rouge">friend class</code>:</h3>
-
-<p>delare inside class, define outside</p>
+<p><code class="highlighter-rouge">friend class</code>: Delare inside class, define outside</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// class</span>
 <span class="k">friend</span> <span class="k">class</span> <span class="err">&lt;</span><span class="nc">Name</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div></div>
@@ -281,6 +296,8 @@ stack
 <span class="n">_classC</span><span class="p">.</span><span class="n">getB_b</span><span class="p">(</span><span class="n">_classB</span><span class="p">);</span>
 </code></pre></div></div>
 <h3 id="others">Others</h3>
+
+<p>friend ostream</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Y</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">data</span><span class="p">;</span> 
     <span class="c1">// the non-member function operator&lt;&lt; will have access to Y's private members</span>

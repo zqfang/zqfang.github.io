@@ -7,15 +7,16 @@ excerpt: "Get answers for Swift within 10s"
 ---
 
 # Swift Cheat Sheet
-Stolen from [iwasrobbed](https://github.com/iwasrobbed/Swift-CheatSheet), and I simplify it and add some more. 
+Stolen from [iwasrobbed](https://github.com/iwasrobbed/Swift-CheatSheet).   
+I simplify it and add some more. 
 
 It's a high level and a quick reference to Swift.
-The purpose of this cheat sheet is to teach myself and get answers from it within 10s. 
+The purpose of this cheat sheet is to teach myself and get answers within 10s. 
 
 
 ### Table of Contents
 
-* [Commenting](#commenting)
+* [Code Document](#code-documentation)
 * [Data Types](#data-types)
 * [Operators](#operators)
 * [Operator Overloading](#operator-overloading)
@@ -38,22 +39,57 @@ The purpose of this cheat sheet is to teach myself and get answers from it withi
 * [User Defaults](#user-defaults)
 * [Common Patterns](#common-patterns)
 * [Unicode Support](#unicode-support)
-## Commenting
-Two ways of commenting:
+## Code Documentation
+Two ways of commenting: 
+  - //
+  - /* ... */
+Two ways of documenting with markdown (Reconigzed by xcode):
+  - ///
+  - /**  ... */
 
+### Markdown
+a few keywords that xcode can recognized automatically, with the format like **- <Keyword>**.  
+
+The most common:  Prameters, Throws, Returns
 ```swift
-// This is an inline comment
-
-/* This is a block comment
-   and it can span multiple lines. */
-
-// You can also use it to comment out code
-/*
-func doWork() {
-  // Implement this
-}
+/**
+- Prameters: 
+  - argument1: This is arg1
+  - argument2: This is arg2 
+- Returns: The results string.
+- Throws: `Error` if nil 
 */
 ```
+
+Other keywords
+```swift
+/**
+- Precondition:
+- Postcondition: 
+- Requires: All the information in the object should be sorted
+- Invariant: The object will maintained sorted
+- Complexity: O(n^2)
+- Important:
+- Warning: Very computation consuming
+- Attention: Same as Warning
+- Note: something to keep in mind
+- Remark: Same as note
+*/
+```
+
+Metadata
+```swift
+/**
+- Author: 
+- Authors:
+- Copyright:
+- Date:
+- Since:
+- Version:
+*/
+```
+
+[Back to top](#table-of-contents)
 
 ### MARK
 

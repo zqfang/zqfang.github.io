@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T16:57:32-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T16:59:32-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
 &lt;p&gt;Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it’s extremely powerful.&lt;/p&gt;
 
 &lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
@@ -41,7 +41,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;pointer&quot;&gt;Pointer&lt;/h2&gt;
-&lt;p&gt;Pointer syntax
+&lt;p&gt;Pointer syntax&lt;br /&gt;
 &lt;strong&gt;Rule:&lt;/strong&gt; read from right to left&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// an int &lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// a pointer point to int&lt;/span&gt;
@@ -428,6 +428,7 @@ So, use array pointer:&lt;/p&gt;
     &lt;span class=&quot;n&quot;&gt;cc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// output: B::g()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;#table-of-contents&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;composite&quot;&gt;Composite&lt;/h3&gt;
 &lt;p&gt;Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.&lt;/p&gt;

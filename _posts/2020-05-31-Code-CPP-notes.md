@@ -7,7 +7,7 @@ excerpt: "Get answers for C/C++ within ? s"
 ---
 
 # C++ Notes
-Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but extremely powerfull. 
+Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it's extremely powerful. 
 
 ### Table of Contents
 [char to Int](#char-to-int)  
@@ -173,42 +173,7 @@ void Number::set(const Number *const this, int num) { number = num; } // illegal
 c. `() const` overloading
 
 [Back to top](#table-of-contents)
-## Array
-### Array as `formal arguments`  
-Array could not copy to anther Array directly, so `call-by-value` is not allowed.  
-So, use array pointer:  
-```cpp
-// these are same
-void print(const int *);
-void print(const int[]);
-void print(const int[5]);
-``` 
-multi-dimension array
-```cpp
-// these are same
-void print(int (*p)[3],int rowsize);
-void print(int (p[][3],int rowsize);
-``` 
-When use pointer to an Array, the dimension is unknown. So, need an extra argument to specify it explicitly.
 
-Example:
-```cpp
-void print1(int (*p)[3]) {
-    cout <<p[1][1]>>endl;
-}
-void print2(int p[][3]) {
-  cout<<p[0][0]>>endl;
-}
-
-int a[2][3]={{1,2},{3,4}};
-print1(a); // 4
-print2(a); // 1
-
-int b[2][4]={{1,2,5,6},{3,4,7,8}};
-print1(b); // error
-```
-
-[Back to top](#table-of-contents)
 ## Object Instantization
 
 1. without new

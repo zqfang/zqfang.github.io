@@ -52,7 +52,7 @@ Test['b'] = 2;  // legal
 ```
 [Back to top](#table-of-contents)
 ## Pointer
-Pointer syntax
+Pointer syntax  
 **Rule:** read from right to left
 ```cpp
 int a; // an int 
@@ -460,6 +460,7 @@ int main()
     cc.g();     // output: B::g()
 }
 ```
+[Back to top](#table-of-contents)
 
 ### Composite
 Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.

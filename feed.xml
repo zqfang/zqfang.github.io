@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T15:53:46-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T15:55:48-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
 &lt;p&gt;Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it’s extremely powerful.&lt;/p&gt;
 
 &lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
@@ -385,17 +385,17 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.&l
   &lt;li&gt;&lt;a href=&quot;#passing-information&quot;&gt;Passing Information&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#user-defaults&quot;&gt;User Defaults&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#common-patterns&quot;&gt;Common Patterns&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#unicode-support&quot;&gt;Unicode Support&lt;/a&gt;
-    &lt;h2 id=&quot;code-documentation&quot;&gt;Code Documentation&lt;/h2&gt;
-    &lt;p&gt;Two ways of commenting:&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;//&lt;/li&gt;
-      &lt;li&gt;/* … */
+  &lt;li&gt;&lt;a href=&quot;#unicode-support&quot;&gt;Unicode Support&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-documentation&quot;&gt;Code Documentation&lt;/h2&gt;
+&lt;p&gt;Two ways of commenting:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;//&lt;/li&gt;
+  &lt;li&gt;/* … */
 Two ways of documenting with markdown (Reconigzed by xcode):&lt;/li&gt;
-      &lt;li&gt;///&lt;/li&gt;
-      &lt;li&gt;/**  … */&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;///&lt;/li&gt;
+  &lt;li&gt;/**  … */&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;markdown&quot;&gt;Markdown&lt;/h3&gt;

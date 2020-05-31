@@ -45,6 +45,7 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.
 Two ways of commenting: 
   - //
   - /* ... */
+
 Two ways of documenting with markdown (Reconigzed by xcode):
   - ///
   - /**  ... */

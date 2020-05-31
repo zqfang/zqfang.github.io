@@ -23,7 +23,7 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 
 ## Char to Int
 
-1. `Char` is `ASCII`
+#### 1. `Char` is `ASCII`  
 C store `Char` as `ASCII` by default. So, `Char` is equal to ASCII code.
 
 ```cpp
@@ -31,7 +31,7 @@ char a = 'A'; // 65
 int c = a; //c = 65
 ```
 
-2. `Char` to `Int`, and vice versa
+#### 2. `Char` to `Int`, and vice versa
 
 ```cpp
 char c='5'
@@ -41,14 +41,13 @@ int i=5;
 char res = I + '0'; // '5'
 ```
 
-3. `Char` as subscript of array: legal!
-
+#### 3. `Char` as subscript of array: legal!  
+This is useful when create `hashmap`. e.g. counting chars
 ```cpp
 int test[200] = {0};
 Test['A'] = 1; // legal
 Test['b'] = 2;  // legal
 ```
-This is useful when create `hashmap`. e.g. counting chars
 
 ## Pointer
 Pointer syntax
@@ -218,27 +217,27 @@ c. `() const` overloading
 
 ## Object Instantization
 
-1. without new
+### 1. without new
 
 stack
 ```cpp
 ClassName object(param) //  A a(1);  
 ClassName object2 =  ClassName(param); //  A b = A(1);
 ```
-2. with new
+### 2. with new
 
 heap
 ```cpp
 ClassName *object = new ClassName(param);//A *a = new A();
 delete object;
 ```
-3. copy constructor
+### 3. copy constructor
 
 ```cpp
 // 
 ```
 
-4. Smart Pointer
+### 4. Smart Pointer
 
 ```cpp 
 std::unique_ptr<ClassName> object (new ClassName(param));
@@ -252,7 +251,9 @@ std::unique_ptr<ClassName> object = std::make_unique<ClassName>(param);
 ## Friend
 The `friend` declaration appears in a `class body` and grants a `function` or `another class` **access** to `private` and `protected` **members** of the class where the friend declaration appears.
 
-`friend function`: Declare anywhere inside a class, but define outside
+### 1. `friend function`
+
+Declare anywhere inside a class, but define outside
 ```cpp
 // function
 friend <type> <Name>(<arguments>);
@@ -281,7 +282,9 @@ std::cout<<getA_a(_classA); // 3
 ```
 
 
-`friend class`: Delare inside class, define outside
+### 2. `friend class` 
+
+Delare inside class, define outside
 ```cpp
 // class
 friend class <Name>;
@@ -312,9 +315,8 @@ B _classB(3);
 C _classC; // an instance of a friend class
 _classC.getB_b(_classB);
 ```
-### Others
+### 3. Others: friend ostream, friend template ...
 
-friend ostream
 ```cpp
 class Y {
     int data; 
@@ -335,9 +337,8 @@ std::ostream& operator<<(std::ostream& out, const Y& y)
 
 ## Singleton
 
+Define
 ```cpp
-#include <iostream>
-
 class Singleton
 {
     private:
@@ -361,6 +362,7 @@ Singleton* Singleton::instance = 0;
 
 Usage
 ```cpp
+#include <iostream>
 int main()
 {
     //new Singleton(); // Won't work

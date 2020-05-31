@@ -434,7 +434,7 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .a
 
 .language-python + .language-plaintext pre { background-color: white !important; }
 
-.input_area pre, .input_area div { margin-bottom: 2rem !important; margin-top: 1.5rem !important; padding-bottom: 0 !important; padding-top: 0 !important; background: #323443 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace; border-radius: 5px; font-size: 110%; }
+.input_area pre, .input_area div { margin-bottom: 2rem !important; margin-top: 1.5rem !important; padding-bottom: 0 !important; padding-top: 0 !important; background: #323443 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace; border-radius: 5px; font-size: 120%; }
 
 .output_area pre, .output_area div { margin-bottom: 1rem !important; margin-top: 1rem !important; padding-bottom: 0 !important; padding-top: 0 !important; }
 
@@ -498,15 +498,15 @@ $x-large                    : 1800px;
 /* Grid ========================================================================== */
 /* Other ========================================================================== */
 /* ========================================================================== TABLES ========================================================================== */
-table { overflow-x: visible; display: block !important; margin-bottom: 1em; width: 100%; font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; font-size: 110%; border-collapse: collapse; border: 1px solid #bdc1c4; }
+table { overflow-x: visible; display: block !important; margin-bottom: 1em; width: 100%; font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; font-size: 110%; border-collapse: collapse; border: 1px solid #fff; }
 
 table + table { margin-top: 1em; }
 
 thead { background-color: #f2f3f3; border-bottom: 1px solid #bdc1c4; }
 
-th { text-overflow: ellipsis; overflow: hidden; max-width: 100%; padding: 0.5em; font-weight: bold; text-align: left; border-right: 1px solid #bdc1c4; }
+th { text-overflow: ellipsis; overflow: hidden; max-width: 100%; padding: 0.5em; font-weight: bold; text-align: left; border-right: 1px solid #fff; }
 
-td { padding: 0.5em; border-bottom: 1px solid #bdc1c4; border-right: 1px solid #bdc1c4; }
+td { padding: 0.5em; border-bottom: 1px solid #fff; border-right: 1px solid #fff; }
 
 tr, td, th { vertical-align: middle; }
 

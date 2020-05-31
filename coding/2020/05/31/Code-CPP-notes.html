@@ -13,18 +13,14 @@
 
 <h2 id="char-to-int">Char to Int</h2>
 
-<ol>
-  <li><code class="highlighter-rouge">Char</code> is <code class="highlighter-rouge">ASCII</code>
-C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-rouge">ASCII</code> by default. So, <code class="highlighter-rouge">Char</code> is equal to ASCII code.</li>
-</ol>
+<h4 id="1-char-is-ascii">1. <code class="highlighter-rouge">Char</code> is <code class="highlighter-rouge">ASCII</code></h4>
+<p>C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-rouge">ASCII</code> by default. So, <code class="highlighter-rouge">Char</code> is equal to ASCII code.</p>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="c1">// 65</span>
 <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//c = 65</span>
 </code></pre></div></div>
 
-<ol>
-  <li><code class="highlighter-rouge">Char</code> to <code class="highlighter-rouge">Int</code>, and vice versa</li>
-</ol>
+<h4 id="2-char-to-int-and-vice-versa">2. <code class="highlighter-rouge">Char</code> to <code class="highlighter-rouge">Int</code>, and vice versa</h4>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">c</span><span class="o">=</span><span class="sc">'5'</span>
 <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span><span class="sc">'0'</span> <span class="p">;</span> <span class="c1">// 5</span>
@@ -33,15 +29,12 @@ C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-
 <span class="kt">char</span> <span class="n">res</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="sc">'0'</span><span class="p">;</span> <span class="c1">// '5'</span>
 </code></pre></div></div>
 
-<ol>
-  <li><code class="highlighter-rouge">Char</code> as subscript of array: legal!</li>
-</ol>
-
+<h4 id="3-char-as-subscript-of-array-legal">3. <code class="highlighter-rouge">Char</code> as subscript of array: legal!</h4>
+<p>This is useful when create <code class="highlighter-rouge">hashmap</code>. e.g. counting chars</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">test</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
 <span class="n">Test</span><span class="p">[</span><span class="sc">'A'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// legal</span>
 <span class="n">Test</span><span class="p">[</span><span class="sc">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// legal</span>
 </code></pre></div></div>
-<p>This is useful when create <code class="highlighter-rouge">hashmap</code>. e.g. counting chars</p>
 
 <h2 id="pointer">Pointer</h2>
 <p>Pointer syntax
@@ -204,32 +197,24 @@ So, use array pointer:</p>
 
 <h2 id="object-instantization">Object Instantization</h2>
 
-<ol>
-  <li>without new</li>
-</ol>
+<h3 id="1-without-new">1. without new</h3>
 
 <p>stack</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="nf">object</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="c1">//  A a(1)</span><span class="p">;</span><span class="err"> </span> 
 <span class="n">ClassName</span> <span class="n">object2</span> <span class="o">=</span>  <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span> <span class="c1">//  A b = A(1);</span>
 </code></pre></div></div>
-<ol>
-  <li>with new</li>
-</ol>
+<h3 id="2-with-new">2. with new</h3>
 
 <p>heap</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="o">*</span><span class="n">object</span> <span class="o">=</span> <span class="k">new</span><span class="err"> </span><span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="c1">//A *a = new A();</span>
 <span class="k">delete</span> <span class="n">object</span><span class="p">;</span>
 </code></pre></div></div>
-<ol>
-  <li>copy constructor</li>
-</ol>
+<h3 id="3-copy-constructor">3. copy constructor</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// </span>
 </code></pre></div></div>
 
-<ol>
-  <li>Smart Pointer</li>
-</ol>
+<h3 id="4-smart-pointer">4. Smart Pointer</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="p">(</span><span class="k">new</span> <span class="nf">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">));</span>
 <span class="c1">// recommend this way of instantization</span>
@@ -240,7 +225,9 @@ So, use array pointer:</p>
 <h2 id="friend">Friend</h2>
 <p>The <code class="highlighter-rouge">friend</code> declaration appears in a <code class="highlighter-rouge">class body</code> and grants a <code class="highlighter-rouge">function</code> or <code class="highlighter-rouge">another class</code> <strong>access</strong> to <code class="highlighter-rouge">private</code> and <code class="highlighter-rouge">protected</code> <strong>members</strong> of the class where the friend declaration appears.</p>
 
-<p><code class="highlighter-rouge">friend function</code>: Declare anywhere inside a class, but define outside</p>
+<h3 id="1-friend-function">1. <code class="highlighter-rouge">friend function</code></h3>
+
+<p>Declare anywhere inside a class, but define outside</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// function</span>
 <span class="k">friend</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">);</span>
 </code></pre></div></div>
@@ -266,7 +253,9 @@ So, use array pointer:</p>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">getA_a</span><span class="p">(</span><span class="n">_classA</span><span class="p">);</span> <span class="c1">// 3</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">friend class</code>: Delare inside class, define outside</p>
+<h3 id="2-friend-class">2. <code class="highlighter-rouge">friend class</code></h3>
+
+<p>Delare inside class, define outside</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// class</span>
 <span class="k">friend</span> <span class="k">class</span> <span class="err">&lt;</span><span class="nc">Name</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div></div>
@@ -295,9 +284,8 @@ So, use array pointer:</p>
 <span class="n">C</span> <span class="n">_classC</span><span class="p">;</span> <span class="c1">// an instance of a friend class</span>
 <span class="n">_classC</span><span class="p">.</span><span class="n">getB_b</span><span class="p">(</span><span class="n">_classB</span><span class="p">);</span>
 </code></pre></div></div>
-<h3 id="others">Others</h3>
+<h3 id="3-others-friend-ostream-friend-template-">3. Others: friend ostream, friend template …</h3>
 
-<p>friend ostream</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Y</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">data</span><span class="p">;</span> 
     <span class="c1">// the non-member function operator&lt;&lt; will have access to Y's private members</span>
@@ -317,9 +305,8 @@ So, use array pointer:</p>
 
 <h2 id="singleton">Singleton</h2>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
-</span>
-<span class="k">class</span> <span class="nc">Singleton</span>
+<p>Define</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Singleton</span>
 <span class="p">{</span>
     <span class="nl">private:</span>
         <span class="cm">/* Here will be the instance stored. */</span>
@@ -341,7 +328,8 @@ So, use array pointer:</p>
 </code></pre></div></div>
 
 <p>Usage</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="c1">//new Singleton(); // Won't work</span>
     <span class="n">Singleton</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span> <span class="c1">// Ok</span>

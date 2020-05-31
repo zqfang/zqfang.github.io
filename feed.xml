@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T15:55:48-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://zqfang.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://zqfang.github.io/" rel="alternate" type="text/html" /><updated>2020-05-31T16:04:06-05:00</updated><id>https://zqfang.github.io/feed.xml</id><title type="html">Max</title><subtitle>My Computational Genomic Playground</subtitle><author><name>Try Again</name></author><entry><title type="html">C++ Notes</title><link href="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html" rel="alternate" type="text/html" title="C++ Notes" /><published>2020-05-31T00:00:00-05:00</published><updated>2020-05-31T00:00:00-05:00</updated><id>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes</id><content type="html" xml:base="https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html">&lt;h1 id=&quot;c-notes&quot;&gt;C++ Notes&lt;/h1&gt;
 &lt;p&gt;Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it’s extremely powerful.&lt;/p&gt;
 
 &lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
@@ -13,18 +13,14 @@
 
 &lt;h2 id=&quot;char-to-int&quot;&gt;Char to Int&lt;/h2&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;ASCII&lt;/code&gt;
-C store &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;ASCII&lt;/code&gt; by default. So, &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; is equal to ASCII code.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h4 id=&quot;1-char-is-ascii&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;ASCII&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;C store &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; as &lt;code class=&quot;highlighter-rouge&quot;&gt;ASCII&lt;/code&gt; by default. So, &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; is equal to ASCII code.&lt;/p&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 65&lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//c = 65&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;, and vice versa&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h4 id=&quot;2-char-to-int-and-vice-versa&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;, and vice versa&lt;/h4&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'5'&lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'0'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 5&lt;/span&gt;
@@ -33,15 +29,12 @@ C store &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; as &lt
 &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'0'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '5'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; as subscript of array: legal!&lt;/li&gt;
-&lt;/ol&gt;
-
+&lt;h4 id=&quot;3-char-as-subscript-of-array-legal&quot;&gt;3. &lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt; as subscript of array: legal!&lt;/h4&gt;
+&lt;p&gt;This is useful when create &lt;code class=&quot;highlighter-rouge&quot;&gt;hashmap&lt;/code&gt;. e.g. counting chars&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// legal&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// legal&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This is useful when create &lt;code class=&quot;highlighter-rouge&quot;&gt;hashmap&lt;/code&gt;. e.g. counting chars&lt;/p&gt;
 
 &lt;h2 id=&quot;pointer&quot;&gt;Pointer&lt;/h2&gt;
 &lt;p&gt;Pointer syntax
@@ -204,32 +197,24 @@ So, use array pointer:&lt;/p&gt;
 
 &lt;h2 id=&quot;object-instantization&quot;&gt;Object Instantization&lt;/h2&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;without new&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;1-without-new&quot;&gt;1. without new&lt;/h3&gt;
 
 &lt;p&gt;stack&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//  A a(1)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt; 
 &lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//  A b = A(1);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;with new&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;2-with-new&quot;&gt;2. with new&lt;/h3&gt;
 
 &lt;p&gt;heap&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//A *a = new A();&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;copy constructor&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;3-copy-constructor&quot;&gt;3. copy constructor&lt;/h3&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// &lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Smart Pointer&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;4-smart-pointer&quot;&gt;4. Smart Pointer&lt;/h3&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unique_ptr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClassName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// recommend this way of instantization&lt;/span&gt;
@@ -240,7 +225,9 @@ So, use array pointer:&lt;/p&gt;
 &lt;h2 id=&quot;friend&quot;&gt;Friend&lt;/h2&gt;
 &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;friend&lt;/code&gt; declaration appears in a &lt;code class=&quot;highlighter-rouge&quot;&gt;class body&lt;/code&gt; and grants a &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;another class&lt;/code&gt; &lt;strong&gt;access&lt;/strong&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;protected&lt;/code&gt; &lt;strong&gt;members&lt;/strong&gt; of the class where the friend declaration appears.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;friend function&lt;/code&gt;: Declare anywhere inside a class, but define outside&lt;/p&gt;
+&lt;h3 id=&quot;1-friend-function&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;friend function&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Declare anywhere inside a class, but define outside&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// function&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;friend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -266,7 +253,9 @@ So, use array pointer:&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getA_a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_classA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;friend class&lt;/code&gt;: Delare inside class, define outside&lt;/p&gt;
+&lt;h3 id=&quot;2-friend-class&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;friend class&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Delare inside class, define outside&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// class&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;friend&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -295,9 +284,8 @@ So, use array pointer:&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_classC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// an instance of a friend class&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;_classC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getB_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_classB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;others&quot;&gt;Others&lt;/h3&gt;
+&lt;h3 id=&quot;3-others-friend-ostream-friend-template-&quot;&gt;3. Others: friend ostream, friend template …&lt;/h3&gt;
 
-&lt;p&gt;friend ostream&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
     &lt;span class=&quot;c1&quot;&gt;// the non-member function operator&amp;lt;&amp;lt; will have access to Y's private members&lt;/span&gt;
@@ -317,9 +305,8 @@ So, use array pointer:&lt;/p&gt;
 
 &lt;h2 id=&quot;singleton&quot;&gt;Singleton&lt;/h2&gt;
 
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt;
+&lt;p&gt;Define&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;private:&lt;/span&gt;
         &lt;span class=&quot;cm&quot;&gt;/* Here will be the instance stored. */&lt;/span&gt;
@@ -341,7 +328,8 @@ So, use array pointer:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Usage&lt;/p&gt;
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;//new Singleton(); // Won't work&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Ok&lt;/span&gt;
@@ -392,8 +380,11 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.&l
 &lt;p&gt;Two ways of commenting:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;//&lt;/li&gt;
-  &lt;li&gt;/* … */
-Two ways of documenting with markdown (Reconigzed by xcode):&lt;/li&gt;
+  &lt;li&gt;/* … */&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Two ways of documenting with markdown (Reconigzed by xcode):&lt;/p&gt;
+&lt;ul&gt;
   &lt;li&gt;///&lt;/li&gt;
   &lt;li&gt;/**  … */&lt;/li&gt;
 &lt;/ul&gt;

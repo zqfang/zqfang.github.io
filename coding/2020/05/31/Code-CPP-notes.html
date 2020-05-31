@@ -1,0 +1,307 @@
+<h1 id="c-notes">C++ Notes</h1>
+<p>Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it’s extremely powerful.</p>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+<p><a href="#char-to-int">char to Int</a><br />
+<a href="#pointer">Pointer</a><br />
+<a href="#return-reference">Return Reference</a><br />
+<a href="#array">Array as Argument</a><br />
+<a href="#object-instantization">Object Instantization</a><br />
+<a href="#const">Const</a><br />
+<a href="#friend">Friend</a><br />
+<a href="#singleton">Singleton</a></p>
+
+<h2 id="char-to-int">Char to Int</h2>
+
+<ol>
+  <li><code class="highlighter-rouge">Char</code> is <code class="highlighter-rouge">ASCII</code>
+C store <code class="highlighter-rouge">Char</code> as <code class="highlighter-rouge">ASCII</code> by default. So, <code class="highlighter-rouge">Char</code> is equal to ASCII code.
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="c1">// 65</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//c = 65</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">Char</code> to <code class="highlighter-rouge">Int</code>, and vice versa
+```cpp
+char c=’5’
+int res = c -‘0’ ; // 5</li>
+</ol>
+
+<p>int i=5;
+char res = I + ‘0’; // ‘5’</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+3. `Char` as subscript of array: legal!
+```cpp
+int test[200] = {0};
+Test['A'] = 1; // legal
+Test['b'] = 2;  // legal
+</code></pre></div></div>
+<p>This is useful when create <code class="highlighter-rouge">hashmap</code>. e.g. counting chars</p>
+
+<h2 id="pointer">Pointer</h2>
+<p>Pointer syntax
+<strong>Rule:</strong> read from right to left</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// an int </span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c1">// a pointer point to int</span>
+<span class="kt">int</span> <span class="o">**</span><span class="n">a</span><span class="p">;</span> <span class="c1">// secondary int pointer, point to another int pointer </span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// int array </span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// a poiter array, point to int </span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// a int pointer point to an int array </span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// a pointer point to a function, will return an int</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">])(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">//  a poiter array, point to a function，will return an int</span>
+</code></pre></div></div>
+
+<p>Declare two pointers</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// equal to int* a; int b;</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span> <span class="c1">// correct way</span>
+</code></pre></div></div>
+<h2 id="return-reference">Return Reference</h2>
+<p>When Return Reference</p>
+<ul>
+  <li>return ref if given object’s ref/pointer.</li>
+  <li>return value if temp object created
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ref</span>
+<span class="n">RMB</span><span class="o">&amp;</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// already existed object, created outside</span>
+<span class="p">}</span>
+<span class="c1">// value</span>
+<span class="n">RMB</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">RMB</span> <span class="n">temp</span><span class="p">(</span><span class="n">yuan</span><span class="p">);</span><span class="c1">//create object</span>
+  <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">temp</span><span class="p">;</span><span class="c1">//return a copy of temp</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><a href="#table-of-contents">Back to top</a></p>
+  </li>
+</ul>
+
+<h2 id="const">Const</h2>
+
+<h3 id="1-const-before-or-behind-typeclass-the-syntax-semantic-are-same">1. <code class="highlighter-rouge">const</code> before or behind type/class, the syntax semantic are same</h3>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// they are same </span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>  <span class="c1">// (int x) is const/inmutable </span>
+<span class="kt">int</span> <span class="k">const</span> <span class="n">x</span><span class="p">;</span>  <span class="c1">// (const x) has type int </span>
+</code></pre></div></div>
+
+<h3 id="2-pointer-with-const-constint-pintconst-p-and-intconst-p">2. Pointer with const: <code class="highlighter-rouge">const int* p</code>, <code class="highlighter-rouge">int const* p</code> and <code class="highlighter-rouge">int *const p</code></h3>
+
+<p><strong>Dirty trick:</strong> use <code class="highlighter-rouge">*</code> as a separator, <code class="highlighter-rouge">const</code> restrict the type according to the side where it belong to</p>
+
+<p><strong>point to const:</strong> These two expression are same</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// -&gt; (const int) | p;  p : a mutable pointer points to a const/immutable int</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+
+<span class="c1">// -&gt; (int const) | p; p2: a mutable pointer points a const which has type int</span>
+<span class="kt">int</span> <span class="k">const</span> <span class="o">*</span> <span class="n">p2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>const pointer:</strong> But these two not the same</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// -&gt; int | (const p);  p3: a const pointer, point to an mutable int</span>
+<span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">p3</span><span class="p">;</span>
+
+<span class="c1">// -&gt; (const int) | const p; p4: a const pointer, pointing to an immutable/const int</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">p4</span><span class="p">;</span> 
+</code></pre></div></div>
+<h3 id="3-class-member-func-with-const--const">3. class member <code class="highlighter-rouge">func</code> with const: <code class="highlighter-rouge">() const</code></h3>
+<p>a. <code class="highlighter-rouge">const object</code></p>
+<ul>
+  <li>could not change class variable</li>
+  <li>could not call <code class="highlighter-rouge">non-const</code> function
+```cpp
+class Number
+{
+public:
+  void set(int num) { number = num; }
+  int get() { return number; }
+  int get2() const {return number;}
+  int number = 0;
+};</li>
+</ul>
+
+<p>// Example
+const Number n;
+n.number = 1; // Error, n is const
+n.set(1); // Error, n is const, non-const <code class="highlighter-rouge">set()</code>
+n.get(); // Error, non-const <code class="highlighter-rouge">get()</code>
+n.get2(); // OK</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+b. `() const`  
+ - could not change class variable, except static 
+ - could get variable
+```cpp
+class Number {
+private:
+  int a;
+  static int b;
+  const int c = 20;
+public:
+	void set() {  
+         a = 10; // error when `this` argument has type 'const'
+    void set2() const {
+        b = 20; // OK
+    }         	
+	int get() const {  // OK
+		return a; // did not change a
+	}
+};
+
+const Number n;
+n.set(); // Error
+n.set2(); // OK
+n.get(); // OK
+</code></pre></div></div>
+
+<p>Easy to understand, when pointer <code class="highlighter-rouge">this</code> is const</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">Number</span><span class="o">::</span><span class="n">set</span><span class="p">(</span><span class="k">const</span> <span class="n">Number</span> <span class="o">*</span><span class="k">const</span> <span class="k">this</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="n">number</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// illegal -&gt; const this</span>
+</code></pre></div></div>
+
+<p>c. <code class="highlighter-rouge">() const</code> overloading</p>
+
+<p><a href="#table-of-contents">Back to top</a></p>
+
+<h2 id="object-instantization">Object Instantization</h2>
+
+<ol>
+  <li>without new
+stack
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="nf">object</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="c1">//  A a(1)</span><span class="p">;</span><span class="err"> </span> 
+<span class="n">ClassName</span> <span class="n">object2</span> <span class="o">=</span>  <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span> <span class="c1">//  A b = A(1);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>with new
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ClassName</span> <span class="o">*</span><span class="n">object</span> <span class="o">=</span> <span class="k">new</span><span class="err"> </span><span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="c1">//A *a = new A();</span>
+<span class="k">delete</span> <span class="n">object</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>copy constructor
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// </span>
+</code></pre></div>    </div>
+  </li>
+  <li>Smart Pointer
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="p">(</span><span class="k">new</span> <span class="nf">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">));</span>
+<span class="c1">// recommend this way of instantization</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span><span class="p">(</span><span class="n">param</span><span class="p">);</span>
+</code></pre></div>    </div>
+    <p><a href="#table-of-contents">Back to top</a></p>
+  </li>
+</ol>
+
+<h2 id="friend">Friend</h2>
+<p>The <code class="highlighter-rouge">friend</code> declaration appears in a <code class="highlighter-rouge">class body</code> and grants a <code class="highlighter-rouge">function</code> or <code class="highlighter-rouge">another class</code> <strong>access</strong> to <code class="highlighter-rouge">private</code> and <code class="highlighter-rouge">protected</code> <strong>members</strong> of the class where the friend declaration appears.</p>
+<h3 id="friend-function"><code class="highlighter-rouge">friend function</code>:</h3>
+<p>Declare anywhere inside a class, but define outside</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// function</span>
+<span class="k">friend</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Example:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">_a</span><span class="p">)</span><span class="o">:</span><span class="n">a</span><span class="p">(</span><span class="n">_a</span><span class="p">){};</span>
+    <span class="c1">// non-member function</span>
+	<span class="k">friend</span> <span class="kt">int</span> <span class="n">getA_a</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span><span class="n">_classA</span><span class="p">);</span>
+<span class="nl">private:</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// without the friend keyword </span>
+<span class="kt">int</span> <span class="nf">getA_a</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span><span class="n">_classA</span><span class="p">)</span>
+<span class="p">{</span>   <span class="c1">//access member by formal arguments</span>
+	<span class="k">return</span> <span class="n">_classA</span><span class="p">.</span><span class="n">a</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="n">A</span> <span class="nf">_classA</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">getA_a</span><span class="p">(</span><span class="n">_classA</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<h3 id="friend-class"><code class="highlighter-rouge">friend class</code>:</h3>
+
+<p>delare inside class, define outside</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// class</span>
+<span class="k">friend</span> <span class="k">class</span> <span class="err">&lt;</span><span class="nc">Name</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Note:</strong> <code class="highlighter-rouge">friend class X {};</code> is an error</p>
+
+<p>Example:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">B</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">_b</span><span class="p">)</span><span class="o">:</span><span class="n">b</span><span class="p">(</span><span class="n">_b</span><span class="p">){};</span>
+	<span class="k">friend</span> <span class="k">class</span> <span class="nc">C</span><span class="p">;</span> <span class="c1">// friend class</span>
+<span class="nl">private:</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+ 
+<span class="k">class</span> <span class="nc">C</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="kt">int</span> <span class="n">getB_b</span><span class="p">(</span><span class="n">B</span> <span class="n">_classB</span><span class="p">){</span>
+        <span class="c1">//access member by formal arguments</span>
+		<span class="k">return</span> <span class="n">_classB</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+	<span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">B</span> <span class="nf">_classB</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">C</span> <span class="n">_classC</span><span class="p">;</span> <span class="c1">// an instance of a friend class</span>
+<span class="n">_classC</span><span class="p">.</span><span class="n">getB_b</span><span class="p">(</span><span class="n">_classB</span><span class="p">);</span>
+</code></pre></div></div>
+<h3 id="others">Others</h3>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Y</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span> 
+    <span class="c1">// the non-member function operator&lt;&lt; will have access to Y's private members</span>
+    <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">Y</span><span class="o">&amp;</span> <span class="n">o</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">char</span><span class="o">*</span> <span class="n">X</span><span class="o">::</span><span class="n">foo</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// members of other classes can be friends too</span>
+    <span class="k">friend</span> <span class="n">X</span><span class="o">::</span><span class="n">X</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">X</span><span class="o">::~</span><span class="n">X</span><span class="p">();</span> <span class="c1">// constructors and destructors can be friends</span>
+<span class="p">};</span>
+
+<span class="c1">// this operator&lt;&lt; still needs to be defined, as a non-member</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">Y</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>   <span class="c1">// can access private member Y::data</span>
+    <span class="k">return</span> <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">y</span><span class="p">.</span><span class="n">data</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>
+
+<h2 id="singleton">Singleton</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+</span>
+<span class="k">class</span> <span class="nc">Singleton</span>
+<span class="p">{</span>
+    <span class="nl">private:</span>
+        <span class="cm">/* Here will be the instance stored. */</span>
+        <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">instance</span><span class="p">;</span>
+        <span class="cm">/* Private constructor to prevent instancing. */</span>
+        <span class="n">Singleton</span><span class="p">()</span> <span class="p">{};</span>
+    <span class="nl">public:</span>
+        <span class="cm">/* Static access method. */</span>
+        <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">getInstance</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">instance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Singleton</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cm">/* NULL, because instance will be initialized on demand. */</span>
+<span class="n">Singleton</span><span class="o">*</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">instance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Usage</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//new Singleton(); // Won't work</span>
+    <span class="n">Singleton</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span> <span class="c1">// Ok</span>
+    <span class="n">Singleton</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span>
+
+    <span class="cm">/* The addresses will be the same. */</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">r</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>

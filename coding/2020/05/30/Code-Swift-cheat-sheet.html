@@ -1,13 +1,14 @@
 <h1 id="swift-cheat-sheet">Swift Cheat Sheet</h1>
-<p>Stolen from <a href="https://github.com/iwasrobbed/Swift-CheatSheet">iwasrobbed</a>, and I simplify it and add some more.</p>
+<p>Stolen from <a href="https://github.com/iwasrobbed/Swift-CheatSheet">iwasrobbed</a>. <br />
+I simplify it and add some more.</p>
 
 <p>It’s a high level and a quick reference to Swift.
-The purpose of this cheat sheet is to teach myself and get answers from it within 10s.</p>
+The purpose of this cheat sheet is to teach myself and get answers within 10s.</p>
 
 <h3 id="table-of-contents">Table of Contents</h3>
 
 <ul>
-  <li><a href="#commenting">Commenting</a></li>
+  <li><a href="#code-documentation">Code Document</a></li>
   <li><a href="#data-types">Data Types</a></li>
   <li><a href="#operators">Operators</a></li>
   <li><a href="#operator-overloading">Operator Overloading</a></li>
@@ -30,23 +31,58 @@ The purpose of this cheat sheet is to teach myself and get answers from it withi
   <li><a href="#user-defaults">User Defaults</a></li>
   <li><a href="#common-patterns">Common Patterns</a></li>
   <li><a href="#unicode-support">Unicode Support</a>
-    <h2 id="commenting">Commenting</h2>
+    <h2 id="code-documentation">Code Documentation</h2>
     <p>Two ways of commenting:</p>
+    <ul>
+      <li>//</li>
+      <li>/* … */
+Two ways of documenting with markdown (Reconigzed by xcode):</li>
+      <li>///</li>
+      <li>/**  … */</li>
+    </ul>
   </li>
 </ul>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is an inline comment</span>
+<h3 id="markdown">Markdown</h3>
+<p>a few keywords that xcode can recognized automatically, with the format like **- <Keyword>**.</Keyword></p>
 
-<span class="cm">/* This is a block comment
-   and it can span multiple lines. */</span>
-
-<span class="c1">// You can also use it to comment out code</span>
-<span class="cm">/*
-func doWork() {
-  // Implement this
-}
+<p>The most common:  Prameters, Throws, Returns</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+- Prameters: 
+  - argument1: This is arg1
+  - argument2: This is arg2 
+- Returns: The results string.
+- Throws: `Error` if nil 
 */</span>
 </code></pre></div></div>
+
+<p>Other keywords</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+- Precondition:
+- Postcondition: 
+- Requires: All the information in the object should be sorted
+- Invariant: The object will maintained sorted
+- Complexity: O(n^2)
+- Important:
+- Warning: Very computation consuming
+- Attention: Same as Warning
+- Note: something to keep in mind
+- Remark: Same as note
+*/</span>
+</code></pre></div></div>
+
+<p>Metadata</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+- Author: 
+- Authors:
+- Copyright:
+- Date:
+- Since:
+- Version:
+*/</span>
+</code></pre></div></div>
+
+<p><a href="#table-of-contents">Back to top</a></p>
 
 <h3 id="mark">MARK</h3>
 

@@ -2,11 +2,11 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://zqfang.github.io/portfolio/portfolio-1</loc>
-<lastmod>2020-05-30T15:15:33-05:00</lastmod>
+<lastmod>2020-05-31T15:31:40-05:00</lastmod>
 </url>
 <url>
 <loc>https://zqfang.github.io/portfolio/portfolio-2</loc>
-<lastmod>2020-05-30T15:15:33-05:00</lastmod>
+<lastmod>2020-05-31T15:31:40-05:00</lastmod>
 </url>
 <url>
 <loc>https://zqfang.github.io/make%20bioinfo%20uncool%20again/2020/01/20/Begin.html</loc>
@@ -69,6 +69,10 @@
 <lastmod>2020-04-29T00:00:00-05:00</lastmod>
 </url>
 <url>
+<loc>https://zqfang.github.io/statistic/2020/04/29/STATS-Proba-Pvalue.html</loc>
+<lastmod>2020-04-29T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>https://zqfang.github.io/machine%20learning/2020/04/30/ML-LSA.html</loc>
 <lastmod>2020-04-30T00:00:00-05:00</lastmod>
 </url>
@@ -81,8 +85,12 @@
 <lastmod>2020-05-05T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://zqfang.github.io/coding/2020/05/30/Swift-cheat-sheet.html</loc>
+<loc>https://zqfang.github.io/coding/2020/05/30/Code-Swift-cheat-sheet.html</loc>
 <lastmod>2020-05-30T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://zqfang.github.io/coding/2020/05/31/Code-CPP-notes.html</loc>
+<lastmod>2020-05-31T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://zqfang.github.io/publications/2012-12-18</loc>
@@ -136,5 +144,8 @@
 </url>
 <url>
 <loc>https://zqfang.github.io/page2/</loc>
+</url>
+<url>
+<loc>https://zqfang.github.io/page3/</loc>
 </url>
 </urlset>

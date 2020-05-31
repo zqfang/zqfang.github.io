@@ -205,7 +205,7 @@ void print2(int p[][3])
 int a[2][3]={{1,2},{3,4}};
 print1(a);
 print2(a);
-``` 
+```
 
 [Back to top](#table-of-contents)
 ## Object Instantization

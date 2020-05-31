@@ -1,5 +1,5 @@
 ---
-title: 'C++ Notes'
+title: "C++ Notes"
 date: 2020-05-31
 categories: ["Coding"]
 comments: true
@@ -342,11 +342,13 @@ class Singleton
             return instance;
         }
 };
-```
-```cpp
+
 /* NULL, because instance will be initialized on demand. */
 Singleton* Singleton::instance = 0;
+```
 
+Usage
+```cpp
 int main()
 {
     //new Singleton(); // Won't work

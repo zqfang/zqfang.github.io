@@ -10,7 +10,7 @@ table {
   font-family: $global-font-family;
   font-size: 110%;
   border-collapse: collapse;
-  border: 1px solid $light-gray;
+  border: 1px solid $body-color;//$light-gray;
 
   & + table {
     margin-top: 1em;
@@ -29,13 +29,13 @@ th {
   padding: 0.5em;
   font-weight: bold;
   text-align: left;
-  border-right: 1px solid $light-gray;
+  border-right: 1px solid $body-color;
 }
 
 td {
   padding: 0.5em;
-  border-bottom: 1px solid $light-gray;
-  border-right: 1px solid $light-gray;
+  border-bottom: 1px solid $body-color;
+  border-right: 1px solid $body-color;
 }
 
 tr, td, th {

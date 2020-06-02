@@ -14,22 +14,18 @@
             <loc>https://zqfang.github.io/tags/</loc><lastmod>2020-05-31T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://zqfang.github.io/tags/swift/</loc><lastmod>2020-05-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</loc><lastmod>2020-05-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://zqfang.github.io/tags/adaboost/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://zqfang.github.io/tags/boosting/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-05-05-ml-boosting/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/boosting-tree/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/categories/machine-learning/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/expectation-maximum/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/hidden-markov-model/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-05-03-ml-hmm/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/viterbi-algorithm/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://zqfang.github.io/tags/probabilistic-graphical-model/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/latent-semantic-analysis/</loc><lastmod>2020-04-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-04-30-ml-lsa/</loc><lastmod>2020-04-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/tf-idf/</loc><lastmod>2020-04-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/conditional-random-field/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-04-29-ml-crf/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/graph/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/p-value/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/probabilistic-graphical-model/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-04-29-stats-proba-pvalue/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/categories/statistic/</loc><lastmod>2020-04-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-04-28-seurat2scanpy/</loc><lastmod>2020-04-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -47,13 +43,13 @@
             <loc>https://zqfang.github.io/2020-02-01-cs-algo/</loc><lastmod>2020-02-01T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/bayesian-inference/</loc><lastmod>2020-01-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/naive-bayes/</loc><lastmod>2020-01-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://zqfang.github.io/tags/statistical-inference/</loc><lastmod>2020-01-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-30-ml-bayes/</loc><lastmod>2020-01-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://zqfang.github.io/tags/labelsmoothingcrossentropy/</loc><lastmod>2020-01-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-29-ml-lossfunc/</loc><lastmod>2020-01-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/pytorch/</loc><lastmod>2020-01-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://zqfang.github.io/tags/expectation-maximization/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-26-ml-em/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-26-ml-montecarlo/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://zqfang.github.io/tags/monte-carlo/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/bioinformatics/</loc><lastmod>2020-01-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-20-begin/</loc><lastmod>2020-01-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/chip-seq/</loc><lastmod>2020-01-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

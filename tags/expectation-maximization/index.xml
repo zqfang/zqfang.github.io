@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Expectation Maximization - Tag - My Computational Genomic Playground</title>
+        <link>https://zqfang.github.io/tags/expectation-maximization/</link>
+        <description>Expectation Maximization - Tag - My Computational Genomic Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/expectation-maximization/" rel="self" type="application/rss+xml" /><item>
+    <title>Expectation Maximization</title>
+    <link>https://zqfang.github.io/2020-01-26-ml-em/</link>
+    <pubDate>Sun, 26 Jan 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-01-26-ml-em/</guid>
+    <description><![CDATA[Maximum Likelihood Estimation Gaussian Mixture Model Expectation Maximization 1. Probability and likelihood likehood &amp; maximum likehood 在非正式场合似然（likel]]></description>
+</item></channel>
+</rss>

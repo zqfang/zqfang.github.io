@@ -1,0 +1,6 @@
+# Stk40 deletion elevates c-JUN protein level and impairs mesoderm differentiation
+
+
+Hu J, Li S, Sun X, **Fang Z**, Wang L, Xiao F, et al. Stk40 deletion elevates c-JUN protein level and impairs mesoderm differentiation. *J Biol Chem.* 2019;294(25):9959-72.
+
+Download [here](https://doi.org/10.1074/jbc.ra119.007840)

@@ -1,0 +1,359 @@
+# Expectation Maximization
+
+
+  
+Maximum Likelihood Estimation  
+Gaussian Mixture Model  
+Expectation Maximization 
+
+## 1. Probability and likelihood 
+
+[likehood & maximum likehood](http://fangs.in/post/thinkstats/likelihood/)
+
+在非正式场合似然（likelihood）和概率（Probability）几乎是一对同义词，但是在统计学中似然和概率却是两个不同的概念。
+
+**概率**: 在特定环境下某件事情发生的可能性，也就是结果没有产生之前依据环境所对应的参数来预测某件事情发生的可能性。  
+>比如抛硬币，抛之前我们不知道最后是哪一面朝上，但是根据硬币的性质我们可以推测任何一面朝上的可能性均为50%，这个概率只有在抛硬币之前才是有意义的，抛完硬币后的结果便是确定的；
+
+**似然**: 刚好相反，是在确定的结果下去推测产生这个结果的可能环境（参数）。  
+>假设随机抛掷一枚硬币1,000次，结果500次人头朝上，500次数字朝上，那么两面朝上的概率均为50%。<span style="color: red">运用出现的结果来判断这个事情本身的性质（参数）</span>，也就是似然。
+
+**当结果和参数相互对应，似然和概率在数值上相等**。 用 θ 表示环境对应的参数，x 表示结果，那么概率可以表示为：
+
+$$P(x | \theta )$$  
+
+p(x\vertθ) 是条件概率的表示方法。θ 是前置条件，理解为在 θ 的前提下，事件 x 发生的概率，相对应的似然可以表示为:  
+
+$$\mathcal{L}(\theta | x)$$  
+
+可以理解为已知结果为 x ，参数为 θ (似然函数里 θ 是变量，这里说的参数和变量是相对与概率而言的)对应的概率，即：  
+
+$$\mathcal{L}(\theta | x)=P(x | \theta)$$    
+
+两者在数值上相等，但是意义并不相同, $\mathcal{L}$ 是关于 θ 的函数，而 P 则是关于 x 的函数。
+
+## 2. Maximum Likelihood Estimation 
+
+单高斯模型 $x \sim \mathcal{N}(\mu, \Sigma)$, $x_{i} \in \mathcal{D}$, 那么对参数 $\mu$和 $\Sigma$ 进行估计，只需要最大化log-likelihood函数：
+
+$$
+\begin{aligned}
+\log p(X) &=\sum_{i=1}^{N} \log \mathcal{N}\left(x_{i} | \mu, \Sigma\right) \\
+&=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{\left(x_{i}-\mu\right)^{2}}{2 \sigma^{2}}} \\
+&=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2 \pi} \sigma}+\sum_{i=1}^{N}-\frac{\left(x_{i}-\mu\right)^{2}}{2 \sigma^{2}} \\
+&=-\frac{N}{2} \log 2 \pi-\frac{N}{2} \log \sigma^{2}-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}
+\end{aligned}
+$$
+
+求偏导数，得到参数估计：
+
+$$
+\begin{aligned}
+\frac{\partial \log p(X)}{\partial \mu} &=\frac{1}{\sigma^{2}} \sum_{i=1}^{N}\left(x_{i}-\mu\right)=0 \\
+& \Rightarrow \mu=\frac{1}{N} \sum_{i=1}^{N} x_{i} \\
+\frac{\partial \log p(X)}{\partial \sigma^{2}} &=-\frac{N}{2 \sigma^{2}}+\frac{1}{2 \sigma^{4}} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}=0 \\
+& \Rightarrow \sigma^{2}=\frac{1}{N} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}
+\end{aligned}
+$$
+
+## 3. Gaussian Mixture Model
+如果有K个高斯线性叠加: 
+
+$$
+\begin{aligned}
+p(x)=& \sum_{k=1}^{K} \pi_{k} \mathcal{N}\left(x | \mu_{k}, \Sigma_{k}\right) \\
+& \text { s.t. } \sum_{k=1}^{K} \pi_{k}=1 \\
+& 0 \leq \pi_{k} \leq 1
+\end{aligned}
+$$
+
+
+那么对数似然函数为
+
+
+$$ 
+\log p(X)=\sum_{i=1}^{N} \log \left\{\sum_{k=1}^{K} \pi_{k} \mathcal{N}\left(x_{i} | \mu_{k}, \Sigma_{k}\right)\right\} 
+$$
+
+
+因为对数里有求和，因此无法无法直接通过最大似然估计方法进行参数估计。
+
+其中，如果$\pi_{k}$是每个高斯出现的概率$p(k)$，则高斯混合模型分解为以$p(k)$获得一个高斯分布，然后在分布中获得$x$，因此$x$边缘概率分布为：
+
+$$
+p(x)=\sum_{k=1}^{K} p(k) p(x | k)
+$$
+
+后验概率$p(k\vert x)$表示$x$属于每个高斯的概率（离散值）:
+
+$$
+\begin{aligned}
+p(k | x) &=\frac{p(x | k) p(k)}{\sum_{l} p(x | l) p(l)} \\
+&=\frac{\pi_{k} \mathcal{N}\left(x | \mu_{k}, \Sigma_{k}\right)}{\sum_{l} \pi_{l} \mathcal{N}\left(x | \mu_{l}, \Sigma_{l}\right)}
+\end{aligned}
+$$
+
+
+## 4. Expectation Maximization 
+
+思想： 通过引入隐变量，运用迭代方法，求解混合高斯模型
+
+$$
+\theta^{(t+1)}=\underset{\theta}{\arg \max } \mathcal{L}(\theta ; X)
+$$
+
+引入隐变量Zi(状态i）， z服从多项分布，选择zi的概率为p(zi),则高斯混合模型为：
+
+$$
+\begin{aligned}
+z_{i} & \sim \operatorname{Multinoimal}\left(\pi_{1}, \cdots, \pi_{k}\right) \\
+x_{i} | z_{i} & \sim \mathcal{N}\left(\mu_{z_{i}}, \Sigma_{z_{i}}\right)
+\end{aligned}
+$$
+
+
+步骤：
+- E-Step: 在现有$\theta^{(t)}$下最大化似然下界, 计算隐变量z的期望$Q\left(z_{i}\right)=p\left(z_{i} \vert x_{i}, \theta\right)$ 作为其下界
+- M-Step: 在上面$Q(z_{i})$下计算参数列表$\theta$来最大化似然
+
+
+### (0) 理解EM的前提
+
+**凹凸函数**:  
+$\forall_{x \in \mathbb{R}}, f^{\prime \prime}(x) \geq 0$,则$f$为凸函数。  
+当x为向量，如果其hessian矩阵H是半正定的($H \geq 0$),则$f$为凸函数  
+如果$f^{\prime \prime}(x)>0$或者$H>0$, $f$是严格凸函数。  
+如果$f^{\prime \prime}(x)<0$或者$H>0$, $f$是凹函数。
+
+
+**Jensen 不等式**: 
+ 1. 如果$f$为凸函数, 则$E[f(X)] \geq f(E[X])$。当且仅当x是常数时，$E[f(x)]=f(E[x])$。
+ 2. 如果$f$是凹函数, 则$E[f(X)] \leq f(E[X])$。
+
+引入隐变量后，变换**对数似然函数**:
+
+$$
+\begin{aligned}
+\mathcal{L}(\theta ; X) &=\sum_{i=1}^{N} \log p\left(x_{i} | \theta\right) \\
+&=\sum_{i=1}^{N} \log \sum_{z_{i}} p\left(x_{i}, z_{i} | \theta\right) \\
+&=\sum_{i=1}^{N} \log \sum_{z_{i}} Q\left(z_{i}\right) \frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)} \\
+& \geq \sum_{i=1}^{N} \sum_{z_{i}} Q\left(z_{i}\right) \log \frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)}
+\end{aligned}
+$$ 
+
+**推导**: 
+1. 把式中的log函数体看成是一个整体，由于log(x)的二阶导数为$-\frac{1}{x^2}$, 小于0，为凹函数。所以使用Jensen不等式时，应用第二条准则：$f(E[X]) \geq E[f(x)]$。
+
+$$
+f\left(E_{z_{i} \sim Q}\left[\frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)}\right]\right) \geq E_{z_{i} \sim Q}\left[f\left(\frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)}\right)\right]
+$$
+
+2. 这里，$Q\left(z_{i}\right)$是$z_{i}$的函数， 且$\sum_{z_{i}} Q\left(z_{i}\right)=1$。   
+3. 由数学期望$E_{x \sim p}[g(X)]=\sum_{x} g(x) p(x)$，上式可以理解为: $p(x)$对应$Q\left(z_{i}\right)$, g(x)对应$\log \frac{p\left(x_{i}, z_{i} \vert \theta\right)}{Q\left(z_{i}\right)}$表示$z_{i}$的函数。  
+
+4. 似然函数: $\mathcal{L}(\theta) \geq \mathcal{J}(z,Q)$（$z$为隐含变量），那么我们可以通过不断的最大化$\mathcal{J}$的下界，来使得$\mathcal{L}(\theta)$不断提高，最终达到它的最大值。
+
+最大化$\mathcal{L}(\theta)$函数的下界，即让$g(x)$为常数c: 
+
+$$
+\frac{p\left(x_{i}, z_{i} \| \theta\right)}{Q\left(z_{i}\right)}=c
+$$
+
+Jensen不等式中说到，当自变量X=E(X)时，即为常数的时候，等式成立!
+
+变换公式, 对所有$z$求和得:
+
+$$
+\begin{aligned}
+p\left(x_{i}, z_{i} | \theta\right) &=c \cdot Q\left(z_{i}\right) \\
+\sum_{z_{i}} p\left(x_{i}, z_{i} | \theta\right) &=c \cdot \sum_{z_{i}} Q\left(z_{i}\right) \\
+c &=\sum_{z_{i}} p\left(x_{i}, z_{i} | \theta\right) 
+\end{aligned}
+$$
+
+其中，$\sum_{z_{i}} Q\left(z_{i}\right) = 1$, 也得：
+
+$$
+\begin{aligned}
+Q\left(z_{i}\right) &=\frac{p\left(x_{i}, z_{i} | \theta\right)}{\sum_{z_{i}} p\left(x_{i}, z_{i} | \theta\right)} \\
+&=p\left(z_{i} | x_{i}, \theta\right)
+\end{aligned}
+$$
+
+至此，我们推出了在固定参数θ后，使下界拉升的$Q(z)$的计算公式就是后验概率（条件概率），一并解决了$Q(z)$如何选择的问题。此步就是EM算法的`E-step`。
+
+
+执行`E-Step`后与下界重合，此时似然变为：
+
+$$
+\mathcal{L}\left(\theta^{(t)} ; X\right)=\sum_{i=1}^{N} \sum_{z_{i}} Q^{(t)}\left(z_{i}\right) \log \frac{p\left(x_{i}, z_{i} | \theta^{(t)}\right)}{Q^{(t)}\left(z_{i}\right)}
+$$
+
+这时，对公式求导
+
+$$
+\theta^{(t+1)}=\underset{\theta}{\arg \max } \mathcal{L}(\theta ; X)
+$$
+
+得到t+1步的似然函数$\mathcal{L}\left(\theta^{(t+1)} ; X\right)$。  
+通过不断的迭代，可以得到使似然函数$\mathcal{L}(\theta)$最大化的参数θ，直至函数收敛。
+只需要证明$\mathcal{L}\left(\theta^{(t+1)} ; X\right) \geq \mathcal{L}\left(\theta^{(t)} ; X\right)$, 则可证明EM的收敛性:
+
+$$
+\begin{aligned}
+\mathcal{L}\left(\theta^{(t+1)} ; X\right) &=\sum_{i=1}^{N} \log \sum_{z_{i}} Q^{(t)}\left(z_{i}\right) \frac{p\left(x_{i}, z_{i} | \theta^{(t+1)}\right)}{Q^{(t)}\left(z_{i}\right)} \\
+& \geq \sum_{i=1}^{N} \sum_{z_{i}} Q^{(t)}\left(z_{i}\right) \log \frac{p\left(x_{i}, z_{i} | \theta^{(t+1)}\right)}{Q^{(t)}\left(z_{i}\right)} \\
+& \geq \sum_{i=1}^{N} \sum_{z_{i}} Q^{(t)}\left(z_{i}\right) \log \frac{p\left(x_{i}, z_{i} | \theta^{(t)}\right)}{Q^{(t)}\left(z_{i}\right)} \\
+&=\mathcal{L}\left(\theta^{(t)} ; X\right)
+\end{aligned}
+$$
+
+## 5. 求解GMM 
+### (1) GMM E-Step:
+已知$\theta^{(t)}$, 求$Q^{(t+1)}\left(z_{i}\right)$:
+
+$$
+\begin{aligned}
+Q^{(t+1)}\left(z_{i}\right) &=\frac{p\left(x_{i}, z_{i} | \theta^{(t)}\right)}{p\left(x_{i} | \theta^{(t)}\right)} \\
+&=\frac{p\left(x_{i}, z_{i} | \theta^{(t)}\right)}{\sum_{l \in z_{i}} p\left(x_{i}, l | \theta^{(t)}\right)} \\
+&=\frac{p\left(x_{i} | z_{i}, \theta^{(t)}\right) p\left(z_{i} | \theta^{(t)}\right)}{\sum_{l \in z_{i}} p\left(x_{i} | l, \theta^{(t)}\right) p\left(l | \theta^{(t)}\right)} \\
+&=\frac{\mathcal{N}\left(\mu_{z_{i}}, \Sigma_{z_{i}}\right) \pi_{z_{i}}}{\sum_{l \in z_{i}} \mathcal{N}\left(\mu_{l}, \Sigma_{l}\right) \pi_{l}}
+\end{aligned}
+$$
+
+### (2) GMM M-Step:
+已知$Q^{(t+1)}\left(z_{i}\right)$, 求 $\theta^{(t+1)}$:
+
+$$
+\begin{aligned}
+\mathcal{L}(\theta ; X) &=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \frac{p\left(x_{i}, l | \theta\right)}{Q_{i}(l)} \\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log p\left(x_{i}, l | \theta\right)-\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log Q_{i}(l) \\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log p\left(x_{i}, l | \theta\right)-\text {Constant } \\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \pi_{l} \mathcal{N}\left(\mu_{l}, \Sigma_{l}\right)-\text {Constant } \\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \pi_{l}+\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \mathcal{N}\left(\mu_{l}, \Sigma_{l}\right)-\text {Constant}
+\end{aligned}
+$$
+
+### (3) 求 $\pi$:
+
+$$
+\begin{aligned}
+\forall_{l \in\{1, \cdots, K\}}, & \frac{\partial \mathcal{L}(\theta ; X)}{\partial \pi_{l}}=0 \\
+& \text { s.t. } \sum_{l}^{K} \pi_{l}=1
+\end{aligned}
+$$
+
+拉格朗日乘法约束
+
+$$
+\left\{\begin{aligned}
+L_{\pi_{l}} &=\frac{\partial \mathcal{L}(\theta ; X)}{\partial \pi_{l}}+\lambda\left(\sum_{l}^{K} \pi_{l}-1\right)=0 \\
+L_{\lambda} &=\sum_{l}^{K} \pi_{l}-1=0
+\end{aligned}\right.
+$$
+
+求导：
+
+$$
+\left\{\begin{array}{c}
+\frac{1}{\pi_{1}} \sum_{i}^{N} Q_{i}(1)-\lambda=0 \\
+\vdots \\
+\frac{1}{\pi_{l}} \sum_{i}^{N} Q_{i}(l)-\lambda=0
+\end{array}\right.
+$$
+
+相加得：
+
+$$
+\sum_{l}^{K} \sum_{i}^{N} Q_{i}(l)=\lambda \sum_{l}^{K} \pi_{l}=\lambda
+$$
+
+由  $Q_{i}(l)=p\left(l \vert x_{i}, \theta\right)$, 得
+
+$$
+\begin{aligned}
+\sum_{l}^{K} \sum_{i}^{N} Q_{i}(l) &=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \\
+&=\sum_{i}^{N} \sum_{l}^{K} p\left(l | x_{i}, \theta\right) \\
+&=\sum_{i}^{N} 1 \\
+&=N
+\end{aligned}
+$$
+
+则
+
+$$
+\begin{aligned}
+\pi_{l} &=\frac{1}{\lambda} \sum_{i}^{N} Q_{i}(l) \\
+&=\frac{1}{N} \sum_{i}^{N} Q_{i}(l) \\
+&=\frac{1}{N} \sum_{i}^{N} p\left(l | x_{i}, \theta\right)
+\end{aligned}
+$$
+
+
+### (4) 计算$\mu$
+
+$$
+\begin{aligned}
+&\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \mathcal{N}\left(\mu_{l}, \Sigma_{l}\right)\\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l) \log \frac{1}{\sqrt{2 \pi} \sigma_{l}} e^{-\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{2}}}\\
+&=\sum_{i}^{N} \sum_{l}^{K} Q_{i}(l)\left\{-\frac{1}{2} \log 2 \pi-\frac{1}{2} \log \sigma_{l}^{2}-\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{2}}\right\}
+\end{aligned}
+$$
+
+求偏导：
+
+$$
+\begin{aligned}
+\frac{\partial \mathcal{L}(\theta ; X)}{\partial \mu_{l}} &=\sum_{i}^{N} Q_{i}(l) \frac{x_{i}-\mu_{l}}{\sigma^{2}} \\
+&=0
+\end{aligned}
+$$
+
+得$\mu$：
+
+$$
+\mu_{l}=\frac{\sum_{i}^{N} Q_{i}(l) x_{i}}{\sum_{i}^{N} Q_{i}(l)}
+$$
+
+
+$$
+\begin{aligned}
+&\frac{\partial \mathcal{L}(\theta ; X)}{\partial \sigma_{l}^{2}}=\sum_{i}^{N} Q_{i}(l)\left\{-\frac{1}{2 \sigma_{l}^{2}}+\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{4}}\right\}\\
+&=0
+\end{aligned}
+$$
+
+### (5) 计算$\sigma$
+
+$$
+\begin{aligned}
+\frac{\partial \mathcal{L}(\theta ; X)}{\partial \sigma_{l}^{2}} &=\sum_{i}^{N} Q_{i}(l)\left\{-\frac{1}{2 \sigma_{l}^{2}}+\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{4}}\right\} \\
+&=0
+\end{aligned}
+$$
+
+得到
+
+$$
+\sigma_{l}=\frac{\sum_{i}^{N} Q_{i}(l)\left(x_{i}-\mu_{l}\right)^{2}}{\sum_{i}^{N} Q_{i}(l)}
+$$
+
+## 6 从KL散度角度解释EM
+
+$$
+\begin{aligned}
+K L(q \| p) &=\sum_{z} q(z) \log \frac{q(z)}{p(z | x, \theta)} \\
+&=\sum_{z} q(z) \log \frac{q(z) p(x | \theta)}{p(z, x | \theta)} \\
+&=-\sum_{z} q(z) \log \frac{p(z, x | \theta)}{q(z)}+\sum_{z} q(z) \log p(x | \theta) \\
+&=-\sum_{z} q(z) \log \frac{p(z, x | \theta)}{q(z)}+\log p(x | \theta) \sum_{z} q(z) \\
+&=-\sum_{z} q(z) \log \frac{p(z, x | \theta)}{q(z)}+\log p(x | \theta) \\
+\log p(x | \theta) &=K L(q \| p)+\sum_{z} q(z) \log \frac{p(z, x | \theta)}{q(z)} \\
+&=K L(q \| p)+\mathcal{L}(q, \theta)
+\end{aligned}
+$$
+
+
+
+参考：
+
+[徐亦达-机器学习-EM](https://www.youtube.com/watch?v=Bq5s80ZCmC0&list=PLyAft-JyjIYpno8IfZZS0mnxD5TYZ6BIc)

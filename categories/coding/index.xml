@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Coding - Category - Playground</title>
+        <link>https://zqfang.github.io/categories/coding/</link>
+        <description>Coding - Category - Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 31 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/categories/coding/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43; Notes</title>
+    <link>https://zqfang.github.io/2020-05-31-code-cpp-notes/</link>
+    <pubDate>Sun, 31 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-31-code-cpp-notes/</guid>
+    <description><![CDATA[C++ Notes Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it&rsquo;s extremely powerful.
+Table of Contents char to Int
+Pointer
+Return Reference
+Array as Argument]]></description>
+</item><item>
+    <title>Swift Cheat Sheet</title>
+    <link>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</guid>
+    <description><![CDATA[Swift Cheat Sheet Stolen from iwasrobbed.
+I simplify it and add some more.
+It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.]]></description>
+</item></channel>
+</rss>

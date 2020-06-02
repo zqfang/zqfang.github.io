@@ -1,0 +1,86 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Playground</title>
+        <link>https://zqfang.github.io/posts/</link>
+        <description>All Posts | Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 31 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43; Notes</title>
+    <link>https://zqfang.github.io/2020-05-31-code-cpp-notes/</link>
+    <pubDate>Sun, 31 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-31-code-cpp-notes/</guid>
+    <description><![CDATA[C++ Notes Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it&rsquo;s extremely powerful.
+Table of Contents char to Int
+Pointer
+Return Reference
+Array as Argument]]></description>
+</item><item>
+    <title>Swift Cheat Sheet</title>
+    <link>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</guid>
+    <description><![CDATA[Swift Cheat Sheet Stolen from iwasrobbed.
+I simplify it and add some more.
+It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.]]></description>
+</item><item>
+    <title>Boosting</title>
+    <link>https://zqfang.github.io/2020-05-05-ml-boosting/</link>
+    <pubDate>Tue, 05 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-05-ml-boosting/</guid>
+    <description><![CDATA[提升（Boosting）方法： 通过改变训练样本的权重（概率分]]></description>
+</item><item>
+    <title>Hidden Markov Model (HMM)</title>
+    <link>https://zqfang.github.io/2020-05-03-ml-hmm/</link>
+    <pubDate>Sun, 03 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-03-ml-hmm/</guid>
+    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过]]></description>
+</item><item>
+    <title>Latent semantic analysis (LSA)</title>
+    <link>https://zqfang.github.io/2020-04-30-ml-lsa/</link>
+    <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-04-30-ml-lsa/</guid>
+    <description><![CDATA[潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析]]></description>
+</item><item>
+    <title>Conditional random field (CRF)</title>
+    <link>https://zqfang.github.io/2020-04-29-ml-crf/</link>
+    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-04-29-ml-crf/</guid>
+    <description><![CDATA[CRF条件随机场，可应用于标注问题 概率无向图模型Probab]]></description>
+</item><item>
+    <title>Probability and P-value</title>
+    <link>https://zqfang.github.io/2020-04-29-stats-proba-pvalue/</link>
+    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-04-29-stats-proba-pvalue/</guid>
+    <description><![CDATA[Probability and P-value 1. PDF (probability density function) PDF：概率密度函数（probability]]></description>
+</item><item>
+    <title>Convert Seurat Robj to Scanpy h5ad</title>
+    <link>https://zqfang.github.io/2020-04-28-seurat2scanpy/</link>
+    <pubDate>Tue, 28 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-04-28-seurat2scanpy/</guid>
+    <description><![CDATA[It costed me a lot of time to convert seurat objects to scanpy. It&rsquo;s not a pleasant experience.
+Finally, I solved it.
+1. Install Seurat v3.0.2, or python kernel will always died!]]></description>
+</item><item>
+    <title>How to do deep learning using custom Jupyter kernels on Sherlock</title>
+    <link>https://zqfang.github.io/2020-02-10-ml-sherlock/</link>
+    <pubDate>Mon, 10 Feb 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-02-10-ml-sherlock/</guid>
+    <description><![CDATA[A recipe for interactive computing using custom Jupyter kernels on Stanford&rsquo;s Sherlock.
+Setting up custom conda environment on Sherlock&rsquo;s login node 1. Download and install Miniconda 1 2 3 4  wget https://repo.]]></description>
+</item><item>
+    <title>Graph</title>
+    <link>https://zqfang.github.io/2020-02-09-cs-graph/</link>
+    <pubDate>Sun, 09 Feb 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-02-09-cs-graph/</guid>
+    <description><![CDATA[Graphs Some data structures to keep in my mind. BinaryHeap: Complete binary tree MaxHeap: Parent &gt; Both Children IndexMaxHeap MinHeap: Parent &lt; Both Children IndexMinHeap Priority queue (MaxHeap) BinarySearchTree Not]]></description>
+</item></channel>
+</rss>

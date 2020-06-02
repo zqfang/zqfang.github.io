@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Pytorch - Tag - Playground</title>
+        <link>https://zqfang.github.io/tags/pytorch/</link>
+        <description>Pytorch - Tag - Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/pytorch/" rel="self" type="application/rss+xml" /><item>
+    <title>Loss function for multi-label classification</title>
+    <link>https://zqfang.github.io/2020-01-29-ml-lossfunc/</link>
+    <pubDate>Wed, 29 Jan 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-01-29-ml-lossfunc/</guid>
+    <description><![CDATA[Multi-label classification, tasks commonly be seen on health record data (multi symptoms).
+Loss function design:
+  Multi binary cross-entropy
+each class has a binary output
+  Label smoothing, another regularization technique]]></description>
+</item></channel>
+</rss>

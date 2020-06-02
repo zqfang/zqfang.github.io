@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Sherlock - Tag - Playground</title>
+        <link>https://zqfang.github.io/tags/sherlock/</link>
+        <description>Sherlock - Tag - Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Feb 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/sherlock/" rel="self" type="application/rss+xml" /><item>
+    <title>How to do deep learning using custom Jupyter kernels on Sherlock</title>
+    <link>https://zqfang.github.io/2020-02-10-ml-sherlock/</link>
+    <pubDate>Mon, 10 Feb 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-02-10-ml-sherlock/</guid>
+    <description><![CDATA[A recipe for interactive computing using custom Jupyter kernels on Stanford&rsquo;s Sherlock.
+Setting up custom conda environment on Sherlock&rsquo;s login node 1. Download and install Miniconda 1 2 3 4  wget https://repo.]]></description>
+</item></channel>
+</rss>

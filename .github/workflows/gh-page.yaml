@@ -3,28 +3,21 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master
+      - source  # default branch
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.71.1'
-          extended: true
 
-      - name: Build
-        run: hugo --minify
+      - run: somebuild
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
+          #github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: master  # deploying branch
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
-          external_repository: zqfang/zqfang.github.io # <- 改成你自己的 user github page
-          publish_dir: ./public # <- 指定編譯後的成品放置的資料夾
-          publish_branch: master # <- 遠端 repo 的目標分支
+          #external_repository: zqfang/zqfang.github.io # <- 改成你自己的 user github page

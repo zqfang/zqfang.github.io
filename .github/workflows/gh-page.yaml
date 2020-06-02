@@ -1,17 +1,30 @@
-name: GH-Pages Status
+name: Build and Deploy
+
 on:
-  page_build
-  
+  push:
+    branches:
+      - master
 jobs:
-  see-page-build-payload:
-    runs-on: ubuntu-latest
-    steps:      
-      - name: check status
-        run: |
-          import os
-          status, errormsg = os.getenv('STATUS'), os.getenv('ERROR')
-          assert status == 'built', 'There was an error building the page on GitHub pages.\n\nStatus: {}\n\nError messsage: {}'.format(status, errormsg)
-        shell: python
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.71.1'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         env:
-          STATUS: ${{ github.event.build.status }}
-          ERROR: ${{ github.event.build.error.message }}
+          deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
+          external_repository: zqfang/zqfang.github.io # <- 改成你自己的 user github page
+          publish_dir: ./public # <- 指定編譯後的成品放置的資料夾
+          publish_branch: master # <- 遠端 repo 的目標分支

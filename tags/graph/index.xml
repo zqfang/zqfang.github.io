@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Graph - Tag - Playground</title>
+        <title>Graph - Tag - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/tags/graph/</link>
-        <description>Graph - Tag - Playground</description>
+        <description>Graph - Tag - My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/graph/" rel="self" type="application/rss+xml" /><item>
     <title>Conditional random field (CRF)</title>
     <link>https://zqfang.github.io/2020-04-29-ml-crf/</link>

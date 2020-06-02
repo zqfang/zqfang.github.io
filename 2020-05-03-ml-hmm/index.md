@@ -222,9 +222,9 @@ $$
 #### 2.3.2 维特比算法
 实质是运用**动态规划求概率最大路径**，从而解决HMM的预测问题
 
-只需从时刻$t=1$开始，递推地计算在时刻$t$状态为$q_i$的各条部分路径的最大概率，直至得到时刻$t = T$状态为$i$的各条路径的最大概率。时刻 $t = T$ 的最大概率即为最优路径的概率$P^*$, 最优路径的终结点$i^*_T$也同时得到。之后，为了找出最优路径的各个结点，从终结点$i^*_T$开始，由后向前逐步求得结点 $i^*_{T-1}, \cdots, i^*_1$，得到最优路径 $I^* = (i^*_i, i^*_i, \cdots, i^*_T)$。这就是**维特比算法**。
+**维特比算法**: 只需从时刻$t=1$开始，递推地计算在时刻$t$状态为$q_i$的各条部分路径的最大概率，直至得到时刻$t = T$状态为$i$的各条路径的最大概率。时刻 $t = T$ 的最大概率即为最优路径的概率 $P^\*$, 最优路径的终结点$i^*_T$也同时得到。之后，为了找出最优路径的各个结点，从终结点$i^*_T$ 开始，由后向前逐步求得结点 $i^*_{T-1}, \cdots, i^*_1$，得到最优路径 $I^* = (i^*_i, i^*_i, \cdots, i^*_T)$。
 
-定义在时刻t状态i的所有单个路径中概率最大值为
+定义在时刻$t$状态$i$的所有单个路径中概率最大值为
 
 $$
 \delta_{t}(i)=\max _{i_{1}, i_{2}, \cdots, i_{t-1}} P\left(i_{t}=i, i_{t-1}, \cdots, i_{1}, o_{t}, \cdots, o_{1} | \lambda\right), \quad i=1,2, \cdots, N
@@ -235,11 +235,11 @@ $$
 $$
 \begin{aligned}
 \delta_{t+1}(i) &=\max _{i_{1}, i_{2}, \cdots, i_{t}} P\left(i_{t+1}=i, i_{t}, \cdots, i_{1}, o_{t+1}, \cdots, o_{1} | \lambda\right) \\
-&=\max _{1 \leqslant j \leqslant N}\left[\delta_{t}(j) a_{j i}\right] b_{i}\left(o_{t+1}\right), \quad i=1,2, \cdots, N ; \quad t=1,2, \cdots, T-1
+&= \max _{1 \leqslant j \leqslant N}\left[\delta_{t}(j) a_{j i}\right] b_{i}\left(o_{t+1}\right), \quad i=1,2, \cdots, N ; \quad t=1,2, \cdots, T-1
 \end{aligned}
 $$
 
-定义在时刻t状态i的所有单个路径中概率最大路径的第t-1 个节点为
+定义在时刻t状态i的所有单个路径中概率最大路径的第$t-1$个节点为
 
 $$
 \Psi_{t}(i)=\arg \max _{1 \leqslant j \leqslant N}\left[\delta_{t-1}(j) a_{j i}\right], \quad i=1,2, \cdots, N
@@ -249,7 +249,8 @@ $$
 输入： 隐马可夫模型 $\lambda$， 观测序列$O$;  
 输出： 最优路径$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$  
 
-（1）初始化
+(1) 初始化:
+
 
 $$
 \begin{array}{c}
@@ -259,7 +260,7 @@ $$
 $$
 
 
-（2）递推
+(2) 递推:
 
 $$
 \begin{array}{c}
@@ -268,7 +269,7 @@ $$
 \end{array}
 $$
 
-（3）终止
+(3) 终止
 
 $$
 \begin{array}{c}
@@ -278,7 +279,7 @@ i^*_T = \arg \max _{1 \leqslant i \leqslant N} [ \delta_T(i)]
 $$
 
 
-（4）最优路径回溯  对$t=T-1, T-2, \cdots, 1$
+(4) 最优路径回溯  对$t=T-1, T-2, \cdots, 1$,
 
 $$i^*_t = \Psi_{t+1}(i^*_{t+1})$$
 

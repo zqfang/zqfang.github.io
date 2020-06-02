@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>TF-IDF - Tag - Playground</title>
+        <title>TF-IDF - Tag - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/tags/tf-idf/</link>
-        <description>TF-IDF - Tag - Playground</description>
+        <description>TF-IDF - Tag - My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/tf-idf/" rel="self" type="application/rss+xml" /><item>
     <title>Latent semantic analysis (LSA)</title>
     <link>https://zqfang.github.io/2020-04-30-ml-lsa/</link>

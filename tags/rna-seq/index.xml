@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>RNA-seq - Tag - Playground</title>
+        <title>RNA-seq - Tag - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/tags/rna-seq/</link>
-        <description>RNA-seq - Tag - Playground</description>
+        <description>RNA-seq - Tag - My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/rna-seq/" rel="self" type="application/rss+xml" /><item>
     <title>Shortcut to bulk RNA-seq analysis</title>
     <link>https://zqfang.github.io/2020-01-20-rnaseq/</link>

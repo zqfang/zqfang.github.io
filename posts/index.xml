@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Playground</title>
+        <title>All Posts - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/posts/</link>
-        <description>All Posts | Playground</description>
+        <description>All Posts | My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 31 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>C&#43;&#43; Notes</title>
     <link>https://zqfang.github.io/2020-05-31-code-cpp-notes/</link>

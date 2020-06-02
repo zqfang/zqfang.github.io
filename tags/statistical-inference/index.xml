@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Statistical Inference - Tag - Playground</title>
+        <title>Statistical Inference - Tag - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/tags/statistical-inference/</link>
-        <description>Statistical Inference - Tag - Playground</description>
+        <description>Statistical Inference - Tag - My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/statistical-inference/" rel="self" type="application/rss+xml" /><item>
     <title>Statistical Modeling and Inference</title>
     <link>https://zqfang.github.io/2020-01-30-ml-bayes/</link>

@@ -33,11 +33,12 @@ $$
 对于离散型变量，有如
 
 $$
-F_{X}(x)=\operatorname{Pr}(X \leq x)=\left\{\begin{array}{l}
+F_{X}(x)=\operatorname{Pr}(X \leq x)= 
+\left\{ \begin{array}{l}
 0 \text { if } x<0 \\
 \frac{1}{2} \text { if } 0 \leq x<1 \\
 1 \text { if } x \geq 1
-\end{array}\right
+\end{array} \right.
 $$
 
 

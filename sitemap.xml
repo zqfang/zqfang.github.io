@@ -17,7 +17,7 @@
             <loc>https://zqfang.github.io/tags/boosting/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-05-05-ml-boosting/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/categories/machine-learning/</loc><lastmod>2020-05-05T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://zqfang.github.io/tags/expectation-maximum/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://zqfang.github.io/tags/expectation-maximization/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/hidden-markov-model/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/2020-05-03-ml-hmm/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://zqfang.github.io/tags/probabilistic-graphical-model/</loc><lastmod>2020-05-03T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
@@ -46,7 +46,6 @@
             <loc>https://zqfang.github.io/2020-01-30-ml-bayes/</loc><lastmod>2020-01-30T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-29-ml-lossfunc/</loc><lastmod>2020-01-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/pytorch/</loc><lastmod>2020-01-29T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://zqfang.github.io/tags/expectation-maximization/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-26-ml-em/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/2020-01-26-ml-montecarlo/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://zqfang.github.io/tags/monte-carlo/</loc><lastmod>2020-01-26T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

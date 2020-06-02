@@ -3,7 +3,14 @@
         <title>Expectation Maximization - Tag - My Computational Genomic Playground</title>
         <link>https://zqfang.github.io/tags/expectation-maximization/</link>
         <description>Expectation Maximization - Tag - My Computational Genomic Playground</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/expectation-maximization/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/expectation-maximization/" rel="self" type="application/rss+xml" /><item>
+    <title>Hidden Markov Model (HMM)</title>
+    <link>https://zqfang.github.io/2020-05-03-ml-hmm/</link>
+    <pubDate>Sun, 03 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-05-03-ml-hmm/</guid>
+    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过]]></description>
+</item><item>
     <title>Expectation Maximization</title>
     <link>https://zqfang.github.io/2020-01-26-ml-em/</link>
     <pubDate>Sun, 26 Jan 2020 00:00:00 &#43;0000</pubDate>

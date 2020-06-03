@@ -11,6 +11,9 @@
     <guid>https://zqfang.github.io/2020-01-20-chip/</guid>
     <description><![CDATA[bowtie2-macs2-deeptools
 2.1 Genome mapping Step 0: install software
-1 2  # install miniconda, then call conda conda install -c bioconda bowtie2 hisat2 samtools deeptools   step 1: build index]]></description>
+1 2  # install miniconda, then call conda conda install -c bioconda bowtie2 hisat2 samtools deeptools   step 1: build index
+1  bowtie2-build hg38.fa bowtie2_index/hg38   step 2: mapping
+Unpaired data
+1 2 3  bowtie2 -p ${threads} -x index/hg38 \  -U input.]]></description>
 </item></channel>
 </rss>

@@ -108,7 +108,12 @@
 Table of Contents char to Int
 Pointer
 Return Reference
-Array as Argument</div><div class="post-footer">
+Array as Argument
+Object Instantization
+Const
+Friend
+Design Pattern
+ Singleton Delegate  Char to Int 1. Char is ASCII C store Char as ASCII by default.</div><div class="post-footer">
         <a href="/2020-05-31-code-cpp-notes/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
@@ -119,26 +124,58 @@ Explain:
 Pointers are just memory addresses.
 Direct memory access is Unsafe.
 Mutable means you can write to it.
-Raw means it points to a blob of bytes.</div><div class="post-footer">
+Raw means it points to a blob of bytes.
+Buffer means that is works like a collection.
+Generic [&lt;T&gt;] pointers are typed.</div><div class="post-footer">
         <a href="/2020-06-03-code-unsafe-pointer-swift/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/swift/">Swift</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/2020-05-30-code-swift-cheat-sheet/">Swift Cheat Sheet</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-30">2020-05-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/coding/"><i class="far fa-folder fa-fw"></i>Coding</a></span></div><div class="content">Swift Cheat Sheet Stolen from iwasrobbed.
 I simplify it and add some more.
-It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.</div><div class="post-footer">
+It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.
+Table of Contents  Code Document Data Types Operators Operator Overloading Declaring Classes Declarations Lazy Property Property Observer Literals Functions Constants and Variables Naming Conventions Closures Generics Control Statements Extension Protocol Protocol Extension Error Handling Passing Information User Defaults Common Patterns Unicode Support File IO  Code Documentation Two ways of commenting:</div><div class="post-footer">
         <a href="/2020-05-30-code-swift-cheat-sheet/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/swift/">Swift</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/2020-05-05-ml-boosting/">Boosting</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-05">2020-05-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">提升（Boosting）方法： 通过改变训练样本的权重（概率分</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-05">2020-05-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性</div><div class="post-footer">
         <a href="/2020-05-05-ml-boosting/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/boosting/">Boosting</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/2020-05-03-ml-hmm/">Hidden Markov Model (HMM)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-03">2020-05-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-03">2020-05-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过程，属于生成模型。 HMM在语音识别、自然</div><div class="post-footer">
         <a href="/2020-05-03-ml-hmm/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hidden-markov-model/">Hidden Markov Model</a>,&nbsp;<a href="/tags/expectation-maximization/">Expectation Maximization</a>,&nbsp;<a href="/tags/probabilistic-graphical-model/">Probabilistic Graphical Model</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020-04-30-ml-lsa/">Latent semantic analysis (LSA)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-30">2020-04-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析。其特点是通过矩阵分解发现文本于单词之间</div><div class="post-footer">
+        <a href="/2020-04-30-ml-lsa/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/tf-idf/">TF-IDF</a>,&nbsp;<a href="/tags/latent-semantic-analysis/">Latent Semantic Analysis</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020-04-29-ml-crf/">Conditional random field (CRF)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-29">2020-04-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">CRF条件随机场，可应用于标注问题 概率无向图模型Probabilistic undirected graphical model(Markov random field) 是一个可以由无向</div><div class="post-footer">
+        <a href="/2020-04-29-ml-crf/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/probabilistic-graphical-model/">Probabilistic Graphical Model</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020-04-29-stats-proba-pvalue/">Probability and P-value</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-29">2020-04-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/statistic/"><i class="far fa-folder fa-fw"></i>Statistic</a></span></div><div class="content">Probability and P-value 1. PDF (probability density function) PDF：概率密度函数（probability density function）, 连续型随机变量的概</div><div class="post-footer">
+        <a href="/2020-04-29-stats-proba-pvalue/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/p-value/">P-Value</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020-04-28-seurat2scanpy/">Convert Seurat Robj to Scanpy h5ad</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-28">2020-04-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/make-bioinfo-uncool-again/"><i class="far fa-folder fa-fw"></i>Make bioinfo uncool again</a></span></div><div class="content">It costed me a lot of time to convert seurat objects to scanpy. It&rsquo;s not a pleasant experience.
+Finally, I solved it.
+1. Install Seurat v3.0.2, or python kernel will always died!!! Don&rsquo;t know why latest seurat not work.
+2. Set the R version for rpy2 1 2 3 4 5 6 7  # user defined R installation import os # path to your libR.</div><div class="post-footer">
+        <a href="/2020-04-28-seurat2scanpy/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/scrna-seq/">scRNA-seq</a>,&nbsp;<a href="/tags/scanpy/">Scanpy</a>,&nbsp;<a href="/tags/seurat/">Seurat</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020-02-10-ml-sherlock/">How to do deep learning using custom Jupyter kernels on Sherlock</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-10">2020-02-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class="content">A recipe for interactive computing using custom Jupyter kernels on Stanford&rsquo;s Sherlock.
+Setting up custom conda environment on Sherlock&rsquo;s login node 1. Download and install Miniconda 1 2 3 4  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh # install bash Miniconda3-latest-Linux-x86_64.sh conda config --set always_yes yes   2. Install jupyter notebook/lab and secure your notebooks with a password 1 2 3 4  # install the default py3 kernel for jupyter notebook conda install ipython jupyter notebook jupyterlab # add password jupyter notebook password   3.</div><div class="post-footer">
+        <a href="/2020-02-10-ml-sherlock/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jupyter/">Jupyter</a>,&nbsp;<a href="/tags/sherlock/">Sherlock</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -150,12 +187,6 @@ It&rsquo;s a high level and a quick reference to Swift. The purpose of this chea
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/3/">3</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link" aria-hidden="true">&hellip;</span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/5/">5</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

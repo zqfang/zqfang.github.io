@@ -9,13 +9,13 @@
     <pubDate>Sun, 03 May 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://zqfang.github.io/2020-05-03-ml-hmm/</guid>
-    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过]]></description>
+    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过程，属于生成模型。 HMM在语音识别、自然]]></description>
 </item><item>
     <title>Expectation Maximization</title>
     <link>https://zqfang.github.io/2020-01-26-ml-em/</link>
     <pubDate>Sun, 26 Jan 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://zqfang.github.io/2020-01-26-ml-em/</guid>
-    <description><![CDATA[Maximum Likelihood Estimation Gaussian Mixture Model Expectation Maximization 1. Probability and likelihood likehood &amp; maximum likehood 在非正式场合似然（likel]]></description>
+    <description><![CDATA[Maximum Likelihood Estimation Gaussian Mixture Model Expectation Maximization 1. Probability and likelihood likehood &amp; maximum likehood 在非正式场合似然（likelihood）和概率（Probabilit]]></description>
 </item></channel>
 </rss>

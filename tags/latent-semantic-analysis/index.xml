@@ -9,6 +9,6 @@
     <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://zqfang.github.io/2020-04-30-ml-lsa/</guid>
-    <description><![CDATA[潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析]]></description>
+    <description><![CDATA[潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析。其特点是通过矩阵分解发现文本于单词之间]]></description>
 </item></channel>
 </rss>

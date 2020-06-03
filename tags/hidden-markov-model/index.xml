@@ -9,6 +9,6 @@
     <pubDate>Sun, 03 May 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://zqfang.github.io/2020-05-03-ml-hmm/</guid>
-    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过]]></description>
+    <description><![CDATA[隐马可夫模型（HMM）描述隐藏的马可夫链随机生成观测序列的过程，属于生成模型。 HMM在语音识别、自然]]></description>
 </item></channel>
 </rss>

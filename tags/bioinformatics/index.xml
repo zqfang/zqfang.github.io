@@ -10,6 +10,6 @@
     <author>Author</author>
     <guid>https://zqfang.github.io/2020-01-20-begin/</guid>
     <description><![CDATA[usefull tools for linux command line
-a. Make terminal cool, install OhMyZsh 1 2 3 4 5 6 7 8  # install zsh sudo apt-get install zsh # ubuntu # change default shell to zsh chsh -s /usr/bin/zsh # install ohmyzsh sh -c &#34;$(wget https://raw.]]></description>
+a. Make terminal cool, install OhMyZsh 1 2 3 4 5 6 7 8  # install zsh sudo apt-get install zsh # ubuntu # change default shell to zsh chsh -s /usr/bin/zsh # install ohmyzsh sh -c &#34;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; source ~/.zshrc   b.]]></description>
 </item></channel>
 </rss>

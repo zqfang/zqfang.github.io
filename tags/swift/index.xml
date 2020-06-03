@@ -15,7 +15,9 @@ Explain:
 Pointers are just memory addresses.
 Direct memory access is Unsafe.
 Mutable means you can write to it.
-Raw means it points to a blob of bytes.]]></description>
+Raw means it points to a blob of bytes.
+Buffer means that is works like a collection.
+Generic [&lt;T&gt;] pointers are typed.]]></description>
 </item><item>
     <title>Swift Cheat Sheet</title>
     <link>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</link>
@@ -24,6 +26,7 @@ Raw means it points to a blob of bytes.]]></description>
     <guid>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</guid>
     <description><![CDATA[Swift Cheat Sheet Stolen from iwasrobbed.
 I simplify it and add some more.
-It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.]]></description>
+It&rsquo;s a high level and a quick reference to Swift. The purpose of this cheat sheet is to teach myself and get answers within 10s.
+Table of Contents  Code Document Data Types Operators Operator Overloading Declaring Classes Declarations Lazy Property Property Observer Literals Functions Constants and Variables Naming Conventions Closures Generics Control Statements Extension Protocol Protocol Extension Error Handling Passing Information User Defaults Common Patterns Unicode Support File IO  Code Documentation Two ways of commenting:]]></description>
 </item></channel>
 </rss>

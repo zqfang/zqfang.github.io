@@ -18,7 +18,8 @@
       
       <guid>https://zqfang.github.io/portfolio/portfolio-1/</guid>
       <description>I would like to use pandas to explore my data, but I did not find a convenient tool to do gene set enrichment analysis in python.
-I want something like this:</description>
+I want something like this:
+ Ability to run inside python console without switching to R. User friendly for both wet and dry lab users.</description>
     </item>
     
     <item>
@@ -30,7 +31,9 @@ I want something like this:</description>
       <description>My bioinfomatic workflows using snakemake. I would update it if only I have more time.
 Why snakemake?
 Good:
- Community Easy to use and update Reusable workflows Scalable Support conda env Support slurm, qsub &amp;hellip; python syntax  Drawback:</description>
+ Community Easy to use and update Reusable workflows Scalable Support conda env Support slurm, qsub &amp;hellip; python syntax  Drawback:
+ Hard to debug workflows.  TODO:
+ Integrate snakemake-wrappers to current workflows to make it more reproducible.</description>
     </item>
     
     <item>
@@ -39,7 +42,7 @@ Good:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://zqfang.github.io/portfolio/portfolio-2/</guid>
-      <description>My journey to object detection began with YOLOv3. I think it&amp;rsquo;s really a good starting point for someone like me without computer vison background to understand what&amp;rsquo;s going on behind the scence.</description>
+      <description>My journey to object detection began with YOLOv3. I think it&amp;rsquo;s really a good starting point for someone like me without computer vison background to understand what&amp;rsquo;s going on behind the scence. While learning object detection, I made a simple modified C++ version (with LibTorch) based on others&amp;rsquo; work 1 2 3.</description>
     </item>
     
   </channel>

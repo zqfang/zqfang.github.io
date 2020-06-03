@@ -11,6 +11,7 @@
     <guid>https://zqfang.github.io/2020-04-28-seurat2scanpy/</guid>
     <description><![CDATA[It costed me a lot of time to convert seurat objects to scanpy. It&rsquo;s not a pleasant experience.
 Finally, I solved it.
-1. Install Seurat v3.0.2, or python kernel will always died!]]></description>
+1. Install Seurat v3.0.2, or python kernel will always died!!! Don&rsquo;t know why latest seurat not work.
+2. Set the R version for rpy2 1 2 3 4 5 6 7  # user defined R installation import os # path to your libR.]]></description>
 </item></channel>
 </rss>

@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/zqfang.github.io\/2020-04-29-stats-proba-pvalue\/"
-        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "P-Value","wordcount":  734 ,
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "P-Value","wordcount":  721 ,
         "url": "https:\/\/zqfang.github.io\/2020-04-29-stats-proba-pvalue\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2020-04-29T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
@@ -106,86 +106,106 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Probability and P-value</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/statistic/"><i class="far fa-folder fa-fw"></i>Statistic</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;734 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;721 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-pdf-probability-density-function">1. PDF (probability density function)</a></li>
-    <li><a href="#2pmf-probability-mass-function">2.PMF (probability mass function)</a></li>
-    <li><a href="#3-cdf-cumulative-distribution-function">3. CDF (cumulative distribution function)</a></li>
-    <li><a href="#4-central-limit-theorem">4. Central Limit Theorem</a></li>
-    <li><a href="#5-confidence-interval">5. Confidence interval</a></li>
-    <li><a href="#6-probability-and-p-value">6. Probability and P-value</a></li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h1 id="probability-and-p-value">Probability and P-value</h1>
+                <div class="details-content toc-content" id="toc-content-static"></div>
+            </div><div class="content" id="content"><h1 id="probability-and-pvalue">Probability and P-value</h1>
+
 <h2 id="1-pdf-probability-density-function">1. PDF (probability density function)</h2>
+
 <ol>
 <li>PDF：概率密度函数（probability density function）, 连续型随机变量的概率密度函数是一个描述某个确定的取值点附近的可能性的函数。<br>
 数学表示：用PDF在某一区间上的积分来刻画随机变量落在这个区间中的概率</li>
 </ol>
-<p>$$
+
+<p><span  class="math">\[
 \operatorname{Pr}(a \leq X \leq b)=\int_{a}^{b} f_{X}(x) d x
-$$</p>
+\]</span></p>
+
 <h2 id="2pmf-probability-mass-function">2.PMF (probability mass function)</h2>
+
 <p>PMF : 概率质量函数（probability mass function), 在概率论中，概率质量函数是离散随机变量在各特定取值上的概率。<br>
 数学表示： PMF其实就是高中所学的离散型随机变量的分布律。</p>
-<p>$$
+
+<p><span  class="math">\[
 f_{X}(x)=\operatorname{Pr}(X=x)
-$$</p>
+\]</span></p>
+
 <h2 id="3-cdf-cumulative-distribution-function">3. CDF (cumulative distribution function)</h2>
+
 <p>CDF : 累积分布函数 (cumulative distribution function)，是概率密度函数的积分，能完整描述一个实随机变量X的概率分布。</p>
+
 <p>CDF是PDF的（从负无穷-oo到当前值的）积分，PDF是CDF的导数．（为了便于概率的计算，引入CDF的概念）<br>
 CDF相当于其左侧的面积，也相当于小于该值的概率，负无穷的CDF值为０，正无穷的CDF值总为１．
 对于连续变量，有</p>
-<p>$$
+
+<p><span  class="math">\[
 F_{X}(x)=\operatorname{Pr}(X \leq x)=\int_{-\infty}^{x} f_{X}(t) d t
-$$</p>
+\]</span></p>
+
 <p>对于离散型变量，有如</p>
-<p>$$
-F_{X}(x)=\operatorname{Pr}(X \leq x)=
-\left{ \begin{array}{l}
-0 \text { if } x&lt;0 \<br>
-\frac{1}{2} \text { if } 0 \leq x&lt;1 \<br>
+
+<p><span  class="math">\[
+F_{X}(x)=\operatorname{Pr}(X \leq x)= 
+\left\{ \begin{array}{l}
+0 \text { if } x<0 \\
+\frac{1}{2} \text { if } 0 \leq x<1 \\
 1 \text { if } x \geq 1
 \end{array} \right.
-$$</p>
+\]</span></p>
+
 <h2 id="4-central-limit-theorem">4. Central Limit Theorem</h2>
+
 <p>中心极限定理（Central Limit Theorem）</p>
+
 <p>给定一个任意分布的总体，
 每次从这些总体中随机抽取 n 个抽样，一共抽 m 次，
 然后把这 m 组抽样分别求出平均值，
 当m足够大时，这m次的平均值的分布（称为抽样分布）接近正态分布。</p>
+
 <h2 id="5-confidence-interval">5. Confidence interval</h2>
+
 <p>置信区间（confidence interval）
 置信区间是指由样本统计量所构造的总体参数的估计区间。
 置信区间展现的是这个参数的真实值落在测量值（推测值）的周围的可信程度。</p>
-<h2 id="6-probability-and-p-value">6. Probability and P-value</h2>
+
+<h2 id="6-probability-and-pvalue">6. Probability and P-value</h2>
+
 <p>A <code>p-value</code> is the probability that random chance generated the data, or something else that is equal or rarer.</p>
+
 <p>A p-value is composed of three parts:</p>
+
 <ol>
-<li>The probability random chance would result in the observation.</li>
+<li>The probability random chance would result in the observation.<br></li>
 <li>The probability of observing something else that is equally rare.</li>
 <li>The probability of observing something rarer or more extreme.</li>
 </ol>
+
 <p>But <code>probability</code></p>
-<p>$$ Probalibility = \frac{Number of outcomes of interest} {The total number of outcomes}$$</p>
-<p>In <code>hypothesis testing</code>, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is dffirrent from B.</p>
-<p>see here:
+
+<p><span  class="math">\[ Probalibility = \frac{Number of outcomes of interest} {The total number of outcomes}\]</span></p>
+
+<p>In <code>hypothesis testing</code>, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is different from B.</p>
+
+<h2 id="7-additional-resources">7. Additional resources</h2>
+
+<p>Statquest: <code>P Values, clearly explained</code>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube-nocookie.com/embed/https://youtu.be/5Z9OIYA8He8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/5Z9OIYA8He8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 </p>
-<p>and here:</p>
+
+<p>and <code>How to calculate P-value</code></p>
+
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube-nocookie.com/embed/https://youtu.be/JQc3yx0-Q9E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/JQc3yx0-Q9E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 </div><div class="post-footer" id="post-footer">

@@ -70,12 +70,15 @@ But `probability`
 $$ Probalibility = \frac{Number of outcomes of interest} {The total number of outcomes}$$
 
 
-In `hypothesis testing`, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is dffirrent from B.
+In `hypothesis testing`, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is different from B.
 
-see here:
-{{< youtube "https://youtu.be/5Z9OIYA8He8" >}}
+## 7. Additional resources 
 
-and here:
+Statquest: `P Values, clearly explained`
+{{< youtube 5Z9OIYA8He8 >}}
 
-{{< youtube  "https://youtu.be/JQc3yx0-Q9E" >}}
+
+and `How to calculate P-value`
+
+{{< youtube JQc3yx0-Q9E >}}
 

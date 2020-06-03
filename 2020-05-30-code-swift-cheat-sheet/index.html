@@ -20,7 +20,7 @@
 <meta name="application-name" content="#root max &gt;">
 <meta name="apple-mobile-web-app-title" content="#root max &gt;"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" /><link rel="prev" href="https://zqfang.github.io/2020-05-05-ml-boosting/" /><link rel="next" href="https://zqfang.github.io/2020-05-31-code-cpp-notes/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" /><link rel="prev" href="https://zqfang.github.io/2020-05-05-ml-boosting/" /><link rel="next" href="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/zqfang.github.io\/2020-05-30-code-swift-cheat-sheet\/"
-        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Swift","wordcount":  7134 ,
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Swift","wordcount":  7254 ,
         "url": "https:\/\/zqfang.github.io\/2020-05-30-code-swift-cheat-sheet\/","datePublished": "2020-05-30T00:00:00+00:00","dateModified": "2020-05-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Swift Cheat Sheet</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/coding/"><i class="far fa-folder fa-fw"></i>Coding</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;7134 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;34 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;7254 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;35 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -300,6 +300,12 @@
       </ul>
     </li>
     <li><a href="#unicode-support">Unicode Support</a></li>
+    <li><a href="#fileio">FileIO</a>
+      <ul>
+        <li><a href="#c-style-fileio">C style FileIO</a></li>
+        <li><a href="#swift-style-fileio">Swift Style FileIO</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="swift-cheat-sheet">Swift Cheat Sheet</h1>
@@ -332,6 +338,7 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.</
 <li><a href="#user-defaults" rel="">User Defaults</a></li>
 <li><a href="#common-patterns" rel="">Common Patterns</a></li>
 <li><a href="#unicode-support" rel="">Unicode Support</a></li>
+<li><a href="#fileio" rel="">File IO</a></li>
 </ul>
 <h2 id="code-documentation">Code Documentation</h2>
 <p>Two ways of commenting:</p>
@@ -2859,6 +2866,74 @@ In a method&rsquo;s preceding line, press <code>⌥ Option + ⌘ Command + /</co
 <p>Although I don&rsquo;t recommend this, Swift will compile even if you use emoji&rsquo;s in your code since it offers Unicode support.</p>
 <p>More info from Apple <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html" target="_blank" rel="noopener noreffer">here</a></p>
 <p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="fileio">FileIO</h2>
+<h3 id="c-style-fileio">C style FileIO</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">fd</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;aFile.txt&#34;</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">)</span>
+<span class="n">fwrite</span><span class="p">(</span><span class="s">&#34;Hello Swift!&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">fclose</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">fd</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;aFile.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int8</span><span class="p">](</span><span class="bp">count</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">fread</span><span class="p">(&amp;</span><span class="n">array</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="nb">String</span><span class="p">.</span><span class="n">fromCString</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">// Hello Swift!</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="swift-style-fileio">Swift Style FileIO</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">path</span> <span class="p">=</span> <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="n">forResource</span><span class="p">:</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="n">ofType</span><span class="p">:</span> <span class="s">&#34;txt&#34;</span><span class="p">)</span>
+<span class="c1">// read</span>
+<span class="kd">let</span> <span class="nv">lines</span> <span class="p">=</span> <span class="k">try</span><span class="p">?</span> <span class="nb">String</span><span class="p">(</span><span class="n">contentsOfFile</span><span class="p">:</span> <span class="n">path</span><span class="p">!)</span>
+                     <span class="p">.</span><span class="bp">split</span><span class="p">{</span><span class="nv">$0</span> <span class="p">==</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">}</span>
+                     <span class="p">.</span><span class="bp">map</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="kd">init</span><span class="p">)</span>
+
+<span class="c1">// write</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">lines</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">_outlines</span><span class="p">.</span><span class="n">joined</span><span class="p">(</span><span class="n">separator</span><span class="p">:</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="k">try</span> <span class="n">lines</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="n">atomically</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="p">.</span><span class="n">utf8</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -2883,7 +2958,7 @@ In a method&rsquo;s preceding line, press <code>⌥ Option + ⌘ Command + /</co
     </div>
 
     <div class="post-nav"><a href="/2020-05-05-ml-boosting/" class="prev" rel="prev" title="Boosting"><i class="fas fa-angle-left fa-fw"></i>Boosting</a>
-            <a href="/2020-05-31-code-cpp-notes/" class="next" rel="next" title="C&#43;&#43; Notes">C&#43;&#43; Notes<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/2020-06-03-code-unsafe-pointer-swift/" class="next" rel="next" title="Pointer in UnSafe Swift">Pointer in UnSafe Swift<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

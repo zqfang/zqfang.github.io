@@ -15,6 +15,19 @@ Pointer
 Return Reference
 Array as Argument]]></description>
 </item><item>
+    <title>Pointer in UnSafe Swift</title>
+    <link>https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/</guid>
+    <description><![CDATA[Pointers Unsafe Swift pointers use a predictable naming scheme:
+Unsafe [Mutable][Raw][Buffer]Pointer[&lt;T&gt;]
+Explain:
+Pointers are just memory addresses.
+Direct memory access is Unsafe.
+Mutable means you can write to it.
+Raw means it points to a blob of bytes.]]></description>
+</item><item>
     <title>Swift Cheat Sheet</title>
     <link>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</link>
     <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>

@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/zqfang.github.io\/2020-05-05-ml-boosting\/"
-        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Boosting","wordcount":  1926 ,
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Boosting","wordcount":  1902 ,
         "url": "https:\/\/zqfang.github.io\/2020-05-05-ml-boosting\/","datePublished": "2020-05-05T00:00:00+00:00","dateModified": "2020-05-05T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
@@ -106,218 +106,294 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Boosting</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-05">2020-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1926 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-05">2020-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1902 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-adaboost">1. AdaBoost</a>
-      <ul>
-        <li><a href="#11-adaboost算法误差">1.1 AdaBoost算法误差</a></li>
-        <li><a href="#12-adaboost算法解释">1.2 AdaBoost算法解释</a>
-          <ul>
-            <li><a href="#121-前向分步算法">1.2.1 前向分步算法</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#2-boosting-tree">2. Boosting Tree</a>
-      <ul>
-        <li><a href="#21-提升树模型">2.1 提升树模型</a></li>
-        <li><a href="#22-提升树算法">2.2 提升树算法</a>
-          <ul>
-            <li><a href="#221-回归问题提升树">2.2.1 回归问题提升树</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#3-梯度提升">3. 梯度提升</a></li>
-  </ul>
-</nav></div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>提升（Boosting）方法： 通过改变训练样本的权重（概率分布），学习过个分类器，并将这些分类器线性组合，提高分类性能。</p>
+
 <h2 id="1-adaboost">1. AdaBoost</h2>
+
 <p>AdaBoost通过提高被前一轮弱分类器错误分类样本的权值，从而降低被正确分类样本的权值，并采取甲醛多数表决的方法达到分类目的。</p>
+
 <p>输入：训练数据集$T={(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)}$, $\mathcal{Y} = {-1,+1}$;<br>
 输出：分类器$G(x)$</p>
+
 <p>1). 初始化训练数据权值分布</p>
-<p>$$D_1 = (w_{11}, \cdots, w_{1i}, \cdots, w_{1N}), w_{1i} = \frac{1}{N}, i = 1,2,\cdots,N$$</p>
+
+<p><span  class="math">\[D_1 = (w_{11}, \cdots, w_{1i}, \cdots, w_{1N}), w_{1i} = \frac{1}{N}, i = 1,2,\cdots,N\]</span></p>
+
 <p>2). 对 $m = 1，2，\cdots, M$<br>
 a.对权值分布$D_m$的训练数据集学习，得到基本分类器</p>
-<p>$$
-G_{m}(x): \mathcal{X} \rightarrow{-1,+1}
-$$</p>
+
+<p><span  class="math">\[
+G_{m}(x): \mathcal{X} \rightarrow\{-1,+1\}
+\]</span></p>
+
 <p>b.计算$G(x)$在训练数据集上的分类误差率</p>
-<p>$$
+
+<p><span  class="math">\[
 e_{m}=\sum_{i=1}^{N} P\left(G_{m}\left(x_{i}\right) \neq y_{i}\right)=\sum_{i=1}^{N} w_{m i} I\left(G_{m}\left(x_{i}\right) \neq y_{i}\right)
-$$</p>
+\]</span></p>
+
 <p>c. 计算$G(x)$的系数</p>
-<p>$$
+
+<p><span  class="math">\[
 \alpha_{m}=\frac{1}{2} \log \frac{1-e_{m}}{e_{m}}
-$$</p>
+\]</span></p>
+
 <p>d. 更新训练数据的权值分布</p>
-<p>$$
+
+<p><span  class="math">\[
 D_{m+1}=\left(w_{m+1,1}, \cdots, w_{m+1, i}, \cdots, w_{m+1, N}\right)
-$$</p>
-<p>$$
-\boldsymbol{w}<em>{m+1, i} = \frac{w</em>{m i}}{Z_{m}} \exp \left(-\alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), \quad i=1,2, \cdots, N
-$$</p>
+\]</span></p>
+
+<p><span  class="math">\[
+\boldsymbol{w}_{m+1, i} = \frac{w_{m i}}{Z_{m}} \exp \left(-\alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), \quad i=1,2, \cdots, N
+\]</span></p>
+
 <p>其中，</p>
-<p>$$
+
+<p><span  class="math">\[
 Z_{m}=\sum_{i=1}^{N} w_{m i} \exp \left(-\alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right)
-$$</p>
+\]</span></p>
+
 <p>3）构建基本线性分类器组合</p>
-<p>$$
+
+<p><span  class="math">\[
 f(x)=\sum_{m=1}^{M} \alpha_{m} G_{m}(x)
-$$</p>
+\]</span></p>
+
 <p>得到最终分类器</p>
-<p>$$
+
+<p><span  class="math">\[
 \begin{aligned}
-G(x) &amp;=\operatorname{sign}(f(x)) \<br>
-&amp;=\operatorname{sign}\left(\sum_{m=1}^{M} \alpha_{m} G_{m}(x)\right)
+G(x) &=\operatorname{sign}(f(x)) \\
+&=\operatorname{sign}\left(\sum_{m=1}^{M} \alpha_{m} G_{m}(x)\right)
 \end{aligned}
-$$</p>
+\]</span></p>
+
 <h3 id="11-adaboost算法误差">1.1 AdaBoost算法误差</h3>
+
 <p>AdaBoost算法最终分类器训练误差界为</p>
-<p>$$
+
+<p><span  class="math">\[
 \frac{1}{N} \sum_{i=1}^{N} I\left(G\left(x_{i}\right) \neq y_{i}\right) \leqslant \frac{1}{N} \sum_{i} \exp \left(-y_{i} f\left(x_{i}\right)\right)=\prod_{m} Z_{m}
-$$</p>
+\]</span></p>
+
 <p>这一定理说明，每一轮选取适当的$G_m$使$Z_m$最小，从而使训练误差下降最快。</p>
+
 <p>对于二分类问题：</p>
-<p>$$
+
+<p><span  class="math">\[
 \begin{aligned}
-\prod_{m=1}^{M} Z_{m} &amp;=\prod_{m=1}^{M}[2 \sqrt{e_{m}\left(1-e_{m}\right)}] \<br>
-&amp;=\prod_{m=1}^{M} \sqrt{\left(1-4 \gamma_{m}^{2}\right)} \<br>
-&amp; \leqslant \exp \left(-2 \sum_{m=1}^{M} \gamma_{m}^{2}\right)
+\prod_{m=1}^{M} Z_{m} &=\prod_{m=1}^{M}[2 \sqrt{e_{m}\left(1-e_{m}\right)}] \\
+&=\prod_{m=1}^{M} \sqrt{\left(1-4 \gamma_{m}^{2}\right)} \\
+& \leqslant \exp \left(-2 \sum_{m=1}^{M} \gamma_{m}^{2}\right)
 \end{aligned}
-$$</p>
+\]</span></p>
+
 <p>其中， $\gamma_{m}=\frac{1}{2}-e_{m}$</p>
+
 <h3 id="12-adaboost算法解释">1.2 AdaBoost算法解释</h3>
+
 <p>AdaBooost可以认为：模型为加法模型，损失函数为指数函数，学习算法为前向分布算法的二分类学习方法</p>
+
 <h4 id="121-前向分步算法">1.2.1 前向分步算法</h4>
+
 <p>考虑加法模型（additive model）</p>
-<p>$$
+
+<p><span  class="math">\[
 f(x)=\sum_{m=1}^{M} \beta_{m} b\left(x ; \gamma_{m}\right)
-$$</p>
+\]</span></p>
+
 <p>其中，$b(x; \gamma_m)$为基函数，$gamma_m$为参数， $\beta_m$为系数。</p>
+
 <p>在给定训练集和损失函数$L(y,f(x))$的条件下，学习加法模型$f(x)$成为经验风险极小化（损失函数极小化）问题：</p>
-<p>$$
-\min <em>{\beta</em>{m}, \gamma_{m}} \sum_{i=1}^{N} L\left(y_{i}, \sum_{m=1}^{M} \beta_{m} b\left(x_{i} ; \gamma_{m}\right)\right)
-$$</p>
+
+<p><span  class="math">\[
+\min _{\beta_{m}, \gamma_{m}} \sum_{i=1}^{N} L\left(y_{i}, \sum_{m=1}^{M} \beta_{m} b\left(x_{i} ; \gamma_{m}\right)\right)
+\]</span></p>
+
 <p><strong>前向分布算法思想</strong>是： 从前向后，每一步只学一个基函数及其系数，逐步逼近优化目标函数，达到优化步骤简化的目的。</p>
+
 <p>因此，每一步只需优化如下损失函数：</p>
-<p>$$
-\min <em>{\beta, \gamma} \sum</em>{i=1}^{N} L\left(y_{i}, \beta b\left(x_{i} ; \gamma\right)\right)
-$$</p>
+
+<p><span  class="math">\[
+\min _{\beta, \gamma} \sum_{i=1}^{N} L\left(y_{i}, \beta b\left(x_{i} ; \gamma\right)\right)
+\]</span></p>
+
 <p><strong>算法步骤</strong></p>
+
 <p>输入：训练数据集$T={(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)}$, 损失函数$L(y,f(x))$;基函数集${b(x;\gamma}$;<br>
 输出：加法模型$f(x)$</p>
-<p>1）初始化$f_0(x) = 0$<br>
-2) 对$m = 1,2,\cdots, M$<br>
-a.极小化损失函数</p>
-<p>$$
+
+<p>1）初始化$f_0(x) = 0$</p>
+
+<ol start="2">
+<li>对$m = 1,2,\cdots, M$<br>
+a.极小化损失函数</li>
+</ol>
+
+<p><span  class="math">\[
 \left(\beta_{m}, \gamma_{m}\right)=\arg \min _{\beta, \gamma} \sum_{i=1}^{N} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+\beta b\left(x_{i} ; \gamma\right)\right)
-$$</p>
+\]</span></p>
+
 <p>得到参数$\beta_m$, $\gamma_m$。</p>
+
 <p>b.更新</p>
-<p>$$
+
+<p><span  class="math">\[
 f_{m}(x)=f_{m-1}(x)+\beta_{m} b\left(x ; \gamma_{m}\right)
-$$</p>
+\]</span></p>
+
 <p>3）得到加法模型</p>
-<p>$$
+
+<p><span  class="math">\[
 f(x)=f_{M}(x)=\sum_{m=1}^{M} \beta_{m} b\left(x ; \gamma_{m}\right)
-$$</p>
+\]</span></p>
+
 <h2 id="2-boosting-tree">2. Boosting Tree</h2>
+
 <p>提升树🌲是以决策树为基本分类器的提升方法</p>
+
 <h3 id="21-提升树模型">2.1 提升树模型</h3>
+
 <p>采用加法模型（基函数的线性组合）与前向分布算法：</p>
-<p>$$
+
+<p><span  class="math">\[
 f_{M}(x)=\sum_{m=1}^{M} T\left(x ; \Theta_{m}\right)
-$$</p>
+\]</span></p>
+
 <p>其中 $T\left(x ; \Theta_{m}\right)$表示决策树，$\Theta_{m}$决策树参数， $M$为树的个数</p>
+
 <h3 id="22-提升树算法">2.2 提升树算法</h3>
+
 <p>采用<strong>加法模型</strong>和<strong>前向分布算法</strong>实现学习优化的过程。</p>
+
 <p>首先确定提升树$f_{0}(x)=0$， 第$m$步的模型是</p>
-<p>$$
+
+<p><span  class="math">\[
 f_{m}(x)=f_{m-1}(x)+T\left(x ; \Theta_{m}\right)
-$$</p>
+\]</span></p>
+
 <p>其中， $f_{m-1}(x)$为当前模型，通过经验风险极小化确定下一刻决策树的参数$\Theta_{m}$：</p>
-<p>$$
-\hat{\Theta}<em>{m}=\arg \min <em>{\Theta</em>{m}} \sum</em>{i=1}^{N} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+T\left(x_{i} ; \Theta_{m}\right)\right)
-$$</p>
+
+<p><span  class="math">\[
+\hat{\Theta}_{m}=\arg \min _{\Theta_{m}} \sum_{i=1}^{N} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+T\left(x_{i} ; \Theta_{m}\right)\right)
+\]</span></p>
+
 <h4 id="221-回归问题提升树">2.2.1 回归问题提升树</h4>
-<p>训练数据集$T={(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)}$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;</p>
+
+<p>训练数据集:
+<span  class="math">\(T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}\)</span>, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$, $\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;</p>
+
 <p>将输入空间划分为$J$个互不相交的区域$R1，R2, \cdots, R_J$， 并且每个区域上确定输出的常量$c_j$，那么树可以表示为：</p>
-<p>$$
+
+<p><span  class="math">\[
 T(x ; \Theta)=\sum_{j=1}^{J} c_{j} I\left(x \in R_{j}\right)
-$$</p>
+\]</span></p>
+
 <p>其中，</p>
-<p>$$
-\Theta=\left{\left(R_{1}, c_{1}\right),\left(R_{2}, c_{2}\right), \cdots,\left(R_{J}, c_{J}\right)\right}
-$$
+
+<p><span  class="math">\(
+\Theta=\left\{\left(R_{1}, c_{1}\right),\left(R_{2}, c_{2}\right), \cdots,\left(R_{J}, c_{J}\right)\right\}
+\)</span>
 表示树的却与划分和各个取悦是那个的常数。</p>
+
 <p>采用一下前向分布算法</p>
-<p>$$
+
+<p><span  class="math">\[
 \begin{aligned}
-&amp;f_{0}(x)=0\<br>
-&amp;\begin{array}{l}
-f_{m}(x)=f_{m-1}(x)+T\left(x ; \Theta_{m}\right), \quad m=1,2, \cdots, M \<br>
+&f_{0}(x)=0\\
+&\begin{array}{l}
+f_{m}(x)=f_{m-1}(x)+T\left(x ; \Theta_{m}\right), \quad m=1,2, \cdots, M \\
 f_{M}(x)=\sum_{m=1}^{M} T\left(x ; \Theta_{m}\right)
 \end{array}
 \end{aligned}
-$$</p>
+\]</span></p>
+
 <p>求解$\hat{\Theta}_{m}$，
 若用平方误差损失函数：</p>
-<p>$$
+
+<p><span  class="math">\[
 L(y, f(x))=(y-f(x))^{2}
-$$</p>
+\]</span></p>
+
 <p>则损失函数为：</p>
-<p>$$
+
+<p><span  class="math">\[
 \begin{aligned}
-L\left(y, f_{m-1}(x)+T\left(x ; \Theta_{m}\right)\right) &amp;=\left[y-f_{m-1}(x)-T\left(x ; \Theta_{m}\right)\right]^{2} \<br>
-&amp;=\left[r-T\left(x ; \Theta_{m}\right)\right]^{2}
+L\left(y, f_{m-1}(x)+T\left(x ; \Theta_{m}\right)\right) &=\left[y-f_{m-1}(x)-T\left(x ; \Theta_{m}\right)\right]^{2} \\
+&=\left[r-T\left(x ; \Theta_{m}\right)\right]^{2}
 \end{aligned}
-$$</p>
+\]</span></p>
+
 <p>这里，</p>
-<p>$$
+
+<p><span  class="math">\[
 r=y-f_{m-1}(x)
-$$</p>
+\]</span></p>
+
 <p>是当前模型拟合数据的残差（residual）。因此对于回归问题提升树，只需拟合当前模型残差。得到$T\left(x ; \Theta_{m}\right)$，更新模型，得到$f_m(x)$。</p>
+
 <h2 id="3-梯度提升">3. 梯度提升</h2>
+
 <p>当损失函数不是简单的平方损失、指数损失时，提升树的优化就很难。梯度提升算法利用最速下降法的近似方法，计算损失函数的负梯度在当前模型的值</p>
-<p>$$
+
+<p><span  class="math">\[
 -\left[\frac{\partial L\left(y, f\left(x_{i}\right)\right)}{\partial f\left(x_{i}\right)}\right]_{f(x)=f_{m-1}(x)}
-$$</p>
+\]</span></p>
+
 <p>并将其作为回归问题提升树算法中的残差近似值，拟合一个回归树。</p>
-<p>输入： 训练数据集$T={(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)}$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$<br>
-输出： 回归树$\hat f(x)$</p>
-<p>1）初始化</p>
-<p>$$
-f_{0}(x)=\arg \min _{c} \sum_{i=1}^{N} L\left(y_{i}, c\right)
-$$</p>
-<ol start="2">
-<li>对 $m=1，2，\cdots, M$
-a. 对 $i=1，2，\cdots, N$计算</li>
+
+<p>输入： 训练数据集<span  class="math">\(T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}\)</span>, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$<br>
+ 输出： 回归树$\hat f(x)$</p>
+
+<ol>
+<li>初始化</li>
 </ol>
-<p>$$
+
+<p><span  class="math">\[
+f_{0}(x)=\arg \min _{c} \sum_{i=1}^{N} L\left(y_{i}, c\right)
+\]</span></p>
+
+<ol start="2">
+<li>对 $m=1，2，\cdots, M$</li>
+</ol>
+
+<p>(1) 对 $i=1，2，\cdots, N$计算</p>
+
+<p><span  class="math">\[
 r_{m i}=-\left[\frac{\partial L\left(y_{i}, f\left(x_{i}\right)\right)}{\partial f\left(x_{i}\right)}\right]_{f(x)=f_{m-1}(x)}
-$$</p>
-<p>b) 对$r_{mi}$拟合一个回归树，得到第$m$颗树的节点区域$R_{mj}$</p>
-<p>c) 对$j=1,2,\cdots, J$, 计算</p>
-<p>$$
+\]</span></p>
+
+<p>(2) 对$r_{mi}$拟合一个回归树，得到第$m$颗树的节点区域$R_{mj}$</p>
+
+<p>(3) 对$j=1,2,\cdots, J$, 计算</p>
+
+<p><span  class="math">\[
 c_{m j}=\arg \min _{c} \sum_{x_{i} \in R_{m j}} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+c\right)
-$$</p>
-<p>d)更新</p>
-<p>$$
+\]</span></p>
+
+<p>(4)更新</p>
+
+<p><span  class="math">\[
 f_{m}(x)=f_{m-1}(x)+\sum_{j=1}^{J} c_{m j} I\left(x \in R_{m j}\right)
-$$</p>
-<p>3)得到回归树</p>
-<p>$$
+\]</span></p>
+
+<ol start="3">
+<li>得到回归树</li>
+</ol>
+
+<p><span  class="math">\[
 \hat{f}(x)=f_{M}(x)=\sum_{m=1}^{M} \sum_{j=1}^{J} c_{m j} I\left(x \in R_{m j}\right)
-$$</p>
+\]</span></p>
+
 <p>参考： 李航《统计学习方法》</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

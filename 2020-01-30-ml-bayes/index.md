@@ -142,9 +142,7 @@ $$
 **Naive Bayes Classifier** is:
 
 $$
-
 y=f(x)=\arg \max _{c_{k}} \frac{P\left(Y=c_{k}\right) \prod_{j} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right) }{\sum_{k} P\left(Y=c_{k}\right) \prod_{j} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right)}
-
 $$
 
 and it's short form:

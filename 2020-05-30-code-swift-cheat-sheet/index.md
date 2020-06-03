@@ -34,7 +34,7 @@ The purpose of this cheat sheet is to teach myself and get answers within 10s.
 * [User Defaults](#user-defaults)
 * [Common Patterns](#common-patterns)
 * [Unicode Support](#unicode-support)
-
+* [File IO](#fileio)
 
 ## Code Documentation
 Two ways of commenting: 
@@ -1513,4 +1513,42 @@ Although I don't recommend this, Swift will compile even if you use emoji's in y
 
 More info from Apple [here](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html)
 
+[Back to top](#table-of-contents)
+
+
+## FileIO
+### C style FileIO
+
+```swift
+let fd = fopen("aFile.txt", "w")
+fwrite("Hello Swift!", 12, 1, fd)
+
+let res = fclose(file)
+if res != 0 {
+    print(strerror(errno))
+}
+
+let fd = fopen("aFile.txt", "r")
+var array = [Int8](count: 13, repeatedValue: 0)
+fread(&array, 12, 1, fd)
+fclose(fd)
+
+let str = String.fromCString(array)
+print(str) // Hello Swift!
+```
+
+### Swift Style FileIO
+```swift
+let path = Bundle.main.path(forResource:"test", ofType: "txt")
+// read
+let lines = try? String(contentsOfFile: path!)
+                     .split{$0 == "\n"}
+                     .map(String.init)
+
+// write
+do {
+    let lines = self._outlines.joined(separator: "\n")
+    try lines.write(to: url, atomically: false, encoding: .utf8)
+} catch{}
+```
 [Back to top](#table-of-contents)

@@ -174,7 +174,8 @@ $$
 
 #### 2.2.1 回归问题提升树
 
-训练数据集$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;  
+训练数据集:
+$$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$, $\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;  
 
 将输入空间划分为$J$个互不相交的区域$R1，R2, \cdots, R_J$， 并且每个区域上确定输出的常量$c_j$，那么树可以表示为：
 
@@ -236,37 +237,38 @@ $$
 并将其作为回归问题提升树算法中的残差近似值，拟合一个回归树。
 
 
-输入： 训练数据集$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$  
+输入： 训练数据集$$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$  
  输出： 回归树$\hat f(x)$
 
-1）初始化
+1) 初始化
 
 $$
 f_{0}(x)=\arg \min _{c} \sum_{i=1}^{N} L\left(y_{i}, c\right)
 $$
 
 2) 对 $m=1，2，\cdots, M$
-a. 对 $i=1，2，\cdots, N$计算
+
+  (1) 对 $i=1，2，\cdots, N$计算
 
 $$
 r_{m i}=-\left[\frac{\partial L\left(y_{i}, f\left(x_{i}\right)\right)}{\partial f\left(x_{i}\right)}\right]_{f(x)=f_{m-1}(x)}
 $$
 
-b) 对$r_{mi}$拟合一个回归树，得到第$m$颗树的节点区域$R_{mj}$
+  (2) 对$r_{mi}$拟合一个回归树，得到第$m$颗树的节点区域$R_{mj}$
 
-c) 对$j=1,2,\cdots, J$, 计算
+  (3) 对$j=1,2,\cdots, J$, 计算
 
 $$
 c_{m j}=\arg \min _{c} \sum_{x_{i} \in R_{m j}} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+c\right)
 $$
 
-d)更新
+  (4)更新
 
 $$
 f_{m}(x)=f_{m-1}(x)+\sum_{j=1}^{J} c_{m j} I\left(x \in R_{m j}\right)
 $$
 
-3)得到回归树
+3) 得到回归树
 
 $$
 \hat{f}(x)=f_{M}(x)=\sum_{m=1}^{M} \sum_{j=1}^{J} c_{m j} I\left(x \in R_{m j}\right)

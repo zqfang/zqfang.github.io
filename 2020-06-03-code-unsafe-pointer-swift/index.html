@@ -5,37 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Latent semantic analysis (LSA) - My Computational Genomic Playground</title><meta name="Description" content="My Computational Genomic Playground"><meta property="og:title" content="Latent semantic analysis (LSA)" />
-<meta property="og:description" content="潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析" />
+        <title>Pointer in UnSafe Swift - My Computational Genomic Playground</title><meta name="Description" content="Get answers for Swift within 10s"><meta property="og:title" content="Pointer in UnSafe Swift" />
+<meta property="og:description" content="Get answers for Swift within 10s" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zqfang.github.io/2020-04-30-ml-lsa/" />
+<meta property="og:url" content="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" />
 <meta property="og:image" content="https://zqfang.github.io/logo.png"/>
-<meta property="article:published_time" content="2020-04-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-30T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-30T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://zqfang.github.io/logo.png"/>
 
-<meta name="twitter:title" content="Latent semantic analysis (LSA)"/>
-<meta name="twitter:description" content="潜在语义分析（LSA）是一种非监督学习方法，用于文本话题分析"/>
+<meta name="twitter:title" content="Pointer in UnSafe Swift"/>
+<meta name="twitter:description" content="Get answers for Swift within 10s"/>
 <meta name="application-name" content="#root max &gt;">
 <meta name="apple-mobile-web-app-title" content="#root max &gt;"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-04-30-ml-lsa/" /><link rel="prev" href="https://zqfang.github.io/2020-04-29-ml-crf/" /><link rel="next" href="https://zqfang.github.io/2020-05-03-ml-hmm/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" /><link rel="prev" href="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" /><link rel="next" href="https://zqfang.github.io/2020-05-31-code-cpp-notes/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Latent semantic analysis (LSA)",
+        "headline": "Pointer in UnSafe Swift",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/zqfang.github.io\/2020-04-30-ml-lsa\/"
-        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "TF-IDF, Latent Semantic Analysis","wordcount":  1265 ,
-        "url": "https:\/\/zqfang.github.io\/2020-04-30-ml-lsa\/","datePublished": "2020-04-30T00:00:00+00:00","dateModified": "2020-04-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "https:\/\/zqfang.github.io\/2020-06-03-code-unsafe-pointer-swift\/"
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Swift","wordcount":  87 ,
+        "url": "https:\/\/zqfang.github.io\/2020-06-03-code-unsafe-pointer-swift\/","datePublished": "2020-05-30T00:00:00+00:00","dateModified": "2020-05-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
                 "name": "zqfang"
-            },"description": ""
+            },"description": "Get answers for Swift within 10s"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -104,182 +104,95 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Latent semantic analysis (LSA)</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-30">2020-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1265 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Pointer in UnSafe Swift</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/coding/"><i class="far fa-folder fa-fw"></i>Coding</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;87 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"></div>
-            </div><div class="content" id="content"><p><strong>潜在语义分析</strong>（LSA）是一种非监督学习方法，用于文本话题分析。其特点是通过矩阵分解发现文本于单词之间的基于话题的语义关系。</p>
-
-<p>潜在语义分析是一种非概率话题分析模型。步骤为：</p>
-
-<ol>
-<li>先将文本集合表示为单词-文本矩阵</li>
-<li>对单词-文本矩阵进行奇异值分解（SVD）或非负矩阵分解（NMF），从而得到话题向量空间，以及文本在话题向量空间的表示</li>
-</ol>
-
-<h3 id="1-单词向量空间">1. 单词向量空间</h3>
-
-<p>给定由n个文本的集合 $D = {d_1, d_2, \cdots, d_n }$ ,以及所有文本中单词集 $W = {w_1, w_2, \cdots, w_m }$,
-则单词在文本中出现的数据用单词-文本矩阵(word-document matrix)表示, 记为：</p>
-
-<p><span  class="math">\[
-X=\left[\begin{array}{cccc}
-x_{11} & x_{12} & \cdots & x_{1 n} \\
-x_{21} & x_{22} & \cdots & x_{2 n} \\
-\vdots & \vdots & & \vdots \\
-x_{m 1} & x_{m 2} & \cdots & x_{m n}
-\end{array}\right]
-\]</span></p>
-
-<p>其中， $x_{ij}$表示单词$w_i$在文本$d_j$中出现的频数或权值。由于单词种类多，而每个文本中单词种类通常少，所以为单词-文本矩阵是稀疏矩阵。</p>
-
-<p>权值常用<strong>单词频率-逆文本频率</strong>(term frequeny-inverse document frequency, TF-IDF)表示:</p>
-
-<p><span  class="math">\[
-\mathrm{TFIDF}_{i j}=\frac{\mathrm{tf}_{i j}}{\mathrm{tf}_{\cdot j}} \log \frac{\mathrm{df}}{\mathrm{df}_{i}}, \quad i=1,2, \cdots, m ; \quad j=1,2, \cdots, n
-\]</span></p>
-
-<p>其中，<br>
-$\mathrm{tf}_{ij}$ 是单词$w_i$在文本$d<em>j$中的频数;<br>
-$\mathrm{tf}</em>{\cdot j}$ 是$d<em>j$中出现的所有单词频数之和;<br>
-$\mathrm{df}</em>{i}$ 是含有单词$w_i$的文本数;<br>
-$\mathrm{df}$ 是文本集合$D$的全部文本数。</p>
-
-<p>单词-文本矩阵的第j列向量$x_j$表示文本$d_j$：</p>
-
-<p><span  class="math">\[
-x_{j}=\left[\begin{array}{c}
-x_{1 j} \\
-x_{2 j} \\
-\vdots \\
-x_{m j}
-\end{array}\right], \quad j=1,2, \cdots, n
-\]</span></p>
-
-<p>两个单词向量内积或者标准化内积表示对应文本之间的<strong>语义相似度</strong>， 因此文本$d_i$与$d_j$的之间的相似度：</p>
-
-<p><span  class="math">\[
-x_{i} \cdot x_{j}, \quad \frac{x_{i} \cdot x_{j}}{\left\|x_{i}\right\|\left\|x_{j}\right\|}
-\]</span></p>
-
-<p><strong>单词向量空间模型的优缺点</strong></p>
-
-<ul>
-<li>优点： 简单，计算高效</li>
-<li>缺点： 一词多义(polysemy)和多词一义(synonymy)不能很好处理， 存在相似度计算不准确的问题</li>
-</ul>
-
-<h3 id="2-话题topic向量空间">2. 话题（topic）向量空间</h3>
-
-<p>话题没有严格的定义，是指文本讨论的内容或主题。而基于话题的模型是为了解决单词向量不能很好处理一词多义(polysemy)和多词一义(synonymy)的问题。</p>
-
-<p>给定由n个文本的集合 $D = {d_1, d_2, \cdots, d_n }$, 以及所有文本中单词集 $W = {w_1, w_2, \cdots, w_m }$,
-则单词在文本中出现的数据用单词-文本矩阵(word-document matrix)表示, 记为：</p>
-
-<p><span  class="math">\[
-X=\left[\begin{array}{cccc}
-x_{11} & x_{12} & \cdots & x_{1 n} \\
-x_{21} & x_{22} & \cdots & x_{2 n} \\
-\vdots & \vdots & & \vdots \\
-x_{m 1} & x_{m 2} & \cdots & x_{m n}
-\end{array}\right]
-\]</span></p>
-
-<p>假设所有文本含有k个话题， 每个话题l由一个定义在单词集合W傻姑娘的m维向量：</p>
-
-<p><span  class="math">\[
-t_{l}=\left[\begin{array}{c}
-t_{1 l} \\
-t_{2 l} \\
-\vdots \\
-t_{m l}
-\end{array}\right], \quad l=1,2, \cdots, k
-\]</span></p>
-
-<p>则有话题向量矩阵T：</p>
-
-<p><span  class="math">\[
-T=\left[\begin{array}{cccc}
-t_{11} & t_{12} & \cdots & t_{1 k} \\
-t_{21} & t_{22} & \cdots & t_{2 k} \\
-\vdots & \vdots & & \vdots \\
-t_{m 1} & t_{m 2} & \cdots & t_{m k}
-\end{array}\right]
-\]</span></p>
-
-<h3 id="3-文本在话题向量空间的表示">3. 文本在话题向量空间的表示</h3>
-
-<p>文本$d_j$在单词向量空间用$x_j$表示，将$x_j$投影到话题向量空间$T$，得到话题向量空间$y_j$，$y_j$是个k维向量:</p>
-
-<p><span  class="math">\(
-y_{j}=\left[\begin{array}{c}
-y_{1 j} \\
-y_{2 j} \\
-\vdots \\
-y_{k j}
-\end{array}\right], \quad j=1,2, \cdots, n
-\)</span>
-　</p>
-
-<p>因此，话题-文本矩阵$Y$：</p>
-
-<p><span  class="math">\[
-Y=\left[\begin{array}{cccc}
-y_{11} & y_{12} & \cdots & y_{1 n} \\
-y_{21} & y_{22} & \cdots & y_{2 n} \\
-\vdots & \vdots & & \vdots \\
-y_{k 1} & y_{k 2} & \cdots & y_{k n}
-\end{array}\right]
-\]</span></p>
-
-<h3 id="4-单词向量空间到话题向量空间转换">4. 单词向量空间到话题向量空间转换</h3>
-
-<p>因此，单词向量空间的文本向量$x_j$，可以用话题向量空间$y_j$近似表示，即以k个话题向量以$y_j$为系数的线性组合：</p>
-
-<p><span  class="math">\[
-x_{j} \approx y_{1 j} t_{1}+y_{2 j} t_{2}+\cdots+y_{k j} t_{k}, \quad j=1,2, \cdots, n
-\]</span></p>
-
-<p>矩阵形式：</p>
-
-<p><span  class="math">\[
-X \approx TY
-\]</span></p>
-
-<p>这就是潜在语义分析。</p>
-
-<p>参考： 李航《统计学习方法》</p>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pointers">Pointers</a></li>
+    <li><a href="#working-with-pointers">Working with Pointers</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="pointers">Pointers</h2>
+<p>Unsafe Swift pointers use a predictable naming scheme:</p>
+<p><strong>Unsafe</strong> <span style="color: red">[Mutable]</span><span style="color: green">[Raw]</span><span style="color: turquoise">[Buffer]</span><strong>Pointer</strong><span style="color: magenta">[&lt;T&gt;]</span></p>
+<p>Explain:</p>
+<p><b>Pointers</b> are just memory addresses.<br>
+Direct memory access is <b>Unsafe</b>.<br>
+<span style="color: red">Mutable</span> means you can write to it.<br>
+<span style="color: green">Raw</span> means it points to a blob of bytes.<br>
+<span style="color: turquoise">Buffer</span> means that is works like a collection.<br>
+Generic <span style="color: magenta">[&lt;T&gt;]</span> pointers are typed.</p>
+<h2 id="working-with-pointers">Working with Pointers</h2>
+<table>
+<thead>
+<tr>
+<th>C Pointer</th>
+<th>Swift Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int *</td>
+<td>UnsaftMutablePointer<Int32></td>
+</tr>
+<tr>
+<td>const int *</td>
+<td>UnsafePointer<Int32></td>
+</tr>
+<tr>
+<td>NSDate **</td>
+<td>AutoreleasingUnsafeMutablePointer<NSDate></td>
+</tr>
+<tr>
+<td>struct UnknowType *</td>
+<td>OpaquePointer</td>
+</tr>
+<tr>
+<td>void *</td>
+<td>UnsafeMutableRawPointer</td>
+</tr>
+<tr>
+<td>const void *</td>
+<td>UnsafeRawPointer</td>
+</tr>
+</tbody>
+</table>
+<p>Explain: see <a href="https://swift.gg/2016/12/13/swift-and-c-everything-you-need-to-know/" target="_blank" rel="noopener noreffer">here</a></p>
+<h2 id="usage">Usage</h2>
+<p>see <a href="https://www.raywenderlich.com/7181017-unsafe-swift-using-pointers-and-interacting-with-c" target="_blank" rel="noopener noreffer">here</a> and <a href="https://swift.gg/2016/12/13/swift-and-c-everything-you-need-to-know/" target="_blank" rel="noopener noreffer">here</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-04-30</span>
+                <span>Updated on 2020-05-30</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://zqfang.github.io/2020-04-30-ml-lsa/" data-title="Latent semantic analysis (LSA)" data-hashtags="TF-IDF,Latent Semantic Analysis"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://zqfang.github.io/2020-04-30-ml-lsa/" data-hashtag="TF-IDF"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://zqfang.github.io/2020-04-30-ml-lsa/" data-title="Latent semantic analysis (LSA)"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://zqfang.github.io/2020-04-30-ml-lsa/" data-title="Latent semantic analysis (LSA)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://zqfang.github.io/2020-04-30-ml-lsa/" data-title="Latent semantic analysis (LSA)"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" data-title="Pointer in UnSafe Swift" data-hashtags="Swift"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" data-hashtag="Swift"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" data-title="Pointer in UnSafe Swift"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" data-title="Pointer in UnSafe Swift"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" data-title="Pointer in UnSafe Swift"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/tf-idf/">TF-IDF</a>,&nbsp;<a href="/tags/latent-semantic-analysis/">Latent Semantic Analysis</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/swift/">Swift</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2020-04-29-ml-crf/" class="prev" rel="prev" title="Conditional random field (CRF)"><i class="fas fa-angle-left fa-fw"></i>Conditional random field (CRF)</a>
-            <a href="/2020-05-03-ml-hmm/" class="next" rel="next" title="Hidden Markov Model (HMM)">Hidden Markov Model (HMM)<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/2020-05-30-code-swift-cheat-sheet/" class="prev" rel="prev" title="Swift Cheat Sheet"><i class="fas fa-angle-left fa-fw"></i>Swift Cheat Sheet</a>
+            <a href="/2020-05-31-code-cpp-notes/" class="next" rel="next" title="C&#43;&#43; Notes">C&#43;&#43; Notes<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

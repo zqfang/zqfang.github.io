@@ -4,6 +4,19 @@
         <link>https://zqfang.github.io/tags/swift/</link>
         <description>Swift - Tag - My Computational Genomic Playground</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 30 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/swift/" rel="self" type="application/rss+xml" /><item>
+    <title>Pointer in UnSafe Swift</title>
+    <link>https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/</guid>
+    <description><![CDATA[Pointers Unsafe Swift pointers use a predictable naming scheme:
+Unsafe [Mutable][Raw][Buffer]Pointer[&lt;T&gt;]
+Explain:
+Pointers are just memory addresses.
+Direct memory access is Unsafe.
+Mutable means you can write to it.
+Raw means it points to a blob of bytes.]]></description>
+</item><item>
     <title>Swift Cheat Sheet</title>
     <link>https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/</link>
     <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate>

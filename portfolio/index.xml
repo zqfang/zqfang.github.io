@@ -22,6 +22,18 @@ I want something like this:</description>
     </item>
     
     <item>
+      <title>snakeflow</title>
+      <link>https://zqfang.github.io/portfolio/portfolio-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zqfang.github.io/portfolio/portfolio-3/</guid>
+      <description>My bioinfomatic workflows using snakemake. I would update it if only I have more time.
+Why snakemake?
+Good:
+ Community Easy to use and update Reusable workflows Scalable Support conda env Support slurm, qsub &amp;hellip; python syntax  Drawback:</description>
+    </item>
+    
+    <item>
       <title>YOLOv3 Inference Framework in C&#43;&#43;</title>
       <link>https://zqfang.github.io/portfolio/portfolio-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

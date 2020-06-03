@@ -64,9 +64,6 @@ A p-value is composed of three parts:
 2. The probability of observing something else that is equally rare.
 3. The probability of observing something rarer or more extreme. 
 
-> youtube: https://youtu.be/5Z9OIYA8He8  
-> youtube: https://youtu.be/JQc3yx0-Q9E
-
 
 But `probability`
 
@@ -75,5 +72,10 @@ $$ Probalibility = \frac{Number of outcomes of interest} {The total number of ou
 
 In `hypothesis testing`, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is dffirrent from B.
 
+see here:
+{{< youtube "https://youtu.be/5Z9OIYA8He8" >}}
 
+and here:
+
+{{< youtube  "https://youtu.be/JQc3yx0-Q9E" >}}
 

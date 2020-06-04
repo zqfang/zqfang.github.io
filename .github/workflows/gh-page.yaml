@@ -3,7 +3,7 @@ name: Publish Site
 on: 
   push:
     branches:
-      - master
+      - source  # default branch
 
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: ./public
           #   keep_files: true
-          #publish_branch: gh-pages
+          publish_branch: master  # deploying branch
           cname: zqfang.github.io # have to specified, or not work
 
 

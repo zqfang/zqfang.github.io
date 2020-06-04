@@ -20,6 +20,7 @@ jobs:
         run: git submodule update --init --recursive
  
       - name: Remove example Site
+        # (Optional) seem to cause some problems for page build. 
         run: rm -rf themes/LoveIt/exampleSite
 
       - name: Setup hugo

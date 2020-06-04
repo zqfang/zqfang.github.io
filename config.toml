@@ -91,7 +91,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/zqfang"
         title = "GitHub"
-        weight = 6
+        weight = 7
     [languages.en.params]
       # site description
       description = "My Computational Genomic Playground"

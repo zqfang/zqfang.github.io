@@ -1,7 +1,7 @@
 ---
 title: About
 menu: "main"
-weight: 50
+weight: 6
 hiddenFromSearch: true
 comments: false
 ---

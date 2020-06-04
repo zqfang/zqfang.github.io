@@ -22,6 +22,10 @@ enableGitInfo = false
 # whether to use emoji code
 # 是否使用 emoji 代码
 enableEmoji = true
+[module]
+  [[module.imports]]
+    path = "github.com/dillonzq/LoveIt/"
+
 
 [languages]
   [languages.en]

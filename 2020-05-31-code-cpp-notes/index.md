@@ -2,17 +2,20 @@
 
 
 # C++ Notes
-Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it's extremely powerful. 
+Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it's still the most powerful programming language. 
 
 ### Table of Contents
-[char to Int](#char-to-int)  
-[Pointer](#pointer)  
-[Return Reference](#return-reference)  
-[Array as Argument](#array)  
-[Object Instantization](#object-instantization)  
-[Const](#const)  
-[Friend](#friend)  
-[Design Pattern](#design-pattern)  
+* [char to Int](#char-to-int)  
+* [Pointer](#pointer)  
+* [Return Reference/Pointer](#return-reference)  
+* [Array as Argument](#array) 
+* [Operator that can't be overloaded](#operator-could-not-be-overloaded) 
+* [Object Instantization](#object-instantization)  
+* [Object Relationship](#object-relationships)  
+* [Virtual Function and Ploymorphism](#virtual-functions-and-runtime-polymorphism)
+* [Const](#const)  
+* [Friend](#friend)  
+* [Design Pattern](#design-pattern)  
   - [Singleton](#singleton)  
   - [Delegate](#delegate)
 
@@ -46,6 +49,45 @@ test['A'] = 1; // legal
 test['b'] = 2;  // legal
 ```
 [Back to top](#table-of-contents)
+
+## Operator Could not be Overloaded
+
+| operator | memo|
+|---|---|
+| .  | Member access or dot operator |
+| .* | Pointer-to-member Operator |
+| :: | Scope Resolution operator |
+| ? : | conditional operator, ternary operator |
+| sizeof | object size operator, built-in operations |
+| typeid | object type operator, built-in operations |
+
+OK, What's `.*` ?
+
+```cpp
+//we have a class
+struct X
+{
+   void f() {}
+   void g() {}
+};
+
+typedef void (X::*pointer)();
+//ok, let's take a pointer and assign f to it.
+pointer somePointer = &X::f;
+//now I want to call somePointer. But for that, I need an object
+X x;
+//now I call the member function on x like this
+(x.*somePointer)(); //will call x.f()
+//now, suppose x is not an object but a pointer to object
+X* px = new X;
+//I want to call the memfun pointer on px. I use ->*
+(px ->* somePointer)(); //will call px->f();
+```
+Now, you can't use x.somePointer(), or px->somePointer() because there is no such member in class X. 
+
+see [here](https://stackoverflow.com/questions/6586205/what-are-the-pointer-to-member-and-operators-in-c)
+
+
 ## Pointer
 Pointer syntax  
 **Rule:** read from right to left
@@ -69,9 +111,9 @@ int *a, *b; // correct way
 [Back to top](#table-of-contents)
 
 ## Return Reference
-When Return Reference
-- return ref if given object's ref/pointer. 
-- return value if temp object created 
+Return Reference when define function
+- return ref/pointer only if array or given object's ref/pointer. 
+- return value only if temp object created 
 
 ```cpp
 // ref
@@ -92,7 +134,7 @@ RMB RMB::operator++(int)
 
 ## Array
 ### Array as `formal arguments`  
-An Array could not copy to anther Array directly, so `call-by-value` is not allowed.  
+An Array could not copy to anther Array (**Copy pointer is not allowed!**), so `call-by-value` is not allowed.  
 So, use array pointer:
 ```cpp
 //these are same 
@@ -123,96 +165,6 @@ print2(a); // 1
 int b[2][4]={ {1,2,5,6},{3,4,7,8} };
 print1(b); // error
 ```
-[Back to top](#table-of-contents)
-
-
-## Const
-
-### 1. `const` before or behind type/class, the syntax semantic are same
-```cpp
-// they are same 
-const int x;  // (int x) is const/inmutable 
-int const x;  // (const x) has type int 
-```
-
-### 2. Pointer with const: `const int* p`, `int const* p` and `int *const p`
-
-__Dirty trick:__ use `*` as a separator, `const` restrict the type according to the side where it belong to    
-
-**point to const:** These two expression are same 
-```cpp
-// -> (const int) | p;  p : a mutable pointer points to a const/immutable int
-const int * p;
-
-// -> (int const) | p; p2: a mutable pointer points a const which has type int
-int const * p2;
-```
-
-**const pointer:** But these two not the same
-```cpp
-// -> int | (const p);  p3: a const pointer, point to an mutable int
-int * const p3;
-
-// -> (const int) | const p; p4: a const pointer, pointing to an immutable/const int
-const int * const p4; 
-```
-### 3. class member `func` with const: `() const`  
-a. `const object` 
-- could not change class variable
-- could not call `non-const` function
-
-```cpp
-class Number
-{
-public:
-    void set(int num) { number = num; }
-    int get() { return number; }
-    int get2() const {return number;}
-    int number = 0;
-};
-
-// Example
-const Number n;
-n.number = 1; // Error, n is const
-n.set(1); // Error, n is const, non-const `set()`
-n.get(); // Error, non-const `get()`
-n.get2(); // OK
-```
-
-b. `() const`  
-- could not change class variable, except static 
-- could get variable
-
-```cpp
-class Number {
-private:
-  int a;
-  static int b;
-  const int c = 20;
-public:
-	void set() {  
-         a = 10; // error when `this` argument has type 'const'
-    void set2() const {
-        b = 20; // OK
-    }         	
-	int get() const {  // OK
-		return a; // did not change a
-	}
-};
-
-const Number n;
-n.set(); // Error
-n.set2(); // OK
-n.get(); // OK
-```
-
-Easy to understand, when pointer `this` is const
-```cpp
-void Number::set(const Number *const this, int num) { number = num; } // illegal -> const this
-```
-
-c. `() const` overloading
-
 [Back to top](#table-of-contents)
 
 ## Object Instantization
@@ -334,6 +286,244 @@ std::ostream& operator<<(std::ostream& out, const Y& y)
 ```
 
 [Back to top](#table-of-contents)
+
+
+## Object Relationships
+
+relation types
+  - "is-a"
+  - "has-a"
+  - "uses-a"
+  - "depends-on"
+
+
+| Property | Composition |	Aggregation	| Association |
+|---|---|---|---|---|
+| Relationship type | Whole/part | Whole/part | Otherwise unrelated |
+| Members can belong to multiple classes | No | Yes | Yes |
+| Members existence managed by class | Yes | No | No |
+| Directionality |Unidirectional |Unidirectional | Unidirectional or bidirectional |
+|Relationship verb | Part-of | Has-a | Uses-a |
+
+
+
+### Composition: `has a data member`
+Building complex objects from simpler ones is called **object composition** .
+
+object composition models a __“has-a”__ relationship between two objects.
+In C++, It means structs and classes can have data members of various types.
+
+```cpp
+class A；
+class B 
+{
+public:
+    B(){}
+    ~B(){}
+private:
+    A a;
+    int b;
+}；
+```
+
+Summary:
+1. Typically use normal member variables
+2. Can use pointer members if the class handles object allocation/deallocation itself
+3. Responsible for creation/destruction of parts
+
+### Aggregation: "has a"
+Unlike a composition, parts can belong to more than one object at a time, and the whole object is not responsible for the existence and lifespan of the parts.
+
+Summary:
+1. Typically use pointer or reference members that point to or reference objects that live outside the scope of the aggregate class
+2. Not responsible for creating/destroying parts
+
+
+### Association: "uses a"
+Association models as “uses-a” relationship. The doctor “uses” the patient (to earn income). The patient uses the doctor (for whatever health purposes they need).
+
+
+### Delegate: "has a"
+or called `pImpl(Pointer to IMPLementation)`
+
+Delegate: Composition by reference
+
+has a pointer of another object
+
+```cpp
+class A；
+class B 
+{
+public:
+    B(){}
+    ~B(){}
+private:
+    A *a;
+    int b;
+}；
+```
+
+
+### Inheritance: "is a"
+public, protected, private
+
+```cpp
+class A
+{
+public:
+    A(){}
+    virtual ~A(){}
+}
+class B : public A
+{
+};
+```
+
+
+## Virtual Functions and Runtime Polymorphism
+
+1. Declare: vitrual keyword
+    ```cpp
+    class TestA {
+    public:
+        virtual void func() {  cout << "virtual function" << endl; }
+    };
+
+    class Test : public TestA {
+    public:
+        virtual void func() {  //  virtual could be omited 
+            cout << "Test virtual function" << endl;
+        }
+        ~Test() { }
+    };
+
+    TestA* t = new Test; // parent pointer point to child (Ploymorphism)
+    t->func();          // Results：Test virtual function
+    delete t;
+
+    ```
+
+2. Member Could not be virtual
+    * inline function
+    * constructor
+    * non-member function 
+    * static function: only one copy of all objects.
+    * friend function: it's non-member function
+    * member function template !
+
+3. Pure virtual function
+
+  - declare
+    ```cpp
+    virtual void fun() = 0; 
+    ```
+  - class with pure virtual functoin could not be instantized!
+  - a derived class of virtual class has to define pure virtual function. the the derived class could be instantized.
+  - abstract class: class with pure virtual function
+  
+
+
+4. virtual deconstrutor
+  - A parent pointer point to it's child. When delete the parent pointer, only parent constuctor is called. if declared a virtual deconstuctor, child's deconstuctor is called first, then the parent deconsturctor.
+  - virtural keyword could be omited if a parent deconstructor is declared.
+  - `delete` a pointer will only called object's deconstructor where the pointer point to.     
+
+
+## Const
+
+### 1. `const` before or behind type/class, the syntax semantic are same
+```cpp
+// they are same 
+const int x;  // (int x) is const/inmutable 
+int const x;  // (const x) has type int 
+```
+
+### 2. Pointer with const: `const int* p`, `int const* p` and `int *const p`
+
+__Dirty trick:__ use `*` as a separator, `const` restrict the type according to the side where it belong to    
+
+**point to const:** These two expression are same 
+```cpp
+// -> (const int) | p;  p : a mutable pointer points to a const/immutable int
+const int * p;
+
+// -> (int const) | p; p2: a mutable pointer points a const which has type int
+int const * p2;
+```
+
+**const pointer:** But these two not the same
+```cpp
+// -> int | (const p);  p3: a const pointer, point to an mutable int
+int * const p3;
+
+// -> (const int) | const p; p4: a const pointer, pointing to an immutable/const int
+const int * const p4; 
+```
+### 3. class member `func` with const: `() const`  
+a. `const object` 
+- could not change class variable
+- could not call `non-const` function
+
+```cpp
+class Number
+{
+public:
+    void set(int num) { number = num; }
+    int get() { return number; }
+    int get2() const {return number;}
+    int number = 0;
+};
+
+// Example
+const Number n;
+n.number = 1; // Error, n is const
+n.set(1); // Error, n is const, non-const `set()`
+n.get(); // Error, non-const `get()`
+n.get2(); // OK
+```
+
+b. `() const`  
+- could not change class variable, except static 
+- could get variable
+
+```cpp
+class Number {
+private:
+  int a;
+  static int b;
+  const int c = 20;
+public:
+	void set() {  
+         a = 10; // error when `this` argument has type 'const'
+    void set2() const {
+        b = 20; // OK
+    }         	
+	int get() const {  // OK
+		return a; // did not change a
+	}
+};
+
+const Number n;
+n.set(); // Error
+n.set2(); // OK
+n.get(); // OK
+```
+
+Easy to understand, when pointer `this` is const
+```cpp
+void Number::set(const Number *const this, int num) { number = num; } // illegal -> const this
+```
+
+c. `() const` overloading
+
+[Back to top](#table-of-contents)
+
+
+
+
+
+
+
 
 ## Design Pattern
 ### Singleton
@@ -459,5 +649,7 @@ int main()
 
 ### Composite
 Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.
+
+
 
 [Back to top](#table-of-contents)

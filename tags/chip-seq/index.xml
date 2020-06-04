@@ -1,0 +1,6 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>ChIP-seq - Tag - My Computational Genomic Playground</title><link>https://zqfang.github.io/tags/chip-seq/</link><description>ChIP-seq - Tag - My Computational Genomic Playground</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/chip-seq/" rel="self" type="application/rss+xml"/><item><title>Shortcut to ChIP-seq analysis</title><link>https://zqfang.github.io/2020-01-20-chip/</link><pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate><author>Author</author><guid>https://zqfang.github.io/2020-01-20-chip/</guid><description>bowtie2-macs2-deeptools
+2.1 Genome mapping Step 0: install software
+1 2 # install miniconda, then call conda conda install -c bioconda bowtie2 hisat2 samtools deeptools step 1: build index
+1 bowtie2-build hg38.fa bowtie2_index/hg38 step 2: mapping
+Unpaired data
+1 2 3 bowtie2 -p ${threads} -x index/hg38 \ -U input.</description></item></channel></rss>

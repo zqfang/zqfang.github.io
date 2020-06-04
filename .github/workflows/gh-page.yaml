@@ -11,7 +11,7 @@ jobs:
         # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
         run: git submodule update --init --recursive
  
-        - name: Remove example Site
+      - name: Remove example Site
         run: rm -rf themes/LoveIt/exampleSite
 
       - name: Setup hugo

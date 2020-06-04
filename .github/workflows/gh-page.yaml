@@ -20,7 +20,7 @@ jobs:
           HUGO_VERSION: 0.72.0
           TARGET_REPO: zqfang/zqfang.github.io
           TOKEN: ${{ secrets.SSH_DEPLOY_KEY }}
-          HUGO_ARGS: '-t LoveIt'
+          #HUGO_ARGS: '-t LoveIt'
           CNAME: zqfang.github.io
 
 

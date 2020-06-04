@@ -24,22 +24,39 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 ## Char to Int
 
 #### 1. `Char` is `ASCII`  
-C store `Char` as `ASCII` by default. So, `Char` is equal to ASCII code.
+C store `Char` as `ASCII` (Int) by default. So, `Char` is equal to ASCII code.
 
 ```cpp
 char a = 'A'; // 65
 int c = a; //c = 65
 ```
 
-#### 2. `Char` to `Int`, and vice versa
+#### 2. `Char` to `Int`, to `string`, and vice versa
 
-```cpp
-char c='5'
-int res = c -'0' ; // 5
+- `char` and `int`
+    ```cpp
+    char c='5'
+    int res = c -'0' ; // 5
 
-int i=5;
-char res = I + '0'; // '5'
-```
+    int i=5;
+    char res = I + '0'; // '5'
+    ```
+
+- `char*`,`int` and `string`
+    ```cpp
+    // char * to string
+    const char * str_c =  "hello";
+    std::string str = str_c;
+
+    // string to char*
+    str.c_str(); // return const char*
+
+    // int to string
+    std::to_string()
+
+    // string to int
+    std::stoi()
+    ```
 
 #### 3. `Char` as subscript of array: legal!  
 This is useful when create `hashmap`. e.g. counting chars
@@ -48,6 +65,7 @@ int test[200] = {0};
 test['A'] = 1; // legal
 test['b'] = 2;  // legal
 ```
+
 [Back to top](#table-of-contents)
 
 ## Operator Could not be Overloaded
@@ -87,6 +105,8 @@ Now, you can't use x.somePointer(), or px->somePointer() because there is no suc
 
 see [here](https://stackoverflow.com/questions/6586205/what-are-the-pointer-to-member-and-operators-in-c)
 
+
+[Back to top](#table-of-contents)
 
 ## Pointer
 Pointer syntax  
@@ -380,6 +400,8 @@ class B : public A
 ```
 
 
+[Back to top](#table-of-contents)
+
 ## Virtual Functions and Runtime Polymorphism
 
 1. Declare: vitrual keyword
@@ -428,6 +450,8 @@ class B : public A
   - virtural keyword could be omited if a parent deconstructor is declared.
   - `delete` a pointer will only called object's deconstructor where the pointer point to.     
 
+
+[Back to top](#table-of-contents)
 
 ## Const
 

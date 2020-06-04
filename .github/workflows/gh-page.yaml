@@ -39,8 +39,8 @@ jobs:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: ./public
           #   keep_files: true
-          #publish_branch: master
-          #cname: zqfang.github.io
+          #publish_branch: gh-pages
+          cname: zqfang.github.io # have to specified, or not work
 
 
 

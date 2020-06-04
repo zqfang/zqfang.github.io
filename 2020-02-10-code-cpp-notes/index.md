@@ -31,7 +31,7 @@ char a = 'A'; // 65
 int c = a; //c = 65
 ```
 
-#### 2. `Char` to `Int`, to `string`, and vice versa
+#### 2. `Char` to `Int`, to `String`, and vice versa
 
 - `char` and `int`
     ```cpp
@@ -193,7 +193,7 @@ print1(b); // error
 
 stack
 ```cpp
-ClassName object(param) //  A a(1);  
+ClassName object(param); //  A a(1);  
 ClassName object2 =  ClassName(param); //  A b = A(1);
 ```
 ### 2. with new
@@ -440,8 +440,8 @@ class B : public A
     virtual void fun() = 0; 
     ```
   - class with pure virtual functoin could not be instantized!
-  - a derived class of virtual class has to define pure virtual function. the the derived class could be instantized.
-  - abstract class: class with pure virtual function
+  - a derived class of virtual class has to define pure virtual function. then the derived class could be instantized.
+  - `abstract class`: class with pure virtual function
   
 
 

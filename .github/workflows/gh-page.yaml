@@ -1,38 +1,27 @@
-name: Build and Deploy
-
-name: Publish Site
-
+name: Push to GitHub Pages on push to master
 on:
   push:
     branches:
       - master
 
 jobs:
-  build-deploy:
+  build:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
+      - name: Checkout master
+        uses: actions/checkout@v1
         with:
           submodules: true
-      - name: Publish Site
-        uses: chabad360/hugo-gh-pages@master
-        with:
-          githubToken: ${{ secrets.SSH_DEPLOY_KEY }}
-          # Remember to set this as a secret (i.e. secrets.PERSONAL_TOKEN).
-          # Don't forget to set the secret value in the project settings.
-          # Use if you have a custom domain for your site.
-          branch: master # Or anything else
-          # Use if your site is not hosted on the gh-pages branch.
-          repo: zqfang/zqfang.github.io
-          # Use if your pushing to a different repo.
-          # Dont add ".git" to the end of the URL (youl'll get 404s).
-          hugoVersion: extended_0.72.0
-          # Use if your site requires a specific version of Hugo
-          # Append "extended_" to the begining to use Hugo Extended
-          args: --gc --minify --cleanDestinationDir
-          # Use if you want to pass some custom arguments to Hugo
+
+      - name: Deploy the site
+        uses: benmatselby/hugo-deploy-gh-pages@master
+        env:
+          HUGO_VERSION: 0.72.0
+          TARGET_REPO: zqfang/zqfang.github.io
+          TOKEN: ${{ secrets.SSH_DEPLOY_KEY }}
+          HUGO_ARGS: '-t LoveIt'
+          CNAME: zqfang.github.io
 
 
 

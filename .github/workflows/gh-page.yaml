@@ -1,11 +1,19 @@
-name: CI
-on: push
+name: Publish Site
+
+on: 
+  push:
+    branches:
+      - master
+
+
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
+        with:
+          submodules: true
 
       - name: Update theme
         # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
@@ -18,6 +26,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.72.0"
+          extended: true
 
       - name: Build
         # remove --minify tag if you do not need it
@@ -26,14 +35,12 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.SSH_DELOPY_KEY }}
+          github_token: ${{ secrets.SSH_DEPLOY_KEY }}
           external_repository: zqfang/zqfang.github.io
           publish_dir: ./public
           #   keep_files: true
-          user_name: zqfang
-          user_email: fztsing@126.com
-          publish_branch: master
-        #   cname: example.com
+          #publish_branch: master
+          #cname: zqfang.github.io
 
 
 

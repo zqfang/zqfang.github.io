@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>C&#43;&#43; Notes - My Computational Genomic Playground</title><meta name="Description" content="Get answers for C/C&#43;&#43; within ? s"><meta property="og:title" content="C&#43;&#43; Notes" />
+<meta property="og:description" content="Get answers for C/C&#43;&#43; within ? s" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zqfang.github.io/2020-05-31-code-cpp-notes/" />
+<meta property="og:image" content="https://zqfang.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-05-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://zqfang.github.io/logo.png"/>
+
+<meta name="twitter:title" content="C&#43;&#43; Notes"/>
+<meta name="twitter:description" content="Get answers for C/C&#43;&#43; within ? s"/>
+<meta name="application-name" content="#root max &gt;">
+<meta name="apple-mobile-web-app-title" content="#root max &gt;"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-05-31-code-cpp-notes/" /><link rel="prev" href="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "C++ Notes",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/zqfang.github.io\/2020-05-31-code-cpp-notes\/"
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "C\u002b\u002b","wordcount":  1662 ,
+        "url": "https:\/\/zqfang.github.io\/2020-05-31-code-cpp-notes\/","datePublished": "2020-05-31T00:00:00+00:00","dateModified": "2020-05-31T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "zqfang"
+            },"description": "Get answers for C/C++ within ? s"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/publication/"> Publication </a><a class="menu-item" href="/portfolio/"> Portfolio </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="/about/" title="About"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/publication/" title="">Publication</a><a class="menu-item" href="/portfolio/" title="">Portfolio</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="/about/" title="About">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">C&#43;&#43; Notes</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/coding/"><i class="far fa-folder fa-fw"></i>Coding</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-31">2020-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1662 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#table-of-contents">Table of Contents</a></li>
+      </ul>
+    </li>
+    <li><a href="#char-to-int">Char to Int</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-char-is-ascii">1. <code>Char</code> is <code>ASCII</code></a></li>
+            <li><a href="#2-char-to-int-and-vice-versa">2. <code>Char</code> to <code>Int</code>, and vice versa</a></li>
+            <li><a href="#3-char-as-subscript-of-array-legal">3. <code>Char</code> as subscript of array: legal!</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#pointer">Pointer</a></li>
+    <li><a href="#return-reference">Return Reference</a></li>
+    <li><a href="#array">Array</a>
+      <ul>
+        <li><a href="#array-as-formal-arguments">Array as <code>formal arguments</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#const">Const</a>
+      <ul>
+        <li><a href="#1-const-before-or-behind-typeclass-the-syntax-semantic-are-same">1. <code>const</code> before or behind type/class, the syntax semantic are same</a></li>
+        <li><a href="#2-pointer-with-const-constint-pintconst-p-and-intconst-p">2. Pointer with const: <code>const int* p</code>, <code>int const* p</code> and <code>int *const p</code></a></li>
+        <li><a href="#3-class-member-func-with-const--const">3. class member <code>func</code> with const: <code>() const</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#object-instantization">Object Instantization</a>
+      <ul>
+        <li><a href="#1-without-new">1. without new</a></li>
+        <li><a href="#2-with-new">2. with new</a></li>
+        <li><a href="#3-copy-constructor">3. copy constructor</a></li>
+        <li><a href="#4-smart-pointer">4. Smart Pointer</a></li>
+      </ul>
+    </li>
+    <li><a href="#friend">Friend</a>
+      <ul>
+        <li><a href="#1-friend-function">1. <code>friend function</code></a></li>
+        <li><a href="#2-friend-class">2. <code>friend class</code></a></li>
+        <li><a href="#3-others-friend-ostream-friend-template-">3. Others: friend ostream, friend template &hellip;</a></li>
+      </ul>
+    </li>
+    <li><a href="#design-pattern">Design Pattern</a>
+      <ul>
+        <li><a href="#singleton">Singleton</a></li>
+        <li><a href="#delegate">Delegate</a></li>
+        <li><a href="#composite">Composite</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="c-notes">C++ Notes</h1>
+<p>Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it&rsquo;s extremely powerful.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<p><a href="#char-to-int" rel="">char to Int</a><br>
+<a href="#pointer" rel="">Pointer</a><br>
+<a href="#return-reference" rel="">Return Reference</a><br>
+<a href="#array" rel="">Array as Argument</a><br>
+<a href="#object-instantization" rel="">Object Instantization</a><br>
+<a href="#const" rel="">Const</a><br>
+<a href="#friend" rel="">Friend</a><br>
+<a href="#design-pattern" rel="">Design Pattern</a></p>
+<ul>
+<li><a href="#singleton" rel="">Singleton</a></li>
+<li><a href="#delegate" rel="">Delegate</a></li>
+</ul>
+<h2 id="char-to-int">Char to Int</h2>
+<h4 id="1-char-is-ascii">1. <code>Char</code> is <code>ASCII</code></h4>
+<p>C store <code>Char</code> as <code>ASCII</code> by default. So, <code>Char</code> is equal to ASCII code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span> <span class="c1">// 65
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//c = 65
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-char-to-int-and-vice-versa">2. <code>Char</code> to <code>Int</code>, and vice versa</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">char</span> <span class="n">c</span><span class="o">=</span><span class="sc">&#39;5&#39;</span>
+<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span><span class="sc">&#39;0&#39;</span> <span class="p">;</span> <span class="c1">// 5
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">res</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="c1">// &#39;5&#39;
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-char-as-subscript-of-array-legal">3. <code>Char</code> as subscript of array: legal!</h4>
+<p>This is useful when create <code>hashmap</code>. e.g. counting chars</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">test</span><span class="p">[</span><span class="mi">200</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">test</span><span class="p">[</span><span class="sc">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// legal
+</span><span class="c1"></span><span class="n">test</span><span class="p">[</span><span class="sc">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// legal
+</span></code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="pointer">Pointer</h2>
+<p>Pointer syntax<br>
+<strong>Rule:</strong> read from right to left</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// an int 
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c1">// a pointer point to int
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">**</span><span class="n">a</span><span class="p">;</span> <span class="c1">// secondary int pointer, point to another int pointer 
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// int array 
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// a poiter array, point to int 
+</span><span class="c1"></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// a int pointer point to an int array 
+</span><span class="c1"></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// a pointer point to a function, will return an int
+</span><span class="c1"></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">])(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">//  a poiter array, point to a function，will return an int
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Declare two pointers</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// equal to int* a; int b;
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span> <span class="c1">// correct way
+</span></code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="return-reference">Return Reference</h2>
+<p>When Return Reference</p>
+<ul>
+<li>return ref if given object&rsquo;s ref/pointer.</li>
+<li>return value if temp object created</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// ref
+</span><span class="c1"></span><span class="n">RMB</span><span class="o">&amp;</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">// already existed object, created outside
+</span><span class="c1"></span><span class="p">}</span>
+<span class="c1">// value
+</span><span class="c1"></span><span class="n">RMB</span> <span class="n">RMB</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">RMB</span> <span class="nf">temp</span><span class="p">(</span><span class="n">yuan</span><span class="p">);</span><span class="c1">//create object
+</span><span class="c1"></span>    <span class="n">yuan</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">temp</span><span class="p">;</span><span class="c1">//return a copy of temp
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="array">Array</h2>
+<h3 id="array-as-formal-arguments">Array as <code>formal arguments</code></h3>
+<p>An Array could not copy to anther Array directly, so <code>call-by-value</code> is not allowed.<br>
+So, use array pointer:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//these are same 
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="p">[]);</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>multi-dimension array</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="kt">int</span> <span class="n">rowsize</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">p</span><span class="p">[][</span><span class="mi">5</span><span class="p">],</span> <span class="kt">int</span> <span class="n">rowsize</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>When use pointer to an Array, the dimension is unknown. So, need an extra argument to specify it explicitly.</p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">print1</span><span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">print2</span><span class="p">(</span><span class="kt">int</span> <span class="n">p</span><span class="p">[][</span><span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span> <span class="p">};</span>
+<span class="n">print1</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// 4
+</span><span class="c1"></span><span class="n">print2</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// 1
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">},{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span> <span class="p">};</span>
+<span class="n">print1</span><span class="p">(</span><span class="n">b</span><span class="p">);</span> <span class="c1">// error
+</span></code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="const">Const</h2>
+<h3 id="1-const-before-or-behind-typeclass-the-syntax-semantic-are-same">1. <code>const</code> before or behind type/class, the syntax semantic are same</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// they are same 
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>  <span class="c1">// (int x) is const/inmutable 
+</span><span class="c1"></span><span class="kt">int</span> <span class="k">const</span> <span class="n">x</span><span class="p">;</span>  <span class="c1">// (const x) has type int 
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-pointer-with-const-constint-pintconst-p-and-intconst-p">2. Pointer with const: <code>const int* p</code>, <code>int const* p</code> and <code>int *const p</code></h3>
+<p><strong>Dirty trick:</strong> use <code>*</code> as a separator, <code>const</code> restrict the type according to the side where it belong to</p>
+<p><strong>point to const:</strong> These two expression are same</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// -&gt; (const int) | p;  p : a mutable pointer points to a const/immutable int
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+
+<span class="c1">// -&gt; (int const) | p; p2: a mutable pointer points a const which has type int
+</span><span class="c1"></span><span class="kt">int</span> <span class="k">const</span> <span class="o">*</span> <span class="n">p2</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>const pointer:</strong> But these two not the same</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// -&gt; int | (const p);  p3: a const pointer, point to an mutable int
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">p3</span><span class="p">;</span>
+
+<span class="c1">// -&gt; (const int) | const p; p4: a const pointer, pointing to an immutable/const int
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">p4</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-class-member-func-with-const--const">3. class member <code>func</code> with const: <code>() const</code></h3>
+<p>a. <code>const object</code></p>
+<ul>
+<li>could not change class variable</li>
+<li>could not call <code>non-const</code> function</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Number</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">set</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="n">number</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="nf">get</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">number</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="nf">get2</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">number</span><span class="p">;}</span>
+    <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Example
+</span><span class="c1"></span><span class="k">const</span> <span class="n">Number</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">n</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Error, n is const
+</span><span class="c1"></span><span class="n">n</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// Error, n is const, non-const `set()`
+</span><span class="c1"></span><span class="n">n</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="c1">// Error, non-const `get()`
+</span><span class="c1"></span><span class="n">n</span><span class="p">.</span><span class="n">get2</span><span class="p">();</span> <span class="c1">// OK
+</span></code></pre></td></tr></table>
+</div>
+</div><p>b. <code>() const</code></p>
+<ul>
+<li>could not change class variable, except static</li>
+<li>could get variable</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Number</span> <span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+  <span class="k">static</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">void</span> <span class="n">set</span><span class="p">()</span> <span class="p">{</span>  
+         <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// error when `this` argument has type &#39;const&#39;
+</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">set2</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// OK
+</span><span class="c1"></span>    <span class="p">}</span>         	
+	<span class="kt">int</span> <span class="nf">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>  <span class="c1">// OK
+</span><span class="c1"></span>		<span class="k">return</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// did not change a
+</span><span class="c1"></span>	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">const</span> <span class="n">Number</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">n</span><span class="p">.</span><span class="n">set</span><span class="p">();</span> <span class="c1">// Error
+</span><span class="c1"></span><span class="n">n</span><span class="p">.</span><span class="n">set2</span><span class="p">();</span> <span class="c1">// OK
+</span><span class="c1"></span><span class="n">n</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="c1">// OK
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Easy to understand, when pointer <code>this</code> is const</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">Number</span><span class="o">::</span><span class="n">set</span><span class="p">(</span><span class="k">const</span> <span class="n">Number</span> <span class="o">*</span><span class="k">const</span> <span class="k">this</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="n">number</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// illegal -&gt; const this
+</span></code></pre></td></tr></table>
+</div>
+</div><p>c. <code>() const</code> overloading</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="object-instantization">Object Instantization</h2>
+<h3 id="1-without-new">1. without new</h3>
+<p>stack</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">ClassName</span> <span class="nf">object</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="o">//</span>  <span class="n">A</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>  
+<span class="n">ClassName</span> <span class="n">object2</span> <span class="o">=</span>  <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span> <span class="c1">//  A b = A(1);
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-with-new">2. with new</h3>
+<p>heap</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">ClassName</span> <span class="o">*</span><span class="n">object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">);</span><span class="c1">//A *a = new A();
+</span><span class="c1"></span><span class="k">delete</span> <span class="n">object</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-copy-constructor">3. copy constructor</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// 
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-smart-pointer">4. Smart Pointer</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="p">(</span><span class="k">new</span> <span class="n">ClassName</span><span class="p">(</span><span class="n">param</span><span class="p">));</span>
+<span class="c1">// recommend this way of instantization
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span> <span class="n">object</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">ClassName</span><span class="o">&gt;</span><span class="p">(</span><span class="n">param</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="friend">Friend</h2>
+<p>The <code>friend</code> declaration appears in a <code>class body</code> and grants a <code>function</code> or <code>another class</code> <strong>access</strong> to <code>private</code> and <code>protected</code> <strong>members</strong> of the class where the friend declaration appears.</p>
+<h3 id="1-friend-function">1. <code>friend function</code></h3>
+<p>Declare anywhere inside a class, but define outside</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// function
+</span><span class="c1"></span><span class="k">friend</span> <span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">_a</span><span class="p">)</span><span class="o">:</span><span class="n">a</span><span class="p">(</span><span class="n">_a</span><span class="p">){};</span>
+    <span class="c1">// non-member function
+</span><span class="c1"></span>	<span class="k">friend</span> <span class="kt">int</span> <span class="nf">getA_a</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span><span class="n">_classA</span><span class="p">);</span>
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// without the friend keyword 
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">getA_a</span><span class="p">(</span><span class="n">A</span> <span class="o">&amp;</span><span class="n">_classA</span><span class="p">)</span>
+<span class="p">{</span>   <span class="c1">//access member by formal arguments
+</span><span class="c1"></span>	<span class="k">return</span> <span class="n">_classA</span><span class="p">.</span><span class="n">a</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="n">A</span> <span class="nf">_classA</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">getA_a</span><span class="p">(</span><span class="n">_classA</span><span class="p">);</span> <span class="c1">// 3
+</span></code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h3 id="2-friend-class">2. <code>friend class</code></h3>
+<p>Delare inside class, define outside</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// class
+</span><span class="c1"></span><span class="k">friend</span> <span class="k">class</span> <span class="err">&lt;</span><span class="nc">Name</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Note:</strong> <code>friend class X {};</code> is an error</p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">B</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">_b</span><span class="p">)</span><span class="o">:</span><span class="n">b</span><span class="p">(</span><span class="n">_b</span><span class="p">){};</span>
+	<span class="k">friend</span> <span class="k">class</span> <span class="nc">C</span><span class="p">;</span> <span class="c1">// friend class
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+ 
+<span class="k">class</span> <span class="nc">C</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">getB_b</span><span class="p">(</span><span class="n">B</span> <span class="n">_classB</span><span class="p">){</span>
+        <span class="c1">//access member by formal arguments
+</span><span class="c1"></span>		<span class="k">return</span> <span class="n">_classB</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+	<span class="p">};</span>
+<span class="p">};</span>
+
+<span class="n">B</span> <span class="nf">_classB</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">C</span> <span class="n">_classC</span><span class="p">;</span> <span class="c1">// an instance of a friend class
+</span><span class="c1"></span><span class="n">_classC</span><span class="p">.</span><span class="n">getB_b</span><span class="p">(</span><span class="n">_classB</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h3 id="3-others-friend-ostream-friend-template-">3. Others: friend ostream, friend template &hellip;</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Y</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span> 
+    <span class="c1">// the non-member function operator&lt;&lt; will have access to Y&#39;s private members
+</span><span class="c1"></span>    <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">Y</span><span class="o">&amp;</span> <span class="n">o</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">char</span><span class="o">*</span> <span class="n">X</span><span class="o">::</span><span class="n">foo</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// members of other classes can be friends too
+</span><span class="c1"></span>    <span class="k">friend</span> <span class="n">X</span><span class="o">::</span><span class="n">X</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="n">X</span><span class="o">::~</span><span class="n">X</span><span class="p">();</span> <span class="c1">// constructors and destructors can be friends
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="c1">// this operator&lt;&lt; still needs to be defined, as a non-member
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">Y</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>   <span class="c1">// can access private member Y::data
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">y</span><span class="p">.</span><span class="n">data</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="design-pattern">Design Pattern</h2>
+<h3 id="singleton">Singleton</h3>
+<p>Define</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Singleton</span>
+<span class="p">{</span>
+    <span class="k">private</span><span class="o">:</span>
+        <span class="cm">/* Here will be the instance stored. */</span>
+        <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">instance</span><span class="p">;</span>
+        <span class="cm">/* Private constructor to prevent instancing. */</span>
+        <span class="n">Singleton</span><span class="p">()</span> <span class="p">{};</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="cm">/* Static access method. */</span>
+        <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">getInstance</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">instance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Singleton</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cm">/* NULL, because instance will be initialized on demand. */</span>
+<span class="n">Singleton</span><span class="o">*</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">instance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Usage</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//new Singleton(); // Won&#39;t work
+</span><span class="c1"></span>    <span class="n">Singleton</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span> <span class="c1">// Ok
+</span><span class="c1"></span>    <span class="n">Singleton</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">getInstance</span><span class="p">();</span>
+
+    <span class="cm">/* The addresses will be the same. */</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">r</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h3 id="delegate">Delegate</h3>
+<p>Don&rsquo;t confuse with delegate constructor!!!</p>
+<p>A delegate is a class that wraps a <code>pointer</code> or <code>reference</code> to an <code>object instance</code>, a member method of that object&rsquo;s class to be called on that object instance, and <code>provides a method to trigger</code> that call.</p>
+<p>Example 1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RealPrinter</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;real-printer&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Printer</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Printer</span><span class="p">()</span> <span class="o">:</span> <span class="n">p</span><span class="p">(</span><span class="n">RealPrinter</span><span class="p">())</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="nf">print</span><span class="p">()</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span> <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">RealPrinter</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Printer</span><span class="o">*</span> <span class="n">printer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Printer</span><span class="p">();</span>
+    <span class="n">printer</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Example 2:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">class</span> <span class="nc">I</span> <span class="c1">//interface {
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">f</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">g</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">f</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;A::f()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="nf">g</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;A::g()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">f</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;B::f()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="nf">g</span><span class="p">(){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;B::g()&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">C</span> <span class="o">:</span> <span class="k">public</span> <span class="n">I</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">C</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">();</span><span class="cm">/*delegation*/</span> <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">f</span><span class="p">(){</span> <span class="n">m_i</span><span class="o">-&gt;</span><span class="n">f</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">g</span><span class="p">(){</span> <span class="n">m_i</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">();</span> <span class="p">}</span>
+
+    <span class="c1">// normal attributes
+</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">toA</span><span class="p">(){</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">toB</span><span class="p">(){</span> <span class="n">m_i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">B</span><span class="p">();</span> <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">I</span><span class="o">*</span> <span class="n">m_i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">C</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">C</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">f</span><span class="p">();</span>     <span class="c1">// output: A::f()
+</span><span class="c1"></span>    <span class="n">cc</span><span class="p">.</span><span class="n">g</span><span class="p">();</span>     <span class="c1">// output: A::g()
+</span><span class="c1"></span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">toB</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">f</span><span class="p">();</span>     <span class="c1">// output: B::f()
+</span><span class="c1"></span>    <span class="n">cc</span><span class="p">.</span><span class="n">g</span><span class="p">();</span>     <span class="c1">// output: B::g()
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h3 id="composite">Composite</h3>
+<p>Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-05-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://zqfang.github.io/2020-05-31-code-cpp-notes/" data-title="C&#43;&#43; Notes" data-hashtags="C&#43;&#43;"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://zqfang.github.io/2020-05-31-code-cpp-notes/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://zqfang.github.io/2020-05-31-code-cpp-notes/" data-title="C&#43;&#43; Notes"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://zqfang.github.io/2020-05-31-code-cpp-notes/" data-title="C&#43;&#43; Notes"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://zqfang.github.io/2020-05-31-code-cpp-notes/" data-title="C&#43;&#43; Notes"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020-06-03-code-unsafe-pointer-swift/" class="prev" rel="prev" title="Pointer in UnSafe Swift"><i class="fas fa-angle-left fa-fw"></i>Pointer in UnSafe Swift</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">zqfang</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://bioninja-1.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js" integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/&#43;HcLiLAxmjw="></script></body>
+</html>

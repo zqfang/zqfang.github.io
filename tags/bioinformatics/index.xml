@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Bioinformatics - Tag - My Computational Genomic Playground</title>
+        <link>https://zqfang.github.io/tags/bioinformatics/</link>
+        <description>Bioinformatics - Tag - My Computational Genomic Playground</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://zqfang.github.io/tags/bioinformatics/" rel="self" type="application/rss+xml" /><item>
+    <title>Cheatsheet for command line</title>
+    <link>https://zqfang.github.io/2020-01-20-begin/</link>
+    <pubDate>Mon, 20 Jan 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://zqfang.github.io/2020-01-20-begin/</guid>
+    <description><![CDATA[usefull tools for linux command line
+a. Make terminal cool, install OhMyZsh 1 2 3 4 5 6 7 8  # install zsh sudo apt-get install zsh # ubuntu # change default shell to zsh chsh -s /usr/bin/zsh # install ohmyzsh sh -c &#34;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&#34; source ~/.zshrc   b.]]></description>
+</item></channel>
+</rss>

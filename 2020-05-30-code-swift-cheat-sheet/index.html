@@ -1,0 +1,2977 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Swift Cheat Sheet - My Computational Genomic Playground</title><meta name="Description" content="Get answers for Swift within 10s"><meta property="og:title" content="Swift Cheat Sheet" />
+<meta property="og:description" content="Get answers for Swift within 10s" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" />
+<meta property="og:image" content="https://zqfang.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://zqfang.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Swift Cheat Sheet"/>
+<meta name="twitter:description" content="Get answers for Swift within 10s"/>
+<meta name="application-name" content="#root max &gt;">
+<meta name="apple-mobile-web-app-title" content="#root max &gt;"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" /><link rel="prev" href="https://zqfang.github.io/2020-05-05-ml-boosting/" /><link rel="next" href="https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Swift Cheat Sheet",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/zqfang.github.io\/2020-05-30-code-swift-cheat-sheet\/"
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Swift","wordcount":  7254 ,
+        "url": "https:\/\/zqfang.github.io\/2020-05-30-code-swift-cheat-sheet\/","datePublished": "2020-05-30T00:00:00+00:00","dateModified": "2020-05-30T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "zqfang"
+            },"description": "Get answers for Swift within 10s"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/publication/"> Publication </a><a class="menu-item" href="/portfolio/"> Portfolio </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="/about/" title="About"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/publication/" title="">Publication</a><a class="menu-item" href="/portfolio/" title="">Portfolio</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="/about/" title="About">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Swift Cheat Sheet</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/coding/"><i class="far fa-folder fa-fw"></i>Coding</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;7254 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;35 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#table-of-contents">Table of Contents</a></li>
+      </ul>
+    </li>
+    <li><a href="#code-documentation">Code Documentation</a>
+      <ul>
+        <li><a href="#markdown">Markdown</a></li>
+        <li><a href="#mark">MARK</a></li>
+        <li><a href="#fixme">FIXME</a></li>
+        <li><a href="#todo">TODO</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types">Data Types</a>
+      <ul>
+        <li><a href="#size">Size</a></li>
+        <li><a href="#c-primitives">C Primitives</a>
+          <ul>
+            <li><a href="#integers">Integers</a></li>
+            <li><a href="#floating-point">Floating Point</a></li>
+            <li><a href="#boolean">Boolean</a></li>
+            <li><a href="#primitives">Primitives</a></li>
+          </ul>
+        </li>
+        <li><a href="#enum--bitmask-types">Enum &amp; Bitmask Types</a>
+          <ul>
+            <li><a href="#working-with-bitmasks">Working with Bitmasks</a></li>
+          </ul>
+        </li>
+        <li><a href="#type-casting">Type Casting</a>
+          <ul>
+            <li><a href="#checking-types">Checking Types</a></li>
+            <li><a href="#operator-is">Operator: is</a></li>
+            <li><a href="#operators-as-and-as">Operators: as? and as!</a></li>
+            <li><a href="#casting-from-generic-types">Casting from Generic Types</a></li>
+            <li><a href="#basic-casting">Basic Casting</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#operators">Operators</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#arithmetic-operators">Arithmetic Operators</a></li>
+            <li><a href="#comparative-operators">Comparative Operators</a></li>
+            <li><a href="#assignment-operators">Assignment Operators</a></li>
+            <li><a href="#logical-operators">Logical Operators</a></li>
+            <li><a href="#range-operators">Range Operators</a></li>
+            <li><a href="#bitwise-operators">Bitwise Operators</a></li>
+            <li><a href="#overflow-and-underflow-operators">Overflow and Underflow Operators</a></li>
+            <li><a href="#other-operators">Other Operators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#operator-overloading">Operator Overloading</a>
+      <ul>
+        <li><a href="#custom-operators">Custom operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#declaring-classes">Declaring Classes</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#instantiation">Instantiation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#declarations">Declarations</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#preprocessor">Preprocessor</a></li>
+            <li><a href="#imports">Imports</a></li>
+            <li><a href="#constants--variables">Constants &amp; Variables</a></li>
+            <li><a href="#classes-structure-functions-and-protocols">Classes, Structure, Functions and Protocols</a></li>
+            <li><a href="#operators-1">Operators</a></li>
+            <li><a href="#declaration-modifiers">Declaration Modifiers</a></li>
+            <li><a href="#access-control">Access Control</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#literals">Literals</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#strings">Strings</a></li>
+            <li><a href="#array-access-syntax">Array Access Syntax</a></li>
+            <li><a href="#dictionary-access-syntax">Dictionary Access Syntax</a></li>
+            <li><a href="#mutability">Mutability</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#declaration-syntax">Declaration Syntax</a></li>
+            <li><a href="#calling-functions">Calling Functions</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#constants-and-variables">Constants and Variables</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#getters-and-setters">Getters and Setters</a></li>
+            <li><a href="#property-observer">Property Observer</a></li>
+            <li><a href="#lazy-property">Lazy Property</a></li>
+            <li><a href="#accessing">Accessing</a></li>
+            <li><a href="#local-variables">Local Variables</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#naming-conventions">Naming Conventions</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#functions-and-properties">Functions and Properties</a></li>
+            <li><a href="#class-names-and-protocols">Class names and Protocols</a></li>
+          </ul>
+        </li>
+        <li><a href="#enums">Enums</a>
+          <ul>
+            <li><a href="#functions-1">Functions</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#closures">Closures</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#syntax">Syntax</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#capturing-values">Capturing Values</a></li>
+            <li><a href="#capturing-self">Capturing Self</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#generics">Generics</a></li>
+    <li><a href="#control-statements">Control Statements</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#if-else-if-else">If-Else If-Else</a></li>
+            <li><a href="#ternary-operators">Ternary Operators</a></li>
+            <li><a href="#nil-coalescing-operators">Nil Coalescing Operators</a></li>
+            <li><a href="#for-loops">For Loops</a></li>
+            <li><a href="#enumerating-arrays--dictionaries">Enumerating arrays &amp; dictionaries</a></li>
+            <li><a href="#while-loop">While Loop</a></li>
+            <li><a href="#repeat-while-loop">Repeat While Loop</a></li>
+            <li><a href="#switch">Switch</a></li>
+            <li><a href="#exiting-loops">Exiting Loops</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#extension">Extension</a></li>
+    <li><a href="#protocol">Protocol</a>
+      <ul>
+        <li><a href="#protocol-extension">Protocol Extension</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-handling">Error Handling</a></li>
+    <li><a href="#passing-information">Passing Information</a></li>
+    <li><a href="#user-defaults">User Defaults</a>
+      <ul>
+        <li><a href="#storing-values">Storing Values</a></li>
+        <li><a href="#retrieving-values">Retrieving Values</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-patterns">Common Patterns</a>
+      <ul>
+        <li><a href="#singletons">Singletons</a></li>
+      </ul>
+    </li>
+    <li><a href="#unicode-support">Unicode Support</a></li>
+    <li><a href="#fileio">FileIO</a>
+      <ul>
+        <li><a href="#c-style-fileio">C style FileIO</a></li>
+        <li><a href="#swift-style-fileio">Swift Style FileIO</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="swift-cheat-sheet">Swift Cheat Sheet</h1>
+<p>Stolen from <a href="https://github.com/iwasrobbed/Swift-CheatSheet" target="_blank" rel="noopener noreffer">iwasrobbed</a>.<br>
+I simplify it and add some more.</p>
+<p>It&rsquo;s a high level and a quick reference to Swift.
+The purpose of this cheat sheet is to teach myself and get answers within 10s.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li><a href="#code-documentation" rel="">Code Document</a></li>
+<li><a href="#data-types" rel="">Data Types</a></li>
+<li><a href="#operators" rel="">Operators</a></li>
+<li><a href="#operator-overloading" rel="">Operator Overloading</a></li>
+<li><a href="#declaring-classes" rel="">Declaring Classes</a></li>
+<li><a href="#declarations" rel="">Declarations</a></li>
+<li><a href="#lazy-property" rel="">Lazy Property</a></li>
+<li><a href="#property-observer" rel="">Property Observer</a></li>
+<li><a href="#literals" rel="">Literals</a></li>
+<li><a href="#functions" rel="">Functions</a></li>
+<li><a href="#constants-and-variables" rel="">Constants and Variables</a></li>
+<li><a href="#naming-conventions" rel="">Naming Conventions</a></li>
+<li><a href="#closures" rel="">Closures</a></li>
+<li><a href="#generics" rel="">Generics</a></li>
+<li><a href="#control-statements" rel="">Control Statements</a></li>
+<li><a href="#extension" rel="">Extension</a></li>
+<li><a href="#protocol" rel="">Protocol</a></li>
+<li><a href="#protocol-extension" rel="">Protocol Extension</a></li>
+<li><a href="#error-handling" rel="">Error Handling</a></li>
+<li><a href="#passing-information" rel="">Passing Information</a></li>
+<li><a href="#user-defaults" rel="">User Defaults</a></li>
+<li><a href="#common-patterns" rel="">Common Patterns</a></li>
+<li><a href="#unicode-support" rel="">Unicode Support</a></li>
+<li><a href="#fileio" rel="">File IO</a></li>
+</ul>
+<h2 id="code-documentation">Code Documentation</h2>
+<p>Two ways of commenting:</p>
+<ul>
+<li>//</li>
+<li>/* &hellip; */</li>
+</ul>
+<p>Two ways of documenting with markdown (Reconigzed by xcode):</p>
+<ul>
+<li>///</li>
+<li>/**  &hellip; */</li>
+</ul>
+<h3 id="markdown">Markdown</h3>
+<p>a few keywords that xcode can recognized automatically, with the format like <strong>- <Keyword></strong>.</p>
+<p>The most common:  Prameters, Throws, Returns</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="cm">/**
+</span><span class="cm">- Prameters: 
+</span><span class="cm">  - argument1: This is arg1
+</span><span class="cm">  - argument2: This is arg2 
+</span><span class="cm">- Returns: The results string.
+</span><span class="cm">- Throws: `Error` if nil 
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Other keywords</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="cm">/**
+</span><span class="cm">- Precondition:
+</span><span class="cm">- Postcondition: 
+</span><span class="cm">- Requires: All the information in the object should be sorted
+</span><span class="cm">- Invariant: The object will maintained sorted
+</span><span class="cm">- Complexity: O(n^2)
+</span><span class="cm">- Important:
+</span><span class="cm">- Warning: Very computation consuming
+</span><span class="cm">- Attention: Same as Warning
+</span><span class="cm">- Note: something to keep in mind
+</span><span class="cm">- Remark: Same as note
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Metadata</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="cm">/**
+</span><span class="cm">- Author: 
+</span><span class="cm">- Authors:
+</span><span class="cm">- Copyright:
+</span><span class="cm">- Date:
+</span><span class="cm">- Since:
+</span><span class="cm">- Version:
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h3 id="mark">MARK</h3>
+<p>Using <code>MARK</code> to organize your code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Use mark to logically organize your code</span>
+<span class="c1">// Declare some functions or variables here</span>
+<span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - They also show up nicely in the properties/functions list in Xcode</span>
+<span class="c1">// Declare some more functions or variables here</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fixme">FIXME</h3>
+<p>Using <code>FIXME</code> to remember to fix your code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Some broken code might be here</span>
+<span class="c1">// </span><span class="cs">FIXME:</span><span class="c1"> Use fixme to create a reminder to fix broken code later</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>FIXME</code> works a lot like <code>MARK</code> because it makes organizing code easier, but it&rsquo;s used exclusively when you need to remember to fix something.</p>
+<h3 id="todo">TODO</h3>
+<p>Using <code>TODO</code> to remember to add, delete, or generally refactor your code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Some incomplete code might be here</span>
+<span class="c1">// </span><span class="cs">TODO:</span><span class="c1"> Use todo to create a reminder to finish things up later</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>TODO</code> is very similar to <code>FIXME</code> and <code>MARK</code>, but it&rsquo;s used exclusively when you need to remember to add, delete, or change your code later.</p>
+<p><strong>Auto-generating method documentation:</strong>
+In a method&rsquo;s preceding line, press <code>⌥ Option + ⌘ Command + /</code> to automatically generate a documentation stub for your method.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="data-types">Data Types</h2>
+<h3 id="size">Size</h3>
+<p>Permissible sizes of data types are determined by how many bytes of memory are allocated for that specific type and whether it&rsquo;s a 32-bit or 64-bit environment.  In a 32-bit environment, <code>long</code> is given 4 bytes, which equates to a total range of <code>2^(4*8)</code> (with 8 bits in a byte) or <code>4294967295</code>.  In a 64-bit environment, <code>long</code> is given 8 bytes, which equates to <code>2^(8*8)</code> or <code>1.84467440737096e19</code>.</p>
+<p>For a complete guide to 64-bit changes, please <a href="https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/64bitPorting/transition/transition.html#//apple_ref/doc/uid/TP40001064-CH207-TPXREF101" target="_blank" rel="noopener noreffer">see the transition document</a>.</p>
+<h3 id="c-primitives">C Primitives</h3>
+<p>Unless you have a good reason to use C primitives, you should just use the Swift types to ensure compability going foward.</p>
+<p>In fact, Swift just aliases C types to a Swift equivalent:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// C char is aliased as an Int8 and unsigned as UInt8</span>
+<span class="kd">let</span> <span class="nv">aChar</span> <span class="p">=</span> <span class="nb">CChar</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">anUnsignedChar</span> <span class="p">=</span> <span class="n">CUnsignedChar</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C char size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aChar</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">Int8</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">Int8</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C char size: 1 with min: -128 and max: 127</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C unsigned char size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">anUnsignedChar</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">UInt8</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">UInt8</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C unsigned char size: 1 with min: 0 and max: 255</span>
+
+<span class="c1">// C short is aliased as an Int16 and unsigned as UInt16</span>
+<span class="kd">let</span> <span class="nv">aShort</span> <span class="p">=</span> <span class="nb">CShort</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">unsignedShort</span> <span class="p">=</span> <span class="nb">CUnsignedShort</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C short size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aShort</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">Int16</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">Int16</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C short size: 2 with min: -32768 and max: 32767</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C unsigned short size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">unsignedShort</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">UInt16</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">UInt16</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C unsigned short size: 2 with min: 0 and max: 65535</span>
+
+<span class="c1">// C int is aliased as an Int32 and unsigned as UInt32</span>
+<span class="kd">let</span> <span class="nv">anInt</span> <span class="p">=</span> <span class="nb">CInt</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">unsignedInt</span> <span class="p">=</span> <span class="nb">CUnsignedInt</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C int size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">anInt</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">Int32</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">Int32</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C int size: 4 with min: -2147483648 and max: 2147483647</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C unsigned int size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">unsignedInt</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">UInt32</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">UInt32</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C unsigned int size: 4 with min: 0 and max: 4294967295</span>
+
+<span class="c1">// C long is aliased as an Int and unsigned as UInt</span>
+<span class="kd">let</span> <span class="nv">aLong</span> <span class="p">=</span> <span class="nb">CLong</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">unsignedLong</span> <span class="p">=</span> <span class="nb">CUnsignedLong</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C long size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aLong</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">Int</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">Int</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C long size: 8 with min: -9223372036854775808 and max: 9223372036854775807</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C unsigned long size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">unsignedLong</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">UInt</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">UInt</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C unsigned long size: 8 with min: 0 and max: 18446744073709551615</span>
+
+<span class="c1">// C long long is aliased as an Int64 and unsigned as UInt64</span>
+<span class="kd">let</span> <span class="nv">aLongLong</span> <span class="p">=</span> <span class="nb">CLongLong</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">unsignedLongLong</span> <span class="p">=</span> <span class="n">CUnsignedLongLong</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C long long size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aLongLong</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">Int64</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">Int64</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C long long size: 8 with min: -9223372036854775808 and max: 9223372036854775807</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;C unsigned long long size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">unsignedLongLong</span><span class="si">))</span><span class="s"> with min: </span><span class="si">\(</span><span class="nb">UInt64</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> and max: </span><span class="si">\(</span><span class="nb">UInt64</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// C unsigned long long size: 8 with min: 0 and max: 18446744073709551615</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>From the <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/InteractingWithCAPIs.html" target="_blank" rel="noopener noreffer">docs</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">C Type</th>
+<th align="center">Swift Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">bool</td>
+<td align="center">CBool</td>
+</tr>
+<tr>
+<td align="center">char, signed char</td>
+<td align="center">CChar</td>
+</tr>
+<tr>
+<td align="center">unsigned char</td>
+<td align="center">CUnsignedChar</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">CShort</td>
+</tr>
+<tr>
+<td align="center">unsigned short</td>
+<td align="center">CUnsignedShort</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">CInt</td>
+</tr>
+<tr>
+<td align="center">unsigned int</td>
+<td align="center">CUnsignedInt</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">CLong</td>
+</tr>
+<tr>
+<td align="center">unsigned long</td>
+<td align="center">CUnsignedLong</td>
+</tr>
+<tr>
+<td align="center">long long</td>
+<td align="center">CLongLong</td>
+</tr>
+<tr>
+<td align="center">unsigned long long</td>
+<td align="center">CUnsignedLongLong</td>
+</tr>
+<tr>
+<td align="center">wchar_t</td>
+<td align="center">CWideChar</td>
+</tr>
+<tr>
+<td align="center">char16_t</td>
+<td align="center">CChar16</td>
+</tr>
+<tr>
+<td align="center">char32_t</td>
+<td align="center">CChar32</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">CFloat</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">CDouble</td>
+</tr>
+</tbody>
+</table>
+<h4 id="integers">Integers</h4>
+<p>Integers can be signed or unsigned.  When signed, they can be either positive or negative and when unsigned, they can only be positive.</p>
+<p>Apple states: <em>Unless you need to work with a specific size of integer, always use <code>Int</code> for integer values in your code. This aids code consistency and interoperability. Even on 32-bit platforms, <code>Int</code> [&hellip;] is large enough for many integer ranges.</em></p>
+<p><strong>Fixed width integer types with their accompanying byte sizes as the variable names:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Exact integer types</span>
+<span class="kd">let</span> <span class="nv">aOneByteInt</span><span class="p">:</span> <span class="nb">Int8</span> <span class="p">=</span> <span class="mi">127</span>
+<span class="kd">let</span> <span class="nv">aOneByteUnsignedInt</span><span class="p">:</span> <span class="nb">UInt8</span> <span class="p">=</span> <span class="mi">255</span>
+<span class="kd">let</span> <span class="nv">aTwoByteInt</span><span class="p">:</span> <span class="nb">Int16</span> <span class="p">=</span> <span class="mi">32767</span>
+<span class="kd">let</span> <span class="nv">aTwoByteUnsignedInt</span><span class="p">:</span> <span class="nb">UInt16</span> <span class="p">=</span> <span class="mi">65535</span>
+<span class="kd">let</span> <span class="nv">aFourByteInt</span><span class="p">:</span> <span class="nb">Int32</span> <span class="p">=</span> <span class="mi">2147483647</span>
+<span class="kd">let</span> <span class="nv">aFourByteUnsignedInt</span><span class="p">:</span> <span class="nb">UInt32</span> <span class="p">=</span> <span class="mi">4294967295</span>
+<span class="kd">let</span> <span class="nv">anEightByteInt</span><span class="p">:</span> <span class="nb">Int64</span> <span class="p">=</span> <span class="mi">9223372036854775807</span>
+<span class="kd">let</span> <span class="nv">anEightByteUnsignedInt</span><span class="p">:</span> <span class="nb">UInt64</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// Minimum integer types</span>
+<span class="kd">let</span> <span class="nv">aTinyInt</span><span class="p">:</span> <span class="nb">Int8</span> <span class="p">=</span> <span class="mi">127</span>
+<span class="kd">let</span> <span class="nv">aTinyUnsignedInt</span><span class="p">:</span> <span class="nb">UInt8</span> <span class="p">=</span> <span class="mi">255</span>
+<span class="kd">let</span> <span class="nv">aMediumInt</span><span class="p">:</span> <span class="nb">Int16</span> <span class="p">=</span> <span class="mi">32767</span>
+<span class="kd">let</span> <span class="nv">aMediumUnsignedInt</span><span class="p">:</span> <span class="nb">UInt16</span>  <span class="p">=</span> <span class="mi">65535</span>
+<span class="kd">let</span> <span class="nv">aNormalInt</span><span class="p">:</span> <span class="nb">Int32</span>  <span class="p">=</span> <span class="mi">2147483647</span>
+<span class="kd">let</span> <span class="nv">aNormalUnsignedInt</span><span class="p">:</span> <span class="nb">UInt32</span> <span class="p">=</span> <span class="mi">4294967295</span>
+<span class="kd">let</span> <span class="nv">aBigInt</span><span class="p">:</span> <span class="nb">Int64</span> <span class="p">=</span> <span class="mi">9223372036854775807</span>
+<span class="kd">let</span> <span class="nv">aBigUnsignedInt</span><span class="p">:</span> <span class="nb">UInt64</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+
+<span class="c1">// The largest supported integer type</span>
+<span class="kd">let</span> <span class="nv">theBiggestInt</span><span class="p">:</span> <span class="nb">IntMax</span> <span class="p">=</span> <span class="mi">9223372036854775807</span>
+<span class="kd">let</span> <span class="nv">theBiggestUnsignedInt</span><span class="p">:</span> <span class="nb">UIntMax</span> <span class="p">=</span> <span class="mi">18446744073709551615</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="floating-point">Floating Point</h4>
+<p>Floats cannot be signed or unsigned.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Single precision (32-bit) floating-point. Use it when floating-point values do not require 64-bit precision.</span>
+<span class="kd">let</span> <span class="nv">aFloat</span> <span class="p">=</span> <span class="nb">Float</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;Float size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aFloat</span><span class="si">))</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// Float size: 4</span>
+
+<span class="c1">// Double precision (64-bit) floating-point. Use it when floating-point values must be very large or particularly precise.</span>
+<span class="kd">let</span> <span class="nv">aDouble</span> <span class="p">=</span> <span class="nb">Double</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;Double size: </span><span class="si">\(</span><span class="n">MemoryLayout</span><span class="p">.</span><span class="n">size</span><span class="si">(</span><span class="n">ofValue</span><span class="p">:</span> <span class="n">aDouble</span><span class="si">))</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// Double size: 8</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="boolean">Boolean</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Boolean</span>
+<span class="kd">let</span> <span class="nv">isBool</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span> <span class="kc">true</span> <span class="c1">// Or false</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>In Objective-C comparative statements, <code>0</code> and <code>nil</code> were considered <code>false</code> and any non-zero/non-nil values were considered <code>true</code>. However, this is not the case in Swift. Instead, you&rsquo;ll need to directly check their value such as <code>if x == 0</code> or <code>if object != nil</code></p>
+<h4 id="primitives">Primitives</h4>
+<p><strong>nil</strong> : Used to specify a null object pointer.  When classes are first initialized, all properties of the class point to <code>nil</code>.</p>
+<h3 id="enum--bitmask-types">Enum &amp; Bitmask Types</h3>
+<p>Enumeration types can be defined as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Specifying a typed enum with a name (recommended way)</span>
+<span class="kd">enum</span> <span class="nc">UITableViewCellStyle</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="k">default</span><span class="p">,</span> <span class="n">valueOne</span><span class="p">,</span> <span class="n">valueTwo</span><span class="p">,</span> <span class="n">subtitle</span>
+<span class="p">}</span>
+
+<span class="c1">// Accessing it:</span>
+<span class="kd">let</span> <span class="nv">cellStyle</span><span class="p">:</span> <span class="n">UITableViewCellStyle</span> <span class="p">=</span> <span class="p">.</span><span class="k">default</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>As of Swift 3, all enum options should be named in lowerCamelCased.</p>
+<h4 id="working-with-bitmasks">Working with Bitmasks</h4>
+<p>Newer Swift versions have a nice substitute for the old <code>NS_OPTIONS</code> macro for creating bitmasks to compare to.</p>
+<p>An example for posterity:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">struct</span> <span class="nc">Options</span><span class="p">:</span> <span class="n">OptionSet</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="nb">Int</span>
+
+    <span class="kd">init</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">rawValue</span> <span class="p">=</span> <span class="n">rawValue</span>
+    <span class="p">}</span>
+
+    <span class="kd">init</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">OptionOne</span> <span class="p">=</span> <span class="n">Options</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">OptionTwo</span> <span class="p">=</span> <span class="n">Options</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">OptionThree</span> <span class="p">=</span> <span class="n">Options</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">options</span><span class="p">:</span> <span class="n">Options</span> <span class="p">=</span> <span class="p">[.</span><span class="n">OptionOne</span><span class="p">,</span> <span class="p">.</span><span class="n">OptionTwo</span><span class="p">]</span>
+
+<span class="n">options</span><span class="p">.</span><span class="bp">contains</span><span class="p">(.</span><span class="n">OptionOne</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="n">options</span><span class="p">.</span><span class="bp">contains</span><span class="p">(.</span><span class="n">OptionThree</span><span class="p">)</span> <span class="c1">// false</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="type-casting">Type Casting</h3>
+<p>Sometimes it is necessary to cast an object into a specific class or data type.  Examples of this would be casting from a <code>Float</code> to an <code>Int</code> or from a <code>UITableViewCell</code> to a subclass such as <code>RPTableViewCell</code>.</p>
+<h4 id="checking-types">Checking Types</h4>
+<p>Swift uses <code>is</code> and <code>as</code> both for checking object types as well as conformance to a given protocol.</p>
+<h4 id="operator-is">Operator: is</h4>
+<p>Checking object type using <code>is</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="n">Movie</span> <span class="p">{</span>
+    <span class="n">movieCount</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;It is a movie.&#34;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="n">Song</span> <span class="p">{</span>
+    <span class="n">songCount</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;It is a song.&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>The <code>is</code> operator returns <code>true </code>if an instance is of that object type, or conforms to the specified protocol, and returns <code>false</code> if it does not.</p>
+<h4 id="operators-as-and-as">Operators: as? and as!</h4>
+<p>If you want to be able to easily access the data during one of these checks, you can use <code>as?</code> to optionally (or <code>as!</code> to force) unwrap the object when necessary:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">movie</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span><span class="p">?</span> <span class="n">Movie</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Director: </span><span class="si">\(</span><span class="n">movie</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="kd">let</span> <span class="nv">song</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span><span class="p">?</span> <span class="n">Song</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Artist: </span><span class="si">\(</span><span class="n">song</span><span class="p">.</span><span class="n">artist</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The <code>as?</code> version of the downcast operator returns an optional value of the object or protocol&rsquo;s type, and this value is <code>nil</code> if the downcast fails or this instance does not conform to the specified protocol.</p>
+<p>The <code>as!</code> version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.</p>
+<h4 id="casting-from-generic-types">Casting from Generic Types</h4>
+<p>If you&rsquo;re working with <code>AnyObject</code> objects given from the Cocoa API, you can use:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="k">as</span><span class="p">!</span> <span class="p">[</span><span class="n">Movie</span><span class="p">]</span> <span class="p">{</span>
+    <span class="c1">// do stuff</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If given an array with <code>Any</code> objects, you can use a <code>switch</code> statement with the type defined for each <code>case</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">var</span> <span class="nv">things</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Any</span><span class="p">]()</span>
+
+<span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">as</span> <span class="nb">Int</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Zero as an Int&#34;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">someString</span> <span class="k">as</span><span class="p">!</span> <span class="nb">String</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;S string value of </span><span class="se">\&#34;</span><span class="si">\(</span><span class="n">someString</span><span class="si">)</span><span class="se">\&#34;</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">as</span><span class="p">!</span> <span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">):</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;An (x, y) point at </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">movie</span> <span class="k">as</span><span class="p">!</span> <span class="n">Movie</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;A movie called &#39;</span><span class="si">\(</span><span class="n">movie</span><span class="p">.</span><span class="n">name</span><span class="si">)</span><span class="s">&#39; by director </span><span class="si">\(</span><span class="n">movie</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Didn&#39;t match any of the cases specified&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="basic-casting">Basic Casting</h4>
+<p>Swift also offers some simple methods of casting between it&rsquo;s given data types.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Example 1:</span>
+<span class="kd">let</span> <span class="nv">aDifferentDataType</span><span class="p">:</span> <span class="nb">Float</span> <span class="p">=</span> <span class="mf">3.14</span>
+<span class="kd">let</span> <span class="nv">anInt</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">aDifferentDataType</span><span class="p">)</span>
+
+<span class="c1">// Example 2:</span>
+<span class="kd">let</span> <span class="nv">aString</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="nb">String</span><span class="p">(</span><span class="n">anInt</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="operators">Operators</h2>
+<p>Swift supports most standard C operators and improves several capabilities to eliminate common coding errors. The assignment operator <code>=</code> does not return a value, to prevent it from being mistakenly used when the equal to operator <code>==</code> is intended.</p>
+<p>Arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) detect and disallow value overflow, to avoid unexpected results when working with numbers that become larger or smaller than the allowed value range of the type that stores them.</p>
+<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td>Division</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td>Remainder</td>
+</tr>
+</tbody>
+</table>
+<h4 id="comparative-operators">Comparative Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">==</td>
+<td>Equal to</td>
+</tr>
+<tr>
+<td align="center">===</td>
+<td>Identical to</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td>Not equal to</td>
+</tr>
+<tr>
+<td align="center">!==</td>
+<td>Not identical to</td>
+</tr>
+<tr>
+<td align="center">~=</td>
+<td>Pattern match</td>
+</tr>
+<tr>
+<td align="center">&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td align="center">&gt;=</td>
+<td>Greater than or equal to</td>
+</tr>
+<tr>
+<td align="center">&lt;=</td>
+<td>Less than or equal to</td>
+</tr>
+</tbody>
+</table>
+<h4 id="assignment-operators">Assignment Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">=</td>
+<td>Assign</td>
+</tr>
+<tr>
+<td align="center">+=</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td align="center">-=</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td align="center">*=</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td align="center">/=</td>
+<td>Division</td>
+</tr>
+<tr>
+<td align="center">%=</td>
+<td>Remainder</td>
+</tr>
+<tr>
+<td align="center">&amp;=</td>
+<td>Bitwise AND</td>
+</tr>
+<tr>
+<td align="center">|=</td>
+<td>Bitwise Inclusive OR</td>
+</tr>
+<tr>
+<td align="center">^=</td>
+<td>Exclusive OR</td>
+</tr>
+<tr>
+<td align="center">&laquo;=</td>
+<td>Shift Left</td>
+</tr>
+<tr>
+<td align="center">&raquo;=</td>
+<td>Shift Right</td>
+</tr>
+</tbody>
+</table>
+<h4 id="logical-operators">Logical Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">!</td>
+<td>NOT</td>
+</tr>
+<tr>
+<td align="center">&amp;&amp;</td>
+<td>Logical AND</td>
+</tr>
+<tr>
+<td align="center">||</td>
+<td>Logical OR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="range-operators">Range Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">..&lt;</td>
+<td>Half-open range</td>
+</tr>
+<tr>
+<td align="center">&hellip;</td>
+<td>Closed range</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bitwise-operators">Bitwise Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">&amp;</td>
+<td>Bitwise AND</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td>Bitwise Inclusive OR</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td>Exclusive OR</td>
+</tr>
+<tr>
+<td align="center">~</td>
+<td>Unary complement (bit inversion)</td>
+</tr>
+<tr>
+<td align="center">&laquo;</td>
+<td>Shift Left</td>
+</tr>
+<tr>
+<td align="center">&raquo;</td>
+<td>Shift Right</td>
+</tr>
+</tbody>
+</table>
+<h4 id="overflow-and-underflow-operators">Overflow and Underflow Operators</h4>
+<p>Typically, assigning or incrementing an integer, float, or double past it&rsquo;s range would result in a runtime error. However, if you&rsquo;d instead prefer to safely truncate the number of available bits, you can opt-in to have the variable overflow or underflow using the following operators:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">&amp;+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td align="center">&amp;-</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td align="center">&amp;*</td>
+<td>Multiplication</td>
+</tr>
+</tbody>
+</table>
+<p>Example for unsigned integers (works similarly for signed):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">var</span> <span class="nv">willOverflow</span> <span class="p">=</span> <span class="nb">UInt8</span><span class="p">.</span><span class="bp">max</span>
+<span class="c1">// willOverflow equals 255, which is the largest value a UInt8 can hold</span>
+<span class="n">willOverflow</span> <span class="p">=</span> <span class="n">willOverflow</span> <span class="o">&amp;+</span> <span class="mi">1</span>
+<span class="c1">// willOverflow is now equal to 0</span>
+
+<span class="kd">var</span> <span class="nv">willUnderflow</span> <span class="p">=</span> <span class="nb">UInt8</span><span class="p">.</span><span class="bp">min</span>
+<span class="c1">// willUnderflow equals 0, which is the smallest value a UInt8 can hold</span>
+<span class="n">willUnderflow</span> <span class="p">=</span> <span class="n">willUnderflow</span> <span class="o">&amp;-</span> <span class="mi">1</span>
+<span class="c1">// willUnderflow is now equal to 255</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="other-operators">Other Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Operator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">??</td>
+<td>Nil coalescing</td>
+</tr>
+<tr>
+<td align="center">?:</td>
+<td>Ternary conditional</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td>Force unwrap object value</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td>Safely unwrap object value</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="operator-overloading">Operator Overloading</h2>
+<p>Swift allows you to overwrite existing operators or define new operators for existing or custom types. For example, this is why in Swift you can join strings using the <code>+</code> operator, even though it is typically used for math.</p>
+<p>Operator overloading is limited to the following symbols, <code>/ = - + * % &lt; &gt; ! &amp; | ^ . ~</code>, however you cannot overload the <code>=</code> operator by itself (it must be combined with another symbol).</p>
+<p>Operators can be specified as:</p>
+<ul>
+<li><code>prefix</code>: goes before an object such as <code>-negativeNumber</code></li>
+<li><code>infix</code>: goes between two objects, such as <code>a + b</code></li>
+<li><code>postfix</code>: goes after an object, such as <code>unwrapMe!</code></li>
+</ul>
+<h3 id="custom-operators">Custom operators</h3>
+<ul>
+<li><code>associativity</code>: defines how operators of the same precedence are grouped together (left, right)</li>
+<li><code>precedence</code>: gives some operators higher priority than others; these operators are applied first.</li>
+</ul>
+<p>Refer <a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank" rel="noopener noreffer">Operator Declarations</a> to see full details about operator <code>associativity</code> and <code>precedence</code>.</p>
+<p><strong>Example:</strong></p>
+<p>DefaultPrecedence group</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// declare first and set rules with a precedence group</span>
+<span class="kr">infix</span> <span class="kd">operator</span> <span class="o">**</span> <span class="c1">// use DefaultPrecedence group</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Custom Precedence group</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// define a custom precedence group</span>
+<span class="n">precedencegroup</span> <span class="n">ExponentiationPrecedence</span> <span class="p">{</span>
+    <span class="n">higherThan</span><span class="p">:</span> <span class="n">MultiplicationPrecedence</span>
+    <span class="kr">associativity</span><span class="p">:</span> <span class="kr">right</span> <span class="c1">// none, left, right</span>
+    <span class="c1">//assignment: false</span>
+<span class="p">}</span>
+
+<span class="c1">// now, replace original declaration of ** with </span>
+<span class="kr">infix</span> <span class="kd">operator</span> <span class="o">**</span><span class="p">:</span> <span class="n">ExponentiationPrecedence</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>That&rsquo;s it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// impelment </span>
+<span class="kr">infix</span> <span class="kd">func</span> <span class="o">**</span> <span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">}</span> 
+<span class="mi">2</span><span class="o">**</span><span class="mi">3</span>  <span class="c1">// 8</span>
+<span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="c1">// 512</span>
+<span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="c1">// 513</span>
+<span class="mi">5</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span>  <span class="c1">// 2560</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>see also <a href="https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID41" target="_blank" rel="noopener noreffer">docs</a></p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="declaring-classes">Declaring Classes</h2>
+<p>Classes are typically declared using separate <code>.swift</code> files, but multiple classes can also be created within the same file if you&rsquo;d like to organize it that way.</p>
+<p>Unlike Objective-C, there&rsquo;s no need for an interface file (<code>.h</code>) in Swift.</p>
+<p>The implementation file should contain (in this order):</p>
+<ul>
+<li>Any needed <code>import</code> statements</li>
+<li>A <code>class</code> declaration which contains any constants or variables necessary for the class</li>
+<li>All public and private functions</li>
+</ul>
+<p>Example:</p>
+<p>MyClass.swift</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">import</span> <span class="nc">UIKit</span>
+
+<span class="kd">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+    <span class="c1">// Declare any constants or variables at the top</span>
+    <span class="kd">let</span> <span class="nv">kRPErrorDomain</span> <span class="p">=</span> <span class="s">&#34;com.myIncredibleApp.errors&#34;</span>
+    <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Class Methods, e.g. MyClass.functionName()</span>
+    <span class="kd">class</span> <span class="nc">func</span> <span class="n">alert</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;This is a class function.&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Instance Methods, e.g. myClass.functionName()</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">x</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">y</span>
+    <span class="p">}</span>
+    <span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Private Methods</span>
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">pointLocation</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;x: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, y: </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="instantiation">Instantiation</h4>
+<p>When you want to create a new instance of a class, you use the syntax:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">myClass</span> <span class="p">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>where <code>x</code> and <code>y</code> are variables that are passed in at the time of instantiation.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="declarations">Declarations</h2>
+<p>More info <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Declarations.html#//apple_ref/doc/uid/TP40014097-CH34-XID_704" target="_blank" rel="noopener noreffer">here in the docs</a>.</p>
+<h4 id="preprocessor">Preprocessor</h4>
+<p>Swift doesn&rsquo;t come with a preprocessor so it only supports a limited number of statements for build time. Things like <code>#define</code> have been replaced with global constants defined outside of a class.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">#if</td>
+<td>An <code>if</code> conditional statement</td>
+</tr>
+<tr>
+<td align="center">#elif</td>
+<td>An <code>else if</code> conditional statement</td>
+</tr>
+<tr>
+<td align="center">#else</td>
+<td>An <code>else</code> conditional statement</td>
+</tr>
+<tr>
+<td align="center">#endif</td>
+<td>An <code>end if</code> conditional statement</td>
+</tr>
+</tbody>
+</table>
+<h4 id="imports">Imports</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">import</td>
+<td>Imports a framework</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constants--variables">Constants &amp; Variables</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">let</td>
+<td>Declares local or global constant</td>
+</tr>
+<tr>
+<td align="center">var</td>
+<td>Declares a local or global variable</td>
+</tr>
+<tr>
+<td align="center">class</td>
+<td>Declares a class-level constant or variable</td>
+</tr>
+<tr>
+<td align="center">static</td>
+<td>Declares a static type</td>
+</tr>
+</tbody>
+</table>
+<h4 id="classes-structure-functions-and-protocols">Classes, Structure, Functions and Protocols</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">typealias</td>
+<td>Introduces a named alias of an existing type</td>
+</tr>
+<tr>
+<td align="center">enum</td>
+<td>Introduces a named enumeration</td>
+</tr>
+<tr>
+<td align="center">struct</td>
+<td>Introduces a named structure</td>
+</tr>
+<tr>
+<td align="center">class</td>
+<td>Begins the declaration of a class</td>
+</tr>
+<tr>
+<td align="center">init</td>
+<td>Introduces an initializer for a class, struct or enum</td>
+</tr>
+<tr>
+<td align="center">init?</td>
+<td>Produces an optional instance or an implicitly unwrapped optional instance; can return <code>nil</code></td>
+</tr>
+<tr>
+<td align="center">deinit</td>
+<td>Declares a function called automatically when there are no longer any references to a class object, just before the class object is deallocated</td>
+</tr>
+<tr>
+<td align="center">func</td>
+<td>Begins the declaration of a function</td>
+</tr>
+<tr>
+<td align="center">protocol</td>
+<td>Begins the declaration of a formal protocol</td>
+</tr>
+<tr>
+<td align="center">static</td>
+<td>Defines as type-level within struct or enum</td>
+</tr>
+<tr>
+<td align="center">convenience</td>
+<td>Delegate the init process to another initializer or to one of the class’s designated initializers</td>
+</tr>
+<tr>
+<td align="center">extension</td>
+<td>Extend the behavior of class, struct, or enum</td>
+</tr>
+<tr>
+<td align="center">subscript</td>
+<td>Adds subscripting support for objects of a particular type, normally for providing a convenient syntax for accessing elements in a collective, list or sequence</td>
+</tr>
+<tr>
+<td align="center">override</td>
+<td>Marks overriden initializers</td>
+</tr>
+</tbody>
+</table>
+<h4 id="operators-1">Operators</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">operator</td>
+<td>Introduces a new infix, prefix, or postfix operator</td>
+</tr>
+</tbody>
+</table>
+<h4 id="declaration-modifiers">Declaration Modifiers</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">dynamic</td>
+<td>Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler</td>
+</tr>
+<tr>
+<td align="center">final</td>
+<td>Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass</td>
+</tr>
+<tr>
+<td align="center">lazy</td>
+<td>Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed</td>
+</tr>
+<tr>
+<td align="center">optional</td>
+<td>Specifies that a protocol’s property, function, or subscript isn’t required to be implemented by conforming members</td>
+</tr>
+<tr>
+<td align="center">required</td>
+<td>Marks the initializer so that every subclass must implement it</td>
+</tr>
+<tr>
+<td align="center">weak</td>
+<td>Indicates that the variable or property has a weak reference to the object stored as its value</td>
+</tr>
+</tbody>
+</table>
+<h4 id="access-control">Access Control</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Directive</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">open</td>
+<td>Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders</td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td>Can only be subclassed by its own module or have its methods overridden by others within the same module</td>
+</tr>
+<tr>
+<td align="center">internal</td>
+<td>(Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target</td>
+</tr>
+<tr>
+<td align="center">fileprivate</td>
+<td>Indicates the entities are available only from within the source file where they are defined</td>
+</tr>
+<tr>
+<td align="center">private</td>
+<td>Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the <code>{ }</code> brackets only)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccessLevelsShowCase</span> <span class="p">{</span>
+    
+    <span class="c1">// Property accessible for other modules</span>
+    <span class="kd">public</span> <span class="kd">var</span> <span class="nv">somePublicProperty</span> <span class="p">=</span> <span class="mi">0</span>
+
+    <span class="c1">// Property accessible from the module </span>
+    <span class="kd">var</span> <span class="nv">someInternelProperty</span> <span class="p">=</span> <span class="mi">1</span>
+
+    <span class="c1">// Property accessible from its own defining source file</span>
+    <span class="n">fileprivate</span> <span class="kd">func</span> <span class="nf">someFilePrivateMethod</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="c1">// Property accessible fro its enclosing declaration</span>
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">somePrivateMethod</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="literals">Literals</h2>
+<p>Literals are compiler directives which provide a shorthand notation for creating common objects.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Syntax</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>&quot;string&quot;</code></td>
+<td>Returns a <code>String</code> object</td>
+</tr>
+<tr>
+<td align="center"><code>28</code></td>
+<td>Returns an <code>Int</code></td>
+</tr>
+<tr>
+<td align="center"><code>3.14</code>, <code>0xFp2</code>, <code>1.25e2</code></td>
+<td>Returns a <code>Double</code> object</td>
+</tr>
+<tr>
+<td align="center"><code>true</code>, <code>false</code></td>
+<td>Returns a <code>Bool</code> object</td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td>Returns an <code>Array</code> object</td>
+</tr>
+<tr>
+<td align="center"><code>[keyName:value]</code></td>
+<td>Returns a <code>Dictionary</code> object</td>
+</tr>
+<tr>
+<td align="center"><code>0b</code></td>
+<td>Returns a binary digit</td>
+</tr>
+<tr>
+<td align="center"><code>0o</code></td>
+<td>Returns an octal digit</td>
+</tr>
+<tr>
+<td align="center"><code>0x</code></td>
+<td>Returns a hexadecimal digit</td>
+</tr>
+</tbody>
+</table>
+<h4 id="strings">Strings</h4>
+<p>Special characters can be included:</p>
+<ul>
+<li>Null Character: <code>\0</code></li>
+<li>Backslash: <code>\\</code> (can be used to escape a double quote)</li>
+<li>Horizontal Tab: <code>\t</code></li>
+<li>Line Feed: <code>\n</code></li>
+<li>Carriage Return: <code>\r</code></li>
+<li>Double Quote: <code>\&quot;</code></li>
+<li>Single Quote: <code>\'</code></li>
+<li>Unicode scalar: <code>\u{n}</code> where n is between one and eight hexadecimal digits</li>
+</ul>
+<p>Multiline string literal</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">json</span> <span class="p">=</span> <span class="s">&#34;&#34;&#34;
+</span><span class="s">{ &#34;</span><span class="n">username</span><span class="s">&#34;: &#34;</span><span class="n">David</span><span class="s">&#34;, &#34;</span><span class="n">loginCount</span><span class="s">&#34;: 2}
+</span><span class="s">&#34;&#34;&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="array-access-syntax">Array Access Syntax</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">example</span> <span class="p">=</span> <span class="p">[</span> <span class="s">&#34;hi&#34;</span><span class="p">,</span> <span class="s">&#34;there&#34;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="kc">true</span> <span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;item at index 0: </span><span class="si">\(</span><span class="n">example</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="dictionary-access-syntax">Dictionary Access Syntax</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">example</span> <span class="p">=</span> <span class="p">[</span> <span class="s">&#34;hi&#34;</span> <span class="p">:</span> <span class="s">&#34;there&#34;</span><span class="p">,</span> <span class="s">&#34;iOS&#34;</span> <span class="p">:</span> <span class="s">&#34;people&#34;</span> <span class="p">]</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">value</span> <span class="p">=</span> <span class="n">example</span><span class="p">[</span><span class="s">&#34;hi&#34;</span><span class="p">]</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;hi </span><span class="si">\(</span><span class="n">value</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="mutability">Mutability</h4>
+<p>For mutable literals, declare it with <code>var</code>; immutable with <code>let</code>.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="functions">Functions</h2>
+<h4 id="declaration-syntax">Declaration Syntax</h4>
+<p>Functions without a return type use this format:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Does not return anything or take any arguments</span>
+<span class="kd">func</span> <span class="nf">doWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>class</code> precedes declarations of class functions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Call on a class, e.g. MyClass.someClassFunction()</span>
+<span class="kd">class</span> <span class="nc">func</span> <span class="n">someClassFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>static</code> is similar to class functions where you don&rsquo;t need an instance of the class or struct in order to call a method on it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Call on a class/struct, e.g. MyStruct.someStaticFunction()</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">someStaticFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Declare instance functions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Called on an instance of a class, e.g. myClass.someInstanceFunction()</span>
+<span class="kd">func</span> <span class="nf">doMoreWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Function arguments are declared within the parentheses:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Draws a point</span>
+<span class="kd">func</span> <span class="nf">draw</span><span class="p">(</span><span class="n">point</span><span class="p">:</span> <span class="n">CGPoint</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Return types are declared as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Returns a String object for the given String argument</span>
+<span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&#34;Oh hello, </span><span class="si">\(</span><span class="n">lilFriendsName</span><span class="si">)</span><span class="s">. Cup of tea?&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>You can have multiple return values, referred to as a tuple:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Returns multiple objects</span>
+<span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">nameLength</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s">&#34;Oh hello, </span><span class="si">\(</span><span class="n">lilFriendsName</span><span class="si">)</span><span class="s">. Cup of tea?&#34;</span><span class="p">,</span> <span class="bp">countElements</span><span class="p">(</span><span class="n">lilFriendsName</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">hello</span> <span class="p">=</span> <span class="n">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">&#34;Rob&#34;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">hello</span><span class="p">.</span><span class="n">msg</span><span class="p">)</span> <span class="c1">// &#34;Oh hello, Rob. Cup of tea?&#34;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">hello</span><span class="p">.</span><span class="n">nameLength</span><span class="p">)</span> <span class="c1">// 3</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>And those multiple return values can be optional:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">nameLength</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)?</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>By default, external parameter names are given when you call the function, but you can specify that one or more are not shown in the method signature by putting a <code>_</code> symbol in front of the parameter name:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="kc">_</span> <span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="n">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">&#34;Rob&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>or you can rename the variable once within the method scope:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">friendsName</span> <span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="n">sayHelloToMyLilFriend</span><span class="p">(</span><span class="n">friendsName</span><span class="p">:</span> <span class="s">&#34;Rob&#34;</span><span class="p">)</span> <span class="c1">// and local variable is `lilFriendsName`</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>You can also specify default values for the parameters:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriend</span><span class="p">(</span><span class="kc">_</span> <span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&#34;Rob&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="n">sayHelloToMyLilFriend</span><span class="p">()</span> <span class="c1">// &#34;Oh hello, Rob. Cup of tea?&#34;</span>
+<span class="n">sayHelloToMyLilFriend</span><span class="p">(</span><span class="s">&#34;Jimbob&#34;</span><span class="p">)</span> <span class="c1">// &#34;Oh hello, Jimbob. Cup of tea?&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Swift also supports variadic parameters so you can have an open-ended number of parameters passed in:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">sayHelloToMyLilFriends</span><span class="p">(</span><span class="kc">_</span> <span class="n">lilFriendsName</span><span class="p">:</span> <span class="nb">String</span><span class="p">...)</span> <span class="p">{</span>
+    <span class="c1">// Code</span>
+<span class="p">}</span>
+
+<span class="n">sayHelloToMyLilFriends</span><span class="p">(</span><span class="s">&#34;Rob&#34;</span><span class="p">,</span> <span class="s">&#34;Jimbob&#34;</span><span class="p">,</span> <span class="s">&#34;Cletus&#34;</span><span class="p">)</span>
+<span class="c1">// &#34;Oh hello, Rob, Jimbob and Cletus. Cup of tea?&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>And lastly, you can also use a prefix to declare input parameters as <code>inout</code>.</p>
+<p>An in-out parameter has a value that is passed in to the function, is modified by the function, and is passed back out of the function to replace the original value.</p>
+<p>You may remember <code>inout</code> parameters from Objective-C where you had to sometimes pass in an <code>&amp;error</code> parameter to certain methods, where the <code>&amp;</code> symbol specifies that you&rsquo;re actually passing in a pointer to the object instead of the object itself. The same applies to Swift&rsquo;s <code>inout</code> parameters now as well.</p>
+<h4 id="calling-functions">Calling Functions</h4>
+<p>Functions are called using dot syntax: <code>myClass.doWork()</code> or <code>self.sayHelloToMyLilFriend(&quot;Rob Phillips&quot;)</code></p>
+<p><code>self</code> is a reference to the function&rsquo;s containing class.</p>
+<p>At times, it is necessary to call a function in the superclass using <code>super.someMethod()</code>.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="constants-and-variables">Constants and Variables</h2>
+<p>Declaring a constant or variable allows you to maintain a reference to an object within a class or to pass objects between classes.</p>
+<p>Constants are defined with <code>let</code> and variables with <code>var</code>. By nature, constants are obviously immutable (i.e. cannot be changed once they are instantiated) and variables are mutable.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nv">text</span> <span class="p">=</span> <span class="s">&#34;Hello&#34;</span> <span class="c1">// Constant</span>
+	<span class="kd">var</span> <span class="nv">isComplete</span><span class="p">:</span> <span class="nb">Bool</span> <span class="c1">// Variable</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>There are many ways to declare properties in Swift, so here are a few examples:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">var</span> <span class="nv">myInt</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// inferred type</span>
+<span class="kd">var</span> <span class="nv">myExplicitInt</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// explicit type</span>
+<span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">z</span> <span class="p">=</span> <span class="mi">3</span> <span class="c1">// declare multiple variables</span>
+
+<span class="kd">let</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// declare multiple constants</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="getters-and-setters">Getters and Setters</h4>
+<p>In Objective-C, variables were backed by getters, setters, and private instance variables created at build time. However, in Swift getters and setters are only used for computed properties and constants actually don&rsquo;t have a getter or setter at all.</p>
+<p>The getter is used to read the value, and the setter is used to write the value. The setter clause is optional, and when only a getter is needed, you can omit both clauses and simply return the requested value directly. However, if you provide a setter clause, you must also provide a getter clause.</p>
+<p>You can overrride the getter and setter of a property to create the illusion of the Objective-C property behavior, but you&rsquo;d need to store them as a private property with a different name (not recommended for most scenarios):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">private</span> <span class="kd">var</span> <span class="nv">_x</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+
+<span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kr">get</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Accessing x...&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_x</span>
+    <span class="p">}</span>
+    <span class="kr">set</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Setting x...&#34;</span><span class="p">)</span>
+        <span class="n">_x</span> <span class="p">=</span> <span class="n">newValue</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="property-observer">Property Observer</h4>
+<p>Swift also has callbacks for when a property will be or was set using <code>willSet</code> and <code>didSet</code> shown below:</p>
+<ul>
+<li><code>willset</code>: before assignment</li>
+<li><code>didSet</code>: after assignment</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="nc">LightBulb</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">maxCurrent</span> <span class="p">=</span> <span class="mi">30</span>
+    <span class="kd">var</span> <span class="nv">current</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="kr">willSet</span><span class="p">(</span><span class="n">newCurrent</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// do something before value assignment</span>
+          <span class="c1">// newValue -&gt; newCurrent</span>
+          <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Current value changed, the change is </span><span class="si">\(</span><span class="bp">abs</span><span class="si">(</span><span class="n">current</span><span class="o">-</span> <span class="n">newCurrent</span><span class="si">))</span><span class="s">&#34;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="kr">didSet</span> <span class="p">{</span> <span class="c1">// do somthing afther value assignment</span>
+          <span class="k">if</span> <span class="n">current</span> <span class="p">==</span> <span class="n">LightBulb</span><span class="p">.</span><span class="n">maxCurrent</span> <span class="p">{</span> 
+              <span class="bp">print</span><span class="p">(</span><span class="s">&#34;current get to maximum point&#34;</span><span class="p">)</span>
+              <span class="p">}</span>
+            <span class="c1">// oldValue  </span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">bulb</span> <span class="p">=</span> <span class="n">LightBulb</span><span class="p">()</span>
+<span class="n">bulb</span><span class="p">.</span><span class="n">current</span> <span class="p">=</span> <span class="mi">20</span>
+<span class="n">bulb</span><span class="p">.</span><span class="n">current</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="n">bulb</span><span class="p">.</span><span class="n">current</span> <span class="p">=</span> <span class="mi">40</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h4 id="lazy-property">Lazy Property</h4>
+<ul>
+<li><code>lazy</code>: only compute once and remember the value, won&rsquo;t re-compute if called again.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="nc">ClosedRange</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">start</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">end</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">var</span> <span class="nv">width</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="c1">// note the =</span>
+    <span class="kr">lazy</span> <span class="kd">var</span> <span class="nv">sum</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">res</span> <span class="p">=</span> <span class="mi">0</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&#34;run&#34;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="kc">self</span><span class="p">.</span><span class="n">start</span><span class="p">...</span><span class="kc">self</span><span class="p">.</span><span class="n">end</span><span class="p">{</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">return</span>
+    <span class="p">}()</span> <span class="c1">// don&#39;t forget ()</span>
+
+    <span class="kd">init</span><span class="p">?(</span><span class="n">start</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">Int</span><span class="p">){</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">start</span> <span class="p">=</span> <span class="n">start</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">end</span> <span class="p">=</span> <span class="n">end</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// example</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">range</span> <span class="p">=</span> <span class="n">ClosedRange</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="mi">10_000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">range</span><span class="p">.</span><span class="n">width</span> <span class="c1">//1001</span>
+    <span class="n">range</span><span class="p">.</span><span class="n">sum</span> <span class="c1">// will print out &#34;run&#34;</span>
+    <span class="n">range</span><span class="p">.</span><span class="n">sum</span> <span class="c1">// </span>
+    <span class="n">range</span><span class="p">.</span><span class="n">sum</span> <span class="c1">// </span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h4 id="accessing">Accessing</h4>
+<h4 id="local-variables">Local Variables</h4>
+<p>Local variables and constants only exist within the scope of a function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">doWork</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">localStringVariable</span> <span class="p">=</span> <span class="s">&#34;Some local string variable.&#34;</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">doSomething</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">localStringVariable</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p>The general rule of thumb: Clarity and brevity are both important, but clarity should never be sacrificed for brevity.</p>
+<h4 id="functions-and-properties">Functions and Properties</h4>
+<p>These both use <code>camelCase</code> where the first letter of the first word is lowercase and the first letter of each additional word is capitalized.</p>
+<h4 id="class-names-and-protocols">Class names and Protocols</h4>
+<p>These both use <code>CapitalCase</code> where the first letter of every word is capitalized.</p>
+<h3 id="enums">Enums</h3>
+<p>The options in an enum should be <code>lowerCamelCased</code></p>
+<h4 id="functions-1">Functions</h4>
+<p>These should use verbs if they perform some action (e.g. <code>performInBackground</code>).  You should be able to infer what is happening, what arguments a function takes, or what is being returned just by reading a function signature.</p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Correct</span>
+<span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">from</span> <span class="n">start</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">to</span> <span class="n">end</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="c1">// Incorrect (likely too expressive, but arguable)</span>
+<span class="kd">func</span> <span class="nf">moveBetweenPoints</span><span class="p">(</span><span class="n">from</span> <span class="n">start</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">to</span> <span class="n">end</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="c1">// Incorrect (not expressive enough and lacking argument clarity)</span>
+<span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="closures">Closures</h2>
+<p>Closures in Swift are similar to blocks in Objective-C and are essentially chunks of code, typically organized within a <code>{}</code> clause, that are passed between functions or to execute code as a callback within a function. Swift&rsquo;s <code>func</code> functions are actually just a special case of a closure in use.</p>
+<h4 id="syntax">Syntax</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="p">{</span> <span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">returnType</span> <span class="k">in</span>
+    <span class="n">statements</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="examples">Examples</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Map just iterates over the array and performs whatever is in the closure on each item</span>
+<span class="kd">let</span> <span class="nv">people</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Rob&#34;</span><span class="p">,</span> <span class="s">&#34;Jimbob&#34;</span><span class="p">,</span> <span class="s">&#34;Cletus&#34;</span><span class="p">]</span>
+<span class="n">people</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+    <span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="k">in</span>
+    <span class="s">&#34;Oh hai, </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">...&#34;</span>
+<span class="p">})</span>
+<span class="c1">// Oh hai, Rob</span>
+<span class="c1">// Oh hai, Jimbob</span>
+<span class="c1">// Oh hai, Cletus</span>
+
+<span class="c1">// Closure for alphabetically reversing an array of names, where sorted is a Swift library function</span>
+<span class="kd">let</span> <span class="nv">names</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Francesca&#34;</span><span class="p">,</span> <span class="s">&#34;Joe&#34;</span><span class="p">,</span> <span class="s">&#34;Bill&#34;</span><span class="p">,</span> <span class="s">&#34;Sally&#34;</span><span class="p">,</span> <span class="p">]</span>
+<span class="kd">var</span> <span class="nv">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+<span class="p">}</span>
+<span class="c1">// Or on a single line:</span>
+<span class="n">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span><span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or because Swift can infer the Bool type:</span>
+<span class="n">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or because the return statement is implied:</span>
+<span class="n">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span>
+<span class="c1">// Or even shorter using shorthand argument names, such as $0, $1, $2, etc.:</span>
+<span class="n">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
+<span class="c1">// Or just ridiculously short because Swift&#39;s String greater-than operator implementation exactly matches this function definition:</span>
+<span class="n">reversed</span> <span class="p">=</span> <span class="n">names</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If the closure is the last parameter to the function, you can also use the trailing closure pattern. This is especially useful when the closure code is especially long and you&rsquo;d like some extra space to organize it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="n">closure</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// function body goes here</span>
+<span class="p">}</span>
+
+<span class="c1">// Instead of calling like this:</span>
+<span class="n">someFunctionThatTakesAClosure</span><span class="p">({</span>
+    <span class="c1">// closure&#39;s body goes here</span>
+<span class="p">})</span>
+
+<span class="c1">// You can use trailing closure like this:</span>
+<span class="n">someFunctionThatTakesAClosure</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// trailing closure&#39;s body goes here</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="capturing-values">Capturing Values</h4>
+<p>A closure can capture constants and variables from the surrounding context in which it is defined. The closure can then refer to and modify the values of those constants and variables from within its body, even if the original scope that defined the constants and variables no longer exists.</p>
+<p>In Swift, the simplest form of a closure that can capture values is a nested function, written within the body of another function. A nested function can capture any of its outer function’s arguments and can also capture any constants and variables defined within the outer function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">runningTotal</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementor</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="n">runningTotal</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">incrementor</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate a variable to say that they can be used within the nested function. Swift also handles all memory management involved in disposing of variables when they are no longer needed by the function.</p>
+<h4 id="capturing-self">Capturing Self</h4>
+<p>If you create a closure that references <code>self.*</code> it will capture <code>self</code> and retain a strong reference to it. This is sometimes the intended behavior, but often could lead to retain cycles where both objects won&rsquo;t get deallocated at the end of their lifecycles.</p>
+<p>The two best options are to use <code>unowned</code> or <code>weak</code>. This might look a bit messy, but saves a lot of headache.</p>
+<p>Use <code>unowned</code> when you know the closure will only be called if <code>self</code> still exists, but you don&rsquo;t want to create a strong (retain) reference.</p>
+<p>Use <code>weak</code> if there is a chance that <code>self</code> will not exist, or if the closure is not dependent upon <code>self</code> and will run without it. If you do use <code>weak</code> also remember that <code>self</code> will be an optional variable and should be checked for existence.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">typealias</span> <span class="n">SomeClosureType</span> <span class="p">=</span> <span class="p">(</span><span class="kc">_</span> <span class="n">value</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span>
+
+<span class="kd">class</span> <span class="nc">SomeClass</span> <span class="p">{</span>
+    <span class="n">fileprivate</span> <span class="kd">var</span> <span class="nv">currentValue</span> <span class="p">=</span> <span class="s">&#34;&#34;</span>
+
+    <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// Retained self</span>
+            <span class="kc">self</span><span class="p">.</span><span class="n">currentValue</span> <span class="p">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">[</span><span class="kr">unowned</span> <span class="kc">self</span><span class="p">]</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// Not retained, but expected to exist</span>
+            <span class="kc">self</span><span class="p">.</span><span class="n">currentValue</span> <span class="p">=</span> <span class="n">value</span>
+
+        <span class="p">}</span>
+
+        <span class="n">someMethod</span> <span class="p">{</span> <span class="p">[</span><span class="kr">weak</span> <span class="kc">self</span><span class="p">]</span> <span class="n">value</span> <span class="k">in</span> <span class="c1">// Not retained, not expected to exist</span>
+            <span class="c1">// Or, alternatively you could do</span>
+            <span class="k">guard</span> <span class="kd">let</span> <span class="nv">sSelf</span> <span class="p">=</span> <span class="kc">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+            <span class="c1">// Or, alternatively use `self?` without the guard</span>
+            <span class="n">sSelf</span><span class="p">.</span><span class="n">currentValue</span> <span class="p">=</span> <span class="n">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">someMethod</span><span class="p">(</span><span class="n">closure</span><span class="p">:</span> <span class="n">SomeClosureType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">closure</span><span class="p">(</span><span class="s">&#34;Hai&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Reference: <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html" target="_blank" rel="noopener noreffer">Apple: Automatic Reference Counting</a></p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="generics">Generics</h2>
+<p>Coming soon&hellip;</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="control-statements">Control Statements</h2>
+<p>Swift uses all of the same control statements that other languages have:</p>
+<h4 id="if-else-if-else">If-Else If-Else</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">someTestCondition</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the condition is true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">someOtherTestCondition</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the other test condition is true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Code to execute if the prior conditions are false</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>As you can see, parentheses are optional.</p>
+<h4 id="ternary-operators">Ternary Operators</h4>
+<p>The shorthand notation for an <code>if-else</code> statement is a ternary operator of the form: <code>someTestCondition ? doIfTrue : doIfFalse</code></p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">stringForTrueOrFalse</span><span class="p">(</span><span class="n">trueOrFalse</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">trueOrFalse</span> <span class="p">?</span> <span class="s">&#34;True&#34;</span> <span class="p">:</span> <span class="s">&#34;False&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="nil-coalescing-operators">Nil Coalescing Operators</h4>
+<p>In Swift, we need to consider the use of <code>optional</code> values. One very basic way to handle <code>nil</code> cases is with an <code>if-else</code> statement:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">stringForOptionalExistence</span><span class="p">(</span><span class="n">optionalValue</span><span class="p">:</span> <span class="nb">String</span><span class="p">?)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="n">optionalValue</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">optionalValue</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&#34;Empty&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>In this particular case, we are returning <code>optionalValue</code> if it is not <code>nil</code>, and <code>&quot;Empty&quot;</code> if <code>optionalValue</code> is <code>nil</code>. The shorthand notation for this type of <code>if(!=nil)-else</code> statement is a nil coalescing operator of the form: <code>optionalValue ?? nonOptionalValue</code></p>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">stringForOptionalExistence</span><span class="p">(</span><span class="n">optionalValue</span><span class="p">:</span> <span class="nb">String</span><span class="p">?)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">optionalValue</span> <span class="p">??</span> <span class="s">&#34;Empty&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="for-loops">For Loops</h4>
+<p>Swift enables you to use ranges inside of <code>for</code> loops now:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> times 5 is </span><span class="si">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Or if you don&#39;t need the value of the index</span>
+<span class="kd">let</span> <span class="nv">base</span> <span class="p">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">power</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nv">answer</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">power</span> <span class="p">{</span>
+    <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;</span><span class="si">\(</span><span class="n">base</span><span class="si">)</span><span class="s"> to the power of </span><span class="si">\(</span><span class="n">power</span><span class="si">)</span><span class="s"> is </span><span class="si">\(</span><span class="n">answer</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+<span class="c1">// prints &#34;3 to the power of 10 is 59049&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="enumerating-arrays--dictionaries">Enumerating arrays &amp; dictionaries</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// We explicitly cast to the Movie class from AnyObject class</span>
+<span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="k">as</span> <span class="p">[</span><span class="n">Movie</span><span class="p">]</span> <span class="p">{</span>
+    <span class="c1">// Code to execute each time</span>
+<span class="p">}</span>
+
+<span class="c1">// Enumerating simple array</span>
+<span class="kd">let</span> <span class="nv">names</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;Anna&#34;</span><span class="p">,</span> <span class="s">&#34;Alex&#34;</span><span class="p">,</span> <span class="s">&#34;Brian&#34;</span><span class="p">,</span> <span class="s">&#34;Jack&#34;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">names</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Hello, </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">!&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Enumerating simple dictionary</span>
+<span class="kd">let</span> <span class="nv">numberOfLegs</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#34;spider&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&#34;ant&#34;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#34;cat&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">animalName</span><span class="p">,</span> <span class="n">legCount</span><span class="p">)</span> <span class="k">in</span> <span class="n">numberOfLegs</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;</span><span class="si">\(</span><span class="n">animalName</span><span class="si">)</span><span class="s">s have </span><span class="si">\(</span><span class="n">legCount</span><span class="si">)</span><span class="s"> legs&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If you need to cast to a certain object type, see the earlier discussion about the <code>as!</code> and <code>as?</code> keywords.</p>
+<h4 id="while-loop">While Loop</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">while</span> <span class="n">someTestCondition</span> <span class="p">{</span>
+   <span class="c1">// Code to execute while the condition is true</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="repeat-while-loop">Repeat While Loop</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">repeat</span> <span class="p">{</span>
+    <span class="c1">// Code to execute while the condition is true</span>
+<span class="p">}</span> <span class="k">while</span> <span class="n">someTestCondition</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="switch">Switch</h4>
+<p>Switch statements are often used in place of <code>if</code> statements if there is a need to test if a certain variable matches the value of another constant or variable.  For example, you may want to test if an error code integer you received matches an existing constant value or if it&rsquo;s a new error code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">switch</span> <span class="n">errorStatusCode</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">network</span><span class="p">:</span>
+        <span class="c1">// Code to execute if it matches</span>
+
+     <span class="k">case</span> <span class="p">.</span><span class="n">wifi</span><span class="p">:</span>
+        <span class="c1">// Code to execute if it matches</span>
+
+     <span class="k">default</span><span class="p">:</span>
+        <span class="c1">// Code to execute if nothing else matched</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Switch statements in Swift do not fall through the bottom of each case and into the next one by default. Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit <code>break</code> statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.</p>
+<h4 id="exiting-loops">Exiting Loops</h4>
+<p>Although <code>break</code> is not required in Swift, you can still use a <code>break</code> statement to match and ignore a particular case, or to break out of a matched case before that case has completed its execution.</p>
+<ul>
+<li><code>return</code> : Stops execution and returns to the calling function.  It can also be used to return a value from a function.</li>
+<li><code>break</code> : Used to stop the execution of a loop.</li>
+</ul>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="extension">Extension</h2>
+<p>Extensions add new functionality to an existing class, structure, enumeration or protocol type</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+    <span class="c1">// Extending String type to calculate if a String instance is truthy of falsy</span>
+    <span class="kd">var</span> <span class="nv">boolValue</span><span class="p">:</span><span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="kc">self</span> <span class="p">==</span> <span class="s">&#34;1&#34;</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">isTrue</span> <span class="p">=</span> <span class="s">&#34;0&#34;</span><span class="p">.</span><span class="n">boolValue</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="protocol">Protocol</h2>
+<p>Define</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">protocol</span> <span class="nc">Codable</span> <span class="p">{</span>
+    <span class="c1">// definitions</span>
+    <span class="kd">var</span> <span class="nv">description</span><span class="p">:</span> <span class="nb">String</span> 
+    <span class="kd">var</span> <span class="nv">mustBeSettable</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">doesNotNeedToBeSettable</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">dance</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">someTypeMethod</span><span class="p">()</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">toggle</span><span class="p">()</span> <span class="c1">// modify (or mutate) the instance it belongs to</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">someParameter</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="c1">// require specific initializers </span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Usage</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">import</span> <span class="nc">Foundation</span>
+<span class="kd">struct</span> <span class="nc">UserInfo</span><span class="p">:</span> <span class="n">Codable</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">username</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">let</span> <span class="nv">loginCount</span><span class="p">:</span> <span class="nb">Int</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="nc">UserInfo</span><span class="p">:</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">description</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;</span><span class="si">\(</span><span class="n">username</span><span class="si">)</span><span class="s"> has tried to login </span><span class="si">\(</span><span class="n">loginCount</span><span class="si">)</span><span class="s"> time(s)&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="protocol-extension">Protocol Extension</h3>
+<p>Protocols can be extended to provide method, initializer, subscript, and computed property implementations to conforming types.</p>
+<p><strong>Very Important and Useful:</strong>  <code>Implementation</code> to any <code>method</code> or computed <code>property</code> requirement of that <code>protocol</code> can only be in <code>extension</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="nc">RandomNumberGenerator</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">randomBool</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>By creating an extension on the protocol, all conforming types automatically gain this method implementation without any additional modification.</p>
+<p>You can use protocol extensions to provide a default implementation to any method or computed property requirement of that protocol.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="nc">PrettyTextRepresentable</span>  <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">prettyTextualDescription</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">textualDescription</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="error-handling">Error Handling</h2>
+<p>Representing an Error</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="nc">BeverageMachineError</span><span class="p">:</span> <span class="n">Error</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">invalidSelection</span>
+    <span class="k">case</span> <span class="n">insufficientFunds</span>
+    <span class="k">case</span> <span class="n">outOfStock</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">selectBeverage</span> <span class="p">(</span><span class="kc">_</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="kr">throws</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+    <span class="k">return</span> <span class="s">&#34;Waiting for beverage...&#34;</span>
+<span class="p">}</span>
+
+<span class="c1">// us do...catch to handle error throwed by func</span>
+<span class="kd">let</span> <span class="nv">message</span><span class="p">:</span><span class="nb">String</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">message</span> <span class="p">=</span> <span class="k">try</span> <span class="n">selectBeverage</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="n">BeverageMachineError</span><span class="p">.</span><span class="n">invalidSelection</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Invalid selection&#34;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="n">BeverageMachineError</span><span class="p">.</span><span class="n">insufficientFunds</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Insufficient Funds&#34;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="n">BeverageMachineError</span><span class="p">.</span><span class="n">outOfStock</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&#34;Out of Stock&#34;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="bp">print</span> <span class="p">(</span><span class="s">&#34;Generic error&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// if throw error, return nil</span>
+<span class="kd">let</span> <span class="nv">message</span> <span class="p">=</span> <span class="k">try</span><span class="p">?</span> <span class="n">selectBeverage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">// if throw error, get a runtime error</span>
+<span class="kd">let</span> <span class="nv">message</span> <span class="p">=</span> <span class="k">try</span><span class="p">!</span> <span class="n">selectBeverage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="passing-information">Passing Information</h2>
+<p>Coming soon&hellip;</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="user-defaults">User Defaults</h2>
+<p>User defaults are basically a way of storing simple preference values which can be saved and restored across app launches.  It is not meant to be used as a data storage layer, like Core Data or sqlite.</p>
+<h3 id="storing-values">Storing Values</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">userDefaults</span> <span class="p">=</span> <span class="n">UserDefaults</span><span class="p">.</span><span class="n">standard</span>
+<span class="n">userDefaults</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="s">&#34;Some Value&#34;</span><span class="p">,</span> <span class="n">forKey</span><span class="p">:</span> <span class="s">&#34;RPSomeUserPreference&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="retrieving-values">Retrieving Values</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">userDefaults</span> <span class="p">=</span> <span class="n">UserDefaults</span><span class="p">.</span><span class="n">standard</span>
+<span class="kd">let</span> <span class="nv">someValue</span> <span class="p">=</span> <span class="n">userDefaults</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="n">forKey</span><span class="p">:</span> <span class="s">&#34;RPSomeUserPreference&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">AnyObject</span><span class="p">?</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>There are also other convenience functions on <code>UserDefaults</code> instances such as <code>bool(forKey:...)</code>, <code>string(forKey:...)</code>, etc.</p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="common-patterns">Common Patterns</h2>
+<p>For a comprehensive list of design patterns, as established by the Gang of Four, look here: <a href="https://github.com/ochococo/Design-Patterns-In-Swift" target="_blank" rel="noopener noreffer">Design Patterns in Swift</a></p>
+<h3 id="singletons">Singletons</h3>
+<p>Singleton&rsquo;s are a special kind of class where only one instance of the class exists for the current process. They are a convenient way to share data between different parts of an app without creating global variables or having to pass the data around manually, but they should be used sparingly since they often create tighter coupling between classes.</p>
+<p>To turn a class into a singleton, you use the following implementation where the function name is prefixed with <code>shared</code> plus another word which best describes your class.  For example, if the class is a network or location manager, you would name the function <code>sharedManager</code> instead of <code>sharedInstance</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+
+    <span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Instantiation</span>
+
+    <span class="c1">// Naming convention:</span>
+    <span class="c1">// sharedInstance, sharedManager, sharedController, etc.</span>
+    <span class="c1">// depending on the class type</span>
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">sharedInstance</span> <span class="p">=</span> <span class="n">MyClass</span><span class="p">()</span>
+
+    <span class="c1">// This prevents others from using the default &#39;()&#39; initializer for this class.</span>
+    <span class="kd">private</span> <span class="kd">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kd">var</span> <span class="nv">isReady</span> <span class="p">=</span> <span class="kc">true</span>
+
+    <span class="c1">// More class code here</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Explanation</strong>: The static constant <code>sharedInstance</code> is run as <code>dispatch_once</code> the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from <a href="http://krakendev.io/blog/the-right-way-to-write-a-singleton" target="_blank" rel="noopener noreffer">here</a>.</p>
+<p><strong>Usage</strong>: You would get a reference to that singleton class in another class with the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// Now you could do</span>
+<span class="kd">let</span> <span class="nv">myClass</span> <span class="p">=</span> <span class="n">MyClass</span><span class="p">.</span><span class="n">sharedInstance</span>
+<span class="kd">let</span> <span class="nv">answer</span> <span class="p">=</span> <span class="n">myClass</span><span class="p">.</span><span class="n">isReady</span> <span class="p">?</span> <span class="s">&#34;Yep!&#34;</span> <span class="p">:</span> <span class="s">&#34;Nope!&#34;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&#34;Are you ready to rock and roll? </span><span class="si">\(</span><span class="n">answer</span><span class="si">)</span><span class="s">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="unicode-support">Unicode Support</h2>
+<p>Although I don&rsquo;t recommend this, Swift will compile even if you use emoji&rsquo;s in your code since it offers Unicode support.</p>
+<p>More info from Apple <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html" target="_blank" rel="noopener noreffer">here</a></p>
+<p><a href="#table-of-contents" rel="">Back to top</a></p>
+<h2 id="fileio">FileIO</h2>
+<h3 id="c-style-fileio">C style FileIO</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">fd</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;aFile.txt&#34;</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">)</span>
+<span class="n">fwrite</span><span class="p">(</span><span class="s">&#34;Hello Swift!&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">fclose</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">fd</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;aFile.txt&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int8</span><span class="p">](</span><span class="bp">count</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">fread</span><span class="p">(&amp;</span><span class="n">array</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="nb">String</span><span class="p">.</span><span class="n">fromCString</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">// Hello Swift!</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="swift-style-fileio">Swift Style FileIO</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">path</span> <span class="p">=</span> <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="n">forResource</span><span class="p">:</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="n">ofType</span><span class="p">:</span> <span class="s">&#34;txt&#34;</span><span class="p">)</span>
+<span class="c1">// read</span>
+<span class="kd">let</span> <span class="nv">lines</span> <span class="p">=</span> <span class="k">try</span><span class="p">?</span> <span class="nb">String</span><span class="p">(</span><span class="n">contentsOfFile</span><span class="p">:</span> <span class="n">path</span><span class="p">!)</span>
+                     <span class="p">.</span><span class="bp">split</span><span class="p">{</span><span class="nv">$0</span> <span class="p">==</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">}</span>
+                     <span class="p">.</span><span class="bp">map</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="kd">init</span><span class="p">)</span>
+
+<span class="c1">// write</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">lines</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">_outlines</span><span class="p">.</span><span class="n">joined</span><span class="p">(</span><span class="n">separator</span><span class="p">:</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="k">try</span> <span class="n">lines</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="n">atomically</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="p">.</span><span class="n">utf8</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="#table-of-contents" rel="">Back to top</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-05-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" data-title="Swift Cheat Sheet" data-hashtags="Swift"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" data-hashtag="Swift"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" data-title="Swift Cheat Sheet"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" data-title="Swift Cheat Sheet"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://zqfang.github.io/2020-05-30-code-swift-cheat-sheet/" data-title="Swift Cheat Sheet"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/swift/">Swift</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020-05-05-ml-boosting/" class="prev" rel="prev" title="Boosting"><i class="fas fa-angle-left fa-fw"></i>Boosting</a>
+            <a href="/2020-06-03-code-unsafe-pointer-swift/" class="next" rel="next" title="Pointer in UnSafe Swift">Pointer in UnSafe Swift<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">zqfang</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://bioninja-1.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js" integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/&#43;HcLiLAxmjw="></script></body>
+</html>

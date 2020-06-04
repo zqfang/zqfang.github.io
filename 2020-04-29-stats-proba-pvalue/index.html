@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Probability and P-value - My Computational Genomic Playground</title><meta name="Description" content="My Computational Genomic Playground"><meta property="og:title" content="Probability and P-value" />
+<meta property="og:description" content="Probability and P-value 1. PDF (probability density function) PDF：概率密度函数（probability density function）, 连续型随机变量的概" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" />
+<meta property="og:image" content="https://zqfang.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-04-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://zqfang.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Probability and P-value"/>
+<meta name="twitter:description" content="Probability and P-value 1. PDF (probability density function) PDF：概率密度函数（probability density function）, 连续型随机变量的概"/>
+<meta name="application-name" content="#root max &gt;">
+<meta name="apple-mobile-web-app-title" content="#root max &gt;"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" /><link rel="prev" href="https://zqfang.github.io/2020-04-28-seurat2scanpy/" /><link rel="next" href="https://zqfang.github.io/2020-04-29-ml-crf/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css" integrity="sha256-HiaUvtFS&#43;iki2&#43;kJpEGDjtaT2IsTMPl0hb&#43;o7XjaQt8="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Probability and P-value",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/zqfang.github.io\/2020-04-29-stats-proba-pvalue\/"
+        },"image": ["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "P-Value","wordcount":  721 ,
+        "url": "https:\/\/zqfang.github.io\/2020-04-29-stats-proba-pvalue\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2020-04-29T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/zqfang.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "zqfang"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/publication/"> Publication </a><a class="menu-item" href="/portfolio/"> Portfolio </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><a class="menu-item" href="/about/" title="About"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Computational Genomic Playground"><span class="header-title-pre"><i class="fas fa-hashtag"></i></span>MAX <span class="header-title-post"><i class="fas fa-terminal"></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/publication/" title="">Publication</a><a class="menu-item" href="/portfolio/" title="">Portfolio</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="https://github.com/zqfang" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a class="menu-item" href="/about/" title="About">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Probability and P-value</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/statistic/"><i class="far fa-folder fa-fw"></i>Statistic</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;721 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
+            </div><div class="content" id="content"><h1 id="probability-and-pvalue">Probability and P-value</h1>
+
+<h2 id="1-pdf-probability-density-function">1. PDF (probability density function)</h2>
+
+<ol>
+<li>PDF：概率密度函数（probability density function）, 连续型随机变量的概率密度函数是一个描述某个确定的取值点附近的可能性的函数。<br>
+数学表示：用PDF在某一区间上的积分来刻画随机变量落在这个区间中的概率</li>
+</ol>
+
+<p><span  class="math">\[
+\operatorname{Pr}(a \leq X \leq b)=\int_{a}^{b} f_{X}(x) d x
+\]</span></p>
+
+<h2 id="2pmf-probability-mass-function">2.PMF (probability mass function)</h2>
+
+<p>PMF : 概率质量函数（probability mass function), 在概率论中，概率质量函数是离散随机变量在各特定取值上的概率。<br>
+数学表示： PMF其实就是高中所学的离散型随机变量的分布律。</p>
+
+<p><span  class="math">\[
+f_{X}(x)=\operatorname{Pr}(X=x)
+\]</span></p>
+
+<h2 id="3-cdf-cumulative-distribution-function">3. CDF (cumulative distribution function)</h2>
+
+<p>CDF : 累积分布函数 (cumulative distribution function)，是概率密度函数的积分，能完整描述一个实随机变量X的概率分布。</p>
+
+<p>CDF是PDF的（从负无穷-oo到当前值的）积分，PDF是CDF的导数．（为了便于概率的计算，引入CDF的概念）<br>
+CDF相当于其左侧的面积，也相当于小于该值的概率，负无穷的CDF值为０，正无穷的CDF值总为１．
+对于连续变量，有</p>
+
+<p><span  class="math">\[
+F_{X}(x)=\operatorname{Pr}(X \leq x)=\int_{-\infty}^{x} f_{X}(t) d t
+\]</span></p>
+
+<p>对于离散型变量，有如</p>
+
+<p><span  class="math">\[
+F_{X}(x)=\operatorname{Pr}(X \leq x)= 
+\left\{ \begin{array}{l}
+0 \text { if } x<0 \\
+\frac{1}{2} \text { if } 0 \leq x<1 \\
+1 \text { if } x \geq 1
+\end{array} \right.
+\]</span></p>
+
+<h2 id="4-central-limit-theorem">4. Central Limit Theorem</h2>
+
+<p>中心极限定理（Central Limit Theorem）</p>
+
+<p>给定一个任意分布的总体，
+每次从这些总体中随机抽取 n 个抽样，一共抽 m 次，
+然后把这 m 组抽样分别求出平均值，
+当m足够大时，这m次的平均值的分布（称为抽样分布）接近正态分布。</p>
+
+<h2 id="5-confidence-interval">5. Confidence interval</h2>
+
+<p>置信区间（confidence interval）
+置信区间是指由样本统计量所构造的总体参数的估计区间。
+置信区间展现的是这个参数的真实值落在测量值（推测值）的周围的可信程度。</p>
+
+<h2 id="6-probability-and-pvalue">6. Probability and P-value</h2>
+
+<p>A <code>p-value</code> is the probability that random chance generated the data, or something else that is equal or rarer.</p>
+
+<p>A p-value is composed of three parts:</p>
+
+<ol>
+<li>The probability random chance would result in the observation.<br></li>
+<li>The probability of observing something else that is equally rare.</li>
+<li>The probability of observing something rarer or more extreme.</li>
+</ol>
+
+<p>But <code>probability</code></p>
+
+<p><span  class="math">\[ Probalibility = \frac{Number of outcomes of interest} {The total number of outcomes}\]</span></p>
+
+<p>In <code>hypothesis testing</code>, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is different from B.</p>
+
+<h2 id="7-additional-resources">7. Additional resources</h2>
+
+<p>Statquest: <code>P Values, clearly explained</code>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/5Z9OIYA8He8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+
+<p>and <code>How to calculate P-value</code></p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/JQc3yx0-Q9E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-04-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" data-title="Probability and P-value" data-hashtags="P-Value"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" data-hashtag="P-Value"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" data-title="Probability and P-value"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" data-title="Probability and P-value"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://zqfang.github.io/2020-04-29-stats-proba-pvalue/" data-title="Probability and P-value"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/p-value/">P-Value</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020-04-28-seurat2scanpy/" class="prev" rel="prev" title="Convert Seurat Robj to Scanpy h5ad"><i class="fas fa-angle-left fa-fw"></i>Convert Seurat Robj to Scanpy h5ad</a>
+            <a href="/2020-04-29-ml-crf/" class="next" rel="next" title="Conditional random field (CRF)">Conditional random field (CRF)<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">zqfang</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://bioninja-1.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js" integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/&#43;HcLiLAxmjw="></script></body>
+</html>

@@ -1,0 +1,145 @@
+# Shortcut to bulk RNA-seq analysis
+
+
+hisat2-htseq-deseq2
+### 3.1 transcriptom mapping  
+step 0: install tools
+```shell
+conda install htseq hisat2 stringtie 
+```
+
+step 1: build index and extract splice sites
+
+build index
+```shell
+hisat2-build -p {threads} genome/hg38.fa  hisat2_index/hg38
+
+```
+
+extract known splice sites for alignmnet
+```shell
+hisat2_extract_splice_sites.py gencode.gtf > hisat2_index/splicesites.txt 
+hisat2_extract_exons.py gencode.gtf > histat2_index/exon.txt
+```
+
+step2: mapping
+```shell
+hisat2 --dta --threads ${threads} \
+             -x hisat2_index/hg38 \
+             --known-splicesite-infile hisat2_index/splicesites.txt \
+             -1 R1.fq.gz \
+             -2 R2.fq.gz \
+             -S output.sam
+```
+
+step 3: sam to bam
+```shell
+samtools view -Sbh  -q 25 \
+              -@ ${threads}  \
+              -o ouput.bam \
+              input.sam
+
+```
+
+step 4: bam sort and index
+```shell
+samtools sort -@ ${threads} input.bam > output.sorted.bam 
+samtools index input.sorted.bam #generate input.sorted.bam.bai
+
+```
+
+step 5: bam to bigwig
+
+```shell
+bamCoverage -p ${threads} \
+            --normalizeUsing RPKM \ # note: other normalization options 
+            -b input.sorted.bam \
+            -o output.bw
+
+```
+
+
+### 3.2 Differentially expressed genes analysis
+step 1: count reads
+
+```shell
+htseq-count -r pos -s no \
+            --additional-attr gene_name \
+            --additional-attr gene_type \
+            -f bam input.sorted.bam  gencode.gtf  > output.count
+
+```
+
+
+step2: differentially expressed genes analysis
+
+(1) construct read count table  
+
+option 1: HTSeq count file input 
+
+```R
+library("DESeq2")
+directory <- "/path/to/your/readCountFiles/"
+sampleFiles <- grep("count", list.files(directory), value=TRUE)
+condition <- factor(c("KO","KO", "WT","WT"), levels = c("WT", "KO"))
+# phenotable
+sampleTable <- data.frame(sampleName = sampleFiles,
+                          fileName = sampleFiles,
+                          condition = condition)
+# construct read count table
+ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable,
+                                       directory = directory,
+                                       design= ~ condition)
+```
+
+option 2:  combined read count file into a single table first, then run
+
+```R
+library(DESeq2)
+# read count table
+database <- read.table(file = "raw.counts.csv", sep = ",", header = TRUE, row.names = 1)
+database <- round(as.matrix(database))
+
+# set level 
+condition <- factor(c("KO","KO", "WT","WT"), levels = c("WT", "KO"))
+# build DESeq object
+coldata <- data.frame(row.names = colnames(database), condition)
+dds <- DESeqDataSetFromMatrix(countData=database, colData=coldata, design=~condition + treatmement)
+```
+
+
+(2) run DESeq2 and get output  
+
+```R
+library(DESeq2)
+dds <- dds[ rowSums(counts(dds)) > 1, ]   
+# run statistical test
+dds <- DESeq(dds)   
+# get results  
+res <- results(dds)  
+# summary(res)  
+count_r <- counts(dds, normalized=T)  #normalized count matrix
+
+# export results
+res <- res[order(res$padj),]
+diff_gene <- subset(res, padj < 0.05 & (log2FoldChange > 1 | log2FoldChange < -1))
+diff_gene <- row.names(diff_gene)
+resdata <- merge(as.data.frame(res), 
+                 as.data.frame(counts(dds, normalized=TRUE)), 
+                 by="row.names",
+                 sort=FALSE)
+write.csv(resdata, file = "DEGs.csv", row.names = FALSE)
+
+```
+#### 3.3 Gene set enrichrment analysis
+
+GO
+* clusterprofiler
+* Enrichr (GSEApy)
+* GSEA
+
+### 3.4 Alternative splicing analysis
+
+rMATS
+
+

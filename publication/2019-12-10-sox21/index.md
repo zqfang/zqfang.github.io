@@ -1,7 +1,7 @@
 # SOX21 Ensures Rostral Forebrain Identity by Suppression of WNT8B during Neural Regionalization of Human Embryonic Stem Cells
 
 
-My PhD thesis.
+My PhD thesis. Published in *Stem Cell Reports*, 2019
 
 Highlights
 * The transcriptomic analysis of rostrocaudal patterning of hESC-derived NPCs

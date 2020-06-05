@@ -4,7 +4,7 @@ description:
 date: 2020-03-10
 categories: ["Make bioinfo uncool again"]
 tags: ["GATK", "Genetics"]
-published: false
+published: true
 comments: true
 ---
 
@@ -41,9 +41,9 @@ wget ftp://ftp-mouse.sanger.ac.uk/ref/GRCm38_68.fa -O GRCm38_68.fa
 
 ### 2. dbSNP
 
-{% include alert.html text="Which strain's dbsnp to use?" %} 
+{{ <admonition type=note title="Note" >}}
 **Depends on your study design.**
-
+{{ </admonition>}}
 
 Download All in one vcf file from NCBI
 ```shell

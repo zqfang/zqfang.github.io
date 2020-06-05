@@ -5,13 +5,18 @@ https://zqfang.github.io/
 ## How to delopy Hugo cites using github action
 see here: [peaceiris](https://github.com/peaceiris/actions-gh-pages)
 
-if repo_name == '<username>.github.io'
+### Add themes to your project
+```shell
+git submodule add https://github.com/dillonzq/LoveIt.git  themes/LoveIt
+```
+### Set up github repo: 'your_username.github.io'
+if github_repo == 'username.github.io'
 do
 
 1. create a source branch and put your source file in this branch
-2. use the correct gh-pages.yaml
+2. use the correct gh-pages.yaml from [peaceiris](https://github.com/peaceiris/actions-gh-pages)
 
-3. set source
+3. set source branch
     ```yaml
     name: Publish Site
     on: 

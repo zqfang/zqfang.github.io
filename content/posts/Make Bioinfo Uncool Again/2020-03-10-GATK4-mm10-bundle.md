@@ -41,9 +41,9 @@ wget ftp://ftp-mouse.sanger.ac.uk/ref/GRCm38_68.fa -O GRCm38_68.fa
 
 ### 2. dbSNP
 
-{{ <admonition type=note title="Note" >}}
+
 **Depends on your study design.**
-{{ </admonition>}}
+
 
 Download All in one vcf file from NCBI
 ```shell

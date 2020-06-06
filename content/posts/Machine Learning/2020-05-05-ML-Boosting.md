@@ -2,7 +2,7 @@
 title: 'Boosting'
 date: 2020-05-05
 categories: ["Machine Learning"]
-tags: ["Boosting"]
+tags: ["Boosting", "Statistical Learning"]
 comments: true
 markup: "mmark"
 math: true

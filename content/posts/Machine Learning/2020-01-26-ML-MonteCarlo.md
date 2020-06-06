@@ -3,7 +3,7 @@ title: 'Mento Carlos'
 date: 2020-01-26
 categories: ["Machine Learning"]
 comments: true
-tags: ['Monte Carlo']
+tags: ['Monte Carlo', "Statistical Learning"]
 markup: "mmark"
 math: true
 ---

@@ -1,7 +1,7 @@
-# snakeflow
+# Snakeflow
 
 
-My bioinfomatic workflows using snakemake. I would update it if only I have more time.
+My bioinformatic workflows using snakemake. I would update it if only I have more time.
 
 Why snakemake?  
 

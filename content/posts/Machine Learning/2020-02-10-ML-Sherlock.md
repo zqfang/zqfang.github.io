@@ -3,7 +3,7 @@ title: "How to do deep learning using custom Jupyter kernels on Sherlock"
 description: "A recipe for interactive computing using custom Jupyter kernels on Stanford's Sherlock."
 date: 2020-02-10
 comments: true
-categories: ["Machine Learning", "Statistical Learning"]
+categories: ["Machine Learning"]
 tags: ["Jupyter","Sherlock"]
 ---
 

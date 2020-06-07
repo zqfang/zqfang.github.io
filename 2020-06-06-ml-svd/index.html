@@ -1,181 +1,181 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>Singular Value Decomposition (SVD) - My Computational Genomic Playground</title><meta name=Description content="My Computational Genomic Playground"><meta property="og:title" content="Singular Value Decomposition (SVD)"><meta property="og:description" content="奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。 奇异值分解也是一种矩阵近似的方"><meta property="og:type" content="article"><meta property="og:url" content="https://zqfang.github.io/2020-06-06-ml-svd/"><meta property="og:image" content="https://zqfang.github.io/logo.png"><meta property="article:published_time" content="2020-06-06T00:00:00+00:00"><meta property="article:modified_time" content="2020-06-06T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://zqfang.github.io/logo.png"><meta name=twitter:title content="Singular Value Decomposition (SVD)"><meta name=twitter:description content="奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。 奇异值分解也是一种矩阵近似的方"><meta name=application-name content="MAX"><meta name=apple-mobile-web-app-title content="MAX"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://zqfang.github.io/2020-06-06-ml-svd/><link rel=prev href=https://zqfang.github.io/2020-06-03-code-unsafe-pointer-swift/><link rel=next href=https://zqfang.github.io/2020-01-26-ml-montecarlo/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css integrity="sha256-HiaUvtFS+iki2+kJpEGDjtaT2IsTMPl0hb+o7XjaQt8="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Singular Value Decomposition (SVD)","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zqfang.github.io\/2020-06-06-ml-svd\/"},"image":["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"SVD, Statistical Learning","wordcount":2203,"url":"https:\/\/zqfang.github.io\/2020-06-06-ml-svd\/","datePublished":"2020-06-06T00:00:00+00:00","dateModified":"2020-06-06T00:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/zqfang.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"zqfang"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>MAX <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/categories/>Categories </a><a class=menu-item href=/publication/>Publication </a><a class=menu-item href=/portfolio/>Portfolio </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/ title=About>About </a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>Singular Value Decomposition (SVD) - My Computational Genomic Playground</title><meta name=Description content="My Computational Genomic Playground"><meta property="og:title" content="Singular Value Decomposition (SVD)"><meta property="og:description" content="奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。 奇异值分解也是一种矩阵近似的方"><meta property="og:type" content="article"><meta property="og:url" content="https://zqfang.github.io/2020-06-06-ml-svd/"><meta property="og:image" content="https://zqfang.github.io/logo.png"><meta property="article:published_time" content="2020-06-06T00:00:00+00:00"><meta property="article:modified_time" content="2020-06-06T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://zqfang.github.io/logo.png"><meta name=twitter:title content="Singular Value Decomposition (SVD)"><meta name=twitter:description content="奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。 奇异值分解也是一种矩阵近似的方"><meta name=application-name content="MAX"><meta name=apple-mobile-web-app-title content="MAX"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://zqfang.github.io/2020-06-06-ml-svd/><link rel=prev href=https://zqfang.github.io/2020-05-31-code-cpp-notes/><link rel=next href=https://zqfang.github.io/2020-01-26-ml-montecarlo/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css integrity="sha256-HiaUvtFS+iki2+kJpEGDjtaT2IsTMPl0hb+o7XjaQt8="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Singular Value Decomposition (SVD)","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zqfang.github.io\/2020-06-06-ml-svd\/"},"image":["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"SVD, Statistical Learning","wordcount":2202,"url":"https:\/\/zqfang.github.io\/2020-06-06-ml-svd\/","datePublished":"2020-06-06T00:00:00+00:00","dateModified":"2020-06-06T00:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/zqfang.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"zqfang"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>MAX <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/categories/>Categories </a><a class=menu-item href=/publication/>Publication </a><a class=menu-item href=/portfolio/>Portfolio </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/ title=About>About </a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents..." id=search-input-desktop>
 <a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>MAX <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
 <a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/>Posts</a><a class=menu-item href=/categories/>Categories</a><a class=menu-item href=/publication/>Publication</a><a class=menu-item href=/portfolio/>Portfolio</a><a class=menu-item href=/tags/>Tags</a><a class=menu-item href=/about/ title=About>About</a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
-<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Singular Value Decomposition (SVD)</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class=post-category>included in <a href=/categories/machine-learning/><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-06-06>2020-06-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2203 words&nbsp;
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Singular Value Decomposition (SVD)</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class=post-category>included in <a href=/categories/machine-learning/><i class="far fa-folder fa-fw"></i>Machine Learning</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-06-06>2020-06-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2202 words&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>Contents</span>
-<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static></div></div><div class=content id=content><p>奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。<br>奇异值分解也是一种矩阵近似的方法，这个近似是在弗罗贝尼乌斯范数（Frobenius norm) 意义下的近似。<br>奇异值分解是在平方损失(弗罗贝尼乌斯范数)意义下对矩阵的最优近似，即数据压缩。</p><h1 id=singular-value-decomposition>Singular Value Decomposition</h1><h2 id=定义>定义</h2><h3 id=1-奇异值分解>1. 奇异值分解</h3><p>将一个$m \times n$的实矩阵$A$，$A \in \mathbf{R}^{m \times n}$ 表示为以下三个实矩阵乘积形式的运算，即矩阵因子分解：</p><p><span class=math>\[
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#定义>定义</a><ul><li><a href=#1-奇异值分解>1. 奇异值分解</a></li><li><a href=#2-紧奇异值分解compact-singular-value-decomposition-无损压缩>2. 紧奇异值分解(compact singular value decomposition)： 无损压缩</a></li><li><a href=#3-截断奇异值分解truncated-singular-value-decomposition-有损压缩>3. 截断奇异值分解(truncated singular value decomposition)： 有损压缩</a></li></ul></li><li><a href=#几何解释>几何解释</a></li><li><a href=#奇异值计算>奇异值计算</a><ul><li><a href=#求值过程>求值过程</a></li><li><a href=#举例>举例</a></li></ul></li><li><a href=#矩阵的外积展开式表示>矩阵的外积展开式表示</a></li></ul></nav></div></div><div class=content id=content><p>奇异值分解(SVD)是一种矩阵因子分解方法，在线性代数中，被广泛应用。<br>奇异值分解也是一种矩阵近似的方法，这个近似是在弗罗贝尼乌斯范数（Frobenius norm) 意义下的近似。<br>奇异值分解是在平方损失(弗罗贝尼乌斯范数)意义下对矩阵的最优近似，即数据压缩。</p><h1 id=singular-value-decomposition>Singular Value Decomposition</h1><h2 id=定义>定义</h2><h3 id=1-奇异值分解>1. 奇异值分解</h3><p>将一个$m \times n$的实矩阵$A$，$A \in \mathbf{R}^{m \times n}$ 表示为以下三个实矩阵乘积形式的运算，即矩阵因子分解：</p><p>$$
 A=U \Sigma V^{\mathrm{T}}
-\]</span></p><p>其中，</p><ul><li>$U$是$m$阶正交矩阵: $UU^T = I$</li><li>$V$为$n$阶正交矩阵: $VV^T = I$</li><li>$\Sigma$是由降序排列的非负的对角线元素组成的$m \times n$的对角矩阵:<ul><li>$\Sigma = diag(\sigma_1, \sigma_2, \cdots, \sigma_p)$</li><li>$\sigma_{1} \geqslant \sigma_{2} \geqslant \cdots \geqslant \sigma_{p} \geqslant 0$</li><li>$p = \min(m, n)$</li></ul></li></ul><p>那么，称</p><ul><li>$U \Sigma V^{\mathrm{T}}$ : 矩阵A的奇异值分解</li><li>$\sigma_i$ 为A的奇异值(singluar value)</li><li>$U$ 的列向量为左奇异向量(left singular vector)</li><li>$V$ 的列向量为右奇异向量(right singular vector)</li></ul><p>⚠️注意，矩阵的奇异值分解不唯一。</p><p><figure><img src=/images/stats/SVD.png alt=SVD></figure></p><p><strong>实际常用的是：</strong></p><h3 id=2-紧奇异值分解compact-singular-value-decomposition-无损压缩>2. 紧奇异值分解(compact singular value decomposition)： 无损压缩</h3><p>设$m \times n$的实矩阵$A$，其秩为$\operatorname{rank}(A)=r$, $r \leqslant \min (m, n)$, 则紧奇异值分解为：</p><p><span class=math>\[
+$$</p><p>其中，</p><ul><li>$U$是$m$阶正交矩阵: $UU^T = I$</li><li>$V$为$n$阶正交矩阵: $VV^T = I$</li><li>$\Sigma$是由降序排列的非负的对角线元素组成的$m \times n$的对角矩阵:<ul><li>$\Sigma = diag(\sigma_1, \sigma_2, \cdots, \sigma_p)$</li><li>$\sigma_{1} \geqslant \sigma_{2} \geqslant \cdots \geqslant \sigma_{p} \geqslant 0$</li><li>$p = \min(m, n)$</li></ul></li></ul><p>那么，称</p><ul><li>$U \Sigma V^{\mathrm{T}}$ : 矩阵A的奇异值分解</li><li>$\sigma_i$ 为A的奇异值(singluar value)</li><li>$U$ 的列向量为左奇异向量(left singular vector)</li><li>$V$ 的列向量为右奇异向量(right singular vector)</li></ul><p>⚠️注意，矩阵的奇异值分解不唯一。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/stats/SVD.png data-srcset="/images/stats/SVD.png, /images/stats/SVD.png 1.5x, /images/stats/SVD.png 2x" data-sizes=auto alt=/images/stats/SVD.png title=SVD></p><p><strong>实际常用的是：</strong></p><h3 id=2-紧奇异值分解compact-singular-value-decomposition-无损压缩>2. 紧奇异值分解(compact singular value decomposition)： 无损压缩</h3><p>设$m \times n$的实矩阵$A$，其秩为$\operatorname{rank}(A)=r$, $r \leqslant \min (m, n)$, 则紧奇异值分解为：</p><p>$$
 A=U_r \Sigma_r V^{\mathrm{T}}_r
-\]</span></p><p>其中，</p><ul><li>$U_r$ 是 $m \times r$ 矩阵</li><li>$V_r$ 是 $n \times r$ 矩阵</li><li>$\Sigma_r$ 是 $r$ 阶对角阵</li><li>$r = \operatorname{rank}(A)$</li></ul><h3 id=2-截断奇异值分解truncated-singular-value-decomposition-有损压缩>2. 截断奇异值分解(truncated singular value decomposition)： 有损压缩</h3><p>一般讲奇异值分解，实际上多指截断奇异值分解</p><p>在奇异值分解中， 只取最大的k个奇异值(k &lt; r, r= rank(A))对应的部分，就得到截断奇异值分解</p><p>设 $m \times n$ 的实矩阵 $A$，其秩为 $\operatorname{rank}(A)=r$, 且 $0 &lt; k &lt; r$, 则截断奇异值分解为：</p><p><span class=math>\[
+$$</p><p>其中，</p><ul><li>$U_r$ 是 $m \times r$ 矩阵</li><li>$V_r$ 是 $n \times r$ 矩阵</li><li>$\Sigma_r$ 是 $r$ 阶对角阵</li><li>$r = \operatorname{rank}(A)$</li></ul><h3 id=3-截断奇异值分解truncated-singular-value-decomposition-有损压缩>3. 截断奇异值分解(truncated singular value decomposition)： 有损压缩</h3><p>一般讲奇异值分解，实际上多指截断奇异值分解</p><p>在奇异值分解中， 只取最大的$k$个奇异值($k &lt; r, r= \operatorname{rank}(A)$ )对应的部分，就得到截断奇异值分解</p><p>设 $m \times n$ 的实矩阵 $A$，其秩为 $\operatorname{rank}(A)=r$, 且 $0 &lt; k &lt; r$, 则截断奇异值分解为：</p><p>$$
 A \approx U_{k} \Sigma_{k} V_{k}^{\mathrm{T}}
-\]</span></p><p>其中，</p><ul><li>$U_k$ 是$m \times k$ 矩阵(前 $k$列)</li><li>$V_k$ 是$n \times k$ 矩阵(前 $k$列)</li><li>$\Sigma_k$ 是 $k$ 阶对角阵(前 $k$个)</li><li>$r = \operatorname{rank}(A)$</li></ul><h2 id=几何解释>几何解释</h2><p>从线性变换的角度理解奇异值分解：
-将 $m \times n$ 的实矩阵 $A$表示为从 $n$ 维空间 $R_n$ 到 $m$ 维空间 $R_m$的一个线性变换：</p><p><span class=math>\[
+$$</p><p>其中，</p><ul><li>$U_k$ 是$m \times k$ 矩阵(前 $k$列)</li><li>$V_k$ 是$n \times k$ 矩阵(前 $k$列)</li><li>$\Sigma_k$ 是 $k$ 阶对角阵(前 $k$个)</li><li>$r = \operatorname{rank}(A)$</li></ul><h2 id=几何解释>几何解释</h2><p>从线性变换的角度理解奇异值分解：
+将 $m \times n$ 的实矩阵 $A$表示为从 $n$ 维空间 $R_n$ 到 $m$ 维空间 $R_m$的一个线性变换：</p><p>$$
 T: x \rightarrow A x
-\]</span></p><p>$x$, $Ax$为各自空间的向量。</p><p>那么<strong>线性变换</strong>可以理解为：</p><ol><li>一个坐标系的旋转或反射变换</li><li>一个坐标轴的缩放变换</li><li>另一个坐标系的旋转或反射变换</li></ol><p>对A进行奇异值分解，U和V都是正交矩阵</p><ul><li>V的列向量构成Rn空间的一组标准正交基，表示Rn空间中正交坐标系的旋转或反射变换</li><li>U的列向量都成Rm空间的一组标准正交基，表示Rm空间中正交坐标系的旋转或反射变换</li><li>$\Sigma$的对角元素是一组非负实数，表示Rn中的原始正交坐标系坐标轴的缩放变换</li></ul><p><figure><img src=/images/stats/1200px-Singular-Value-Decomposition.svg.png alt=SVD></figure></p><h2 id=奇异值计算>奇异值计算</h2><p>矩阵$A$的奇异值分解可以通过求对阵矩阵$A^TA$的特征值和特征向量得到。</p><ul><li>$A^TA$的特征向量构成正交矩阵$V$的列</li><li>$A^TA$的特征值$\lambda_j$的平方根为奇异值$\sigma_i$，即</li></ul><p><span class=math>\[
+$$</p><p>$x$, $Ax$为各自空间的向量。</p><p>那么<strong>线性变换</strong>可以理解为：</p><ol><li>一个坐标系的旋转或反射变换</li><li>一个坐标轴的缩放变换</li><li>另一个坐标系的旋转或反射变换</li></ol><p>对A进行奇异值分解，U和V都是正交矩阵</p><ul><li>V的列向量构成Rn空间的一组标准正交基，表示Rn空间中正交坐标系的旋转或反射变换</li><li>U的列向量都成Rm空间的一组标准正交基，表示Rm空间中正交坐标系的旋转或反射变换</li><li>$\Sigma$的对角元素是一组非负实数，表示Rn中的原始正交坐标系坐标轴的缩放变换</li></ul><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/stats/1200px-Singular-Value-Decomposition.svg.png data-srcset="/images/stats/1200px-Singular-Value-Decomposition.svg.png, /images/stats/1200px-Singular-Value-Decomposition.svg.png 1.5x, /images/stats/1200px-Singular-Value-Decomposition.svg.png 2x" data-sizes=auto alt=/images/stats/1200px-Singular-Value-Decomposition.svg.png title=SVD></p><h2 id=奇异值计算>奇异值计算</h2><p>矩阵$A$的奇异值分解可以通过求对阵矩阵$A^TA$的特征值和特征向量得到。</p><ul><li>$A^TA$的特征向量构成正交矩阵$V$的列</li><li>$A^TA$的特征值$\lambda_j$的平方根为奇异值$\sigma_i$，即</li></ul><p>$$
 \sigma_{j}=\sqrt{\lambda_{j}}, \quad j=1,2, \cdots, n
-\]</span></p><ul><li>对$\sigma_i$从大到小排列，得到对角矩阵 $\Sigma$</li><li>求正奇异值对应的左奇异向量，再扩充的 $A^T$ 的标准正交基，构成正交矩阵 $U$ 的列</li></ul><h3 id=求值过程>求值过程</h3><ol><li>求对阵矩阵$A^TA$的特征值和特征向量</li></ol><p>计算对称矩阵 $W= A^TA$<br>求解特征方程 $(W - \lambda I)x = 0$
-得到特征值$\lambda_i$，并将之降序排列</p><p><span class=math>\[
+$$</p><ul><li>对$\sigma_i$从大到小排列，得到对角矩阵 $\Sigma$</li><li>求正奇异值对应的左奇异向量，再扩充的 $A^T$ 的标准正交基，构成正交矩阵 $U$ 的列</li></ul><h3 id=求值过程>求值过程</h3><ol><li>求对阵矩阵$A^TA$的特征值和特征向量</li></ol><p>计算对称矩阵 $W= A^TA$<br>求解特征方程 $(W - \lambda I)x = 0$
+得到特征值$\lambda_i$，并将之降序排列</p><p>$$
 \lambda_{1} \geqslant \lambda_{2} \geqslant \cdots \geqslant \lambda_{n} \geqslant 0
-\]</span></p><p>将特征值 $\lambda_i$ 代入特征方程求的对应特征向量</p><ol start=2><li>求 $n$ 阶正交矩阵 $V$</li></ol><p>将特征向量单位化， 得到单位特征向量构成 $n$ 阶正交矩阵V</p><p><span class=math>\[
+$$</p><p>将特征值 $\lambda_i$ 代入特征方程求的对应特征向量</p><ol start=2><li>求 $n$ 阶正交矩阵 $V$</li></ol><p>将特征向量单位化， 得到单位特征向量构成 $n$ 阶正交矩阵V</p><p>$$
 V=\left[\begin{array}{llll}
 v_{1} & v_{2} & \cdots & v_{n}
 \end{array}\right]
-\]</span></p><ol start=3><li>求 $m \times n$ 对角矩阵 $\Sigma$</li></ol><p>计算A的奇异值</p><p><span class=math>\[
+$$</p><ol start=3><li>求 $m \times n$ 对角矩阵 $\Sigma$</li></ol><p>计算A的奇异值</p><p>$$
 \sigma_{j}=\sqrt{\lambda_{j}}, \quad j=1,2, \cdots, n
-\]</span></p><p>构造 $m \times n$ 矩阵对角矩阵 $\Sigma$， 主对角线元素是奇异值， 其余元素为 0</p><p><span class=math>\[
+$$</p><p>构造 $m \times n$ 矩阵对角矩阵 $\Sigma$， 主对角线元素是奇异值， 其余元素为 0</p><p>$$
 \Sigma=\operatorname{diag}\left(\sigma_{1}, \sigma_{2}, \cdots, \sigma_{n}\right)
-\]</span></p><ol start=4><li>求 $m$ 阶正交矩阵 $U$</li></ol><p>对 $A$ 的前 $r$个正奇异值， 令</p><p><span class=math>\[
+$$</p><ol start=4><li>求 $m$ 阶正交矩阵 $U$</li></ol><p>对 $A$ 的前 $r$个正奇异值， 令</p><p>$$
 u_{j}=\frac{1}{\sigma_{j}} A v_{j}, \quad j=1,2, \cdots, r
-\]</span></p><p>得到</p><p><span class=math>\[
+$$</p><p>得到</p><p>$$
 U_{1}=\left[\begin{array}{llll}
 u_{1} & u_{2} & \cdots & u_{r}
 \end{array}\right]
-\]</span></p><p>求 $A^T$ 的零空间的一组标准正交基</p><p><span class=math>\[
-\left\{u_{r+1}, u_{r+2}, \cdots, u_{m}\right\}
-\]</span></p><p>令</p><p><span class=math>\[
+$$</p><p>求 $A^T$ 的零空间的一组标准正交基</p><p>$$
+\lbrace u_{r+1}, u_{r+2}, \cdots, u_{m} \rbrace
+$$</p><p>令</p><p>$$
 U_{2}=\left[\begin{array}{llll}
 u_{r+1} & u_{r+2} & \cdots & u_{m}
 \end{array}\right]
-\]</span></p><p>且令</p><p><span class=math>\[
+$$</p><p>且令</p><p>$$
 U=\left[\begin{array}{ll}
 U_{1} & U_{2}
 \end{array}\right]
-\]</span></p><ol start=5><li>得到奇异值分解</li></ol><p><span class=math>\[
+$$</p><ol start=5><li>得到奇异值分解</li></ol><p>$$
 A=U \Sigma V^{\mathrm{T}}
-\]</span></p><h3 id=举例>举例</h3><p>求: 矩阵 $A$ 的奇异值分解</p><p><span class=math>\[
+$$</p><h3 id=举例>举例</h3><p>求: 矩阵 $A$ 的奇异值分解</p><p>$$
 A=\left[\begin{array}{ll}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]
-\]</span></p><p>解：</p><ol><li>求 $A^TA$ 的特征值和特征向量<br></li></ol><p><span class=math>\[
+$$</p><p>解：</p><ol><li>求 $A^TA$ 的特征值和特征向量</li></ol><p>$$
 A^{\mathrm{T}} A=\left[\begin{array}{lll}
-1 & 2 & 0 \\
+1 & 2 & 0 \cr
 1 & 2 & 0
 \end{array}\right]\left[\begin{array}{ll}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]=\left[\begin{array}{ll}
-5 & 5 \\
+5 & 5 \cr
 5 & 5
 \end{array}\right]
-\]</span></p><p>满足特征方程</p><p><span class=math>\[
+$$</p><p>满足特征方程</p><p>$$
 \left(A^{\mathrm{T}} A-\lambda I\right) x=0
-\]</span></p><p>得到齐次线性方程组</p><p><span class=math>\[
-\left\{\begin{array}{cc}
-(5-\lambda) x_{1} + & 5 x_{2}=0 \\
+$$</p><p>得到齐次线性方程组</p><p>$$
+\begin{cases}
+(5-\lambda) x_{1} + & 5 x_{2}=0 \cr
 5 x_{1} + & (5-\lambda) x_{2}=0
-\end{array}\right.
-\]</span></p><p>该方程组有非零解的充要条件是</p><p><span class=math>\[
+\end{cases}
+$$</p><p>该方程组有非零解的充要条件是</p><p>$$
 \left|\begin{array}{cc}
-5-\lambda & 5 \\
+5-\lambda & 5 \cr
 5 & 5-\lambda
 \end{array}\right|=0
-\]</span></p><p>即</p><p><span class=math>\[
+$$</p><p>即</p><p>$$
 \lambda^{2}-10 \lambda=0
-\]</span></p><p>得到 $\lambda_1 = 10 $, $\lambda_2 = 0$.</p><p>特征值代入线性方程组，分别得到对应单位特征向量</p><p><span class=math>\[
+$$</p><p>得到 $\lambda_1 = 10 $, $\lambda_2 = 0$.</p><p>特征值代入线性方程组，分别得到对应单位特征向量</p><p>$$
 v_{1}=\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}}
 \end{array}\right], v_{2}=\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 -\frac{1}{\sqrt{2}}
 \end{array}\right]
-\]</span></p><ol start=2><li>求正交矩阵 $V$</li></ol><p>构造正交矩阵</p><p><span class=math>\[
+$$</p><ol start=2><li>求正交矩阵 $V$</li></ol><p>构造正交矩阵</p><p>$$
 V=\left[\begin{array}{cc}
-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
 \end{array}\right]
-\]</span></p><ol start=3><li>求对角矩阵 $\Sigma$</li></ol><p>奇异值为 $\sigma_1 = \sqrt{\lambda_1} = \sqrt{10}$, $\sigma_2 = 0$, 那么</p><p><span class=math>\[
+$$</p><ol start=3><li>求对角矩阵 $\Sigma$</li></ol><p>奇异值为 $\sigma_1 = \sqrt{\lambda_1} = \sqrt{10}$, $\sigma_2 = 0$, 那么</p><p>$$
 \Sigma=\left[\begin{array}{cc}
-\sqrt{10} & 0 \\
-0 & 0 \\
+\sqrt{10} & 0 \cr
+0 & 0 \cr
 0 & 0
 \end{array}\right]
-\]</span></p><p>⚠️注意： 为了 $\Sigma$ 能与$U$和$V$进行矩阵乘法， $\Sigma$要加上零行向量</p><ol start=4><li>求正交矩阵 $U$</li></ol><p>基于 $A$ 的奇异值计算得到列向量 $u_1$</p><p><span class=math>\[
+$$</p><p>⚠️注意： 为了 $\Sigma$ 能与$U$和$V$进行矩阵乘法， $\Sigma$要加上零行向量</p><ol start=4><li>求正交矩阵 $U$</li></ol><p>基于 $A$ 的奇异值计算得到列向量 $u_1$</p><p>$$
 u_{1}=\frac{1}{\sigma_{1}} A v_{1}=\frac{1}{\sqrt{10}}\left[\begin{array}{cc}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}}
 \end{array}\right]=\left[\begin{array}{c}
-\frac{1}{\sqrt{5}} \\
-\frac{2}{\sqrt{5}} \\
+\frac{1}{\sqrt{5}} \cr
+\frac{2}{\sqrt{5}} \cr
 0
 \end{array}\right]
-\]</span></p><p>列向量$u_2$， $u_3$是 $A^T$的零空间 $N(A^T)$ 的一组标准正交基，故而求解以下线性方程组</p><p><span class=math>\[
+$$</p><p>列向量$u_2$， $u_3$是 $A^T$的零空间 $N(A^T)$ 的一组标准正交基，故而求解以下线性方程组</p><p>$$
 A^{\mathrm{T}} x=\left[\begin{array}{lll}
-1 & 2 & 0 \\
+1 & 2 & 0 \cr
 1 & 2 & 0
 \end{array}\right]\left[\begin{array}{l}
-x_{1} \\
-x_{2} \\
+x_{1} \cr
+x_{2} \cr
 x_{3}
 \end{array}\right]=\left[\begin{array}{l}
-0 \\
+0 \cr
 0
 \end{array}\right]
-\]</span></p><p>即</p><p><span class=math>\[
+$$</p><p>即</p><p>$$
 \begin{array}{c}
-x_{1}+2 x_{2}+0 x_{3}=0 \\
+x_{1}+2 x_{2}+0 x_{3}=0 \cr
 x_{1}=-2 x_{2}+0 x_{3}
 \end{array}
-\]</span></p><p>分别取 $x_2$，$x_3$ 为 $(1,0)$ 和 $(0,1)$ 得到 $N(A^T)$的基</p><p><span class=math>\[
+$$</p><p>分别取 $x_2$，$x_3$ 为 $(1,0)$ 和 $(0,1)$ 得到 $N(A^T)$的基</p><p>$$
 (-2,1,0)^{\mathrm{T}}, \quad(0,0,1)^{\mathrm{T}}
-\]</span></p><p>得 $N(A^T)$ 的一组标准正交基是</p><p><span class=math>\[
+$$</p><p>得 $N(A^T)$ 的一组标准正交基是</p><p>$$
 u_{2}=\left(-\frac{2}{\sqrt{5}}, \frac{1}{\sqrt{5}}, 0\right)^{\mathrm{T}}, \quad u_{3}=(0,0,1)^{\mathrm{T}}
-\]</span></p><p>最后，构造正交矩阵 $U$</p><p><span class=math>\[
+$$</p><p>最后，构造正交矩阵 $U$</p><p>$$
 U=\left[\begin{array}{ccc}
-\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \\
-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \\
+\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \cr
+\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \cr
 0 & 0 & 1
 \end{array}\right]
-\]</span></p><ol start=5><li>矩阵 $A$ 的奇异值分解</li></ol><p><span class=math>\[
+$$</p><ol start=5><li>矩阵 $A$ 的奇异值分解</li></ol><p>$$
 A=U \Sigma V^{\mathrm{T}}=\left[\begin{array}{ccc}
-\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \\
-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \\
+\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \cr
+\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \cr
 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{cc}
-\sqrt{10} & 0 \\
-0 & 0 \\
+\sqrt{10} & 0 \cr
+0 & 0 \cr
 0 & 0
 \end{array}\right]\left[\begin{array}{cc}
-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
 \end{array}\right]
-\]</span></p><h2 id=矩阵的外积展开式表示>矩阵的外积展开式表示</h2><p>将A的奇异值分解看成矩阵 $U\Sigma$ 和 $V^T$ 的乘积，<br>将 $U\Sigma$ 按列向量分块，</p><p><span class=math>\[
+$$</p><h2 id=矩阵的外积展开式表示>矩阵的外积展开式表示</h2><p>将A的奇异值分解看成矩阵 $U\Sigma$ 和 $V^T$ 的乘积，<br>将 $U\Sigma$ 按列向量分块，</p><p>$$
 U \Sigma=\left[\begin{array}{llll}
 \sigma_{1} u_{1} & \sigma_{2} u_{2} & \cdots & \sigma_{n} u_{n}
 \end{array}\right]
-\]</span></p><p>$V^T$ 按行向量分块</p><p><span class=math>\[
+$$</p><p>$V^T$ 按行向量分块</p><p>$$
 V^{\mathrm{T}}=\left[\begin{array}{c}
-v_{1}^{\mathrm{T}} \\
-v_{2}^{\mathrm{T}} \\
-\vdots \\
+v_{1}^{\mathrm{T}} \cr
+v_{2}^{\mathrm{T}} \cr
+\vdots \cr
 v_{n}^{\mathrm{T}}
 \end{array}\right]
-\]</span></p><p>那么外积展开式为</p><p><span class=math>\[
+$$</p><p>那么外积展开式为</p><p>$$
 A=\sigma_{1} u_{1} v_{1}^{\mathrm{T}}+\sigma_{2} u_{2} v_{2}^{\mathrm{T}}+\cdots+\sigma_{n} u_{n} v_{n}^{\mathrm{T}}
-\]</span></p><p>或者</p><p><span class=math>\[
+$$</p><p>或者</p><p>$$
 A=\sum_{k=1}^{n} A_{k}=\sum_{k=1}^{n} \sigma_{k} u_{k} v_{k}^{\mathrm{T}}
-\]</span></p><p>其中 $A_{k}=\sigma_{k} u_{k} v_{k}^{\mathrm{T}}$ 是 $m \times n$ 矩阵</p><p>而</p><p><span class=math>\[
+$$</p><p>其中 $A_{k}=\sigma_{k} u_{k} v_{k}^{\mathrm{T}}$ 是 $m \times n$ 矩阵</p><p>而</p><p>$$
 u_{i} v_{j}^{\mathrm{T}}=\left[\begin{array}{c}
-u_{1 i} \\
-u_{2 i} \\
-\vdots \\
+u_{1 i} \cr
+u_{2 i} \cr
+\vdots \cr
 u_{m i}
 \end{array}\right]\left[\begin{array}{cccc}
 v_{1 j} & v_{2 j} & \cdots & v_{n j}
 \end{array}\right]
 = \left[\begin{array}{cccc}
-u_{1 i} v_{1 j} & u_{1 i} v_{2 j} & \cdots & u_{1 i} v_{n j} \\
-u_{2 i} v_{1 j} & u_{2 i} v_{2 j} & \cdots & u_{2 i} v_{n j} \\
-\vdots & \vdots & & \vdots \\
+u_{1 i} v_{1 j} & u_{1 i} v_{2 j} & \cdots & u_{1 i} v_{n j} \cr
+u_{2 i} v_{1 j} & u_{2 i} v_{2 j} & \cdots & u_{2 i} v_{n j} \cr
+\vdots & \vdots & & \vdots \cr
 u_{m i} v_{1 j} & u_{m i} v_{2 j} & \cdots & u_{m i} v_{n j}
 \end{array}\right]
-\]</span></p><p>参考： 李航《统计学习方法》</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2020-06-06</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)" data-hashtags="SVD,Statistical Learning"><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-hashtag=SVD><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="Share on Line" data-sharer=line data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i class="fab fa-weibo fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/svd/>SVD</a>,&nbsp;<a href=/tags/statistical-learning/>Statistical Learning</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/2020-06-03-code-unsafe-pointer-swift/ class=prev rel=prev title="Pointer in UnSafe Swift"><i class="fas fa-angle-left fa-fw"></i>Pointer in UnSafe Swift</a>
+$$</p><p>参考： 李航《统计学习方法》</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2020-06-06</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)" data-hashtags="SVD,Statistical Learning"><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-hashtag=SVD><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="Share on Line" data-sharer=line data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=https://zqfang.github.io/2020-06-06-ml-svd/ data-title="Singular Value Decomposition (SVD)"><i class="fab fa-weibo fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/svd/>SVD</a>,&nbsp;<a href=/tags/statistical-learning/>Statistical Learning</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/2020-05-31-code-cpp-notes/ class=prev rel=prev title="C++ Notes"><i class="fas fa-angle-left fa-fw"></i>C++ Notes</a>
 <a href=/2020-01-26-ml-montecarlo/ class=next rel=next title="Markov Chain Mento Carlo (MCMC)">Markov Chain Mento Carlo (MCMC)<i class="fas fa-angle-right fa-fw"></i></a></div></div><div id=comments><div id=disqus_thread class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://disqus.com/?ref_noscript>Disqus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>zqfang</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css><script type=text/javascript src=https://bioninja-1.disqus.com/embed.js defer></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/+HcLiLAxmjw="></script></body></html>

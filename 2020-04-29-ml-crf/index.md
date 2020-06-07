@@ -69,12 +69,11 @@ $$
 线性链条件随机场也是对数线性模型(log linear model)，定义为：
 
 $$
-P\left(Y_{i} | X, Y_{1}, \cdots, Y_{i-1}, Y_{i+1}, \cdots, Y_{n}\right)=P\left(Y_{i} | X, Y_{i-1}, Y_{i+1}\right) \\
-i = 1,2, \cdots, n
+P\left(Y_{i} | X, Y_{1}, \cdots, Y_{i-1}, Y_{i+1}, \cdots, Y_{n}\right)=P\left(Y_{i} | X, Y_{i-1}, Y_{i+1}\right) 
 $$
 
 
-在条件概率模型$P(Y\vert X)$中， $Y$是输出变量，表示标记序列（状态序列，参见HMM）；$X$使输入变量，表示需要标注的观测序列。利用训练集，通过极大似然估计或正则化的极大似然估计得到条件概率模型$\hat{P}(Y\vert X)$;预测时，对于给定输入序列$x$，求条件概率$\hat{P}(Y\vert X)$最大的输出序列$\hat{y}$。
+在条件概率模型$P(Y | X)$中， $Y$是输出变量，表示标记序列（状态序列，参见HMM）；$X$使输入变量，表示需要标注的观测序列。利用训练集，通过极大似然估计或正则化的极大似然估计得到条件概率模型$\hat{P}(Y | X)$;预测时，对于给定输入序列$x$，求条件概率$\hat{P}(Y | X)$最大的输出序列$\hat{y}$。
 
 
 
@@ -108,14 +107,14 @@ $$
 对于观测序列x的每个位置，y在m个标记中取值，可以定义一个m阶的矩阵随机变量：
 
 $$
-M_{i}(x) = [ M_{i}(y_{i-1}, y_{i}|x)]
+M_{i}(x) = [ M_{i}(y_{i-1}, y_{i}|x) ]
 $$
 
 矩阵随机变量元素为
 
 $$
 \begin{aligned}
-&M_{i}\left(y_{i-1}, y_{i} | x\right)=\exp \left(W_{i}\left(y_{i-1}, y_{i} | x\right)\right)\\
+&M_{i}\left(y_{i-1}, y_{i} | x\right)=\exp \left(W_{i}\left(y_{i-1}, y_{i} | x\right)\right)\cr
 &W_{i}\left(y_{i-1}, y_{i} | x\right)=\sum_{k=1}^{K} w_{k} f_{k}\left(y_{i-1}, y_{i}, x, i\right)
 \end{aligned}
 $$
@@ -124,20 +123,20 @@ $$
 这里$w_k$为
 
 $$
-w_{k}=\left\{\begin{array}{ll}
-\lambda_{k}, & k=1,2, \cdots, K_{1} \\
+w_{k}=\begin{cases}
+\lambda_{k}, & k=1,2, \cdots, K_{1} \cr
 \mu_{l}, & k=K_{1}+l ; l=1,2, \cdots, K_{2}
-\end{array}\right.
+\end{cases}
 $$
 
 
 和$f_k$为
 
 $$
-f_{k}\left(y_{i-1}, y_{i}, x, i\right)=\left\{\begin{array}{ll}
-t_{k}\left(y_{i-1}, y_{i}, x, i\right), & k=1,2, \cdots, K_{1} \\
+f_{k}\left(y_{i-1}, y_{i}, x, i\right)=\begin{cases}
+t_{k}\left(y_{i-1}, y_{i}, x, i\right), & k=1,2, \cdots, K_{1} \cr
 s_{l}\left(y_{i}, x, i\right), & k=K_{1}+l ; l=1,2, \cdots, K_{2}
-\end{array}\right.
+\end{cases}
 $$
 
 

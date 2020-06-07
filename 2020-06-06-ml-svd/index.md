@@ -54,10 +54,10 @@ $$
 - $r = \operatorname{rank}(A)$
 
 
-### 2. 截断奇异值分解(truncated singular value decomposition)： 有损压缩
+### 3. 截断奇异值分解(truncated singular value decomposition)： 有损压缩
 一般讲奇异值分解，实际上多指截断奇异值分解
 
-在奇异值分解中， 只取最大的k个奇异值(k < r, r= rank(A))对应的部分，就得到截断奇异值分解
+在奇异值分解中， 只取最大的$k$个奇异值($k < r, r= \operatorname{rank}(A)$ )对应的部分，就得到截断奇异值分解
 
 设 $m \times n$ 的实矩阵 $A$，其秩为 $\operatorname{rank}(A)=r$, 且 $0 < k < r$, 则截断奇异值分解为：
 
@@ -167,7 +167,7 @@ $$
 求 $A^T$ 的零空间的一组标准正交基
 
 $$
-\left\{u_{r+1}, u_{r+2}, \cdots, u_{m}\right\}
+\lbrace u_{r+1}, u_{r+2}, \cdots, u_{m} \rbrace
 $$
 
 令
@@ -199,8 +199,8 @@ $$
 
 $$
 A=\left[\begin{array}{ll}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]
 $$
@@ -210,14 +210,14 @@ $$
 
 $$
 A^{\mathrm{T}} A=\left[\begin{array}{lll}
-1 & 2 & 0 \\
+1 & 2 & 0 \cr
 1 & 2 & 0
 \end{array}\right]\left[\begin{array}{ll}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]=\left[\begin{array}{ll}
-5 & 5 \\
+5 & 5 \cr
 5 & 5
 \end{array}\right]
 $$  
@@ -231,17 +231,17 @@ $$
 得到齐次线性方程组
 
 $$
-\left\{\begin{array}{cc}
-(5-\lambda) x_{1} + & 5 x_{2}=0 \\
+\begin{cases}
+(5-\lambda) x_{1} + & 5 x_{2}=0 \cr
 5 x_{1} + & (5-\lambda) x_{2}=0
-\end{array}\right.
+\end{cases}
 $$
 
 该方程组有非零解的充要条件是
 
 $$
 \left|\begin{array}{cc}
-5-\lambda & 5 \\
+5-\lambda & 5 \cr
 5 & 5-\lambda
 \end{array}\right|=0
 $$
@@ -258,10 +258,10 @@ $$
 
 $$
 v_{1}=\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}}
 \end{array}\right], v_{2}=\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 -\frac{1}{\sqrt{2}}
 \end{array}\right] 
 $$
@@ -273,7 +273,7 @@ $$
 
 $$
 V=\left[\begin{array}{cc}
-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
 \end{array}\right]
 $$
@@ -284,8 +284,8 @@ $$
 
 $$
 \Sigma=\left[\begin{array}{cc}
-\sqrt{10} & 0 \\
-0 & 0 \\
+\sqrt{10} & 0 \cr
+0 & 0 \cr
 0 & 0
 \end{array}\right]
 $$
@@ -298,15 +298,15 @@ $$
 
 $$
 u_{1}=\frac{1}{\sigma_{1}} A v_{1}=\frac{1}{\sqrt{10}}\left[\begin{array}{cc}
-1 & 1 \\
-2 & 2 \\
+1 & 1 \cr
+2 & 2 \cr
 0 & 0
 \end{array}\right]\left[\begin{array}{c}
-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}}
 \end{array}\right]=\left[\begin{array}{c}
-\frac{1}{\sqrt{5}} \\
-\frac{2}{\sqrt{5}} \\
+\frac{1}{\sqrt{5}} \cr
+\frac{2}{\sqrt{5}} \cr
 0
 \end{array}\right]
 $$
@@ -315,14 +315,14 @@ $$
 
 $$
 A^{\mathrm{T}} x=\left[\begin{array}{lll}
-1 & 2 & 0 \\
+1 & 2 & 0 \cr
 1 & 2 & 0
 \end{array}\right]\left[\begin{array}{l}
-x_{1} \\
-x_{2} \\
+x_{1} \cr
+x_{2} \cr
 x_{3}
 \end{array}\right]=\left[\begin{array}{l}
-0 \\
+0 \cr
 0
 \end{array}\right]
 $$
@@ -331,7 +331,7 @@ $$
 
 $$
 \begin{array}{c}
-x_{1}+2 x_{2}+0 x_{3}=0 \\
+x_{1}+2 x_{2}+0 x_{3}=0 \cr
 x_{1}=-2 x_{2}+0 x_{3}
 \end{array}
 $$
@@ -353,8 +353,8 @@ $$
 
 $$
 U=\left[\begin{array}{ccc}
-\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \\
-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \\
+\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \cr
+\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \cr
 0 & 0 & 1
 \end{array}\right]
 $$
@@ -365,15 +365,15 @@ $$
 
 $$
 A=U \Sigma V^{\mathrm{T}}=\left[\begin{array}{ccc}
-\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \\
-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \\
+\frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} & 0 \cr
+\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 \cr
 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{cc}
-\sqrt{10} & 0 \\
-0 & 0 \\
+\sqrt{10} & 0 \cr
+0 & 0 \cr
 0 & 0
 \end{array}\right]\left[\begin{array}{cc}
-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \cr
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
 \end{array}\right]
 $$
@@ -398,9 +398,9 @@ $V^T$ 按行向量分块
 
 $$
 V^{\mathrm{T}}=\left[\begin{array}{c}
-v_{1}^{\mathrm{T}} \\
-v_{2}^{\mathrm{T}} \\
-\vdots \\
+v_{1}^{\mathrm{T}} \cr
+v_{2}^{\mathrm{T}} \cr
+\vdots \cr
 v_{n}^{\mathrm{T}}
 \end{array}\right]
 $$
@@ -424,17 +424,17 @@ $$
 
 $$
 u_{i} v_{j}^{\mathrm{T}}=\left[\begin{array}{c}
-u_{1 i} \\
-u_{2 i} \\
-\vdots \\
+u_{1 i} \cr
+u_{2 i} \cr
+\vdots \cr
 u_{m i}
 \end{array}\right]\left[\begin{array}{cccc}
 v_{1 j} & v_{2 j} & \cdots & v_{n j}
 \end{array}\right] 
 = \left[\begin{array}{cccc}
-u_{1 i} v_{1 j} & u_{1 i} v_{2 j} & \cdots & u_{1 i} v_{n j} \\
-u_{2 i} v_{1 j} & u_{2 i} v_{2 j} & \cdots & u_{2 i} v_{n j} \\
-\vdots & \vdots & & \vdots \\
+u_{1 i} v_{1 j} & u_{1 i} v_{2 j} & \cdots & u_{1 i} v_{n j} \cr
+u_{2 i} v_{1 j} & u_{2 i} v_{2 j} & \cdots & u_{2 i} v_{n j} \cr
+\vdots & \vdots & & \vdots \cr
 u_{m i} v_{1 j} & u_{m i} v_{2 j} & \cdots & u_{m i} v_{n j}
 \end{array}\right]
 $$

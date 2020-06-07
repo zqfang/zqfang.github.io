@@ -201,7 +201,7 @@ $$
 包括近似算法和维特比算法（Viterbi algorithm）
 
 #### 2.3.1 近似算法
-在每个时刻$t$， 选择在该时刻最可能出现的状态 $$i^*_{t}$$从而得到一个状态序列$$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$$，将它最为预测结果。
+在每个时刻$t$， 选择在该时刻最可能出现的状态 $i^*_t$从而得到一个状态序列 $I^* = (i^*_i, i^*_i, \cdots, i^*_T)$，将它最为预测结果。
 
 
 给定模型$\lambda$和观测序列$O$， 在时刻$t$处于状态$q_i$的概率$\gamma_t(i)$是
@@ -216,7 +216,9 @@ $$
 i_{t}^{*}=\arg \max _{1 \leqslant i \leqslant N}\left[\gamma_{t}(i)\right], \quad t=1,2, \cdots, T
 $$
 
-从而得到状态序列$$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$$
+从而得到状态序列
+
+$$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$$
 
 
 缺点： 不能保证预测状态序列整体是最有可能的状态序列，因为预测的状态序列实际可能由不发生的部分。
@@ -225,19 +227,19 @@ $$
 #### 2.3.2 维特比算法
 实质是运用**动态规划求概率最大路径**，从而解决HMM的预测问题
 
-**维特比算法**: 只需从时刻$t=1$开始，递推地计算在时刻$t$状态为$q_i$的各条部分路径的最大概率，直至得到时刻$t = T$状态为$i$的各条路径的最大概率。时刻 $t = T$ 的最大概率即为最优路径的概率 $$P^*$$, 最优路径的终结点$$i^* _T$$ 也同时得到。之后，为了找出最优路径的各个结点，从终结点$$i^*_T$$开始，由后向前逐步求得结点 $$i^*_{T-1}, \cdots, i^*_1$$，得到最优路径$$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$$。
+**维特比算法**: 只需从时刻$t=1$开始，递推地计算在时刻$t$状态为$q_i$的各条部分路径的最大概率，直至得到时刻$t = T$状态为$i$的各条路径的最大概率。时刻 $t = T$ 的最大概率即为最优路径的概率 $P^\ast$, 最优路径的终结点$i^*_T$ 也同时得到。之后，为了找出最优路径的各个结点，从终结点$i^*_T$开始，由后向前逐步求得结点 $i^*_{T-1}, \cdots, i^*_1$，得到最优路径$I^* = (i^*_i, i^*_i, \cdots, i^*_T)$。
 
 定义在时刻$t$状态$i$的所有单个路径中概率最大值为
 
 $$
-\delta_{t}(i)=\max _{i_{1}, i_{2}, \cdots, i_{t-1}} P\left(i_{t}=i, i_{t-1}, \cdots, i_{1}, o_{t}, \cdots, o_{1} | \lambda\right), \quad i=1,2, \cdots, N
+\delta_{t}(i)=\max_{i_{1}, i_{2}, \cdots, i_{t-1}} P\left(i_{t}=i, i_{t-1}, \cdots, i_{1}, o_{t}, \cdots, o_{1} | \lambda\right), \quad i=1,2, \cdots, N
 $$
 
 因此
 
 $$
 \begin{aligned}
-\delta_{t+1}(i) &=\max _{i_{1}, i_{2}, \cdots, i_{t}} P\left(i_{t+1}=i, i_{t}, \cdots, i_{1}, o_{t+1}, \cdots, o_{1} | \lambda\right) \\
+\delta_{t+1}(i) &=\max _{i_{1}, i_{2}, \cdots, i_{t}} P\left(i_{t+1}=i, i_{t}, \cdots, i_{1}, o_{t+1}, \cdots, o_{1} | \lambda\right) \cr
 &= \max _{1 \leqslant j \leqslant N}\left[\delta_{t}(j) a_{j i}\right] b_{i}\left(o_{t+1}\right), \quad i=1,2, \cdots, N ; \quad t=1,2, \cdots, T-1
 \end{aligned}
 $$
@@ -257,7 +259,7 @@ $$
 
 $$
 \begin{array}{c}
-\delta_{1}(i)=\pi_{i} b_{i}\left(o_{1}\right), \quad i=1,2, \cdots, N \\
+\delta_{1}(i)=\pi_{i} b_{i}\left(o_{1}\right), \quad i=1,2, \cdots, N \cr
 \Psi_{1}(i)=0, \quad i=1,2, \cdots, N
 \end{array}
 $$
@@ -267,7 +269,7 @@ $$
 
 $$
 \begin{array}{c}
-\delta_{t}(i)=\max _{1 \leqslant j \leqslant N}\left[\delta_{t-1}(j) a_{j i}\right] b_{i}\left(o_{t}\right), \quad i=1,2, \cdots, N \\
+\delta_{t}(i)=\max _{1 \leqslant j \leqslant N}\left[\delta_{t-1}(j) a_{j i}\right] b_{i}\left(o_{t}\right), \quad i=1,2, \cdots, N \cr
 \Psi_{t}(i)=\arg \max _{1 \leqslant j \leqslant N}\left[\delta_{t-1}(j) a_{j i}\right], \quad i=1,2, \cdots, N
 \end{array}
 $$
@@ -276,7 +278,7 @@ $$
 
 $$
 \begin{array}{c}
-P^* = \max _{1 \leqslant i \leqslant N} \delta_T(i)  \\
+P^* = \max _{1 \leqslant i \leqslant N} \delta_T(i)  \cr
 i^*_T = \arg \max _{1 \leqslant i \leqslant N} [ \delta_T(i)]
 \end{array}
 $$

@@ -83,26 +83,12 @@ $$
 
 更进一步
 
-```latex
+$$
 \begin{aligned}
-\mathrm{E}_{p(z)}[f(z)] &= \int f(z) p(z) dz \cr
+E_{p(z)}[f(z)] &= \int f(z) p(z) dz \cr
 &= \int \underbrace{f(z) \frac{p(z)}{q(z)}}_{new  \tilde{f} (z)} q(z) dz \cr 
 & \approx \frac{1}{N} \sum_{n=1}^{N} f(z^{i}) \frac{p(z^{i})}{q(z^{i})}
 \end{aligned}
-```
-
-改成多行渲染（goldmark bug: 不能正常渲染上面Latex）：
-
-$$
-\mathrm{E}_{p(z)}[f(z)] = \int f(z) p(z) dz 
-$$
-
-$$
-= \int \underbrace{f(z) \frac{p(z)}{q(z)}}_{new  \tilde{f} (z)} q(z) dz 
-$$
-
-$$
-\approx \frac{1}{N} \sum_{n=1}^{N} f(z^{i}) \frac{p(z^{i})}{q(z^{i})}
 $$
 
 

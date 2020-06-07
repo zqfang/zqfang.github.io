@@ -4,7 +4,7 @@ date: 2020-06-06
 categories: ["Machine Learning"]
 comments: true
 tags: ['Monte Carlo', "Statistical Learning"]
-markup: "mmark"
+#markup: "mmark"
 math: true
 ---
 
@@ -28,7 +28,7 @@ Gibbs sampling是更简单、使用更广泛的MCMC。
 - 重要性抽样： 适用于概率密度函数复杂，不能直接抽样的情况
 
 
-接受-拒绝抽样思想：找一个可以直接抽样的建议分布（proposal distribution），其概率密度函数为$q(x)$, 并且$q(x)$的$c$倍一定大于$p(x)$， 其中$c > 0$,按照$q(x)$进行抽样，假设得到结果$$x^{*}$$， 再按照$$\frac{p(x^{*})}{cq(x^{*})}$$的比例随机决定是否接受$$x^{*}$$。落到$p(x)$范围内的就接受，落到$p(x)$范围外的就拒绝❌。
+接受-拒绝抽样思想：找一个可以直接抽样的建议分布（proposal distribution），其概率密度函数为$q(x)$, 并且$q(x)$的$c$倍一定大于$p(x)$， 其中$c > 0$,按照$q(x)$进行抽样，假设得到结果$x^\ast$， 再按照$\frac{p(x^\ast)}{cq(x^\ast )}$的比例随机决定是否接受$x^\ast$。落到$p(x)$范围内的就接受，落到$p(x)$范围外的就拒绝❌。
 
 ![Sampling](/images/stats/rejsmp.png)
 
@@ -43,7 +43,7 @@ Gibbs sampling是更简单、使用更广泛的MCMC。
 按照概率分布 $p(x)$ 独立抽取n个样本后计算函数的样本均值
 
 $$
-\hat{f}_{n}=\frac{1}{n} \sum_{i=1}^{n} f\left(x_{i}\right)
+\hat f_{n}=\frac{1}{n} \sum_{i=1}^{n} f\left(x_{i}\right)
 $$
 
 作为数学期望的近似值。
@@ -51,7 +51,7 @@ $$
 根据大数定律可知，当样本容量增大是，样本均值以概率1收敛性于数学期望
 
 $$
-\hat{f}_{n} \rightarrow E_{p(x)}[f(x)], \quad n \rightarrow \infty
+\hat f_{n} \rightarrow E_{p(x)}[f(x)], \quad n \rightarrow \infty
 $$
 
 于是，得到数学期望的近似计算方法
@@ -81,32 +81,45 @@ $$
 \int_{\mathcal{X}} h(x) \mathrm{d} x=E_{p(x)}[f(x)] \approx \frac{1}{n} \sum_{i=1}^{n} f\left(x_{i}\right)
 $$
 
-变形
+更进一步
 
-$$
+```latex
 \begin{aligned}
-\mathrm{E}_{p(z)}[f(z)] &=\int f(z) p(z) dz \\
-&=\int \underbrace{f(z) \frac{p(z)}{q(z)}}_{new \tilde{f}(z)} q(z) dz \\ 
+\mathrm{E}_{p(z)}[f(z)] &= \int f(z) p(z) dz \cr
+&= \int \underbrace{f(z) \frac{p(z)}{q(z)}}_{new  \tilde{f} (z)} q(z) dz \cr 
 & \approx \frac{1}{N} \sum_{n=1}^{N} f(z^{i}) \frac{p(z^{i})}{q(z^{i})}
 \end{aligned}
+```
+
+改成多行渲染（goldmark bug: 不能正常渲染上面Latex）：
+
+$$
+\mathrm{E}_{p(z)}[f(z)] = \int f(z) p(z) dz 
 $$
 
+$$
+= \int \underbrace{f(z) \frac{p(z)}{q(z)}}_{new  \tilde{f} (z)} q(z) dz 
+$$
+
+$$
+\approx \frac{1}{N} \sum_{n=1}^{N} f(z^{i}) \frac{p(z^{i})}{q(z^{i})}
+$$
 
 
 ## Markov Chain
 ### 定义
 
 马可夫性：
-随机变量$X_t$只依赖$X_{t-1}$，而不依赖过去的随机变量 $\left\{X_{0}, X_{1}, \cdots, X_{t-2}\right\}$。即
+随机变量$X_t$只依赖$X_{t-1}$，而不依赖过去的随机变量 $\lbrace X_{0}, X_{1}, \cdots, X_{t-2} \rbrace$。即
 
 $$
 P\left(X_{t} | X_{0}, X_{1}, \cdots, X_{t-1}\right)=P\left(X_{t} | X_{t-1}\right), \quad t=1,2, \cdots
 $$
 
 马可夫链或马可夫过程（markov process）指：
-具有马可夫性的随机序列 $X=\left\{X_{0}, X_{1}, \cdots, X_{t}, \cdots\right\}$。
+具有马可夫性的随机序列 $X=\lbrace X_{0}, X_{1}, \cdots, X_{t}, \cdots \rbrace$。
 
-马可夫链的转移条件概率分布为 $P(X_t | X_{t-1})$。转移概率分布决定马可夫链的特性。
+马可夫链的转移条件概率分布为 $P(X_t | X_{t-1})$ 。转移概率分布决定马可夫链的特性。
 
 时间齐次马可夫链（time homogenous Markov Chain）是指转移状态分布于t无关的马可夫链
 
@@ -118,8 +131,8 @@ $$
 
 $$
 \pi = \left[\begin{array}{c}
-\pi_1 \\
-\pi_2 \\
+\pi_1 \cr
+\pi_2 \cr
 \vdots
 \end{array}\right]
 $$
@@ -152,7 +165,7 @@ $$
 3. 正常返(positive recurrent): 任意一个状态$i$，从其他任意状态 $j$ 出发，当时间趋近无穷时，首次转移到这个状态$i$的概率 $p^t_{ij}$ 不为0
 
 $$
-\operatorname{lim}_{t \rightarrow \infty} p^t_{ij} > 0
+\lim_{t \rightarrow \infty} p^t_{ij} > 0
 $$
 
 4. 遍历定理：满足相应条件的马尔可夫链，当时间趋于无穷时，马尔可 夫链的状态分布趋近于平稳分布，随机变量的函数的样本均值以概率 1 收敛于该函数 的数学期望
@@ -160,7 +173,7 @@ $$
 马可夫链 $X$， 其状态空间为$\mathcal{S}$， 若马可夫链 $X$ 不可约、非周期且正常返， 则马可夫链有唯一的平稳分布 $\pi = (\pi_1, \pi_2, \cdots)^T$， 并且转移概率的极限分布是马可夫链的平稳分布
 
 $$
-\operatorname{lim}_{t \rightarrow \infty} P(X_t = i | X_0 = j) = \pi_i, i = 1,2, \cdots ; j = 1,2,\cdots
+\lim_{t \rightarrow \infty} P(X_t = i | X_0 = j) = \pi_i, i = 1,2, \cdots ; j = 1,2,\cdots
 $$
 
 若 $f(X)$是定义在状态空间上的函数 $E_{pi}[ | f(X) | ] <  \infty$, 则

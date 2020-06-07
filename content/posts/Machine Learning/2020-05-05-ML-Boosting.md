@@ -4,7 +4,7 @@ date: 2020-05-05
 categories: ["Machine Learning"]
 tags: ["Boosting", "Statistical Learning"]
 comments: true
-markup: "mmark"
+#markup: "mmark"
 math: true
 ---
 
@@ -50,7 +50,7 @@ $$
 
 
 $$
-\boldsymbol{w}_{m+1, i} = \frac{w_{m i}}{Z_{m}} \exp \left(-\alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), \quad i=1,2, \cdots, N
+w_{m+1, i} = \frac{w_{m i}}{Z_{m}} \exp \left(-\alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), \quad i=1,2, \cdots, N
 $$
 
 
@@ -70,7 +70,7 @@ $$
 
 $$
 \begin{aligned}
-G(x) &=\operatorname{sign}(f(x)) \\
+G(x) &=\operatorname{sign}(f(x)) \cr
 &=\operatorname{sign}\left(\sum_{m=1}^{M} \alpha_{m} G_{m}(x)\right)
 \end{aligned}
 $$
@@ -89,8 +89,8 @@ $$
 
 $$
 \begin{aligned}
-\prod_{m=1}^{M} Z_{m} &=\prod_{m=1}^{M}[2 \sqrt{e_{m}\left(1-e_{m}\right)}] \\
-&=\prod_{m=1}^{M} \sqrt{\left(1-4 \gamma_{m}^{2}\right)} \\
+\prod_{m=1}^{M} Z_{m} &=\prod_{m=1}^{M}[2 \sqrt{e_{m}\left(1-e_{m}\right)}] \cr
+&=\prod_{m=1}^{M} \sqrt{\left(1-4 \gamma_{m}^{2}\right)} \cr
 & \leqslant \exp \left(-2 \sum_{m=1}^{M} \gamma_{m}^{2}\right)
 \end{aligned}
 $$
@@ -113,7 +113,7 @@ $$
 在给定训练集和损失函数$L(y,f(x))$的条件下，学习加法模型$f(x)$成为经验风险极小化（损失函数极小化）问题：
 
 $$
-\min _{\beta_{m}, \gamma_{m}} \sum_{i=1}^{N} L\left(y_{i}, \sum_{m=1}^{M} \beta_{m} b\left(x_{i} ; \gamma_{m}\right)\right)
+\min_{\beta_{m}, \gamma_{m}} \sum_{i=1}^{N} L\left(y_{i}, \sum_{m=1}^{M} \beta_{m} b\left(x_{i} ; \gamma_{m}\right)\right)
 $$
 
 **前向分布算法思想**是： 从前向后，每一步只学一个基函数及其系数，逐步逼近优化目标函数，达到优化步骤简化的目的。
@@ -121,12 +121,12 @@ $$
 因此，每一步只需优化如下损失函数：
 
 $$
-\min _{\beta, \gamma} \sum_{i=1}^{N} L\left(y_{i}, \beta b\left(x_{i} ; \gamma\right)\right)
+\min_{\beta, \gamma} \sum_{i=1}^{N} L\left(y_{i}, \beta b\left(x_{i} ; \gamma\right)\right)
 $$
 
 **算法步骤**
 
-输入：训练数据集$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$, 损失函数$L(y,f(x))$;基函数集$\{b(x;\gamma\}$;  
+输入：训练数据集$T=\lbrace (x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\rbrace$, 损失函数$L(y,f(x))$;基函数集$\lbrace b(x;\gamma) \rbrace$;  
 输出：加法模型$f(x)$
 
 1）初始化$f_0(x) = 0$  
@@ -176,13 +176,13 @@ $$
 其中， $f_{m-1}(x)$为当前模型，通过经验风险极小化确定下一刻决策树的参数$\Theta_{m}$：
 
 $$
-\hat{\Theta}_{m}=\arg \min _{\Theta_{m}} \sum_{i=1}^{N} L\left(y_{i}, f_{m-1}\left(x_{i}\right)+T\left(x_{i} ; \Theta_{m}\right)\right)
+\hat \Theta_m = \arg \min_{\Theta_{m}} \sum_{i=1}^{N} L(y_{i}, f_{m-1} (x_{i})+T (x_{i} ; \Theta_{m} ))
 $$
 
 #### 2.2.1 回归问题提升树
 
 训练数据集:
-$$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$, $\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;  
+$T=\lbrace (x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\rbrace$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$, $\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$;  
 
 将输入空间划分为$J$个互不相交的区域$R1，R2, \cdots, R_J$， 并且每个区域上确定输出的常量$c_j$，那么树可以表示为：
 
@@ -193,7 +193,7 @@ $$
 其中， 
 
 $$
-\Theta=\left\{\left(R_{1}, c_{1}\right),\left(R_{2}, c_{2}\right), \cdots,\left(R_{J}, c_{J}\right)\right\}
+\Theta=\lbrace \left(R_{1}, c_{1}\right),\left(R_{2}, c_{2}\right), \cdots,\left(R_{J}, c_{J}\right)\rbrace
 $$
 表示树的却与划分和各个取悦是那个的常数。
 
@@ -202,15 +202,15 @@ $$
 
 $$
 \begin{aligned}
-&f_{0}(x)=0\\
+&f_{0}(x)=0\cr
 &\begin{array}{l}
-f_{m}(x)=f_{m-1}(x)+T\left(x ; \Theta_{m}\right), \quad m=1,2, \cdots, M \\
+f_{m}(x)=f_{m-1}(x)+T\left(x ; \Theta_{m}\right), \quad m=1,2, \cdots, M \cr
 f_{M}(x)=\sum_{m=1}^{M} T\left(x ; \Theta_{m}\right)
 \end{array}
 \end{aligned}
 $$
 
-求解$\hat{\Theta}_{m}$，
+求解$\hat \Theta_{m}$，
 若用平方误差损失函数：
 
 $$
@@ -221,7 +221,7 @@ $$
 
 $$
 \begin{aligned}
-L\left(y, f_{m-1}(x)+T\left(x ; \Theta_{m}\right)\right) &=\left[y-f_{m-1}(x)-T\left(x ; \Theta_{m}\right)\right]^{2} \\
+L\left(y, f_{m-1}(x)+T\left(x ; \Theta_{m}\right)\right) &=\left[y-f_{m-1}(x)-T\left(x ; \Theta_{m}\right)\right]^{2} \cr
 &=\left[r-T\left(x ; \Theta_{m}\right)\right]^{2}
 \end{aligned}
 $$
@@ -244,7 +244,7 @@ $$
 并将其作为回归问题提升树算法中的残差近似值，拟合一个回归树。
 
 
-输入： 训练数据集$$T=\{(x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\}$$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$  
+输入： 训练数据集$T=\lbrace (x_1, y_1), (x_2, y_2), \cdots, (x_N, y_N)\rbrace$, $x_{i} \in \mathcal{X} \subseteq \mathbf{R}^{n}$,$\mathcal{X}$为输入空间， $\mathcal{Y} \subseteq \mathbf{R}$; 损失函数$L(y,f(x))$  
  输出： 回归树$\hat f(x)$
 
 1) 初始化

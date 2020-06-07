@@ -4,6 +4,7 @@ date: 2020-01-29
 categories: ["Machine Learning"]
 tags: ["Pytorch"]
 comments: true
+math: true
 ---
 
 Multi-label classification, tasks commonly be seen on health record data (multi symptoms).

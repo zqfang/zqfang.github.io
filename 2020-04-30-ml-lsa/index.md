@@ -25,7 +25,7 @@ $$
 权值常用**单词频率-逆文本频率**(term frequeny-inverse document frequency, TF-IDF)表示:
 
 $$
-\mathrm{TFIDF}_{ij}=\frac{\mathrm {tf}_{i j}}{\mathrm {tf}_{\cdot j}} \log \frac{\mathrm{df}}{\mathrm {df}_{i}}, \quad i=1,2, \cdots, m ; \quad j=1,2, \cdots, n
+\mathrm{TFIDF_{ij}}=\frac{\mathrm {tf_{ij}}}{\mathrm {tf_{\cdot j}}} \log \frac{\mathrm{df}}{\mathrm {df_i}}, \quad i=1,2, \cdots, m ; \quad j=1,2, \cdots, n
 $$
 
 其中，  

@@ -57,12 +57,22 @@ $$
 然后把这 m 组抽样分别求出平均值，
 当m足够大时，这m次的平均值的分布（称为抽样分布）接近正态分布。
 
-## 5. Confidence interval
+## 5. Law of Large Numbers 
+当样本数据无限大时，样本均值趋于总体均值
+
+大数定律告诉我们能用频率近似代替概率；能用样本均值近似代替总体均值。
+
+$$
+\bar{X} = \frac{1}{n} \sum_{k=1}^n X_k
+\xrightarrow{p} \mu
+$$
+
+## 6. Confidence interval
 置信区间（confidence interval）
 置信区间是指由样本统计量所构造的总体参数的估计区间。
 置信区间展现的是这个参数的真实值落在测量值（推测值）的周围的可信程度。
 
-## 6. Probability and P-value
+## 7. Probability and P-value
 
 A `p-value` is the probability that random chance generated the data, or something else that is equal or rarer.
 

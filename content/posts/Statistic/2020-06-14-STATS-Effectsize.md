@@ -194,6 +194,17 @@ statsmodels.stats.power.FTestAnovaPower.solve_power(effect_size=None,
                                                     k_groups=2)
 ```
 
+## StatQuest
+
+Sample size
+
+{{< youtube 67zCIqdeXpo >}}
+
+
+Power Analysis
+
+{{< youtube VX_M3tIyiYk >}}
+
 
 参考： 
 1. https://en.wikipedia.org/wiki/Effect_size

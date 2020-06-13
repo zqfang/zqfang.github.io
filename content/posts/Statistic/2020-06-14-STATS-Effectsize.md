@@ -23,7 +23,8 @@ draft: false
  - α 常取值0.05、0.01，α可以取单尾、双尾。需假设检验前预先设定。
  - β 只取单尾
 
-形象化理解
+形象化理解  
+
 ![type-I-II-error](/images/stats/type-erros.jpeg)
 
 ### 功效（power）

@@ -13,6 +13,11 @@ draft: false
 ## 统计原理
 可视化样本量、效应量、α和统计功效的关系  
 [Significance](https://rpsychologist.com/d3/nhst/)
+
+The `probability` of a `type I error` is usually denoted by $\alpha$ and is commonly referred to as the signiﬁcance level of a test.  
+\The `probability` of a `type II error` is usually denoted by $\beta$.
+
+
 ### 显著水平 α
 
 | Type Error | 定义 |  表示 | 举例|
@@ -28,7 +33,12 @@ draft: false
 ![type-I-II-error](/images/stats/type-erros.jpeg)
 
 ### 功效（power）
-功效（power）：正确拒绝原假设的概率，记作1-β。
+功效（power）：正确拒绝原假设的概率，记作1-β, 即
+
+$$
+1 - \beta = \operatorname{Pr} ( \text{rejecting } H_0 | H_1 true)
+$$
+
 假设检验的功效受以下三个因素影响：
 
 样本量 (n)：其他条件保持不变，样本量越大，功效就越大。  

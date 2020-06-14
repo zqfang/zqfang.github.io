@@ -1,6 +1,6 @@
 ---
 title: 'Power, Effect size, Sample size'
-date: 2020-06-13
+date: 2020-06-14
 categories: ["Statistic"]
 comments: true
 math: true

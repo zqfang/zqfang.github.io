@@ -48,12 +48,12 @@ Consider a dilution experiment. In which distributions are supposed to decrease 
 
 ## Quantile, quartile, percentile ???
 
-`Quantiles` are just the lines that divide data into equally sized groups
+`Quantiles` are just the lines that divide data into equally sized groups.  
 `percentiles` are just quantiles that divide the data into 100 equally sized groups
 
 Example:
 
-0 quartile = 0 quantile = 0 percentile
+0 quartile = 0 quantile = 0th percentile
 
 1 quartile = 0.25 quantile = 25th percentile
 
@@ -61,7 +61,7 @@ Example:
 
 3 quartile = .75 quantile = 75th percentile
 
-4 quartile = 1 quantile = 100 percentile
+4 quartile = 1 quantile = 100th percentile
 
 
 

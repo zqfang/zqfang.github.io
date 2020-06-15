@@ -82,7 +82,7 @@ $$
 
 where $k$ = floor(Total number of genes * 0.05). The number 0.05 is a flexible parameter that can be altered to change the window of the number of genes considered. 
 
-![Q-normalization](/images/stats/smoothqn.jpeg.png)
+![Q-normalization](/images/stats/smoothqn.jpeg)
 
 
 ## StatQuest: Quantile Normalization

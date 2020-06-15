@@ -51,12 +51,13 @@ A p-value is composed of three parts:
 
 But `probability`
 
-$$ Probalibility = \frac{Number of outcomes of interest} {The total number of outcomes}$$
+$$ \text{Probalibility} = \frac{ \text{Number of outcomes of interest}} { \text{The total number of outcomes}}$$
 
 
 In `hypothesis testing`, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is different from B.
 
-Statquest: `P Values, clearly explained`
+Statquest: `P Values, clearly explained`  
+
 {{< youtube 5Z9OIYA8He8 >}}
 
 

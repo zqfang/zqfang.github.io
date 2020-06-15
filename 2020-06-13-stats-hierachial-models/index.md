@@ -33,10 +33,10 @@ where
 - $\epsilon$: the variation in height that
 cannot be explained by the linear relationship with age.
 
-However,  If we try to use above model for the complete set of data, the fit will be very poor (see figure above)
+However,  If we try to use the model above for the complete set of data, the fit will be very poor (see figure above)
 
 
-To make model more realistic, we allow the intercept in above model to vary from subject to subject. 
+To make model more realistic, we allow the intercept in the model above to vary from subject to subject. 
 
 New multilevel model:
 
@@ -50,7 +50,7 @@ $$
 \beta_{0j} = \beta_{0} + \mu_{0j}
 $$ 
 
-where, $\mu_{0j} \text{\textasciitilde} N (0, \tau_0)$, $\mu_{0j}$ accounts for the variation from one subject to another
+where, $\mu_{0j} \sim \mathcal{N} (0, \tau_0)$, $\mu_{0j}$ accounts for the variation from one subject to another
 
 Fitting the multilevel model to the data, and obtain much better predictions
 ![height](/images/stats/hm.2.png)

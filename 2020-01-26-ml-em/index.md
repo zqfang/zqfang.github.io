@@ -72,7 +72,7 @@ $$
 
 
 $$ 
-\log p(X)=\sum_{i=1}^{N} \log \{\sum_{k=1}^{K} \pi_{k} \mathcal{N} (x_{i} | \mu_{k}, \Sigma_{k}) \} 
+\log p(X)=\sum_{i=1}^{N} \log \lbrace \sum_{k=1}^{K} \pi_{k} \mathcal{N} (x_{i} | \mu_{k}, \Sigma_{k}) \rbrace 
 $$
 
 
@@ -113,7 +113,7 @@ $$
 
 
 步骤：
-- E-Step: 在现有$\theta^{(t)}$下最大化似然下界, 计算隐变量z的期望$Q\left(z_{i}\right)=p\left(z_{i} \vert x_{i}, \theta\right)$ 作为其下界
+- E-Step: 在现有$\theta^{(t)}$下最大化似然下界, 计算隐变量$z$的期望$Q\left(z_{i}\right)=p\left(z_{i} \vert x_{i}, \theta\right)$ 作为其下界
 - M-Step: 在上面$Q(z_{i})$下计算参数列表$\theta$来最大化似然
 
 
@@ -121,13 +121,13 @@ $$
 
 **凹凸函数**:  
 $\forall_{x \in \mathbb{R}}, f^{\prime \prime}(x) \geq 0$,则$f$为凸函数。  
-当x为向量，如果其hessian矩阵H是半正定的($H \geq 0$),则$f$为凸函数  
+当$x$为向量，如果其hessian矩阵 $H$ 是半正定的($H \geq 0$),则$f$为凸函数  
 如果$f^{\prime \prime}(x)>0$或者$H>0$, $f$是严格凸函数。  
 如果$f^{\prime \prime}(x)<0$或者$H>0$, $f$是凹函数。
 
 
 **Jensen 不等式**: 
- 1. 如果$f$为凸函数, 则$E[f(X)] \geq f(E [ X ])$。当且仅当x是常数时，$E[f(x)]=f(E[ x ])$。
+ 1. 如果$f$为凸函数, 则$E[f(X)] \geq f(E [ X ])$。当且仅当$x$是常数时，$E[f(x)]=f(E[ x ])$。
  2. 如果$f$是凹函数, 则$E[f(X)] \leq f(E[ X ])$。
 
 引入隐变量后，变换**对数似然函数**:
@@ -142,7 +142,7 @@ $$
 $$ 
 
 **推导**: 
-1. 把式中的log函数体看成是一个整体，由于log(x)的二阶导数为$-\frac{1}{x^2}$, 小于0，为凹函数。所以使用Jensen不等式时，应用第二条准则：$f(E[X]) \geq E[f(x)]$。
+1. 把式中的log函数体看成是一个整体，由于$\log (x)$的二阶导数为$-\frac{1}{x^2}$, 小于0，为凹函数。所以使用Jensen不等式时，应用第二条准则：$f(E [ X ] ) \geq E[f(x)]$。
 
 $$
 f\left(E_{z_{i} \sim Q}\left[\frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)}\right]\right) \geq E_{z_{i} \sim Q}\left[f\left(\frac{p\left(x_{i}, z_{i} | \theta\right)}{Q\left(z_{i}\right)}\right)\right]
@@ -159,7 +159,7 @@ $$
 \frac{p\left(x_{i}, z_{i} \| \theta\right)}{Q\left(z_{i}\right)}=c
 $$
 
-Jensen不等式中说到，当自变量X=E(X)时，即为常数的时候，等式成立!
+Jensen不等式中说到，当自变量$X=E(X)$时，即为常数的时候，等式成立!
 
 变换公式, 对所有$z$求和得:
 
@@ -195,8 +195,8 @@ $$
 \theta^{(t+1)}=\underset{\theta}{\arg \max } \mathcal{L}(\theta ; X)
 $$
 
-得到t+1步的似然函数$\mathcal{L}\left(\theta^{(t+1)} ; X\right)$。  
-通过不断的迭代，可以得到使似然函数$\mathcal{L}(\theta)$最大化的参数θ，直至函数收敛。
+得到 $t+1$ 步的似然函数 $\mathcal{L}\left(\theta^{(t+1)} ; X\right)$。  
+通过不断的迭代，可以得到使似然函数$\mathcal{L}(\theta)$最大化的参数 $\theta$，直至函数收敛。  
 只需要证明$\mathcal{L}\left(\theta^{(t+1)} ; X\right) \geq \mathcal{L}\left(\theta^{(t)} ; X\right)$, 则可证明EM的收敛性:
 
 $$
@@ -235,11 +235,12 @@ $$
 $$
 
 ### (3) 求 $\pi$:
+令 $\forall_{l \in\{1, \cdots, K\}}$
 
 $$
 \begin{aligned}
-\forall_{l \in\{1, \cdots, K\}}, & \frac{\partial \mathcal{L}(\theta ; X)}{\partial \pi_{l}}=0 \cr
-& \text { s.t. } \sum_{l}^{K} \pi_{l}=1
+\frac{\partial \mathcal{L}(\theta ; X)}{\partial \pi_{l}} &=0 \cr
+\text { s.t. } \sum_{l}^{K} \pi_{l} &= 1 
 \end{aligned}
 $$
 
@@ -316,18 +317,11 @@ $$
 $$
 
 
-$$
-\begin{aligned}
-&\frac{\partial \mathcal{L}(\theta ; X)}{\partial \sigma_{l}^{2}}=\sum_{i}^{N} Q_{i}(l) \lbrace -\frac{1}{2 \sigma_{l}^{2}}+\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{4}} \rbrace \cr
-&=0
-\end{aligned}
-$$
-
 ### (5) 计算$\sigma$
 
 $$
 \begin{aligned}
-\frac{\partial \mathcal{L}(\theta ; X)}{\partial \sigma_{l}^{2}} &=\sum_{i}^{N} Q_{i}(l) \lbrace -\frac{1}{2 \sigma_{l}^{2}}+\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{4}} \rbrace \cr
+\frac{\partial \mathcal{L}(\theta ; X)}{\partial \sigma_{l}^{2}} &=\sum_{i}^{N} Q_{i}(l) \bigg\lbrace -\frac{1}{2 \sigma_{l}^{2}}+\frac{\left(x_{i}-\mu_{l}\right)^{2}}{2 \sigma_{l}^{4}} \bigg\rbrace \cr
 &=0
 \end{aligned}
 $$

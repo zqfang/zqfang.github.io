@@ -71,7 +71,7 @@ At each quantile, a weight is computed comparing the variability between groups 
 Let gene(g) denote the $g^{th}$ row after sorting each column in the data. For each row, gene(g), we compute the weight $w(g)$ ∈ [0,1], where a weight of 0 implies quantile normalization within groups is applied and a weight of 1 indicates quantile normalization is applied. The weight at each row depends on the between group sum of squares SSB(g) and total sum of squares SST(g), as follows:
 
 $$
-w_{(g)} = \operatorname{median} \bigg\lbrace 1- \frac{SSB_{(i)}}{SST_{(i)}} \bigg\rbrace \text{for } j = g -k, \cdots, g, \cdots, g+k
+w_{(g)} = \operatorname{median} \bigg\lbrace 1- \frac{SSB_{(i)}}{SST_{(i)}} \bigg\rbrace \text{for } i = g -k, \cdots, g, \cdots, g+k
 $$
 
 where $k$ = floor(Total number of genes * 0.05). The number 0.05 is a flexible parameter that can be altered to change the window of the number of genes considered. 

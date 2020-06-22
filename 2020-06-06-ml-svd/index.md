@@ -7,26 +7,26 @@
 奇异值分解也是一种矩阵近似的方法，这个近似是在弗罗贝尼乌斯范数（Frobenius norm) 意义下的近似。  
 奇异值分解是在平方损失(弗罗贝尼乌斯范数)意义下对矩阵的最优近似，即数据压缩。
 
-# Singular Value Decomposition
-
 ## 定义
 
 ### 1. 奇异值分解
-将一个$m \times n$的实矩阵$A$，$A \in \mathbf{R}^{m \times n}$ 表示为以下三个实矩阵乘积形式的运算，即矩阵因子分解：
+
+将一个 $m \times n$ 的实矩阵$A$，$A \in \mathbf{R}^{m \times n}$ 表示为以下三个实矩阵乘积形式的运算，即矩阵因子分解：
 
 $$
 A=U \Sigma V^{\mathrm{T}}
 $$
 
 其中， 
-  - $U$是$m$阶正交矩阵: $UU^T = I$
-  - $V$为$n$阶正交矩阵: $VV^T = I$
-  - $\Sigma$是由降序排列的非负的对角线元素组成的$m \times n$的对角矩阵: 
-    - $\Sigma = diag(\sigma_1, \sigma_2, \cdots, \sigma_p)$
-    - $\sigma_{1} \geqslant \sigma_{2} \geqslant \cdots \geqslant \sigma_{p} \geqslant 0$
-    - $p = \min(m, n)$
+- $U$是$m$阶正交矩阵: $UU^T = I$
+- $V$为$n$阶正交矩阵: $VV^T = I$
+- $\Sigma$是由降序排列的非负的对角线元素组成的$m \times n$的对角矩阵: 
+  - $\Sigma = diag(\sigma_1, \sigma_2, \cdots, \sigma_p)$
+  - $\sigma_{1} \geqslant \sigma_{2} \geqslant \cdots \geqslant \sigma_{p} \geqslant 0$
+  - $p = \min(m, n)$
 
 那么，称
+
 - $U \Sigma V^{\mathrm{T}}$ : 矩阵A的奇异值分解
 - $\sigma_i$ 为A的奇异值(singluar value)
 - $U$ 的列向量为左奇异向量(left singular vector)
@@ -48,6 +48,7 @@ A=U_r \Sigma_r V^{\mathrm{T}}_r
 $$
 
 其中，
+
 - $U_r$ 是 $m \times r$ 矩阵
 - $V_r$ 是 $n \times r$ 矩阵
 - $\Sigma_r$ 是 $r$ 阶对角阵
@@ -55,6 +56,7 @@ $$
 
 
 ### 3. 截断奇异值分解(truncated singular value decomposition)： 有损压缩
+
 一般讲奇异值分解，实际上多指截断奇异值分解
 
 在奇异值分解中， 只取最大的$k$个奇异值($k < r, r= \operatorname{rank}(A)$ )对应的部分，就得到截断奇异值分解
@@ -66,6 +68,7 @@ A \approx U_{k} \Sigma_{k} V_{k}^{\mathrm{T}}
 $$
 
 其中，
+
 - $U_k$ 是$m \times k$ 矩阵(前 $k$列)
 - $V_k$ 是$n \times k$ 矩阵(前 $k$列)
 - $\Sigma_k$ 是 $k$ 阶对角阵(前 $k$个)
@@ -84,12 +87,13 @@ $$
 $x$, $Ax$为各自空间的向量。
 
 那么**线性变换**可以理解为：
+
 1. 一个坐标系的旋转或反射变换
 2. 一个坐标轴的缩放变换
 3. 另一个坐标系的旋转或反射变换
 
-
 对A进行奇异值分解，U和V都是正交矩阵
+
 - V的列向量构成Rn空间的一组标准正交基，表示Rn空间中正交坐标系的旋转或反射变换
 - U的列向量都成Rm空间的一组标准正交基，表示Rm空间中正交坐标系的旋转或反射变换
 - $\Sigma$的对角元素是一组非负实数，表示Rn中的原始正交坐标系坐标轴的缩放变换
@@ -99,6 +103,7 @@ $x$, $Ax$为各自空间的向量。
 ## 奇异值计算
 
 矩阵$A$的奇异值分解可以通过求对阵矩阵$A^TA$的特征值和特征向量得到。
+
 - $A^TA$的特征向量构成正交矩阵$V$的列
 - $A^TA$的特征值$\lambda_j$的平方根为奇异值$\sigma_i$，即 
 
@@ -439,6 +444,52 @@ u_{m i} v_{1 j} & u_{m i} v_{2 j} & \cdots & u_{m i} v_{n j}
 \end{array}\right]
 $$
 
+## 补充：
 
+### Determinant 行列式
+
+Determinant:  
+The determinant of a `square matrix` is a `scalar` that provides information about the matrix. e.g. `Invertibility`  
+
+Geometrically, it can be viewed as the `volume scaling factor` of the `linear transformation` described by the matrix. 
+
+- 一个矩阵的行列式就是一个超平行多面体的（有向的）面积/体积，这个多面体的每条边对应着对应矩阵的列；
+- 矩阵 $A$ 的行列式 $det(A)$ 就是线性变换 $A$ 下的图形面积或体积的伸缩因子。
+- 矩阵的行列式的几何意义是矩阵对应的线性变换前后的面积比
+
+Property:
+
+1. $Det(I) = 1$
+2. Exchanging rows only reverse the sign of det
+3. Determinant is "linear" for each row
+4. $det(A) \neq 0$, $A$ is invertible
+5. Cramer's rule: $A^{-1} = \frac{1}{det(A)}C^T$
+  - $det(A)$: scalar
+  - $C$: cofactors of $A$ (C has the same size as $A$)
+  - $C^T$ is adjugate of $A$ (伴随矩阵)
+
+### Eigenvalue and Eigenvector
+
+Eigen (German word): "unique to" or "belonging to"
+
+if $Av = \lambda v$ ($v$ is a vector , $\lambda$ is a scalar)
+
+- $A$ must be square
+- $v$ is an eigenvector of $A$, exluding zero vector
+- $\lambda$ is an eigenvalue of $A$ that correponds to $v$
+
+$T$ is a linear operator if $T(v) = \lambda v$ ( $v$ is a vector, $\lambda$ is a scalar)
+
+- $v$ is an eigenvector of $T$, exluding zero vector
+- $\lambda$ is an eigenvalue of $T$ that correponds to $v$
+
+An eigenvector of A corresponds to a unique eigenvalue.  
+An eigenvalue of A has infinitely many eigenvectors.  
+
+=> how to find eigenvalues t :
+
+$$
+det(A - tI_n) = 0
+$$
 
 参考： 李航《统计学习方法》

@@ -4,6 +4,7 @@
 usefull tools for linux command line
 
 ### a. Make terminal cool, install `OhMyZsh`
+
 ```shell
 # install zsh
 sudo apt-get install zsh # ubuntu
@@ -15,20 +16,20 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 source ~/.zshrc
 ```
 
-### b. Terminal keyboard short cuts  
+### b. Terminal keyboard short cuts
+
 - Jump to head: `Ctrl + a`  
 - Jump to end: `Ctrl + e`  
 - Delete strings ahead: `Ctrl + u`
 - Delete strings follow: `Ctrl + k`
 
-
 ### c. Program keeps running in the background  
 
 #### 1. Run cmd using `nohup`
+
 ```shell
 nohup command [options] &
 ```
-
 
 #### 2. Run cmd using `Tmux`
 
@@ -40,16 +41,19 @@ a. Start New Session
 ```shell
 tmux new -s myname
 ```
+
 b. Attach To Existing Session 
 
 ```shell
 tmux attach -t myname          #by name 
 tmux attach 4                  #by number (in this case 4)
 ```
+
 c. List Sessions 
 ```shell
 tmux ls
 ```
+
 d. Kill Session
 ```shell 
 tmux kill-session -t myname
@@ -106,15 +110,15 @@ Compression
 | *.gz              | gzip                |                                   |
 
 For rar installation
+
 ```shell
 sudo apt-get install rar
 ```
 
-
 ### e. Handy tricks for handling filepath
 
-
 very useful to strip file sufix, path et.al.
+
 ```shell
 # e.g.
 var=./home/fastq/filename_R1.fq.gz
@@ -129,5 +133,4 @@ ${var1%%.*} # -> filename_R1
 
 # get basebame
 var2=$(basename "${var}" .fq.gz) #-> filename_R1
-
 ```

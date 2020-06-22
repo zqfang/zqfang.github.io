@@ -54,7 +54,7 @@ E_{p(x)}[f(x)] \approx \frac{1}{n} \sum_{i=1}^{n} f\left(x_{i}\right)
 $$
 
 
-### 3. 蒙哥卡罗积分（Monte carlo intergration）
+### 3. 蒙特卡罗积分（Monte carlo intergration）
 
 计算函数 $h(x)$ 积分
 

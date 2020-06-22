@@ -5,7 +5,6 @@ categories: ["Nature Language Processing"]
 comments: true
 tags: ["NLP"]
 math: true
-draft: true
 ---
 
 Basic concepts in NLP
@@ -31,9 +30,9 @@ Bow describes the `occurrence of words` within a document. including
 
    - IDF: penalizes common tokens and rewards rare tokens
 
-    $$
-    IDF(w) = \log \frac{\text{Number of documents}}{\text{Number of documents with term w}}
-    $$
+   $$
+   IDF(w) = \log \frac{\text{Number of documents}}{\text{Number of documents with term w}}
+   $$
 
    - TF-IDF: $TF(w) \times IDF(w)$
 

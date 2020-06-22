@@ -1,5 +1,5 @@
 ---
-title: "C++ Notes"
+title: "C++ Notes: Basics"
 date: 2020-02-10
 categories: ["Coding"]
 tags: ["C++"]
@@ -9,9 +9,10 @@ hiddenFromHomePage: true
 ---
 
 # C++ Notes
-Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it's still the most powerful programming language. 
+Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, but it's still the most powerful programming language.
 
-### Table of Contents
+## Table of Contents
+
 * [char to Int](#char-to-int)  
 * [Pointer](#pointer)  
 * [Return Reference/Pointer](#return-reference)  
@@ -20,17 +21,15 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 * [Object Instantization](#object-instantization)  
 * [Object Relationship](#object-relationships)  
 * [Virtual Function and Ploymorphism](#virtual-functions-and-runtime-polymorphism)
+* [Friend](#friend) 
 * [Const](#const)  
-* [Friend](#friend)  
-* [Design Pattern](#design-pattern)  
-  - [Singleton](#singleton)  
-  - [Delegate](#delegate)
-
-
+* [Constexpr](#constexpr)
+* [Extern and static](#extern-static)
 
 ## Char to Int
 
-#### 1. `Char` is `ASCII`  
+### 1. `Char` is `ASCII`
+
 C store `Char` as `ASCII` (Int) by default. So, `Char` is equal to ASCII code.
 
 ```cpp
@@ -38,7 +37,7 @@ char a = 'A'; // 65
 int c = a; //c = 65
 ```
 
-#### 2. `Char` to `Int`, to `String`, and vice versa
+### 2. `Char` to `Int`, to `String`, and vice versa
 
 - `char` and `int`
     ```cpp
@@ -65,7 +64,8 @@ int c = a; //c = 65
     std::stoi()
     ```
 
-#### 3. `Char` as subscript of array: legal!  
+### 3. `Char` as subscript of array: legal!  
+
 This is useful when create `hashmap`. e.g. counting chars
 ```cpp
 int test[200] = {0};
@@ -116,6 +116,7 @@ see [here](https://stackoverflow.com/questions/6586205/what-are-the-pointer-to-m
 [Back to top](#table-of-contents)
 
 ## Pointer
+
 Pointer syntax  
 **Rule:** read from right to left
 ```cpp
@@ -138,6 +139,7 @@ int *a, *b; // correct way
 [Back to top](#table-of-contents)
 
 ## Return Reference
+
 Return Reference when define function
 - return ref/pointer only if array or given object's ref/pointer. 
 - return value only if temp object created 
@@ -160,7 +162,9 @@ RMB RMB::operator++(int)
 [Back to top](#table-of-contents)
 
 ## Array
+
 ### Array as `formal arguments`  
+
 An Array could not copy to anther Array (**Copy pointer is not allowed!**), so `call-by-value` is not allowed.  
 So, use array pointer:
 ```cpp
@@ -210,6 +214,7 @@ heap
 ClassName *object = new ClassName(param);//A *a = new A();
 delete object;
 ```
+
 ### 3. copy constructor
 
 ```cpp
@@ -223,9 +228,11 @@ std::unique_ptr<ClassName> object (new ClassName(param));
 // recommend this way of instantization
 std::unique_ptr<ClassName> object = std::make_unique<ClassName>(param);
 ```
+
 [Back to top](#table-of-contents)
 
 ## Friend
+
 The `friend` declaration appears in a `class body` and grants a `function` or `another class` **access** to `private` and `protected` **members** of the class where the friend declaration appears.
 
 ### 1. `friend function`
@@ -259,6 +266,7 @@ std::cout<<getA_a(_classA); // 3
 ```
 
 [Back to top](#table-of-contents)
+
 ### 2. `friend class` 
 
 Delare inside class, define outside
@@ -441,21 +449,18 @@ class B : public A
     * member function template !
 
 3. Pure virtual function
-
-  - declare
-    ```cpp
-    virtual void fun() = 0; 
-    ```
-  - class with pure virtual functoin could not be instantized!
-  - a derived class of virtual class has to define pure virtual function. then the derived class could be instantized.
-  - `abstract class`: class with pure virtual function
+     - declare
+       ```cpp
+       virtual void fun() = 0; 
+       ```
+     - class with pure virtual functoin could not be instantized!
+     - a derived class of virtual class has to define pure virtual function. then the derived class could be instantized.
+     - `abstract class`: class with pure virtual function
   
-
-
 4. virtual deconstrutor
-  - A parent pointer point to it's child. When delete the parent pointer, only parent constuctor is called. if declared a virtual deconstuctor, child's deconstuctor is called first, then the parent deconsturctor.
-  - virtural keyword could be omited if a parent deconstructor is declared.
-  - `delete` a pointer will only called object's deconstructor where the pointer point to.     
+     - A parent pointer point to it's child. When delete the parent pointer, only parent constuctor is called. if declared a virtual deconstuctor, child's deconstuctor is called first, then the parent deconsturctor.
+     - virtural keyword could be omited if a parent deconstructor is declared.
+     - `delete` a pointer will only called object's deconstructor where the pointer point to.     
 
 
 [Back to top](#table-of-contents)
@@ -463,6 +468,7 @@ class B : public A
 ## Const
 
 ### 1. `const` before or behind type/class, the syntax semantic are same
+
 ```cpp
 // they are same 
 const int x;  // (int x) is const/inmutable 
@@ -490,7 +496,9 @@ int * const p3;
 // -> (const int) | const p; p4: a const pointer, pointing to an immutable/const int
 const int * const p4; 
 ```
+
 ### 3. class member `func` with const: `() const`  
+
 a. `const object` 
 - could not change class variable
 - could not call `non-const` function
@@ -549,138 +557,32 @@ c. `() const` overloading
 
 [Back to top](#table-of-contents)
 
+## constexpr
 
-
-
-
-
-
-
-## Design Pattern
-### Singleton
-Define
-```cpp
-class Singleton
-{
-    private:
-        /* Here will be the instance stored. */
-        static Singleton* instance;
-        /* Private constructor to prevent instancing. */
-        Singleton() {};
-    public:
-        /* Static access method. */
-        static Singleton* getInstance()
-        {
-            if (instance == 0)
-                instance = new Singleton();
-            return instance;
-        }
-};
-
-/* NULL, because instance will be initialized on demand. */
-Singleton* Singleton::instance = 0;
-```
-
-Usage
-```cpp
-#include <iostream>
-int main()
-{
-    //new Singleton(); // Won't work
-    Singleton* s = Singleton::getInstance(); // Ok
-    Singleton* r = Singleton::getInstance();
-
-    /* The addresses will be the same. */
-    std::cout << s << std::endl;
-    std::cout << r << std::endl;
-}
-```
+The constexpr specifier `declares` that it is possible to `evaluate the value` of the function or variable at `compile time`.
 
 [Back to top](#table-of-contents)
-### Delegate
-Don't confuse with delegate constructor!!!
 
+## extern, static
 
-A delegate is a class that wraps a `pointer` or `reference` to an `object instance`, a member method of that object's class to be called on that object instance, and `provides a method to trigger` that call.
+global variable
 
-Example 1
-```cpp
-#include <iostream>
-using namespace std;
+- defined outside all functions and available to all functions.
+- unaffected by scopes and are always available (exists until the program ends)
 
-class RealPrinter {
-public:
-    void print() { std::cout << "real-printer" << std::endl; }
-};
+extern
 
-class Printer {
-public:
-    Printer() : p(RealPrinter()) {}
-    void print() { p.print(); }
-private:
-    RealPrinter p;
-};
+- declare a `global variable` (exists on the whole project): variable could be used in `multi- .cpp` files
+- `extern "C" {/* c code */}`: compile c code.
 
-int main()
-{
-    Printer* printer = new Printer();
-    printer->print();
-}
-```
+static
 
-Example 2:
-```cpp
-#include <iostream>
-class I //interface {
-public:
-    virtual void f() = 0;
-    virtual void g() = 0;
-};
-
-class A : public I {
-public:
-    void f(){std::cout << "A::f()" << std::endl;}
-    void g(){std::cout << "A::g()" << std::endl;}
-};
-
-class B : public I {
-public:
-    void f(){std::cout << "B::f()" << std::endl;}
-    void g(){std::cout << "B::g()" << std::endl;}
-};
-
-
-class C : public I {
-public:
-    C() { m_i = new A();/*delegation*/ }
-
-    void f(){ m_i->f(); }
-    void g(){ m_i->g(); }
-
-    // normal attributes
-    void toA(){ m_i = new A(); }
-    void toB(){ m_i = new B(); }
-
-private:
-    I* m_i;
-}
-
-int main()
-{
-    C cc = C();
-    cc.f();     // output: A::f()
-    cc.g();     // output: A::g()
-
-    cc.toB();
-    cc.f();     // output: B::f()
-    cc.g();     // output: B::g()
-}
-```
-[Back to top](#table-of-contents)
-
-### Composite
-Composite is a structural design pattern that allows composing objects into a tree-like structure and work with the it as if it was a singular object.
-
-
+- declare a `local global variable` (file scope): only be accessed in its translation unit or `.o file`, that's, in the file where it is created.
+- declare a static class member (class scope): initialization should be `outside class body`
+  - static data member
+  - static function:
+    - no `this` pointer: only access to other static member/function
+    - could declare as private
 
 [Back to top](#table-of-contents)
+

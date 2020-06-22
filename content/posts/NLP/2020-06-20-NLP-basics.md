@@ -1,6 +1,6 @@
 ---
-title: 'NLP concepts'
-date: 2020-6-20
+title: "NLP concepts"
+date: 2020-06-20
 categories: ["Nature Language Processing"]
 comments: true
 tags: ["NLP"]

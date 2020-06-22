@@ -4,17 +4,52 @@ date: 2020-02-10
 categories: ["Coding"]
 tags: ["C++"]
 comments: true
-draft: true
 description: "Get answers for C/C++ within ? s"
 hiddenFromHomePage: true
 ---
 
-Just advanced C/C++ code snippets to keep in mind.
+Just some advanced C/C++ code snippets to keep in mind.
+
+## `default` and `delete` in class
+
+special class member:
+
+- default constructor 
+- deconstructor
+- copy constructor
+- operater `=`
+
+when use default and deleted
+
+1. default
+
+```cpp
+class X {
+public:
+   X()=default; // with this, you could declare like this: X x;
+   X(int){};
+};
+```
+
+2. delete: prohibit func call marked by `delete`
+
+```cpp
+class X {
+public: 
+    X(); 
+    X(const X&) = delete;
+    X& operator = (const X &) = delete;
+}; 
+// example 
+X x1; 
+X x2=x1;   // Error, copy constructor is prohibited
+```
+
 
 ## Pointer and Smart Pointer cast
 
 ```cpp
-#include <memory>
+#include <memory> // smart pointer header
 
 // [pomter to smart pointer
 struct Base {};

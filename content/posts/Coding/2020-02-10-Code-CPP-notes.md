@@ -5,6 +5,7 @@ categories: ["Coding"]
 tags: ["C++"]
 comments: true
 description: "Get answers for C/C++ within ? s"
+hiddenFromHomePage: true
 ---
 
 # C++ Notes

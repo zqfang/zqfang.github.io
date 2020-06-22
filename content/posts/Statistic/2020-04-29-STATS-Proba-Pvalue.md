@@ -33,21 +33,19 @@ $$\mathcal{L}(\theta | x)$$
 
 可以理解为已知结果为 x ，参数为 θ (似然函数里 θ 是变量，这里说的参数和变量是相对与概率而言的)对应的概率，即：  
 
-$$\mathcal{L}(\theta | x)=P(x | \theta)$$    
+$$\mathcal{L}(\theta | x)=P(x | \theta)$$
 
 两者在数值上相等，但是意义并不相同, $\mathcal{L}$ 是关于 θ 的函数，而 P 则是关于 x 的函数。
-
-
 
 ## Probability and P-value
 
 A `p-value` is the probability that random chance generated the data, or something else that is equal or rarer.
 
 A p-value is composed of three parts:
+
 1. The probability random chance would result in the observation.  
 2. The probability of observing something else that is equally rare.
 3. The probability of observing something rarer or more extreme. 
-
 
 But `probability`
 
@@ -62,6 +60,7 @@ Statquest: `P Values, clearly explained`
 
 
 ### PDF (probability density function)
+
 PDF：概率密度函数（probability density function）, 连续型随机变量的概率密度函数是一个描述某个确定的取值点附近的可能性的函数。  
 数学表示：用PDF在某一区间上的积分来刻画随机变量落在这个区间中的概率
 
@@ -70,6 +69,7 @@ $$
 $$
 
 ### PMF (probability mass function)
+
 PMF : 概率质量函数（probability mass function), 在概率论中，概率质量函数是离散随机变量在各特定取值上的概率。  
 数学表示： PMF其实就是高中所学的离散型随机变量的分布律。  
 
@@ -78,6 +78,7 @@ f_{X}(x)=\operatorname{Pr}(X=x)
 $$
 
 ### CDF (cumulative distribution function)
+
 CDF : 累积分布函数 (cumulative distribution function)，是概率密度函数的积分，能完整描述一个实随机变量X的概率分布。
 
 CDF是PDF的（从负无穷$-\infty$到当前值的）`积分`，PDF是CDF的`导数`．（为了便于概率的计算，引入CDF的概念）  
@@ -101,6 +102,7 @@ $$
 
 
 ### Central Limit Theorem
+
 中心极限定理（Central Limit Theorem）
 
 给定一个任意分布的总体，
@@ -164,15 +166,13 @@ $$
 | 辛钦大数定律 | 相互独立且同分布 | 存在 | | 估算期望 |  
 | 切比雪夫大数定律 | 相互独立 | 相同 | 相同 | 估算期望 |  
 | 伯努利大数定律 | 二项分布 | 相同 | 相同 | 频率=概率 |  
-| 相同点：$n \rightarrow +\infty$, 依概率趋近 | 条件组件变得严格 |			
-
+| 相同点：$n \rightarrow +\infty$, 依概率趋近 | 条件组件变得严格 |
 
 ### Confidence interval
+
 置信区间（confidence interval）  
 置信区间是指由样本统计量所构造的总体参数的估计区间。  
 置信区间展现的是这个参数的真实值落在测量值（推测值）的周围的可信程度。
-
-
 
 ## Additional: StatQuest 
 

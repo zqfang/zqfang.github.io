@@ -6,6 +6,7 @@ draft: false
 tags: ["Swift"]
 comments: true
 description: "Get answers for Swift within 10s"
+hiddenFromHomePage: true
 ---
 
 # Swift Cheat Sheet

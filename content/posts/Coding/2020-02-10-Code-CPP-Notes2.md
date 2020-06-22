@@ -19,7 +19,7 @@ special class member:
 - copy constructor
 - operater `=`
 
-when use default and deleted
+when use default and delete
 
 1. default
 
@@ -29,6 +29,7 @@ public:
    X()=default; // with this, you could declare like this: X x;
    X(int){};
 };
+X x; // works
 ```
 
 2. delete: prohibit func call marked by `delete`

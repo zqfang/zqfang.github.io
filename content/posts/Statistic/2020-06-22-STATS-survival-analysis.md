@@ -25,20 +25,21 @@ $$
 \frac {N_{ \text{"alive" day before}} - N_{ \text{"dying" nextday}}} { \text{"alive" day before}}
 $$
 
+
 Kaplan-Meier survival curve
 
 * Survival times $t_1 \leq t_2 \leq \cdots \leq t_n$
 * The proportion of subjects, $S(t)$, surviving beyoind any follow up time $t$ is estimated by (conditional probability):
 
 $$
-S(t) = \frac {r_1 - d_1}{r_1} \times \frac {r_2 - d_2}{r_2} \times \cdots \times \frac {r_p - d_p}{r_p}  
+S(t) = \frac {r_1 - d_1}{r_1} \times \frac {r_2 - d_2}{r_2} \times \cdots \times \frac{r_p - d_p}{r_p}
 $$
 
 where
 
 - $t_p$ is the largest survival time less han or equal to $t$
 - $r_i$ is the number of subjects alive just before time $t_i$
-- $d_i$ = numebr who died at time $t_i}
+- $d_i$ = numebr who died at time $t_i$
 - for censored obeservations $d_i = 0$
 
 ## Statistic

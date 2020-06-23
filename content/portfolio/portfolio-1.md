@@ -7,6 +7,15 @@ permalink: /portfolio/portfolio-1
 
 
 
+[pypi](https://badge.fury.io/py/gseapy.svg)
+[bioconda](https://img.shields.io/conda/vn/bioconda/GSEApy.svg?style=plastic)
+[action](https://github.com/zqfang/GSEApy/workflows/GSEApy/badge.svg?branch=master)
+[travis](https://travis-ci.org/zqfang/GSEApy.svg?branch=master)
+[docs](http://readthedocs.org/projects/gseapy/badge/?version=master)
+[license](https://img.shields.io/badge/license-MIT-blue.svg)
+[doi](https://zenodo.org/badge/DOI/10.5281/zenodo.3748085.svg)
+
+
 I would like to use `pandas` to explore my data, but I did not find a convenient tool to do gene set enrichment analysis in python. 
 
 I want something like this:

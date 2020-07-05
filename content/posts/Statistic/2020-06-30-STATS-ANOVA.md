@@ -12,7 +12,6 @@ math: true
 
 $$
 SS_{total} = \sum_{j=1}^k \sum_{i=1}^l (X_{ij} - \bar{X})^2
-
 $$
 
 2. Calculate the Sum of Squares Within Groups (SSW): 
@@ -90,7 +89,7 @@ $$
 
 ```python
 import scipy.stats as stat
-pvalue = stat.f.sf(F, dfb, dfw) # sf: pvalue = 1 - cdf 
+pvalue = stat.f.sf(F, dfb, dfw) # sf: pvalue = 1 - stat.f.cdf() 
 ```
 
 ## ANOVA Effect size
@@ -145,4 +144,15 @@ anova_table
 
 see more about ANOVA in python [here](https://reneshbedre.github.io/blog/anova.html)
 
+
+
+$$
+H_0: \beta_1 = 0 \\
+H_A: \beta_1 \neq 0
+$$
+
+$$
+H_0: \frac {p_{new}} {p_{old}} =  \frac {p_{new}} {1 - p_{new}} = 1 \\
+H_A:  \frac {p_{new}} {1 - p_{new}} \neq 1
+$$
 

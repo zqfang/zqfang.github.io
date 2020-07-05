@@ -3,6 +3,10 @@
 
 Just some advanced C/C++ code snippets to keep in mind.
 
+## Header file naming
+
+Never used some header file name with `std`. Sometimes, compiler could not find the std headers.!!!
+
 ## `default` and `delete` in class
 
 special class member:
@@ -96,7 +100,7 @@ output.close();
 
 ```
 
-## strings: split and strip
+## Strings: split and strip
 
 split string by delimiter
 
@@ -129,6 +133,19 @@ std::string trim(const std::string& str, const std::string delimiter = " \n\r\t"
     size_t last = str.find_last_not_of(delimiter);
     return str.substr(first, (last - first + 1));
 }
+```
+
+## Containor
+
+### remove duplicated elements: O(nlogn)
+
+```cpp
+sort(nums.begin(),nums.end()); // inplace
+// unique do not change vector size, only put dup elements to end of containor
+// and return a iter which points to the first non-uniqdup element 
+vector<int>::iterator iter = unique(nums.begin(), nums.end());
+nums.erase(iter, nums.end()); //remove duplciates inplace
+// nums.resize( std::distance(nums.begin(),iter) );
 ```
 
 ## Design Pattern

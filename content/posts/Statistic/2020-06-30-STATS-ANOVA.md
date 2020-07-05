@@ -64,7 +64,7 @@ $$
 df_t = df_w + df_b
 $$
 
-1. Calculate the Mean Squares
+5. Calculate the Mean Squares
 
 
 Calculate the Mean Squares Between (MSB)
@@ -137,6 +137,7 @@ example
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 # Ordinary Least Squares (OLS) model
+# C(): as categorical
 # C(Genotype):C(years) represent interaction term
 model = ols('value ~ C(Genotype) + C(years) + C(Genotype):C(years)', data=d_melt).fit()
 anova_table = sm.stats.anova_lm(model, typ=2)
@@ -148,7 +149,8 @@ see more about ANOVA in python [here](https://reneshbedre.github.io/blog/anova.h
 
 ## Advanced
 
-Coomon statistical tests are linear models ((or: how to teach stats))
+Common statistical tests are linear models ((or: how to teach stats))
 
 - [R version](https://lindeloev.github.io/tests-as-linear) by Jonas Kristoffer Lindeløv 
 - [Python port](https://github.com/eigenfoo/tests-as-linear) by George Ho
+

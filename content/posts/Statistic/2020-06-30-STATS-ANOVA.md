@@ -1,10 +1,11 @@
 ---
-title: "Annova"
+title: "ANOVA"
 date: 2020-06-30
 categories: ["Statistic"]
 comments: true
 math: true
 ---
+
 
 ## one-way ANOVA from scratch
 
@@ -145,14 +146,9 @@ anova_table
 see more about ANOVA in python [here](https://reneshbedre.github.io/blog/anova.html)
 
 
+## Advanced
 
-$$
-H_0: \beta_1 = 0 \\
-H_A: \beta_1 \neq 0
-$$
+Coomon statistical tests are linear models ((or: how to teach stats))
 
-$$
-H_0: \frac {p_{new}} {p_{old}} =  \frac {p_{new}} {1 - p_{new}} = 1 \\
-H_A:  \frac {p_{new}} {1 - p_{new}} \neq 1
-$$
-
+- [R version](https://lindeloev.github.io/tests-as-linear) by Jonas Kristoffer Lindeløv 
+- [Python port](https://github.com/eigenfoo/tests-as-linear) by George Ho

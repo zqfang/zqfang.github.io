@@ -8,7 +8,7 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 
 * [char to Int](#char-to-int)  
 * [Pointer](#pointer)  
-* [Return Reference/Pointer](#return-reference)  
+* [Pointer and Smart Pointer](#pointer-and-smart-pointer)  
 * [Array as Argument](#array) 
 * [Operator that can't be overloaded](#operator-could-not-be-overloaded) 
 * [Object Instantization](#object-instantization)  
@@ -21,7 +21,7 @@ Just some C/C++ code snippets to keep in mind. C/C++ is tremendous complicated, 
 
 ## Char to Int
 
-### 1. `Char` is `ASCII`
+### 1. `Char` sotred as `ASCII`
 
 C store `Char` as `ASCII` (Int) by default. So, `Char` is equal to ASCII code.
 
@@ -66,7 +66,6 @@ test['A'] = 1; // legal
 test['b'] = 2;  // legal
 ```
 
-[Back to top](#table-of-contents)
 
 ## Operator Could not be Overloaded
 
@@ -106,8 +105,6 @@ Now, you can't use x.somePointer(), or px->somePointer() because there is no suc
 see [here](https://stackoverflow.com/questions/6586205/what-are-the-pointer-to-member-and-operators-in-c)
 
 
-[Back to top](#table-of-contents)
-
 ## Pointer
 
 Pointer syntax  
@@ -129,30 +126,38 @@ int* a, b; // equal to int* a; int b;
 int *a, *b; // correct way
 ```
 
-[Back to top](#table-of-contents)
-
-## Return Reference
-
-Return Reference when define function
-- return ref/pointer only if array or given object's ref/pointer. 
-- return value only if temp object created 
+## Pointer and Smart Pointer
 
 ```cpp
-// ref
-RMB& RMB::operator++()
-{
-    yuan++;
-    return *this; // already existed object, created outside
-}
-// value
-RMB RMB::operator++(int)
-{
-    RMB temp(yuan);//create object
-    yuan++;
-    return temp;//return a copy of temp
-}
+#include <memory> // smart pointer header
+
+// [pomter to smart pointer
+struct Base {};
+struct Derived: Base {};
+
+// pointer to smart
+Base *p1 = new Derived(); // upcast
+std::shared_ptr<Base> sp(p1);
+
+//  a polymorphic type
+Base *p = new Derived(); // upcast, dynamic_cast is unnecessary
+Derived* dp = dynamic_cast<Derived*> (p); // downcast
+
+// smart pointer convert to pointer
+std::shared_ptr<Base> smart = std::make_shared<Derived>();
+Base* p2 = smart.get(); // .get()
+
+// smart pointer cast
+// downcast
+std::shared_ptr<Derived> dsmart = std::dynamic_pointer_cast<Derived>(smart);
+
+// upcast
+// case 1
+std::shared_ptr<Base> foo(new Derived());
+// case 2
+std::shared_ptr<Derived> bar = std::make_shared<Base>();
+std::shared_ptr<Base> foo = std::dynamic_pointer_cast<A>(bar);
 ```
-[Back to top](#table-of-contents)
 
 ## Array
 
@@ -189,7 +194,6 @@ print2(a); // 1
 int b[2][4]={ {1,2,5,6},{3,4,7,8} };
 print1(b); // error
 ```
-[Back to top](#table-of-contents)
 
 ## Object Instantization
 
@@ -222,7 +226,6 @@ std::unique_ptr<ClassName> object (new ClassName(param));
 std::unique_ptr<ClassName> object = std::make_unique<ClassName>(param);
 ```
 
-[Back to top](#table-of-contents)
 
 ## Friend
 
@@ -258,8 +261,6 @@ A _classA(3);
 std::cout<<getA_a(_classA); // 3
 ```
 
-[Back to top](#table-of-contents)
-
 ### 2. `friend class` 
 
 Delare inside class, define outside
@@ -294,7 +295,6 @@ C _classC; // an instance of a friend class
 _classC.getB_b(_classB);
 ```
 
-[Back to top](#table-of-contents)
 ### 3. Others: friend ostream, friend template ...
 
 ```cpp
@@ -407,9 +407,6 @@ class B : public A
 };
 ```
 
-
-[Back to top](#table-of-contents)
-
 ## Virtual Functions and Runtime Polymorphism
 
 1. Declare: vitrual keyword
@@ -453,10 +450,9 @@ class B : public A
 4. virtual deconstrutor
      - A parent pointer point to it's child. When delete the parent pointer, only parent constuctor is called. if declared a virtual deconstuctor, child's deconstuctor is called first, then the parent deconsturctor.
      - virtural keyword could be omited if a parent deconstructor is declared.
-     - `delete` a pointer will only called object's deconstructor where the pointer point to.     
+     - `delete` a pointer will only called object's deconstructor where the pointer point to.
 
-
-[Back to top](#table-of-contents)
+see also [Pointer and smart pointer cast](#pointer-and-smart-pointer)
 
 ## Const
 
@@ -470,7 +466,7 @@ int const x;  // (const x) has type int
 
 ### 2. Pointer with const: `const int* p`, `int const* p` and `int *const p`
 
-__Dirty trick:__ use `*` as a separator, `const` restrict the type according to the side where it belong to    
+__Dirty trick:__ use `*` as a separator, `const` restrict the type according to the side where it belong to
 
 **point to const:** These two expression are same 
 ```cpp
@@ -548,13 +544,48 @@ void Number::set(const Number *const this, int num) { number = num; } // illegal
 
 c. `() const` overloading
 
-[Back to top](#table-of-contents)
+
 
 ## constexpr
 
 The constexpr specifier `declares` that it is possible to `evaluate the value` of the function or variable at `compile time`.
 
-[Back to top](#table-of-contents)
+
+## `default` and `delete` in class
+
+special class member:
+
+- default constructor 
+- deconstructor
+- copy constructor
+- operater `=`
+
+when use default and delete
+
+1. default
+
+```cpp
+class X {
+public:
+   X()=default; // with this, you could declare like this: X x;
+   X(int){};
+};
+X x; // works
+```
+
+2. delete: prohibit func call marked by `delete`
+
+```cpp
+class X {
+public: 
+    X(); 
+    X(const X&) = delete;
+    X& operator = (const X &) = delete;
+}; 
+// example 
+X x1; 
+X x2=x1;   // Error, copy constructor is prohibited
+```
 
 ## extern, static
 
@@ -576,7 +607,4 @@ static
   - static function:
     - no `this` pointer: only access to other static member/function
     - could declare as private
-
-[Back to top](#table-of-contents)
-
 

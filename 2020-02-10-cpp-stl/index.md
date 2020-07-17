@@ -1,4 +1,4 @@
-# C++ Notes: Advanced 1
+# C++ Notes:  STL
 
 
 Just some advanced C/C++ code snippets to keep in mind.
@@ -118,7 +118,7 @@ auto multiply_x = [&x](int a) { return a * x; };  // ref capture x
 - []：默认不捕获任何变量；
 - [=]：默认以值捕获所有变量；
 - [&]：默认以引用捕获所有变量；
-- [x]：仅以值捕获x，其它变量不捕获；
+- [ x ]：仅以值捕获x，其它变量不捕获；
 - [&x]：仅以引用捕获x，其它变量不捕获；
 - [=, &x]：默认以值捕获所有变量，但是x是例外，通过引用捕获；
 - [&, x]：默认以引用捕获所有变量，但是x是例外，通过值捕获；

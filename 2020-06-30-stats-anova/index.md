@@ -150,10 +150,10 @@ $$
 y = \beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \cdots,  H_0 : y = \beta_0 
 $$
 
-￼$x_i$￼ are indicators ( $x = \lbrace￼ 0, 1 \rbrace$ ), where at most one $x_i = 1$￼ while all other $x_i = 0$.
+$x_i$￼ are indicators ( $x = \lbrace￼ 0,1\rbrace$), where at most one $x_i = 1$ while all other $x_i = 0$.
 
 The Kruskal-wallis test (non-parametric test) is simply a one-way ANOVA on the rank-transformed y (value).
-￼
+
 $$
 rank(y) = \beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \cdots
 $$

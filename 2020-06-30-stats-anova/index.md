@@ -144,7 +144,38 @@ see more about ANOVA in python [here](https://reneshbedre.github.io/blog/anova.h
 
 ## Advanced
 
-Common statistical tests are linear models ((or: how to teach stats))
+### One way Anova is a multiple regression model
+
+$$
+y = \beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \cdots,  
+H_0 : y = \beta_0 
+$$
+
+￼$x_i$￼ are indicators ($x = \{￼, 0,1\}$), where at most one $x_i = 1$￼ while all other $x_i = 0$.
+
+The Kruskal-wallis test (non-parametric test) is simply a one-way ANOVA on the rank-transformed y (value).
+￼
+$$
+rank(y) = \beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \cdots 
+$$
+
+
+### ANCOVA
+
+This is simply ANOVA with a continuous regressor added so that it now contains continuous and (dummy-coded) categorical predictors.
+
+
+$$
+y = \beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n age  
+$$
+
+$\beta_0$  is now the mean for the first group at age=0. 
+
+
+
+
+
+See: Common statistical tests are linear models (or: how to teach stats)
 
 - [R version](https://lindeloev.github.io/tests-as-linear) by Jonas Kristoffer Lindeløv 
 - [Python port](https://github.com/eigenfoo/tests-as-linear) by George Ho

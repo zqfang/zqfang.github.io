@@ -9,7 +9,11 @@ math: true
 
 Basic concepts in NLP
 
-## Traditional NLP
+## NLP 
+
+### Languwage model
+
+MOdels that assigns probabilities to sequences of words are called languwage models.
 
 ### Count-based Representation
 
@@ -73,6 +77,78 @@ a span of text: a contiguous multi-token boundary.
 
 A `named entity` is a string mention of a real-world concept like a person, location, organization, drug name, et. al.
 
+### Coreference
+
+The task of deciding whether two strings refer to same entity
+
+### Minimumn Edit distance
+
+A way to quantify string similarity.
+
+### Perplexity
+
+The **perplexity** (sometimes called PP) of a language model on a test set is the inverse probability of the test set, normalised by the number of words.
+
+$$\begin{aligned} 
+\mathrm{PP}(W) &=P(w_{1} w_{2} \ldots w_{N})^{-\frac{1}{N}} \cr &=\sqrt[N]{\frac{1}{P(w_{1} w_{2} \ldots w_{N})}} \cr
+&= \sqrt[N]{\prod_{i=1}^{N} \frac{1}{P(w_{i} \mid w_{1} \ldots w_{i-1})}} 
+\end{aligned}
+$$
+
+Another way to hink about perplexity: as **the weighted average branching factor** of a language.
+
+
+### Entropy
+
+Entropy is a measure of information. The entropy of the random variable X is:
+
+$$
+H(X)=-\sum_{x \in \chi} p(x) \log _{2} p(x)
+$$
+
+the log can be computed in any base. If we use log base 2, the resulting value of entropy will mesured in **bits**.
+
+One intuitive way to think about entorpy is as a **lower bound** on the number of bits it would take to encode a certain desision or piece of information in the optimal coding scheme.
+
+### Cross-entropy
+The cross-entropy is useful when we don't know the actual probability distribution p that generated some data.
+
+The cross-entropy of m (a model of p) on p is defined by
+
+$$
+H(p,m) = \lim_{n \rightarrow \infty} - \frac{1}{n}\sum_{W \in L} p (w_1,\cdots,w_n) \log m (w_1, cdots, w_n)
+$$
+
+
+the cross-entropy $H(p,m)$ is an upper bound on the entropy $H(p)$. For any model m:
+
+$$
+H(p) \leq H(p,m)
+$$
+
+The more accurate m is, the closer the cross-entropy $H(p,m)$ will be to the true entropy $H(p)$.
+
+
+### The relation of perplexity and cross-entropy
+
+The approximation to the cross-entropy of a model $M = P(w_i | W_{i-N+1} \cdots W_{i-1})$ on a sequence of words W is 
+
+$$
+H(W) = - \frac{1}{N} \log P(w_1 w_2 \cdots w_N)
+$$
+
+The perplexity of a model P on a seqence of words W is defined as exp of this cross-entropy
+
+$$
+\begin{aligned}
+\operatorname{Perplexity}(W) &=2^{H(W)} \cr
+&=P\left(w_{1} w_{2} \ldots w_{N}\right)^{-\frac{1}{N}} \cr
+&=\sqrt[N]{\frac{1}{P\left(w_{1} w_{2} \ldots w_{N}\right)}} \cr
+&=\sqrt[N]{\prod_{i=1}^{N} \frac{1}{P\left(w_{i} \mid w_{1} \ldots w_{i-1}\right)}}
+\end{aligned}
+$$
+
+
 ### Structure of Sentences: Parse trees
 
 Shallow parsing identifies `phrasal units`, the task of identifying the relationship between them is called `parsing`.
@@ -93,6 +169,26 @@ maximum spanning tree
 
 SyntaxNet:  
 ![syntaxnet](/images/nlp/parsingtree.gif)
+
+## statistical testing
+
+The approach to computing p-values(x) in NLP is to use non-parametric tests. e.g.
+
+- bootstrap test
+- approximate randomization
+
+**bootstrapping** refers to repeated drawing large numbers of smaller samples with replacement from an orignial larger sample.
+
+- the intuition of the bootstrap test is that we can create many virtual test sets from an observed test set by repeated sampling from it.
+- the method only maks the assumption that sample is representative of the population
+
+
+
+
+
+
+
+
 
 ## Reference
 

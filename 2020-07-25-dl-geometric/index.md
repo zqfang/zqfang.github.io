@@ -276,5 +276,5 @@ $$
 H^{(l+1)} = \sigma ( \tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}H^{(l)}W^{(l)})
 $$
 
-- $\tilde{A} = A+ I+n$
+- $\tilde{A} = A+ I_n$
 - $\tilde D_ii = \sum_j \tilde A_{ij}$

@@ -35,7 +35,7 @@ using geometric deep learning
 2. node classification: each node has a label
 3. generative graph (models): e.g. virtual drug screen
 
-### Algebra prepresentation of Graphs
+### Algebra Presentation of Graphs
 
 1. Adjacency matrix
 

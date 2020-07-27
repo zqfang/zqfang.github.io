@@ -1,0 +1,557 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>C++ Notes: Concurrency - My Computational Genomic Playground</title><meta name=Description content="Get answers for C/C++ within ? s"><meta property="og:title" content="C++ Notes: Concurrency"><meta property="og:description" content="Get answers for C/C++ within ? s"><meta property="og:type" content="article"><meta property="og:url" content="https://zqfang.github.io/2020-07-10-cpp-threading/"><meta property="og:image" content="https://zqfang.github.io/logo.png"><meta property="article:published_time" content="2020-07-10T00:00:00+00:00"><meta property="article:modified_time" content="2020-07-10T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://zqfang.github.io/logo.png"><meta name=twitter:title content="C++ Notes: Concurrency"><meta name=twitter:description content="Get answers for C/C++ within ? s"><meta name=application-name content="Pleiades"><meta name=apple-mobile-web-app-title content="Pleiades"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://zqfang.github.io/2020-07-10-cpp-threading/><link rel=prev href=https://zqfang.github.io/2020-06-30-stats-anova/><link rel=next href=https://zqfang.github.io/2020-07-25-dl-geometric/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css integrity="sha256-HiaUvtFS+iki2+kJpEGDjtaT2IsTMPl0hb+o7XjaQt8="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"C++ Notes: Concurrency","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zqfang.github.io\/2020-07-10-cpp-threading\/"},"image":["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"C\u002b\u002b","wordcount":1347,"url":"https:\/\/zqfang.github.io\/2020-07-10-cpp-threading\/","datePublished":"2020-07-10T00:00:00+00:00","dateModified":"2020-07-10T00:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/zqfang.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"zqfang"},"description":"Get answers for C/C++ within ? s"}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>Pleiades <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/categories/>Categories </a><a class=menu-item href=/publication/>Publication </a><a class=menu-item href=/portfolio/>Portfolio </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/ title=About>About </a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>Pleiades <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/>Posts</a><a class=menu-item href=/categories/>Categories</a><a class=menu-item href=/publication/>Publication</a><a class=menu-item href=/portfolio/>Portfolio</a><a class=menu-item href=/tags/>Tags</a><a class=menu-item href=/about/ title=About>About</a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">C++ Notes: Concurrency</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class=post-category>included in <a href=/categories/coding/><i class="far fa-folder fa-fw"></i>Coding</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-07-10>2020-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1347 words&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#process-vs-threads>Process vs. Threads</a></li><li><a href=#usage-summary>Usage Summary</a></li><li><a href=#cases>Cases</a><ul><li><a href=#thread>thread</a></li><li><a href=#thread-managment>thread managment</a></li><li><a href=#race-condition-and-mutex>race condition and mutex</a></li><li><a href=#advoid-deadlock>Advoid Deadlock</a></li><li><a href=#unique_lock-and-lazy-initialization>unique_lock and lazy initialization</a></li><li><a href=#condition-variable>condition variable</a></li><li><a href=#future-and-promise>future and promise</a></li><li><a href=#using-callable-object>using callable object</a></li><li><a href=#packagee-tasks>packagee tasks</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>Learn C++11 thread library. Code snippets from <a href="https://www.youtube.com/playlist?list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M" target=_blank rel="noopener noreffer">Concurrent Programming with C++11</a></p><h2 id=process-vs-threads>Process vs. Threads</h2><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cpp-concurrency.png data-srcset="/images/cpp-concurrency.png, /images/cpp-concurrency.png 1.5x, /images/cpp-concurrency.png 2x" data-sizes=auto alt=/images/cpp-concurrency.png title=concurrency></p><h2 id=usage-summary>Usage Summary</h2><p>A short summary of thread library in STL</p><ol><li>thread and async</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cm>/* thread */</span>
+<span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>factorial</span><span class=p>,</span> <span class=mi>6</span><span class=p>);</span> <span class=c1>// create a new thread
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>this_thread</span><span class=o>::</span><span class=n>sleep_for</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>milliseconds</span><span class=p>(</span><span class=mi>3</span><span class=p>));</span>
+<span class=n>chrono</span><span class=o>::</span><span class=n>steady_clock</span><span class=o>::</span><span class=n>time_point</span> <span class=n>tp</span> <span class=o>=</span> <span class=n>chrono</span><span class=o>::</span><span class=n>steady_clock</span><span class=o>::</span><span class=n>now</span><span class=p>()</span> <span class=o>+</span> <span class=n>chrono</span><span class=o>::</span><span class=n>microseconds</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
+<span class=n>std</span><span class=o>::</span><span class=n>this_thread</span><span class=o>::</span><span class=n>sleep_until</span><span class=p>(</span><span class=n>tp</span><span class=p>);</span>
+
+<span class=cm>/* async() */</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu</span> <span class=o>=</span> <span class=n>async</span><span class=p>(</span><span class=n>factorial</span><span class=p>,</span> <span class=mi>6</span><span class=p>);</span> <span class=c1>// create a new thread
+</span></code></pre></td></tr></table></div></div><ol start=2><li>mutex</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cm>/* Mutex */</span>
+<span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mu</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>lock_guard</span><span class=o>&lt;</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span>
+<span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>ulocker</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span>
+<span class=n>ulocker</span><span class=p>.</span><span class=n>try_lock</span><span class=p>();</span>
+<span class=n>ulocker</span><span class=p>.</span><span class=n>try_lock_for</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>nanoseconds</span><span class=p>(</span><span class=mi>500</span><span class=p>));</span>
+<span class=n>ulocker</span><span class=p>.</span><span class=n>try_lock_until</span><span class=p>(</span><span class=n>tp</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><ol start=3><li>condition variable</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cm>/* Condition Variable */</span>
+<span class=nl>std</span><span class=p>:</span><span class=n>condition_variable</span> <span class=n>cond</span><span class=p>;</span>
+<span class=n>cond</span><span class=p>.</span><span class=n>wait_for</span><span class=p>(</span><span class=n>ulocker</span><span class=p>,</span> <span class=n>chrono</span><span class=o>::</span><span class=n>microseconds</span><span class=p>(</span><span class=mi>2</span><span class=p>));</span>
+<span class=n>cond</span><span class=p>.</span><span class=n>wait_until</span><span class=p>(</span><span class=n>ulocker</span><span class=p>,</span> <span class=n>tp</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><ol start=4><li>future and promise</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cm>/* Future and Promise */</span>
+<span class=n>std</span><span class=o>::</span><span class=n>promise</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>p</span><span class=p>;</span> 
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>f</span> <span class=o>=</span> <span class=n>p</span><span class=p>.</span><span class=n>get_future</span><span class=p>();</span>
+<span class=n>f</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+<span class=n>f</span><span class=p>.</span><span class=n>wait</span><span class=p>();</span>
+<span class=n>f</span><span class=p>.</span><span class=n>wait_for</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>milliseconds</span><span class=p>(</span><span class=mi>2</span><span class=p>));</span>
+<span class=n>f</span><span class=p>.</span><span class=n>wait_until</span><span class=p>(</span><span class=n>tp</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><ol><li>Packaged task</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp> <span class=cm>/* Packaged Task */</span>
+ <span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>t</span><span class=p>(</span><span class=n>factorial</span><span class=p>);</span>
+ <span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu2</span> <span class=o>=</span> <span class=n>t</span><span class=p>.</span><span class=n>get_future</span><span class=p>();</span>
+ <span class=n>t</span><span class=p>(</span><span class=mi>6</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><h2 id=cases>Cases</h2><h3 id=thread>thread</h3><p>two way to create new thread</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>func</span><span class=p>);</span>
+<span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span><span class=p>,</span> <span class=n>func</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><p>exmample of thread</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cp>#incldue &lt;thread&gt;
+</span><span class=cp></span><span class=kt>void</span> <span class=nf>function1</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span><span class=s>&#34;hello&#34;</span><span class=o>&lt;&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=n>std</span><span class=o>::</span><span class=n>tread</span> <span class=n>t1</span><span class=p>(</span><span class=n>function1</span><span class=p>);</span> <span class=c1>// t1 start running
+</span><span class=c1>// t1.join();  // main thread wait for t1 to finish
+</span><span class=c1></span><span class=n>t1</span><span class=p>.</span><span class=n>detach</span><span class=p>();</span> <span class=c1>// t1 will freely on its own -- deamon process``
+</span><span class=c1></span>
+<span class=c1>/// once detach, forever detach. 
+</span><span class=c1></span>
+<span class=k>if</span> <span class=p>(</span><span class=n>t1</span><span class=p>.</span><span class=n>joinable</span><span class=p>())</span>
+  <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>  <span class=c1>// if detached, this line crashed.
+</span></code></pre></td></tr></table></div></div><h3 id=thread-managment>thread managment</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>class</span> <span class=nc>Fctor</span> <span class=p>{</span>
+<span class=k>public</span><span class=o>:</span>
+    <span class=kt>void</span> <span class=k>operator</span><span class=p>()(</span><span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=o>&amp;</span> <span class=n>s</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=o>&lt;&lt;</span><span class=s>&#34;this is thread&#34;</span><span class=o>&lt;&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
+<span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=o>=</span> <span class=s>&#34;string int&#34;</span>
+<span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>((</span><span class=n>Fctor</span><span class=p>()),</span> <span class=n>s</span><span class=p>);</span> <span class=c1>// alway pass by value
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t2</span><span class=p>((</span><span class=n>Fctor</span><span class=p>()),</span> <span class=n>std</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>s</span><span class=p>));</span> <span class=c1>// pass by ref
+</span><span class=c1></span>
+<span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t3</span><span class=p>((</span><span class=n>Fctor</span><span class=p>()),</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>s</span><span class=p>));</span> <span class=c1>// move s from main to thread
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t4</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>t3</span><span class=p>);</span> <span class=c1>// thread could not be copy, only move
+</span><span class=c1></span>
+<span class=k>try</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=o>&lt;&lt;</span><span class=s>&#34;this is main&#34;</span><span class=o>&lt;&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span> <span class=k>catch</span> <span class=p>(...)</span> <span class=p>{</span>
+    <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+    <span class=n>t2</span><span class=p>.</span><span class=n>jion</span><span class=p>();</span>
+    <span class=k>throw</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+<span class=n>t2</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+<span class=n>t4</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+</code></pre></td></tr></table></div></div><p>if oversubscription, limit threads with maximum cpu cores</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=nl>std</span><span class=p>:</span><span class=err>🧵</span><span class=o>:</span><span class=n>hardware_concurrency</span><span class=p>();</span> <span class=c1>// indication, number of cpu cores
+</span></code></pre></td></tr></table></div></div><h3 id=race-condition-and-mutex>race condition and mutex</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cp>#include</span> <span class=cpf>&lt;thread&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;mutex&gt;</span><span class=cp>
+</span><span class=cp></span>
+
+<span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mu</span><span class=p>;</span>
+<span class=kt>void</span> <span class=nf>shared_print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>msg</span><span class=p>,</span> <span class=kt>int</span> <span class=n>id</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>lock_guard</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>guard</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span> <span class=c1>// RAII
+</span><span class=c1></span>    <span class=c1>//mu.lock(); // +&gt; safeguard no two threads using cout at the same time, 
+</span><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=o>&lt;&lt;</span><span class=n>msg</span> <span class=o>&lt;&lt;</span> <span class=n>id</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> 
+    <span class=c1>//mu.unlock(); // if error thrown between .lock() and .unlock(), generate zombie process
+</span><span class=c1></span><span class=p>}</span>
+
+<span class=kt>void</span> <span class=nf>function_1</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+        <span class=n>shared_print</span><span class=p>(</span><span class=s>&#34;from functino t1&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>function_1</span><span class=p>);</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+        <span class=n>shared_print</span><span class=p>(</span><span class=s>&#34;from main&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>);</span>
+    <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>()</span>
+<span class=p>}</span>
+
+</code></pre></td></tr></table></div></div><p>more practical example</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cp>#include</span> <span class=cpf>&lt;thread&gt;</span><span class=cp>
+</span><span class=cp>#include</span> <span class=cpf>&lt;mutex&gt;</span><span class=cp>
+</span><span class=cp></span>
+<span class=k>class</span> <span class=nc>LogFile</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mu</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>f</span><span class=p>;</span>
+<span class=k>public</span><span class=o>:</span>
+    <span class=n>LogFile</span><span class=p>()</span> <span class=p>{</span>
+        <span class=n>f</span><span class=p>.</span><span class=n>open</span><span class=p>(</span><span class=s>&#34;log.txt&#34;</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=kt>void</span> <span class=nf>shared_print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>msg</span><span class=p>,</span> <span class=kt>int</span> <span class=n>id</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>lock_guard</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>guard</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span> <span class=c1>// RAII
+</span><span class=c1></span>        <span class=n>f</span> <span class=o>&lt;&lt;</span> <span class=n>msg</span> <span class=o>&lt;&lt;</span> <span class=n>id</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> 
+    <span class=p>}</span>
+    <span class=c1>// never return f to outside wworld
+</span><span class=c1></span>    <span class=c1>// never pass f as an argument for user
+</span><span class=c1></span><span class=p>};</span>
+<span class=kt>void</span> <span class=nf>function_1</span><span class=p>(</span><span class=n>LogFile</span><span class=o>&amp;</span> <span class=n>log</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+        <span class=n>log</span><span class=p>.</span><span class=n>shared_print</span><span class=p>(</span><span class=s>&#34;from functino t1&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>LogFile</span> <span class=n>log</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>function_1</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>log</span><span class=p>));</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+        <span class=n>log</span><span class=p>.</span><span class=n>shared_print</span><span class=p>(</span><span class=s>&#34;from main&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>);</span>
+    <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>()</span>
+<span class=p>}</span>
+
+</code></pre></td></tr></table></div></div><h3 id=advoid-deadlock>Advoid Deadlock</h3><ol><li>prefer locking single mutex</li><li>Advoid locking a mutex and then calling a user provded function</li><li>use std::lock() to lock more than one mutex</li><li>lock the mutexs in same order.</li></ol><h3 id=unique_lock-and-lazy-initialization>unique_lock and lazy initialization</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>
+<span class=k>class</span> <span class=nc>LogFile</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mu</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>f</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>once_flag</span> <span class=n>flag</span><span class=p>;</span>
+<span class=k>public</span><span class=o>:</span>
+    <span class=n>LogFile</span><span class=p>()</span> <span class=p>{</span>
+        <span class=n>f</span><span class=p>.</span><span class=n>open</span><span class=p>(</span><span class=s>&#34;log.txt&#34;</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=kt>void</span> <span class=nf>shared_print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>msg</span><span class=p>,</span> <span class=kt>int</span> <span class=n>id</span><span class=p>)</span> <span class=p>{</span>
+        <span class=c1>// if you need to check whether a file is open in each call, use once_flag to rescue
+</span><span class=c1></span>        <span class=c1>// std::call_once(flag, [&amp;](){ f.open(&#34;log.txt&#34;);}) // file only open once
+</span><span class=c1></span>
+        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker</span><span class=p>(</span><span class=n>mu</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>defer_lock</span><span class=p>);</span> <span class=c1>// note here
+</span><span class=c1></span>        <span class=c1>// do something else
+</span><span class=c1></span>        <span class=n>locker</span><span class=p>.</span><span class=n>lock</span><span class=p>();</span>
+        <span class=n>f</span> <span class=o>&lt;&lt;</span> <span class=n>msg</span> <span class=o>&lt;&lt;</span> <span class=n>id</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> 
+        <span class=n>locker</span><span class=p>.</span><span class=n>unlock</span><span class=p>();</span>
+
+        <span class=c1>// call again
+</span><span class=c1></span>        <span class=n>locker</span><span class=p>.</span><span class=n>lock</span><span class=p>();</span>
+        <span class=c1>// do something ...
+</span><span class=c1></span>
+        <span class=n>locker</span><span class=p>.</span><span class=n>unlock</span><span class=p>();</span>
+
+        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker2</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>locker</span><span class=p>);</span> <span class=c1>// could change ownership
+</span><span class=c1></span>    <span class=p>}</span>  
+
+<span class=p>};</span>
+</code></pre></td></tr></table></div></div><h3 id=condition-variable>condition variable</h3><p>Condition variable is to synchronize the execution order of threads</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=n>std</span><span class=o>::</span><span class=n>condition_variable</span> <span class=n>cond</span><span class=p>;</span>
+
+<span class=c1>// usage 1
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span>
+<span class=n>cond</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>locker</span><span class=p>);</span> <span class=c1>// spurious wake
+</span><span class=c1></span>
+<span class=n>cond</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>locker</span><span class=p>,</span> <span class=p>[](){</span><span class=k>return</span> <span class=o>!</span><span class=n>q</span><span class=p>.</span><span class=n>empty</span><span class=p>();})</span> <span class=c1>//
+</span><span class=c1></span>
+<span class=n>cond</span><span class=p>.</span><span class=n>notify_one</span><span class=p>();</span> <span class=c1>// notify one waiting thread
+</span><span class=c1></span><span class=n>cond</span><span class=p>.</span><span class=n>notify_all</span><span class=p>();</span> <span class=c1>// 
+</span><span class=c1></span>
+</code></pre></td></tr></table></div></div><h3 id=future-and-promise>future and promise</h3><p>Future and promise provide a convenience way to communicate between threads.</p><p>e.g. return value to main thread</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=kt>int</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=k>return</span> <span class=n>res</span><span class=o>+</span> <span class=n>n</span><span class=p>;</span>
+<span class=p>}</span>
+ 
+<span class=kt>int</span> <span class=n>x</span><span class=p>;</span>
+
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span>  <span class=n>fu</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>function</span><span class=p>,</span> <span class=mi>4</span><span class=p>);</span> <span class=c1>// future, get something in future
+</span><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=n>fu</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+<span class=c1>// fu.get(); //crash
+</span><span class=c1></span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu2</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>deferred</span><span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=mi>4</span><span class=p>);</span> <span class=c1>// means not excuate unitl call .get()
+</span><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=n>fu2</span><span class=p>.</span><span class=n>get</span><span class=p>();</span> <span class=c1>// only excuate fu2 when called get
+</span><span class=c1></span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu3</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span> <span class=o>|</span> <span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>deferred</span> <span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=mi>4</span><span class=p>);</span> <span class=c1>// create new thread by calling async or not 
+</span><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=n>fu3</span><span class=p>.</span><span class=n>get</span><span class=p>();</span> <span class=c1>// only excuate fu2 when called get
+</span></code></pre></td></tr></table></div></div><p>usage of promise</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>f</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=n>f</span><span class=p>.</span><span class=n>get</span><span class=p>();</span> <span class=c1>// note here
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>res</span> <span class=o>+</span> <span class=n>N</span><span class=p>;</span>
+<span class=p>}</span>
+<span class=kt>int</span> <span class=n>x</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>promise</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>p</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>f</span> <span class=o>=</span> <span class=n>p</span><span class=p>.</span><span class=n>get_future</span><span class=p>();</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu4</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span><span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>f</span><span class=p>));</span>
+<span class=c1>// do something else  ...
+</span><span class=c1>//// if p not set, throw error
+</span><span class=c1>// p.set_exception(std::make_exception_ptr)(std::runtime_error(&#34;To err is human&#34;));
+</span><span class=c1>// set p
+</span><span class=c1></span><span class=n>p</span><span class=p>.</span><span class=n>set_value</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
+
+<span class=c1>// get from child 
+</span><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=n>fu4</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+</code></pre></td></tr></table></div></div><p><code>shared_future</code> for multi-threads</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>shared_future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>f</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=n>f</span><span class=p>.</span><span class=n>get</span><span class=p>();</span> <span class=c1>// note here
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>res</span> <span class=o>+</span> <span class=n>N</span><span class=p>;</span>
+<span class=p>}</span>
+<span class=kt>int</span> <span class=n>x</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>promise</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>p</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>f</span> <span class=o>=</span> <span class=n>p</span><span class=p>.</span><span class=n>get_future</span><span class=p>();</span>
+<span class=n>std</span><span class=o>::</span><span class=n>shared_future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>sf</span> <span class=o>=</span> <span class=n>f</span><span class=p>.</span><span class=n>shared</span><span class=p>();</span>
+
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu5</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span><span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=n>sf</span><span class=p>);</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu6</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span><span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=n>sf</span><span class=p>);</span>
+<span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu7</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>async</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>launch</span><span class=o>::</span><span class=n>async</span><span class=p>,</span> <span class=n>factorial</span><span class=p>,</span> <span class=n>sf</span><span class=p>);</span>
+<span class=n>p</span><span class=p>.</span><span class=n>set_value</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
+<span class=c1>// get from child 
+</span><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=n>fu4</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+</code></pre></td></tr></table></div></div><h3 id=using-callable-object>using callable object</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>class</span> <span class=nc>A</span> <span class=p>{</span>
+<span class=k>public</span><span class=o>:</span>
+    <span class=kt>void</span> <span class=n>f</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>char</span><span class=p>)</span> <span class=p>{}</span>
+    <span class=kt>long</span> <span class=nf>g</span><span class=p>(</span><span class=kt>double</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span><span class=k>return</span> <span class=mi>0</span><span class=p>;}</span>
+    <span class=kt>int</span> <span class=nf>operator</span><span class=p>()(</span><span class=kt>int</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span><span class=k>return</span> <span class=mi>0</span><span class=p>;}</span>
+<span class=p>};</span>
+
+<span class=n>A</span> <span class=n>a</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=mi>6</span><span class=p>);</span> <span class=c1>// copy of a() in a different thread
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t2</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>a</span><span class=p>),</span> <span class=mi>6</span><span class=p>)</span> <span class=c1>// a() in a different thread
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t3</span><span class=p>(</span><span class=n>A</span><span class=p>(),</span> <span class=mi>6</span><span class=p>);</span> <span class=c1>// temp A
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t4</span><span class=p>([](</span><span class=kt>int</span> <span class=n>x</span><span class=p>){</span><span class=k>return</span> <span class=n>x</span><span class=o>*</span><span class=n>x</span><span class=p>;},</span> <span class=mi>6</span><span class=p>);</span>
+
+<span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t5</span><span class=p>(</span><span class=o>&amp;</span><span class=n>A</span><span class=o>::</span><span class=n>f</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=mi>6</span><span class=p>,</span> <span class=sc>&#39;w&#39;</span><span class=p>);</span> <span class=c1>// copy of a.f(6,&#39;w&#39;) in a different thread
+</span><span class=c1>// these feature could be used in
+</span><span class=c1>// std::bind, std::async
+</span></code></pre></td></tr></table></div></div><h3 id=packagee-tasks>packagee tasks</h3><p>packaged_task provides a way to implement a task pool. It can conveniently convey the returned value from a task to a different thread</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>factorial</span><span class=p>,</span> <span class=mi>6</span><span class=p>);</span> <span class=c1>// could pass args
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>t</span><span class=p>(</span><span class=n>factorial</span><span class=p>);</span> <span class=c1>// could not pass additional args
+</span><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>t2</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=n>factorial</span><span class=p>,</span> <span class=mi>6</span><span class=p>));</span> <span class=c1>// now we could pass args using std::bind
+</span><span class=c1>// ...
+</span><span class=c1></span><span class=n>t</span><span class=p>(</span><span class=mi>6</span><span class=p>);</span> <span class=c1>// in a different context, t alwaly return void, so
+</span><span class=c1></span><span class=kt>int</span> <span class=n>x</span> <span class=o>=</span> <span class=n>t</span><span class=p>.</span><span class=n>get_future</span><span class=p>().</span><span class=n>get</span><span class=p>();</span> <span class=c1>// get value
+</span><span class=c1></span>
+<span class=c1>// call t2 by
+</span><span class=c1></span><span class=n>t2</span><span class=p>();</span>
+</code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=kt>int</span> <span class=n>N</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span><span class=mi>1</span><span class=p>;</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=n>N</span><span class=p>;</span> <span class=n>i</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>--</span><span class=p>)</span>
+        <span class=n>res</span> <span class=o>*=</span> <span class=n>i</span><span class=p>;</span>
+    <span class=k>return</span> <span class=n>res</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=n>std</span><span class=o>::</span><span class=n>deque</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>()</span><span class=o>&gt;&gt;</span> <span class=n>task_q</span><span class=p>;</span>
+<span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mu</span><span class=p>;</span> 
+<span class=n>std</span><span class=o>::</span><span class=n>condition_variable</span> <span class=n>cond</span><span class=p>;</span>
+
+<span class=kt>void</span> <span class=nf>thread_1</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>t</span><span class=p>;</span>
+    <span class=p>{</span>  
+        <span class=c1>//std::lock_guard&lt;std::mutex&gt; locker(mu); // advoid data race
+</span><span class=c1></span>        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span>
+        <span class=n>cond</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>locker</span><span class=p>,</span> <span class=p>[](){</span><span class=k>return</span> <span class=o>!</span><span class=n>taks_q</span><span class=p>.</span><span class=n>empty</span><span class=p>();})</span>
+        <span class=n>t</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>task_q</span><span class=p>.</span><span class=n>front</span><span class=p>());</span>
+        <span class=n>task_q</span><span class=p>.</span><span class=n>pop_front</span><span class=p>();</span>
+    <span class=p>}</span>
+    <span class=n>t</span><span class=p>();</span>
+<span class=p>}</span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>(</span><span class=n>thread_1</span><span class=p>);</span>  <span class=c1>// so, task_q run in t1;
+</span><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>packaged_task</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>t</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=n>factorical</span><span class=p>,</span> <span class=mi>6</span><span class=p>));</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>future</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>fu</span> <span class=o>=</span> <span class=n>t</span><span class=p>.</span><span class=n>get_future</span><span class=p>();</span> <span class=c1>// get returned value to main thread
+</span><span class=c1></span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>lock_guard</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>locker</span><span class=p>(</span><span class=n>mu</span><span class=p>);</span>
+        <span class=n>task_q</span><span class=p>.</span><span class=n>push_bask</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>t</span><span class=p>));</span>
+    <span class=p>}</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=o>&lt;&lt;</span><span class=n>fu</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+    <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+
+</code></pre></td></tr></table></div></div><p>Summary: 3 method to get a future</p><ul><li>promise::get_future()</li><li>packaged_task::get_future()</li><li>async() returns a future</li></ul></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2020-07-10</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://zqfang.github.io/2020-07-10-cpp-threading/ data-title="C++ Notes: Concurrency" data-hashtags=C++><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://zqfang.github.io/2020-07-10-cpp-threading/ data-hashtag=C++><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=https://zqfang.github.io/2020-07-10-cpp-threading/ data-title="C++ Notes: Concurrency"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="Share on Line" data-sharer=line data-url=https://zqfang.github.io/2020-07-10-cpp-threading/ data-title="C++ Notes: Concurrency"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=https://zqfang.github.io/2020-07-10-cpp-threading/ data-title="C++ Notes: Concurrency"><i class="fab fa-weibo fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/c++/>C++</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/2020-06-30-stats-anova/ class=prev rel=prev title=ANOVA><i class="fas fa-angle-left fa-fw"></i>ANOVA</a>
+<a href=/2020-07-25-dl-geometric/ class=next rel=next title="Geometric Deep Learning">Geometric Deep Learning<i class="fas fa-angle-right fa-fw"></i></a></div></div><div id=comments><div id=disqus_thread class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://disqus.com/?ref_noscript>Disqus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>zqfang</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css><script type=text/javascript src=https://bioninja-1.disqus.com/embed.js defer></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/+HcLiLAxmjw="></script></body></html>

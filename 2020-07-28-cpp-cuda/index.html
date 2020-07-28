@@ -1,0 +1,232 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>C++ Notes: CUDA - My Computational Genomic Playground</title><meta name=Description content="Get answers for C/C++ within ? s"><meta property="og:title" content="C++ Notes: CUDA"><meta property="og:description" content="Get answers for C/C++ within ? s"><meta property="og:type" content="article"><meta property="og:url" content="https://zqfang.github.io/2020-07-28-cpp-cuda/"><meta property="og:image" content="https://zqfang.github.io/logo.png"><meta property="article:published_time" content="2020-07-11T00:00:00+00:00"><meta property="article:modified_time" content="2020-07-11T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://zqfang.github.io/logo.png"><meta name=twitter:title content="C++ Notes: CUDA"><meta name=twitter:description content="Get answers for C/C++ within ? s"><meta name=application-name content="Pleiades"><meta name=apple-mobile-web-app-title content="Pleiades"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://zqfang.github.io/2020-07-28-cpp-cuda/><link rel=prev href=https://zqfang.github.io/2020-07-10-cpp-threading/><link rel=next href=https://zqfang.github.io/2020-07-25-dl-geometric/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.1e2694bed152fa2922dbe909a441838ed693d88b1330f97485bfa8ed78da42df.css integrity="sha256-HiaUvtFS+iki2+kJpEGDjtaT2IsTMPl0hb+o7XjaQt8="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"C++ Notes: CUDA","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zqfang.github.io\/2020-07-28-cpp-cuda\/"},"image":["https:\/\/zqfang.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"C\u002b\u002b, CUDA","wordcount":789,"url":"https:\/\/zqfang.github.io\/2020-07-28-cpp-cuda\/","datePublished":"2020-07-11T00:00:00+00:00","dateModified":"2020-07-11T00:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/zqfang.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"zqfang"},"description":"Get answers for C/C++ within ? s"}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>Pleiades <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/categories/>Categories </a><a class=menu-item href=/publication/>Publication </a><a class=menu-item href=/portfolio/>Portfolio </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/ title=About>About </a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="My Computational Genomic Playground"><span class=header-title-pre><span>&#8711;</span></span>Pleiades <span class=header-title-post><i class="fas fa-terminal"></i></span></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/>Posts</a><a class=menu-item href=/categories/>Categories</a><a class=menu-item href=/publication/>Publication</a><a class=menu-item href=/portfolio/>Portfolio</a><a class=menu-item href=/tags/>Tags</a><a class=menu-item href=/about/ title=About>About</a><a class=menu-item href=https://github.com/zqfang title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">C++ Notes: CUDA</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>zqfang</a></span>&nbsp;<span class=post-category>included in <a href=/categories/coding/><i class="far fa-folder fa-fw"></i>Coding</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-07-11>2020-07-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;789 words&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#harward-and-software>Harward and software</a></li><li><a href=#special-variable>Special variable</a></li><li><a href=#thread-management>thread management</a></li><li><a href=#compile>compile</a></li><li><a href=#special-keywords>special keywords</a></li><li><a href=#vertors>Vertors</a><ul><li><a href=#init-1-dim-vector>init 1 dim vector</a></li><li><a href=#vectorized-addition>vectorized addition</a></li></ul></li><li><a href=#common-program-flow>Common Program Flow</a><ul><li><a href=#1-get-device>1. Get device</a></li><li><a href=#3-gpu-memory-allocation>3. GPU memory allocation</a></li><li><a href=#4-create-streams>4. Create streams</a></li><li><a href=#5-kernel-launch>5. Kernel launch</a></li><li><a href=#6-fetch-data-and-run-on-cpu>6. fetch data and run on CPU</a></li><li><a href=#7-free-memory>7. free memory</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>A Cuda/C++ starter cheatsheet</p><h2 id=harward-and-software>Harward and software</h2><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-hardware.png data-srcset="/images/cuda/cuda-hardware.png, /images/cuda/cuda-hardware.png 1.5x, /images/cuda/cuda-hardware.png 2x" data-sizes=auto alt=/images/cuda/cuda-hardware.png title=stream></p><ol><li>Thread block and grid are <code>logical threads</code>, make programming easy.</li><li>In hardware, each GPU made of lots of <code>streaming multiprocessor</code>(hardware), which have lots of threads.</li></ol><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-SM.png data-srcset="/images/cuda/cuda-SM.png, /images/cuda/cuda-SM.png 1.5x, /images/cuda/cuda-SM.png 2x" data-sizes=auto alt=/images/cuda/cuda-SM.png title=SM></p><h2 id=special-variable>Special variable</h2><ol><li><p><code>kernel</code>: the code (function) run on GPU</p><ul><li>one kernel, only have one grid, grid have blocks, block has threads.</li></ul></li><li><p><code>thread</code>, <code>block</code>,<code>grid</code></p><ul><li><code>threadIdx</code>: each thread have a unique id, <code>threadIdx.x</code>, <code>.y</code>,<code>.z</code></li><li><code>blockIdx</code>: each block have a unique id, <code>blockIdx.x</code>, <code>.y</code>,<code>.z</code></li><li>dimemnsion size: <code>blockDim.x</code>,<code>gridDim.x</code>, <code>.y</code>,<code>.z</code></li></ul></li></ol><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-threadmapping.png data-srcset="/images/cuda/cuda-threadmapping.png, /images/cuda/cuda-threadmapping.png 1.5x, /images/cuda/cuda-threadmapping.png 2x" data-sizes=auto alt=/images/cuda/cuda-threadmapping.png title=threads></p><h2 id=thread-management>thread management</h2><ol><li><code>Stream</code></li></ol><p>Each GPU made of lots of <code>Streams</code>(hardware). When a kernel grid activate, multi block will assign blocks to avaibable <code>stream</code> to run.
+<img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-streams.png data-srcset="/images/cuda/cuda-streams.png, /images/cuda/cuda-streams.png 1.5x, /images/cuda/cuda-streams.png 2x" data-sizes=auto alt=/images/cuda/cuda-streams.png title=stream></p><ol start=2><li><code>Warp</code></li></ol><p>for SM(hardware), CUDA run as warp(线程束), beacuse hardward don&rsquo;t know where the block, who they are.</p><p>In hardware, the thread resource are limited, not all <code>logical threads</code> run at the same time. The minimun <code>physical threads</code> run at the same time are called warp.</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-warps.png data-srcset="/images/cuda/cuda-warps.png, /images/cuda/cuda-warps.png 1.5x, /images/cuda/cuda-warps.png 2x" data-sizes=auto alt=/images/cuda/cuda-warps.png title=warp></p><p>for example: if one block have 128 threads, when running on <code>Stream</code>, this block divied into</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>warp0: thread  0,........thread31
+warp1: thread 32,........thread63
+warp2: thread 64,........thread95
+warp3: thread 96,........thread127
+</code></pre></td></tr></table></div></div><h2 id=compile>compile</h2><p>compile with <code>nvcc</code>, not <code>gcc</code></p><h2 id=special-keywords>special keywords</h2><p>device: GPU<br>host: CPU</p><table><thead><tr><th>keyword</th><th>execution</th><th>called by</th><th>other</th></tr></thead><tbody><tr><td><code>__global__</code></td><td>device</td><td>device or host</td><td>must <code>return void</code></td></tr><tr><td><code>__device__</code></td><td>device</td><td>device</td><td></td></tr><tr><td><code>__host__</code></td><td>host</td><td>host</td><td>defaut, could omit</td></tr></tbody></table><p>kernel launch: <code>&lt;&lt;&lt;Dg,Db,Ns,S>>></code></p><ul><li>Dg (dim3): specifies the dimension and size of the grid.</li><li>Db (dim3): specifies the dimension and size of each block</li><li>Ns (size_t): specifies the number of bytes in shared memory that is dynamically allocated per block for this call in addition to the statically allocated memory.</li><li>S (cudaStream_t): specifies the associated stream, is an optional parameter which defaults to 0.</li></ul><p>from <a href=https://docs.nvidia.com/cuda/cuda-c-programming-guide/#execution-configuration target=_blank rel="noopener noreffer">docs</a></p><h2 id=vertors>Vertors</h2><h3 id=init-1-dim-vector>init 1 dim vector</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp>
+</span><span class=cp></span>
+<span class=n>__global__</span>
+<span class=kt>void</span> <span class=nf>initWith</span><span class=p>(</span><span class=kt>float</span> <span class=n>num</span><span class=p>,</span> <span class=kt>float</span> <span class=o>*</span><span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>N</span><span class=p>)</span>
+<span class=p>{</span>
+
+  <span class=kt>int</span> <span class=n>index</span> <span class=o>=</span> <span class=n>threadIdx</span><span class=p>.</span><span class=n>x</span> <span class=o>+</span> <span class=n>blockIdx</span><span class=p>.</span><span class=n>x</span> <span class=o>*</span> <span class=n>blockDim</span><span class=p>.</span><span class=n>x</span><span class=p>;</span>
+  <span class=kt>int</span> <span class=n>stride</span> <span class=o>=</span> <span class=n>blockDim</span><span class=p>.</span><span class=n>x</span> <span class=o>*</span> <span class=n>gridDim</span><span class=p>.</span><span class=n>x</span><span class=p>;</span>
+
+  <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>index</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=n>i</span> <span class=o>+=</span> <span class=n>stride</span><span class=p>)</span>
+  <span class=p>{</span>
+    <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>num</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>3 dimension index</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=n>tid</span><span class=o>=</span><span class=n>threadIdx</span><span class=p>.</span><span class=n>x</span><span class=o>+</span><span class=n>threadIdx</span><span class=p>.</span><span class=n>y</span><span class=o>*</span><span class=n>blockDim</span><span class=p>.</span><span class=n>x</span><span class=o>+</span><span class=n>threadIdx</span><span class=p>.</span><span class=n>z</span><span class=o>*</span><span class=n>blockDim</span><span class=p>.</span><span class=n>x</span><span class=o>*</span><span class=n>blockDim</span><span class=p>.</span><span class=n>y</span>
+</code></pre></td></tr></table></div></div><h3 id=vectorized-addition>vectorized addition</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=n>__global__</span>
+<span class=kt>void</span> <span class=nf>addVectorsInto</span><span class=p>(</span><span class=kt>float</span> <span class=o>*</span><span class=n>result</span><span class=p>,</span> <span class=kt>float</span> <span class=o>*</span><span class=n>a</span><span class=p>,</span> <span class=kt>float</span> <span class=o>*</span><span class=n>b</span><span class=p>,</span> <span class=kt>int</span> <span class=n>N</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=kt>int</span> <span class=n>index</span> <span class=o>=</span> <span class=n>threadIdx</span><span class=p>.</span><span class=n>x</span> <span class=o>+</span> <span class=n>blockIdx</span><span class=p>.</span><span class=n>x</span> <span class=o>*</span> <span class=n>blockDim</span><span class=p>.</span><span class=n>x</span><span class=p>;</span>
+  <span class=kt>int</span> <span class=n>stride</span> <span class=o>=</span> <span class=n>blockDim</span><span class=p>.</span><span class=n>x</span> <span class=o>*</span> <span class=n>gridDim</span><span class=p>.</span><span class=n>x</span><span class=p>;</span>
+
+  <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>index</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=n>i</span> <span class=o>+=</span> <span class=n>stride</span><span class=p>)</span>
+  <span class=p>{</span>
+    <span class=n>result</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>+</span> <span class=n>b</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h2 id=common-program-flow>Common Program Flow</h2><p><img class=lazyload src=/svg/loading.min.svg data-src=/images/cuda/cuda-ProgramFlow.jpg data-srcset="/images/cuda/cuda-ProgramFlow.jpg, /images/cuda/cuda-ProgramFlow.jpg 1.5x, /images/cuda/cuda-ProgramFlow.jpg 2x" data-sizes=auto alt=/images/cuda/cuda-ProgramFlow.jpg title=flow></p><h3 id=1-get-device>1. Get device</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=kt>int</span> <span class=n>deviceId</span><span class=p>;</span>
+  <span class=kt>int</span> <span class=n>numberOfSMs</span><span class=p>;</span>
+  <span class=c1>// get device
+</span><span class=c1></span>  <span class=n>cudaGetDevice</span><span class=p>(</span><span class=o>&amp;</span><span class=n>deviceId</span><span class=p>);</span>
+  <span class=n>cudaDeviceGetAttribute</span><span class=p>(</span><span class=o>&amp;</span><span class=n>numberOfSMs</span><span class=p>,</span> <span class=n>cudaDevAttrMultiProcessorCount</span><span class=p>,</span> <span class=n>deviceId</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><h3 id=3-gpu-memory-allocation>3. GPU memory allocation</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>2</span><span class=o>&lt;&lt;</span><span class=mi>24</span><span class=p>;</span>
+  <span class=n>size_t</span> <span class=n>size</span> <span class=o>=</span> <span class=n>N</span> <span class=o>*</span> <span class=k>sizeof</span><span class=p>(</span><span class=kt>float</span><span class=p>);</span>
+
+  <span class=kt>float</span> <span class=o>*</span><span class=n>a</span><span class=p>;</span>
+  <span class=kt>float</span> <span class=o>*</span><span class=n>b</span><span class=p>;</span>
+  <span class=kt>float</span> <span class=o>*</span><span class=n>c</span><span class=p>;</span>
+  
+  <span class=c1>// GPU memory allocation
+</span><span class=c1></span>  <span class=n>cudaMallocManaged</span><span class=p>(</span><span class=o>&amp;</span><span class=n>a</span><span class=p>,</span> <span class=n>size</span><span class=p>);</span>
+  <span class=n>cudaMallocManaged</span><span class=p>(</span><span class=o>&amp;</span><span class=n>b</span><span class=p>,</span> <span class=n>size</span><span class=p>);</span>
+  <span class=n>cudaMallocManaged</span><span class=p>(</span><span class=o>&amp;</span><span class=n>c</span><span class=p>,</span> <span class=n>size</span><span class=p>);</span>
+  
+  <span class=c1>// send to GPU
+</span><span class=c1></span>  <span class=n>cudaMemPrefetchAsync</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>size</span><span class=p>,</span> <span class=n>deviceId</span><span class=p>);</span>
+  <span class=n>cudaMemPrefetchAsync</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>size</span><span class=p>,</span> <span class=n>deviceId</span><span class=p>);</span>
+  <span class=n>cudaMemPrefetchAsync</span><span class=p>(</span><span class=n>c</span><span class=p>,</span> <span class=n>size</span><span class=p>,</span> <span class=n>deviceId</span><span class=p>);</span>
+
+  <span class=n>size_t</span> <span class=n>threadsPerBlock</span><span class=p>;</span>
+  <span class=n>size_t</span> <span class=n>numberOfBlocks</span><span class=p>;</span>
+
+  <span class=c1>// why 32, beacause warp is usually 32 on the hardware design side.
+</span><span class=c1></span>  <span class=c1>// device run more effeciently
+</span><span class=c1></span>  <span class=n>threadsPerBlock</span> <span class=o>=</span> <span class=mi>256</span><span class=p>;</span>
+  <span class=n>numberOfBlocks</span> <span class=o>=</span> <span class=mi>32</span> <span class=o>*</span> <span class=n>numberOfSMs</span><span class=p>;</span>
+
+  <span class=n>cudaError_t</span> <span class=n>addVectorsErr</span><span class=p>;</span> <span class=c1>// error handling
+</span><span class=c1></span>  <span class=n>cudaError_t</span> <span class=n>asyncErr</span><span class=p>;</span>
+</code></pre></td></tr></table></div></div><h3 id=4-create-streams>4. Create streams</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=cm>/*
+</span><span class=cm>   * Create 3 streams to run initialize the 3 data vectors in parallel.
+</span><span class=cm>   */</span>
+  <span class=n>cudaStream_t</span> <span class=n>stream1</span><span class=p>,</span> <span class=n>stream2</span><span class=p>,</span> <span class=n>stream3</span><span class=p>;</span>
+  <span class=n>cudaStreamCreate</span><span class=p>(</span><span class=o>&amp;</span><span class=n>stream1</span><span class=p>);</span>
+  <span class=n>cudaStreamCreate</span><span class=p>(</span><span class=o>&amp;</span><span class=n>stream2</span><span class=p>);</span>
+  <span class=n>cudaStreamCreate</span><span class=p>(</span><span class=o>&amp;</span><span class=n>stream3</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><h3 id=5-kernel-launch>5. Kernel launch</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=cm>/*
+</span><span class=cm>   * Give each `initWith` launch its own non-standard stream.
+</span><span class=cm>   * note the &lt;&lt;&lt; &gt;&gt;&gt;: also called a “kernel launch”
+</span><span class=cm>   */</span>
+  <span class=n>initWith</span><span class=o>&lt;&lt;&lt;</span><span class=n>numberOfBlocks</span><span class=p>,</span> <span class=n>threadsPerBlock</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>stream1</span><span class=o>&gt;&gt;&gt;</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=n>N</span><span class=p>);</span>
+  <span class=n>initWith</span><span class=o>&lt;&lt;&lt;</span><span class=n>numberOfBlocks</span><span class=p>,</span> <span class=n>threadsPerBlock</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>stream2</span><span class=o>&gt;&gt;&gt;</span><span class=p>(</span><span class=mi>4</span><span class=p>,</span> <span class=n>b</span><span class=p>,</span> <span class=n>N</span><span class=p>);</span>
+  <span class=n>initWith</span><span class=o>&lt;&lt;&lt;</span><span class=n>numberOfBlocks</span><span class=p>,</span> <span class=n>threadsPerBlock</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>stream3</span><span class=o>&gt;&gt;&gt;</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=n>N</span><span class=p>);</span>
+
+  <span class=n>addVectorsInto</span><span class=o>&lt;&lt;&lt;</span><span class=n>numberOfBlocks</span><span class=p>,</span> <span class=n>threadsPerBlock</span><span class=o>&gt;&gt;&gt;</span><span class=p>(</span><span class=n>c</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>,</span> <span class=n>N</span><span class=p>);</span>
+
+  <span class=n>addVectorsErr</span> <span class=o>=</span> <span class=n>cudaGetLastError</span><span class=p>();</span>
+  <span class=k>if</span><span class=p>(</span><span class=n>addVectorsErr</span> <span class=o>!=</span> <span class=n>cudaSuccess</span><span class=p>)</span> <span class=n>printf</span><span class=p>(</span><span class=s>&#34;Error: %s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>cudaGetErrorString</span><span class=p>(</span><span class=n>addVectorsErr</span><span class=p>));</span>
+  
+  <span class=c1>// critical!!!
+</span><span class=c1></span>  <span class=n>asyncErr</span> <span class=o>=</span> <span class=n>cudaDeviceSynchronize</span><span class=p>();</span>
+  <span class=k>if</span><span class=p>(</span><span class=n>asyncErr</span> <span class=o>!=</span> <span class=n>cudaSuccess</span><span class=p>)</span> <span class=n>printf</span><span class=p>(</span><span class=s>&#34;Error: %s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>cudaGetErrorString</span><span class=p>(</span><span class=n>asyncErr</span><span class=p>));</span>
+</code></pre></td></tr></table></div></div><h3 id=6-fetch-data-and-run-on-cpu>6. fetch data and run on CPU</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=c1>// fetch data to CPU memory
+</span><span class=c1></span>  <span class=n>cudaMemPrefetchAsync</span><span class=p>(</span><span class=n>c</span><span class=p>,</span> <span class=n>size</span><span class=p>,</span> <span class=n>cudaCpuDeviceId</span><span class=p>);</span>
+  <span class=c1>// run a func in CPU
+</span><span class=c1></span>  <span class=n>checkElementsAre</span><span class=p>(</span><span class=mi>7</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=n>N</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><h3 id=7-free-memory>7. free memory</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp>  <span class=cm>/*
+</span><span class=cm>   * Destroy streams when they are no longer needed.
+</span><span class=cm>   */</span>
+  <span class=n>cudaStreamDestroy</span><span class=p>(</span><span class=n>stream1</span><span class=p>);</span>
+  <span class=n>cudaStreamDestroy</span><span class=p>(</span><span class=n>stream2</span><span class=p>);</span>
+  <span class=n>cudaStreamDestroy</span><span class=p>(</span><span class=n>stream3</span><span class=p>);</span>
+
+  <span class=c1>// free GPU memory
+</span><span class=c1></span>  <span class=n>cudaFree</span><span class=p>(</span><span class=n>a</span><span class=p>);</span>
+  <span class=n>cudaFree</span><span class=p>(</span><span class=n>b</span><span class=p>);</span>
+  <span class=n>cudaFree</span><span class=p>(</span><span class=n>c</span><span class=p>);</span>
+</code></pre></td></tr></table></div></div><p>Here is a function run on CPU</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cpp data-lang=cpp><span class=kt>void</span> <span class=nf>checkElementsAre</span><span class=p>(</span><span class=kt>float</span> <span class=n>target</span><span class=p>,</span> <span class=kt>float</span> <span class=o>*</span><span class=n>vector</span><span class=p>,</span> <span class=kt>int</span> <span class=n>N</span><span class=p>)</span>
+<span class=p>{</span>
+  <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+  <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>vector</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>!=</span> <span class=n>target</span><span class=p>)</span>
+    <span class=p>{</span>
+      <span class=n>printf</span><span class=p>(</span><span class=s>&#34;FAIL: vector[%d] - %0.0f does not equal %0.0f</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>vector</span><span class=p>[</span><span class=n>i</span><span class=p>],</span> <span class=n>target</span><span class=p>);</span>
+      <span class=n>exit</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+  <span class=n>printf</span><span class=p>(</span><span class=s>&#34;Success! All values calculated correctly.</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2020-07-11</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://zqfang.github.io/2020-07-28-cpp-cuda/ data-title="C++ Notes: CUDA" data-hashtags=C++,CUDA><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://zqfang.github.io/2020-07-28-cpp-cuda/ data-hashtag=C++><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=https://zqfang.github.io/2020-07-28-cpp-cuda/ data-title="C++ Notes: CUDA"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="Share on Line" data-sharer=line data-url=https://zqfang.github.io/2020-07-28-cpp-cuda/ data-title="C++ Notes: CUDA"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=https://zqfang.github.io/2020-07-28-cpp-cuda/ data-title="C++ Notes: CUDA"><i class="fab fa-weibo fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/c++/>C++</a>,&nbsp;<a href=/tags/cuda/>CUDA</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/2020-07-10-cpp-threading/ class=prev rel=prev title="C++ Notes: Concurrency"><i class="fas fa-angle-left fa-fw"></i>C++ Notes: Concurrency</a>
+<a href=/2020-07-25-dl-geometric/ class=next rel=next title="Geometric Deep Learning">Geometric Deep Learning<i class="fas fa-angle-right fa-fw"></i></a></div></div><div id=comments><div id=disqus_thread class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://disqus.com/?ref_noscript>Disqus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>zqfang</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css><script type=text/javascript src=https://bioninja-1.disqus.com/embed.js defer></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.f51938f3065a40ee841bcb558e4330e31fd26c0ea55343fff8770b88b0319a3c.js integrity="sha256-9Rk48wZaQO6EG8tVjkMw4x/SbA6lU0P/+HcLiLAxmjw="></script></body></html>

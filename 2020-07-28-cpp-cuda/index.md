@@ -12,7 +12,7 @@ A Cuda/C++ starter cheatsheet
 
 ![SM](/images/cuda/cuda-SM.png)
 
-## Special variable
+## Concepts
 
 1. `kernel`:  the code (function) run on GPU
     - one kernel, only have one grid, grid have blocks, block has threads. 
@@ -33,14 +33,14 @@ Each GPU made of lots of `Streams`(hardware). When a kernel grid activate, multi
 
 2.  `Warp`
 
-for SM(hardware), CUDA run as warp(线程束), beacuse hardward don't know where the block, who they are.  
+For SM(hardware), CUDA run as warp(线程束), SM don't know where the block, who they are.  
 
-In hardware, the thread resource are limited, not all `logical threads` run at the same time. The minimun `physical threads` run at the same time are called warp. 
+In hardware, the thread resource are limited, not all `logical threads` run at the same time. The minimun `physical threads` run at the same time are called `warp`. 
 
 ![warp](/images/cuda/cuda-warps.png)
 
 
-for example: if one block have 128 threads, when running on `Stream`, this block divied into
+for example: if one block assigned 128 threads, when running on `Stream`, this block divied into
 ```
 warp0: thread  0,........thread31
 warp1: thread 32,........thread63
@@ -48,15 +48,11 @@ warp2: thread 64,........thread95
 warp3: thread 96,........thread127
 ```
 
-
-## compile
-
-compile with `nvcc`, not `gcc`
-
 ## special keywords
 
 device: GPU  
-host: CPU
+host: CPU  
+compile with `nvcc`, not `gcc`
 
 | keyword | execution | called by  | other |
 | --- | --- | --- | --- |
@@ -96,7 +92,8 @@ void initWith(float num, float *a, int N)
 }
 ```
 
-3 dimension index
+### 3 dimension index
+
 ```cpp
 tid=threadIdx.x+threadIdx.y*blockDim.x+threadIdx.z*blockDim.x*blockDim.y
 ```
@@ -122,6 +119,7 @@ void addVectorsInto(float *result, float *a, float *b, int N)
 ![flow](/images/cuda/cuda-ProgramFlow.jpg)
 
 ### 1. Get device 
+
 ```cpp
   int deviceId;
   int numberOfSMs;
@@ -129,6 +127,7 @@ void addVectorsInto(float *result, float *a, float *b, int N)
   cudaGetDevice(&deviceId);
   cudaDeviceGetAttribute(&numberOfSMs, cudaDevAttrMultiProcessorCount, deviceId);
 ```
+
 ### 3. GPU memory allocation
 
 ```cpp
@@ -184,16 +183,19 @@ void addVectorsInto(float *result, float *a, float *b, int N)
   initWith<<<numberOfBlocks, threadsPerBlock, 0, stream2>>>(4, b, N);
   initWith<<<numberOfBlocks, threadsPerBlock, 0, stream3>>>(0, c, N);
 
+  // run
   addVectorsInto<<<numberOfBlocks, threadsPerBlock>>>(c, a, b, N);
 
   addVectorsErr = cudaGetLastError();
   if(addVectorsErr != cudaSuccess) printf("Error: %s\n", cudaGetErrorString(addVectorsErr));
   
-  // critical!!!
+  // critical !!!
   asyncErr = cudaDeviceSynchronize();
   if(asyncErr != cudaSuccess) printf("Error: %s\n", cudaGetErrorString(asyncErr));
 ```
+
 ### 6. fetch data and run on CPU
+
 ```cpp
   // fetch data to CPU memory
   cudaMemPrefetchAsync(c, size, cudaCpuDeviceId);
@@ -202,6 +204,7 @@ void addVectorsInto(float *result, float *a, float *b, int N)
 ```
 
 ### 7. free memory
+
 ```cpp
   /*
    * Destroy streams when they are no longer needed.
@@ -215,7 +218,6 @@ void addVectorsInto(float *result, float *a, float *b, int N)
   cudaFree(b);
   cudaFree(c);
 ```
-
 
 Here is a function run on CPU
 

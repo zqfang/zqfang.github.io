@@ -283,9 +283,8 @@ $$
 second network replace the adjacency matrix with positive pointwise mutual information (PPMI) matrix
 
 $$
-\mathbf{H}^{\prime}=\sigma\left(\mathbf{D}_{P}^{-\frac{1}{2}} \mathbf{X}_{P} \mathbf{D}_{P}^{-\frac{1}{2}} \mathbf{H} \Theta\right)
+\mathbf H^{\prime}=\sigma(\mathbf D_{P}^{-\frac{1}{2}} \mathbf{X}_{P} \mathbf D_{P}^{-\frac{1}{2}} \mathbf H \Theta)
 $$
-
 
 Assemble these two convolutions via the final loss function
 
@@ -316,7 +315,7 @@ a general inductive framework.
 
 $$
 \begin{aligned}
-\mathbf{h}_{N_{v}}^{t} &=\text { AGGREGATE }_{t}\left(\left\{\mathbf{h}_{u}^{t-1}, \forall u \in N_{v}\right\}\right) \\
+\mathbf h_{N_{v}}^{t} &=\text { AGGREGATE }_{t}\left(\lbrace \mathbf{h}_{u}^{t-1}, \forall u \in N_{v}\rbrace \right) \cr
 \mathbf{h}_{v}^{t} &=\sigma\left(\mathbf{W}^{t} \cdot\left[\mathbf{h}_{v}^{t-1} \| \mathbf{h}_{N_{v}}^{t}\right]\right)
 \end{aligned}
 $$
@@ -325,7 +324,7 @@ $$
 1. Mean aggregator
    
 $$
-\mathbf{h}_{v}^{t}=\sigma\left(\mathbf{W} \cdot \operatorname{MEAN}\left(\left\{\mathbf{h}_{v}^{t-1}\right\} \cup\left\{\mathbf{h}_{u}^{t-1}, \forall u \in N_{v}\right\}\right)\right.
+\mathbf h_{v}^{t}=\sigma\left(\mathbf{W} \cdot \operatorname{MEAN}\left(\lbrace \mathbf{h}_{v}^{t-1}\rbrace \cup\lbrace \mathbf{h}_{u}^{t-1}, \forall u \in N_{v}\rbrace \right)\right.
 $$
 
 2. LSTM aggregator
@@ -333,7 +332,7 @@ $$
 3. Pooling aggregator
    
 $$
-\mathbf{h}_{N_{v}}^{t}=\max \left(\left\{\sigma\left(\mathbf{W}_{\mathrm{pool}} \mathbf{h}_{u}^{t-1}+\mathbf{b}\right), \forall u \in N_{v}\right\}\right)
+\mathbf h_{N_{v}}^{t} =\max \left(\lbrace \sigma\left(\mathbf{W}_{\mathrm{pool}} \mathbf{h}_{u}^{t-1}+\mathbf{b}\right), \forall u \in N_{v}\rbrace \right)
 $$
 
 an unsupervised loss function which encouage nearby nodes to have similar representations while distant nodes have different representations:

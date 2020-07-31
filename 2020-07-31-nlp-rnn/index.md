@@ -1,4 +1,4 @@
-# NLP: RNN and Self-attension
+# NLP: RNN and Self-attention
 
 
 ## Backpropagation Through Time

@@ -1,5 +1,5 @@
 ---
-title: "NLP concepts"
+title: "NLP: A short guide for biologist"
 date: 2020-06-20
 categories: ["Nature Language Processing"]
 comments: true
@@ -7,38 +7,106 @@ tags: ["NLP"]
 math: true
 ---
 
-Basic concepts in NLP
+NLP Basics for the newbies like me
 
-## NLP 
+## Languwage model
 
-### Languwage model
+Models that **assigns probabilities to sequences of words** are called languwage models.
 
-MOdels that assigns probabilities to sequences of words are called languwage models.
+## Count-based Representation
 
-### Count-based Representation
+### 1. one-hot representation
+### 2. BoW: Bag of words
+Blow describes the `occurrence of words` within a document. including
 
-1. one-hot representation
-2. BoW: Bag of words
-Bow describes the `occurrence of words` within a document. including
+- A Vocabulary of known words
+- A measure of the presence of known words, e.g. count
 
-   - A Vocabulary of known words
-   - A measure of the presence of known words, e.g. count
+### 3. TF or TF-IDF representation: Term Frequency Inverse Document Frequency
 
-3. TF or TF-IDF representation: Term Frequency Inverse Document Frequency
+ - TF: the sum of the one-hot representation of a phrase, sentence or document's constituent words
 
-   - TF: the sum of the one-hot representation of a phrase, sentence or document's constituent words
+ $$
+ TF (w) = \frac { \text{ Number of the term w appears in the document }} { \text{Number of terms in the document}}
+ $$
 
-   $$
-   TF (w) = \frac { \text{ Number of the term w appears in the document }} { \text{Number of terms in the document}}
-   $$
+ - IDF: penalizes common tokens and rewards rare tokens
 
-   - IDF: penalizes common tokens and rewards rare tokens
+ $$
+ IDF(w) = \log \frac{\text{Number of documents}}{\text{Number of documents with term w}}
+ $$
 
-   $$
-   IDF(w) = \log \frac{\text{Number of documents}}{\text{Number of documents with term w}}
-   $$
+ - TF-IDF: $TF(w) \times IDF(w)$
 
-   - TF-IDF: $TF(w) \times IDF(w)$
+### 4. Positive pointwise Mutual Information (PPMI)
+
+An alternative weighting function to tf-idf
+
+PPMI is a measure of how often two events x and y occur, compared with what we would expect if they were independent:
+
+$$
+I(x,y) = \log_2 \frac{P(x, y)}{{P(x)}{P(y)}}
+$$
+
+The pointwise mutual information between a target word w and a context word c is then defined as:
+
+$$
+PMI(w,c) = \log_2 \frac{P(w, c)}{{P(w)}{P(c)}}
+$$
+
+PMI is a useful tool whenever we need to find words that are strongly associated.
+
+`PPMI` replaces all negative PMI values with zeros:
+
+$$
+\operatorname{PPMI}(w,c) = \max (\log_2 \frac{P(w, c)}{{P(w)}{P(c)}}, 0 )
+$$
+
+However, **PMI has the problem**: very rare words tend to have very high PMI values. So, use a different function $P_{\alpha}(c)$ that raise the probability of the context word to the power of $\alpha$:
+
+$$
+\operatorname{PPMI_{\alpha}}(w,c) = \max (\log_2 \frac{P(w, c)}{{P(w)}{P_{\alpha}(c)}}, 0 )
+$$
+
+## Word Embedding
+
+### word2vec
+
+The intuition here is taht we could just use running text as implicitly supervised training data for such a classifer: a word $s$ that occurs near the target word $apricot$ acts as gold 'correct answer' to the question "Is word $w$ likely to show up near $apricot$?"
+
+This advoids the need for any sort of hand-labeled superivsion signal.
+
+Alogrithm:
+
+- `Skip-gram with negative sampling`, aslo called SGNS
+- Skip-gram trains a probabilistic classifier that given a test targe word $t$ and its context window of $k$ workds $c_{1:k}$, assigns a probability based on how similar this contxt window is to the target word.
+
+$$
+\begin{aligned}
+P\left(+\mid t, c_{1: k}\right) &=\prod_{i=1}^{k} \frac{1}{1+e^{-t \cdot c_{i}}} \cr
+\log P\left(+\mid t, c_{1: k}\right) &=\sum_{i=1}^{k} \log \frac{1}{1+e^{-t \cdot c_{i}}}
+\end{aligned}
+$$
+
+- Note: similarity between embeddings (Cosine)
+
+$$
+Similarity(t,c) \approx t \cdot c
+$$
+- Skip-gram makes the strong assumption that all contxt words are independent
+
+
+The intuition of skip-gram is:
+
+1. Treat the target word and a neighboring context word as positive examples;
+2. Randomly sample other words in the lexicon to get negative samles;
+3. Use logistic regression to train a classifer to distinguid those two case;
+4. use the regression weights as the embeddings.
+
+
+### GloVe
+
+## Concepts
 
 ### Corpora, Tokens, and Types
 
@@ -59,6 +127,8 @@ N-grams are fixed-length consecutive token sequence occurring in the text
 
 `Lemmas` are the root forms of words.  e.g. the root form of the word fly, can be inflected into other words -- flow, flew, flies, flown, flowing ...
 
+Lemmas, also called `citation form`.  
+
 Stemming: use handcrafted rules to strip endings of words to reduce them to a common form called `stems`
 
 ### Word Senses and Semantics
@@ -67,7 +137,19 @@ Senses: the different meanings of a word
 
 ### Categorizing Words: POS Tagging
 
-part-of-speech (POS) tagging: labeling individual words or tokens
+Part-of-speech (POS): also known as word classes, or syntactic categories
+
+POS divided into two broad supercateogries: 
+
+- `closed class` types: `function words` *like of, it, and*, or *you*
+- `open class` types: nouns, verbs, adjectives, adverbs
+
+POS tagging: labeling individual words or tokens
+
+Common algorithms to do tagging
+
+- HMM: Hidden Markov Models
+- MEMM: maximum Entropy Markov Models
 
 ### Categorizing Spans: Chunking and Named Entity Recognition
 

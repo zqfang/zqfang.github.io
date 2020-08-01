@@ -77,3 +77,8 @@ motivations:
 1. construct a fully-connected, weighted, directed, rooted graph where the vertices are input words and the directed edges represent *all possible* head-dependent assignments. The weights reflect the score for each possible head-dependent relation.
    - every vertex in a spanning tree has exactly one incoming edge
    - absolute values of the edge scores are not critical to determining its maximum spanning tree. But relative weights of the edges entering each vertex that matters
+
+
+## Reference
+
+Hung-yi Lee: [Deep Learning for human language processing](https://www.youtube.com/watch?v=9erBrs-VIqc)

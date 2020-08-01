@@ -236,15 +236,3 @@ The approach to computing p-values(x) in NLP is to use non-parametric tests. e.g
 - the intuition of the bootstrap test is that we can create many virtual test sets from an observed test set by repeated sampling from it.
 - the method only maks the assumption that sample is representative of the population
 
-
-
-
-
-
-
-
-
-## Reference
-
-Hung-yi Lee: [Deep Learning for human language processing](https://www.youtube.com/watch?v=9erBrs-VIqc)
-

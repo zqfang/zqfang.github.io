@@ -3,7 +3,7 @@ title: "NLP: A short guide for biologist"
 date: 2020-06-20
 categories: ["Nature Language Processing"]
 comments: true
-tags: ["NLP"]
+tags: ["Deep Learning", "NLP"]
 math: true
 ---
 

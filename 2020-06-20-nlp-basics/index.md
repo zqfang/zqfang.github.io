@@ -224,28 +224,6 @@ $$
 \end{aligned}
 $$
 
-
-### Structure of Sentences: Parse trees
-
-Shallow parsing identifies `phrasal units`, the task of identifying the relationship between them is called `parsing`.
-
-![parsing](/images/nlp/parsing.png)
-
-1. `Parse trees` indicate how different `grammatical units` in a sentence are related hierachically. (aslo refer to `constituent parse`, chart-based )
-
-2. `dependency parsing`: directed graph (graph-based)
-   - node -> word
-   - edge -> relation
-   - all the words have one incoming edge, except ROOT
-   - there is a unique path from each word to ROOT
-
-![parsing](/images/nlp/parsing.classifier.png)
-
-maximum spanning tree
-
-SyntaxNet:  
-![syntaxnet](/images/nlp/parsingtree.gif)
-
 ## statistical testing
 
 The approach to computing p-values(x) in NLP is to use non-parametric tests. e.g.

@@ -129,6 +129,10 @@ $$
 \cos(\omega t) = \frac{1}{2} (e^{j\omega t} + e^{-j\omega t})
 $$
 
+$$
+j\sin(\omega t) =  \frac{1}{2} (e^{j\omega t} - e^{-j\omega t})
+$$
+
 
 Fourier transform:
 

@@ -129,7 +129,11 @@ $$
 
 ## Convolution on Spectral
 
-The key to understand graph convolution: [Laplacian matrix](//www.zhihu.com/question/54504471/answer/630639025) and [Newton Cool's Law](https://en.wikipedia.org/wiki/Heat_equation) 
+The key to understand graph convolution: 
+- [Laplacian matrix](//www.zhihu.com/question/54504471/answer/630639025)   
+- [Laplacian matrix wikepedia](https://en.wikipedia.org/wiki/Laplacian_matrix)  
+- [Newton's law of cooling](https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling)
+- [Heat equation](https://en.wikipedia.org/wiki/Heat_equation) 
 
 Now, the convolution operation is defined in the Fourier domain by computing the eigendecomposition of the  Laplacian Matrix
 

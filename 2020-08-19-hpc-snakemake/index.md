@@ -19,11 +19,9 @@ there are two ways to configure
 
 ### the `--cluster` way
 
-An example for Stanford Sherlock. Run a job with 1 cpu, 4g memory, and finish in 30 mininues.
-```shell
-snakemake -s Snakefile --cluster 'sbatch --time=0:30:00 --mem=4g -c 1' -j 66
-```
-1. define resource in `params` directive
+An example for Stanford Sherlock.
+
+#### 1. define resource in `params` directive
 
 ```python
 rule eblocks:
@@ -41,7 +39,7 @@ run
 snakemake -s Snakefile --cluster 'sbatch -t {params.time} --mem={params.mem} -c {threads}' -j 10
 ```
 
-2. define resource in `cluster_config.yaml`
+#### 2. define resource in `cluster_config.yaml`
 
 ```yaml
 # slurm_config.yaml - cluster configuration for Stanford Sherlock
@@ -69,7 +67,7 @@ snakemake -s Snakefile --cluster-config cluster.yaml \
           -j 10
 ```
 
-3. deploy your pipleline on HPC
+#### 3. deploy your pipleline on HPC
 
 make a `submit.sh` script 
 ```shell
@@ -103,12 +101,12 @@ sbatch submit.sh
 ### the `--profile` way
 It's more universal and versatile.
 
-1. create a directory for slurm
+#### 1. create a directory for slurm
 ```shell
 mkdir -p ~/.config/snakemake/slurm
 ```
 
-2. create `config.yaml` in the slurm directory
+#### 2. create `config.yaml` in the slurm directory
 
 **Note**: `resource` directive for clusters only allow integer now. 
 ```yaml
@@ -117,7 +115,7 @@ cluster: "sbatch -p normal -t {resources.time_min} --mem={resources.mem} -c {res
 default-resources: [cpus=1, mem=2000, time_min=60]
 ```
 
-3. We only need to assign `resource` when they are different from default
+#### 3. assign `resource` if different from default
    
 ```python
 rule eblocks:
@@ -127,7 +125,7 @@ rule eblocks:
     shell: "..."
 ```
 
-4. run 
+#### 4. run 
 ```shell
 snakemake --profile slurm -s haplomap.smk --configfile config.yaml -j 666
 ```

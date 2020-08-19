@@ -15,10 +15,10 @@ there are two ways to configure
 
 - use `--cluster`: 
   - works on different HPC system, e.g. slurm, SGE. 
-  - assign `resource` in `params` deritive explicitly.
+  - assign `resource` in `params` directive explicitly.
   - or provide a config file by `--cluster-config` 
 - use `--profile`: (recommend way)
-  - assign `resource` in `resource` deritive explicitly.
+  - assign `resource` in `resource` directive explicitly.
   - or provide a profile file.
 
 

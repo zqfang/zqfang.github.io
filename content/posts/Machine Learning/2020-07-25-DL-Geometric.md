@@ -76,6 +76,13 @@ $$
 
 What and why [Laplacian matrix](https://www.zhihu.com/question/54504471/answer/630639025) 
 
+The key to understand Laplacian is PDE or Heat equation
+
+$$
+\frac{\partial T}{\partial t}(x, t)=\alpha \cdot \frac{\partial^{2} T}{\partial x^{2}}(x, t)
+$$
+
+
 4. Symmetric normalized Laplacian
 
 the symmetric normalized Laplacian is define as:

@@ -87,8 +87,10 @@ $$
 
 or
 
+
 $$
 \nabla^{2} f=\frac{1}{\sqrt{|g|}} \frac{\partial}{\partial \xi^{i}}\left(\sqrt{|g|} g^{i j} \frac{\partial f}{\partial \xi^{j}}\right)=0, \quad\left(g=\operatorname{det}\left\{g_{i j}\right\}\right)
 $$
+
 
 [Laplace's equation](https://en.wikipedia.org/wiki/Laplace%27s_equation)

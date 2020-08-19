@@ -3,7 +3,7 @@ title: "SuperFast RNA-seq"
 description: 'salmon-tximport-deseq2'
 date: 2020-01-20
 categories: ["Make bioinfo uncool again"]
-tags: ["RNA-seq"]
+tags: ["RNA-seq","Bioinformatics"]
 comments: true
 ---
 

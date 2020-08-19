@@ -1,5 +1,5 @@
 ---
-title: "NLP: A short guide for biologist"
+title: "NLP: Start point for biologist"
 date: 2020-06-20
 categories: ["Nature Language Processing"]
 comments: true

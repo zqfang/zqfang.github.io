@@ -3,7 +3,7 @@ title: "GATK for inbred mouse is not good"
 description: 
 date: 2020-03-10
 categories: ["Make bioinfo uncool again"]
-tags: ["GATK", "Genetics"]
+tags: ["GATK", "Genetics", "Bioinformatics"]
 published: true
 comments: true
 ---

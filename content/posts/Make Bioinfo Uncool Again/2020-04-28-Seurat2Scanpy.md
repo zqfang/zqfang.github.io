@@ -3,7 +3,7 @@ title: "Convert Seurat Robj to Scanpy h5ad"
 description: The correct way to convert seurat Robj to Scanpy h5ad
 date: 2020-04-28
 categories: ["Make bioinfo uncool again"]
-tags: ["scRNA-seq", "Scanpy", "Seurat"]
+tags: ["scRNA-seq", "Scanpy", "Seurat", "Bioinformatics"]
 published: true
 comments: true
 ---

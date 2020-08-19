@@ -46,7 +46,7 @@ e^{i\omega t} = \cos (\omega t) + i \sin (\omega t)
 $$
 
 clockwise roation: $e^{i\omega t}$  
-anti-clockwise roation: $e^{ - i\omega t}$
+counter-clockwise roation: $e^{ - i\omega t}$
 
 when $\varphi = \pi$, `Eluer's identity`
 

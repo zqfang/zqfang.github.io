@@ -1,4 +1,4 @@
-# NLP: A short guide for biologist
+# NLP: Start point for biologist
 
 
 NLP Basics for the newbies like me

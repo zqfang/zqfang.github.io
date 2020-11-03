@@ -35,6 +35,8 @@ Generic <span style="color: magenta">[\<T>]</span> pointers are typed.
 
 Explain: see [here](https://swift.gg/2016/12/13/swift-and-c-everything-you-need-to-know/)
 
+## Pointer Safety
+[Safely manage pointers in Swift](https://developer.apple.com/videos/play/wwdc2020/10167/)
 
 ## Usage
 

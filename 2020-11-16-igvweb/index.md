@@ -1,0 +1,68 @@
+# Deploy IGV webapp on linux server
+
+
+Config IGV on the server.  
+I have to share the inteactive results with my colleague. But I don't like to install UCSC genomebrower in local. Instead, a light-weight one is what I need.  
+
+## 1. Installation
+1. Install nodejs
+
+if you have conda, just
+```shell
+conda install -c conda-forge nodejs
+```
+
+2. build igv-webapp
+```shell
+git clone https://github.com/igvteam/igv-webapp.git
+cd ./igv-webapp
+npm install
+npm run build
+```
+
+## 2. Running the app
+```shell
+npx http-server -p 5000 path/to/igv_webapp
+```
+
+## 3. Configuration (Example)
+
+1. gtf, bed, bam, bigwig ... in `resource` directory fisrt.  
+2. prepare a json file contain all the required information of tracks. see also [igv.js wiki](https://github.com/igvteam/igv.js/wiki/Tracks-2.0). E.g. mm10_peltzlab.sv.json
+    ```python
+    import json
+    tracks = []
+    for b in ['a1.bed','a2.bed','c1.bed','c2.bed']:
+        bed = os.path.basename(b)
+        track =   {
+            "name": bed.replace(".bed",""),
+            "type": "annotation",
+            "format": "bed",
+            "sourceType": "file",
+            "url": f"http://igv-app-03:5000/resources/{bed}", # your server name + port + file path 
+            #order: Number.MAX_VALUE,
+            #"visibilityWindow": 300000000,
+            "displayMode": "EXPANDED"
+            }
+        tracks.append(track)
+    sv = {
+    "label": "IGV-Lab", # name will be shown under track's menu.
+    "description": "Any descriptions",
+    "link": "",
+    "tracks": tracks
+    }
+    with open('./resources/tracks/mm10_igv-lab.json', 'w') as outfile:
+         json.dump(sv, outfile)
+    ```
+3. add the json to `trackRegistry.json` in the `resource/tracks`.
+
+    ```python
+    "mm10": [
+        "resources/tracks/mm10_annotations.json",
+        "resources/tracks/mm10_encode.json",
+        "resources/tracks/mm10_igv-lab.json" # add 
+    ]
+    ```
+4. load files
+- select the correct genome, e.g. mm10
+- In the dropdown menu of tracks, you'll see `IGV-Lab`. Click it, and select the files you've just add. 

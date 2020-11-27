@@ -140,11 +140,56 @@ A transformer of two stacked encoder and decoder looks like this
 
 ![transformer](/images/nlp/transformers.png)
 
+
+Model Arch:
+
+src -> Encoder -> Encoder Layers -> Self_attention(Multi-head attention) -> Positionwise_Feedforward -> Decoder -> Decoder Layers -> Self_attention(Multi-head attention) -> Self_attention(Multi-head attention) -> Encoder_decoder_attention(Multi-head attention) -> trg, attention
+
+
 1. transformer use `positoinal encoding` vector to representing the order of the sequence. It follows a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
 
 2. transformer use `LayerNorm`
 
 
+### Encoder:
+
+- Self-attention:  计算的是src或trg自身的词与词之间的依赖关系 (之前教程的Attention则是计算src的词与trg的词之间的依赖关系)
+  - 每个input token转成w2v
+  - 用w2v乘以三个权重矩阵(Wq,Wk,Wv)得到三个(Query,Key,Value)向量, q,k,v
+用该位置token的q乘以自己以及其他token的k, 得到self-attention分数值
+  - 分数值除以一个常数(default 8), 让梯度更稳定, 然后放入softmax, 得到自己与其他每个token的权重
+  - 所有位置的权重乘以v并相加, 得到self-attention在该位置的输出 Z
+ 
+  $$A(Q,K,V)= \operatorname{softmax} ( \frac{QK^{T}}{ \sqrt d_{k}})V=Z$$
+
+- Multi-Headed Attention - 扩展了模型专注于不同位置的能力:
+  - 把上述Self-attention的过程做8次, 即开始就初始化8组权重矩阵(Wq,Wk,Wv), 得到8个Q,K,V矩阵, 通过上述计算最后得到8个 Z
+  - 将8个Z合并, 并乘以另一权重矩阵Wo, 最终得到一个Z矩阵
+  
+- Positional Encoding - 表示序列的顺序将src的position放入到embedding layer
+- Layer Normalization - 解决多层神经网络训练困难的问题，通过将前一层的信息无差的传递到下一层, 使特征的平均值为0, 标准差为1, 更容易训练
+
+### Decoder
+与 Encoder 相似, 但比Encoder多了一层Multi-Headed Attention
+一层是src或trg自身的词与词之间的依赖关系, 另一层是是计算src的词与trg的词之间的依赖关系
+- Mask
+  - Padding Mask - Encoder和Decoder都会用到, 大小与batch size对齐后序列一致, 的部分为0, 其余为1
+  - Sequence/Subsequent Mask - Decoder会用到, 为了使其看不到未来的信息(使Decoder输出应该只能依赖于 t 时刻之前的输出，而不能依赖 t 和 t 之后的输出), 通过下三角矩阵解决, 且下三角矩阵应与decoder的padding mask 结合
+
+
+### PositionwiseFeedforwardLayer:
+
+1. after attetnion operation, apply a fc layer first to transformed from hid_dim to pf_dim (512 to 2048)
+2. apply relu activation function (In BERT, use glue activation function)
+3. apply dropout
+4. apply another fc layer to transformed from pf_dim to hid_dim
+
+
+
+
+
+
 ## Reference
 
-[transformer](https://jalammar.github.io/illustrated-transformer/)
+[transformer](https://jalammar.github.io/illustrated-transformer/)  
+[transformer code breakdown: pytorch](https://charon.me/posts/pytorch/pytorch_seq2seq_6/)

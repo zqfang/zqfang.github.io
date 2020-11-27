@@ -1,4 +1,4 @@
-# NLP: RNN and Self-attention
+# NLP: RNN and Transformers
 
 
 ## Backpropagation Through Time
@@ -74,6 +74,37 @@ $$
 $$
 h_t = (1- z_t)h_{t-1} + z_t \tilde h_t
 $$
+
+
+### Example: Text Classification
+```python
+import torch
+import torch.nn as nn
+
+class RNN(nn.Module):
+    def __init__(self, input_size, hidden_size, num_layers, num_classes):
+        super(RNN, self).__init__()
+        self.num_layers = num_layers
+        self.hidden_size = hidden_size
+        ## MARK: work with nn.RNN, nn.GRU, nn.LSTM
+        self.rnn = nn.GRU(input_size, hidden_size, num_layers, batch_first=True) 
+        # Batch x Seq_len x embeding_size (input_size)
+        self.fc = nn.Linear(hidden_size, num_classes)
+    def forward(self, inputs):
+
+        ## MARK: init hidden state (h0)
+        hidden = torch.zeros(self.num_layers, inputs.size(0), self.hidden_size)
+        # if LSTM, need init cell state (c0)
+        # cell = torch.zeros(self.num_layers, inputs.size(0), self.hidden_size)
+
+        out, hidden = self.rnn(inputs, hidden) # out: B x S x hidden_size
+        # out, (hidden, cell) = self.rnn(inputs, (hidden, cell))
+
+        ## Mark: only need last output for sentence classification
+        out = out[:,-1,:] # out: B x hidden_size
+        out = self.fc(out)
+        return out
+```
 
 
 ## Attention mechanism
@@ -226,6 +257,8 @@ $$d_{\text{word embed}} = d_{\text {pos embed}}$$
 
 ## Reference
 
+[GRU and LSTM](https://www.michaelphi.com/illustrated-guide-to-lstms-and-grus-a-step-by-step-explanation/)  
 [transformer](https://jalammar.github.io/illustrated-transformer/)  
 [transformer code breakdown: pytorch](https://charon.me/posts/pytorch/pytorch_seq2seq_6/)  
 [what and why postional encoding](https://kazemnejad.com/blog/transformer_architecture_positional_encoding/)
+

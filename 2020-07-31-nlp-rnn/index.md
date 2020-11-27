@@ -141,14 +141,48 @@ A transformer of two stacked encoder and decoder looks like this
 ![transformer](/images/nlp/transformers.png)
 
 
-Model Arch:
+### Positoinal encoding
+Transformer use `positoinal encoding` vector to representing the order of the sequence. It follows a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
 
-src -> Encoder -> Encoder Layers -> Self_attention(Multi-head attention) -> Positionwise_Feedforward -> Decoder -> Decoder Layers -> Self_attention(Multi-head attention) -> Self_attention(Multi-head attention) -> Encoder_decoder_attention(Multi-head attention) -> trg, attention
+let $t$ be the position in an input sentence, $\overrightarrow{p_{t}} \in R^d$ be the encoding, $d$ be the encoding dimension, then
 
+$$
+\overrightarrow{p_{t}}^{(i)}=f(t)^{(i)}:=\left\{\begin{array}{ll}
+\sin \left(\omega_{k} \cdot t\right), & \text { if } i=2 k \\
+\cos \left(\omega_{k} \cdot t\right), & \text { if } i=2 k+1
+\end{array}\right.
+$$
 
-1. transformer use `positoinal encoding` vector to representing the order of the sequence. It follows a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
+where
 
-2. transformer use `LayerNorm`
+$$
+\omega_{k}=\frac{1}{10000^{2 k / d}}
+$$
+
+image that the positional embeding look like this:
+
+$$
+\overrightarrow{p_{t}}=\left[\begin{array}{c}
+\sin \left(\omega_{1} \cdot t\right) \\
+\cos \left(\omega_{1} \cdot t\right) \\
+\sin \left(\omega_{2} \cdot t\right) \\
+\cos \left(\omega_{2} \cdot t\right) \\
+\vdots \\
+\sin \left(\omega_{d / 2} \cdot t\right) \\
+\cos \left(\omega_{d / 2} \cdot t\right)
+\end{array}\right]_{d \times 1}
+$$
+
+**Word embeding + Positional encoding**:  
+For every word $\omega_{t}$ in a sentence, calculating the correspondent embedding which is fed to the model is as follows:
+
+$$
+\psi^{\prime}\left(w_{t}\right)=\psi\left(w_{t}\right)+\overrightarrow{p_{t}}
+$$
+
+To make this summation possible, keep
+$$d_{\text{word embed}} = d_{\text {pos embed}}$$
+
 
 
 ### Encoder:
@@ -192,4 +226,5 @@ src -> Encoder -> Encoder Layers -> Self_attention(Multi-head attention) -> Posi
 ## Reference
 
 [transformer](https://jalammar.github.io/illustrated-transformer/)  
-[transformer code breakdown: pytorch](https://charon.me/posts/pytorch/pytorch_seq2seq_6/)
+[transformer code breakdown: pytorch](https://charon.me/posts/pytorch/pytorch_seq2seq_6/)  
+[what and why postional encoding](https://kazemnejad.com/blog/transformer_architecture_positional_encoding/)

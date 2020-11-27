@@ -144,13 +144,14 @@ A transformer of two stacked encoder and decoder looks like this
 ### Positoinal encoding
 Transformer use `positoinal encoding` vector to representing the order of the sequence. It follows a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
 
+
 let $t$ be the position in an input sentence, $\overrightarrow{p_{t}} \in R^d$ be the encoding, $d$ be the encoding dimension, then
 
 $$
-\overrightarrow{p_{t}}^{(i)}=f(t)^{(i)}:=\left\{\begin{array}{ll}
-\sin \left(\omega_{k} \cdot t\right), & \text { if } i=2 k \\
-\cos \left(\omega_{k} \cdot t\right), & \text { if } i=2 k+1
-\end{array}\right.
+\overrightarrow{p_{t}}^{(i)}=f(t)^{(i)}:= \begin{cases}
+\sin (\omega_{k} \cdot t), & \text { if } i=2 k \cr 
+\cos (\omega_{k} \cdot t), & \text { if } i=2 k+1
+\end{cases}
 $$
 
 where
@@ -163,12 +164,12 @@ image that the positional embeding look like this:
 
 $$
 \overrightarrow{p_{t}}=\left[\begin{array}{c}
-\sin \left(\omega_{1} \cdot t\right) \\
-\cos \left(\omega_{1} \cdot t\right) \\
-\sin \left(\omega_{2} \cdot t\right) \\
-\cos \left(\omega_{2} \cdot t\right) \\
-\vdots \\
-\sin \left(\omega_{d / 2} \cdot t\right) \\
+\sin \left(\omega_{1} \cdot t\right) \cr
+\cos \left(\omega_{1} \cdot t\right) \cr
+\sin \left(\omega_{2} \cdot t\right) \cr
+\cos \left(\omega_{2} \cdot t\right) \cr
+\vdots \cr
+\sin \left(\omega_{d / 2} \cdot t\right) \cr
 \cos \left(\omega_{d / 2} \cdot t\right)
 \end{array}\right]_{d \times 1}
 $$

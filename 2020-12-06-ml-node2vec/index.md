@@ -1,4 +1,4 @@
-# Graph Embeding: Node2Vec
+# Graph Embedding: Node2Vec
 
 
 Node Embedings are learnt in the same way as `word2vec` (skip-gram model)

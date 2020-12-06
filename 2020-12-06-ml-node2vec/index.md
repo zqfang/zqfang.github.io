@@ -51,6 +51,17 @@ where,
 
 Using the sampling strategy, node2vec will generate "senences" (the directed subgraphs) which are will be used for embedding just like text sentences are used in word2vec.
 
+### Alias Sampling
+Preproccsing of transition probabilities for guiding random walk
+
+ Alias Sampling: sampling of nodes while simulating the random walk can be done efficiently in $O(1)$.
+
+[Understand Alias Method](http://shomy.top/2017/05/09/alias-method-sampling/)
+
+[What's really going on ?](https://zhuanlan.zhihu.com/p/56136631)
+
+
+
 ## Reference
 
 [node2vec: Scalable Feature Learning for Networks](https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf)  

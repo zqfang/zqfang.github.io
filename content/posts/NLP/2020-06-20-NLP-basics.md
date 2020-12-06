@@ -76,10 +76,10 @@ The intuition here is taht we could just use running text as implicitly supervis
 
 This advoids the need for any sort of hand-labeled superivsion signal.
 
-Alogrithm:
+#### Skip-gram
 
 - `Skip-gram with negative sampling`, aslo called SGNS
-- Skip-gram trains a probabilistic classifier that given a test targe word $t$ and its context window of $k$ workds $c_{1:k}$, assigns a probability based on how similar this contxt window is to the target word.
+- Skip-gram trains a probabilistic classifier that given a test targe word $t$ and its context window of $k$ workds $c_{1:k}$, assigns a probability based on how similar this context window is to the target word.
 
 $$
 \begin{aligned}
@@ -93,16 +93,18 @@ $$
 $$
 Similarity(t,c) \approx t \cdot c
 $$
-- Skip-gram makes the strong assumption that all contxt words are independent
+- Skip-gram makes the strong assumption that all context words are independent
 
 
 The intuition of skip-gram is:
 
 1. Treat the target word and a neighboring context word as positive examples;
-2. Randomly sample other words in the lexicon to get negative samles;
+2. Randomly sample other words in the lexicon to get negative samples;
 3. Use logistic regression to train a classifer to distinguid those two case;
 4. use the regression weights as the embeddings.
 
+#### CBOW
+Continueous Bag of Words Model (CBOW)
 
 ### GloVe
 

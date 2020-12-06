@@ -2,7 +2,7 @@
 title: "Geometric Deep Learning"
 date: 2020-07-25
 categories: ["Machine Learning"]
-tags: ["Deep Learning"]
+tags: ["Deep Learning","Graph"]
 comments: true
 math: true
 ---

@@ -1,7 +1,7 @@
 ---
-title: "Geometric Deep Learning"
+title: "Graph Neural Networks: basics"
 date: 2020-07-25
-categories: ["Machine Learning"]
+categories: ["Machine Learning with Graph"]
 tags: ["Deep Learning","Graph"]
 comments: true
 math: true

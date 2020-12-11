@@ -14,7 +14,8 @@ Continuous Bag of Words Model (CBOW)
 
 When trainning, use `N-gram` language model. That's for a target word, select $m$ (window) words before and after.
 
-Model
+Model  
+
 ![parsing](/images/nlp/cbow_network_arch.png)
 
 1. one-hot encoding get $2m$ vectors:

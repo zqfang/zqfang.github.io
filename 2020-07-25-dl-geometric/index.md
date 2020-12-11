@@ -1,4 +1,4 @@
-# Geometric Deep Learning
+# Graph Neural Networks: basics
 
 
 Introduction of Graph Neural Networks

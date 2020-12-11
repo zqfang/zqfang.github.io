@@ -1,4 +1,4 @@
-# Graph Embedding: Node2Vec
+# Graph: Node2Vec
 
 
 Node Embedings are learnt in the same way as `word2vec` (skip-gram model)
@@ -6,6 +6,17 @@ Node Embedings are learnt in the same way as `word2vec` (skip-gram model)
 However, graphs could be (un)directed, (un)weighted, (a)cyclic and are basically much more complex than the strucure of a sequence...
 
 So how do we generate "corpus" from a graph ?
+
+## Random walk on the graph
+
+Given a graph and a starting point, we **select a neighbor of it at random**; then we select a neigbor of this point at random, and move to it, etc.
+
+**The (random) sequence of points selected** this way is a random walk on the graph
+
+### Why Random walks
+
+1. Expressivity: Flexible stochastic definition of node similarity that incorporates both **local** and **higher-order** neighborhood information
+2. Efficiency: Do not need to consider all node pairs when training; only need to consider pairs that co-occur on random walks
 
 ## Sampling strategy
 
@@ -15,14 +26,24 @@ Node2vec's sampling strategy accepts 4 argument:
 - **Number of walks**: number of random walks to be generated from each node in the graph
 - **Walk length**: how many nodes are in each random walk
 - **P**: return hyperparameter
-- **Q**: Inout hyperparameter (DFS biased or BFS baised control)
+  - return back to the previous node
+- **Q**: Inout hyperparameter 
+  - Moving outwards : (DFS biased or BFS baised control)
+  - intuitively, **q** is the "ratio" of BFS vs. DFS
 
 Also, the standard skip-gram parameters
 - context window size
 - number of iterations
 - etc.
 
-### Principal
+### Node2Vec: Biased Walks
+
+![biasedwalk](/images/ml/randwalk.png)
+
+
+## Principal
+
+Idea: use flexible, biased random walks that can trade off between local and global views of the network.
 
 ![node2vec1](/images/ml/node2vec1.png)
 
@@ -61,8 +82,19 @@ Preproccsing of transition probabilities for guiding random walk
 [What's really going on ?](https://zhuanlan.zhihu.com/p/56136631)
 
 
+## Applications
+
+- Clustering/community detection
+- Node classification
+- Link prediction: predict edge $(i,j)$ based on $f(z_i,z_j)$
+  - where we can:
+    - concatenate: $f(z_i,z_j) = g([z_i, z_j])$ 
+    - Hadamard: $f(z_i,z_j) = g( z_i \star z_j)$ (per coordinate product)
+    - Sum/Avg: $f(z_i,z_j) = g(z_i + z_j)$
+    - Distance: $f(z_i,z_j) = g( || z_i - z_j || _2$
 
 ## Reference
 
+[Jure Leskovec, Stanford CS224W: Machine Learning with Graphs](http://cs224w.stanford.edu)  
 [node2vec: Scalable Feature Learning for Networks](https://cs.stanford.edu/~jure/pubs/node2vec-kdd16.pdf)  
 [Embeddings for Graph Data](https://towardsdatascience.com/node2vec-embeddings-for-graph-data-32a866340fef)

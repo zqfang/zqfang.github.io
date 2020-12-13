@@ -1,6 +1,6 @@
 ---
 title: "Graph: Semi-supervised Node Classification"
-date: 2020-12-11
+date: 2020-12-10
 categories: ["Machine Learning with Graph"]
 comments: true
 tags: ["Deep Learning", "Graph"]

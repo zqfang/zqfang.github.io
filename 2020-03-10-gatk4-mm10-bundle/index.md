@@ -1,20 +1,24 @@
-# GATK for inbred mouse is not good
+# GATK for inbred mouse
 
 
 
-GATK is design for human genetics, it works not so good on homogeneous inbred mouse.  
-But we could use bcftools instead.
 
-One of my colleague who studies mouse genetics, said, 
+GATK is design for human genetics, but it also work well for inbred mice.
+
+However, one of my colleague who studies mouse genetics, said, 
 
 > I tried the haplotype caller from GATK. But it seems that the haplotype caller is designed for heterogeneous genome like human than for mice. Therefore, the result coming out of HC is worse than samtools, as I manually inspected a few regions that HC calls didn't make sense.
 
 > In addition, in one of their mouse genomic paper that we reviewed, they even skipped the second recalibration step. We asked them why and they said it was because of the same reason: good for human but not that good for the homogeneous inbred mouse.
 
 
+With my own experience with GATK4, I found that:
+- SNP: at least 97% of the time, they both have the same call for inbred mice.
+- Indels: GATK is a preferable alogrithm for calling Indels (higher accuary and lower FDR), benefits from a assemble-based caller
 
+While BCFtools is as good as GATK for calling SNPs (position-based caller).
 
-But we still could collect the resource bundle for mouse.
+##  GATK resource bundle for inbred mouse.
 
 I found a workflow [here](https://github.com/igordot/genomics/blob/master/workflows/gatk-mouse-mm10.md). However, the script is out of date. 
 Also, see discussion [here](https://www.biostars.org/p/182917/)

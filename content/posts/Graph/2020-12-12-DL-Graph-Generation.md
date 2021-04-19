@@ -1,7 +1,7 @@
 ---
 title: "Graph: GraphRNN"
 date: 2020-12-12
-categories: ["Machine Learning with Graph"]
+categories: ["Machine Learning with Graphs"]
 comments: true
 tags: ["Deep Learning", "Graph"]
 math: true

@@ -1,6 +1,6 @@
 ---
-title: "Convert Seurat Robj to Scanpy h5ad"
-description: The correct way to convert seurat Robj to Scanpy h5ad
+title: "Convert Seurat to Scanpy h5ad"
+description: The correct way to convert seurat to Scanpy h5ad
 date: 2020-04-28
 categories: ["Make bioinfo uncool again"]
 tags: ["scRNA-seq", "Scanpy", "Seurat", "Bioinformatics"]
@@ -8,7 +8,23 @@ published: true
 comments: true
 ---
 
-It costed me a lot of time to convert seurat objects to scanpy. It's not a pleasant experience.  
+## IMPORTANT UPATE: 2021-04-15
+
+Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy. It is a life saver ...
+
+**Tips**:
+set default assay to `RNA` before covert to h5ad.
+
+```R
+library(SeuratDisk)
+DefaultAssay(sce) <- "RNA"
+SaveH5Seurat(sce, "sce.h5seurat")
+Convert("sce.h5seurat", dest="h5ad") # or set assay="RNA".
+```
+
+## This is the old way using rpy2
+
+Convert `Seurat` to `Scanpy` costed me a lot of time to convert seurat objects to scanpy. It's not a pleasant experience.  
 Finally, I solved it.  
 
 ### 1. Install `Seurat v3.0.2`, or python kernel will always died!!!

@@ -1,7 +1,7 @@
 ---
 title: "Graph Neural Networks: basics"
 date: 2020-07-25
-categories: ["Machine Learning with Graph"]
+categories: ["Machine Learning with Graphs"]
 tags: ["Deep Learning","Graph"]
 comments: true
 math: true

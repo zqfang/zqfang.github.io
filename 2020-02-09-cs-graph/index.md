@@ -17,7 +17,7 @@ Graphs
 * DenseGraph
 * SparseGraph
 
-Code snippets take from [Play with Algorithm](https://github.com/liuyubobobo/Play-with-Algorithms) 
+Code snippets are taken from [Play with Algorithm](https://github.com/liuyubobobo/Play-with-Algorithms) 
 
 ### 1. Dense Graph
 

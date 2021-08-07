@@ -1,9 +1,13 @@
 # Graph: Pytorch Geometric's MessagePassing
 
 
-It's not intuitive for a beginer when implement a custom `MessagePassing` layer in Pytorch Geometric (PyG). There are some implicity arguments need to take care.
+How to implement a custom `MessagePassing` layer in Pytorch Geometric (PyG) ?
 
-After reading source code, the real
+Before you start, something you need to know.
+- `special_arguments`: e.g. `x_j`, `x_i`
+- `aggregation`: scatter_add, scatter_mean, scatter_min, scatter_max
+- PyG `MessagePassing` framework only works for `node_graph`. 
+
 ## MessagePassing in PyTorch Geometric
 
 ### Principal
@@ -19,7 +23,7 @@ $$
 - $\gamma$, $\phi$: differentiable functions, such as MLP
 
 In Pytorch Geometric, `self.propagate` will do the following:
-1. execute `self.message`, $\phi$: construct the message of node pairs `(x_i, x_j)`
+1. execute `self.message`, $\phi$: construct the message of **node pairs** `(x_i, x_j)`
 
 2. execute `self.aggregate`, $\square$, aggregate message from neigbors. Internally, the aggregate works like this
    ```python

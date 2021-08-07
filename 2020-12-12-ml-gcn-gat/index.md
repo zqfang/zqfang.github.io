@@ -117,25 +117,6 @@ Compute embedding $\mathbf{h}_{v}^{k}$ of each node in the graph following:
    - Outputs are aggregated (by concatenating or adding)
 
 
-## PyTorch Geometric
-
-### Principal
-Message passing graph neural networks can be descriibe as 
-
-$$
-\mathbf{x}_{i}^{(k)}=\gamma^{(k)} (\mathbf{x} _{i}^{(k-1)}, \square _{j \in \mathcal{N}(i)} \phi^{(k)}(\mathbf{x} _{i}^{(k-1)}, \mathbf{x} _{j}^{(k-1)}, \mathbf{e} _{i, j}))
-$$
-
-- $x^{k-1}$: node features of node $i$ in layer ($k$−1) 
-- $e_{j,i} \in R^D$: (optional) edge features from node $j$ to node $i$
-- $\square$: aggregation method (permutation invariant function). i.e., mean, sum, max
-- $\gamma$, $\phi$: differentiable functions, such as MLP
-
-In Pytorch Geometric, `self.propagate` will do the following:
-1. execute `self.message`, $\phi$, transform neigbor's message
-2. execute `self.aggregate`, $\square$, aggregate message from neigbors
-3. execute `self.update`, $\gamma$, aggregated message and self message transformation.
-
 ### GCN
 
 For [GCN](https://arxiv.org/abs/1609.02907),

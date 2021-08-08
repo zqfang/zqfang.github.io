@@ -4,8 +4,8 @@
 How to implement a custom `MessagePassing` layer in Pytorch Geometric (PyG) ?
 
 Before you start, something you need to know.
-- `special_arguments`: e.g. `x_j`, `x_i`
-- `aggregation`: scatter_add, scatter_mean, scatter_min, scatter_max
+- `special_arguments`: e.g. `x_j`, `x_i`, `edge_index_j`, `edge_index_i`
+- `aggregate`: scatter_add, scatter_mean, scatter_min, scatter_max
 - PyG `MessagePassing` framework only works for `node_graph`. 
 
 ## MessagePassing in PyTorch Geometric
@@ -55,6 +55,7 @@ In Pytorch Geometric, `self.propagate` will do the following:
   - update embedding of `Node i` with aggregated message , $i \in \mathcal{V}$   
   - e.g. aggregated neighbor message and self message
 
+### Aggregate
 
 ![aggr](/images/ml/PyG-MessagePassing.png)
 

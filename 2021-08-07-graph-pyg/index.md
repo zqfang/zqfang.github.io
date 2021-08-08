@@ -1,4 +1,4 @@
-# Graph: MessagePassing in Pytorch Geometric
+# Graph: Implement a MessagePassing layer in Pytorch Geometric
 
 
 How to implement a custom `MessagePassing` layer in Pytorch Geometric (PyG) ?

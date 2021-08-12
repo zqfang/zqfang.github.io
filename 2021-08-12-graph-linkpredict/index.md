@@ -2,8 +2,10 @@
 
 
 ## Link Prediction
-Link prediction task. How to prepare train, valid, test datasets 
-Use `deepsnap`'s `GraphDataset` !
+Link prediction is a common task in knowledgegraph's link completeion. 
+
+How to prepare train, valid, test datasets ?  
+Use `deepsnap`'s `GraphDataset` to rescue !
 
 
 Check the all docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html)

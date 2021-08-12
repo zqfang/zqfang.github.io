@@ -24,7 +24,7 @@ run the comand. I use my own conda env to build shogun.
 
 Note:
 - `-DINTERFACE_PYTHON=ON` will enable install `shogun` to `/home/fangzq/miniconda/envs/fastai/lib/python3.7/site-package`
-- `-DUSE_SVMLIGHT=ON`: compile with `SVMLight` support
+- `-DUSE_SVMLIGHT=ON -DLICENSE_GPL_SHOGUN=ON`: compile with `SVMLight` support
 ```shell
 cmake -DPYTHON_INCLUDE_DIR=/home/fangzq/miniconda/envs/fastai/include/python3.7m \
       -DPYTHON_LIBRARY=/home/fangzq/miniconda/envs/fastai/lib/libpython3.so \
@@ -32,7 +32,8 @@ cmake -DPYTHON_INCLUDE_DIR=/home/fangzq/miniconda/envs/fastai/include/python3.7m
       -DPYTHON_PACKAGES_PATH=/home/fangzq/miniconda/envs/fastai/lib/python3.7/site-packages \
       -BUILD_META_EXAMPLES=OFF \
       -DUSE_SVMLIGHT=ON \
-      -DINTERFACE_PYTHON=ON 
+      -DLICENSE_GPL_SHOGUN=ON \
+      -DINTERFACE_PYTHON=ON \ 
       -DCMAKE_INSTALL_PREFIX=/home/fangzq/miniconda/envs/fastai/ ..
 ```
 
@@ -66,7 +67,12 @@ make install # DESDIR=/home/fangzq/miniconda/envs/fastai/
 ```
 you may need to copy `libshogun.so` to your python path
 ```shell
-cp /usr/local/lib/libshogun.so* /home/fangzq/miniconda/envs/fastai/lib
+cp ./build/src/shogun/libshogun.so* /home/fangzq/miniconda/envs/fastai/lib
+```
+and copy the interface file
+```shell
+cp ./build/src/interface/python/shogun.py /home/fangzq/miniconda/envs/fastai/lib/python3.7/site-packages/
+cp ./build/src/interface/python/_shogun.so /home/fangzq/miniconda/envs/fastai/lib/python3.7/site-packages/
 ```
 
 or export path 

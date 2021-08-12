@@ -219,14 +219,15 @@ class GAT(pyg_nn.MessagePassing):
 
     def message(self, edge_index_i, x_i, x_j, size_i):
         # \phi compute attention coefficient
-        x_i = x_i.view(-1, self.heads, self.out_channels)
-        x_j = x_j.view(-1, self.heads, self.out_channels)
+        x_i = x_i.view(-1, self.heads, self.out_channels) # split hidden into multi-heads
+        x_j = x_j.view(-1, self.heads, self.out_channels) 
+        # concat, then cosine similarity (vector inner product) on last axis.
         alpha = (torch.cat([x_i, x_j], dim=-1) * self.att).sum(dim=-1)
         alpha = F.leaky_relu(alpha, 0.2)
+        # pyg softmax: called scatter_add internaly
         alpha = pyg_utils.softmax(alpha, edge_index_i, size_i)
-
         alpha = F.dropout(alpha, p=self.dropout, training=self.training)
-        return x_j * alpha.view(-1, self.heads, 1)
+        return x_j * alpha.view(-1, self.heads, 1) # weighted input
 
     def update(self, aggr_out):
         # \gamma multi-head

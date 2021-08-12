@@ -11,8 +11,17 @@ math: true
 Link prediction is a common task in knowledgegraph's link completeion. 
 
 How to prepare train, valid, test datasets ?  
-Use `deepsnap`'s `GraphDataset` to rescue !
+- Use `deepsnap`'s `GraphDataset` to rescue ! It's just 2 line of code. 
+- The `GraphDataset` is compatible with `Pytorch Geometric` ! 
+```python
+from deepsnap.dataset import GraphDataset
+from deepsnap.hetero_graph import HeteroGraph
 
+hetero = HeteroGraph(H)
+dataset = GraphDataset([hetero], task='link_pred', edge_train_mode="disjoint", edge_message_ratio=0.8, edge_negative_sampling_ratio=2)
+dataset_train, dataset_val, dataset_test = dataset.split(transductive=True, split_ratio=[0.8, 0.1, 0.1])
+# dataset could be use for PyG or deepsnap's high-level API
+```
 
 Check the all docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html)
 

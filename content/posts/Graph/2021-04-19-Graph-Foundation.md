@@ -1,5 +1,5 @@
 ---
-title: "Graph: Foundation"
+title: "Graph: Concepts"
 date: 2021-04-19
 categories: ["Machine Learning with Graphs"]
 comments: true

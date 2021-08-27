@@ -1,4 +1,4 @@
-# Graph Neural Network: review
+# Graph: GNN review
 
 
 More about Graph Neural Network

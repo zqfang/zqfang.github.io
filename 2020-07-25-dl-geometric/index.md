@@ -1,4 +1,4 @@
-# Graph Neural Networks: basics
+# Graph: GNN basics
 
 
 Introduction of Graph Neural Networks

@@ -18,8 +18,13 @@ from deepsnap.dataset import GraphDataset
 from deepsnap.hetero_graph import HeteroGraph
 
 hetero = HeteroGraph(H)
-dataset = GraphDataset([hetero], task='link_pred', edge_train_mode="disjoint", edge_message_ratio=0.8, edge_negative_sampling_ratio=2)
-dataset_train, dataset_val, dataset_test = dataset.split(transductive=True, split_ratio=[0.8, 0.1, 0.1])
+dataset = GraphDataset([hetero], 
+                        task='link_pred', 
+                        edge_train_mode="disjoint", 
+                        edge_message_ratio=0.8, 
+                        edge_negative_sampling_ratio=2)
+dataset_train, dataset_val, dataset_test = dataset.split(transductive=True, 
+                                                         split_ratio=[0.8, 0.1, 0.1])
 # dataset could be use for PyG or deepsnap's high-level API
 ```
 

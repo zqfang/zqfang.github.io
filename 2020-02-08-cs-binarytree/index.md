@@ -54,95 +54,133 @@ Arr[2*i + 2] Returns the right child node.
 
 
 ####  How to construct MaxHeap:
-1. find the last node's parent 
-2. shiftup
+1. store values into an Array
+2. find the last node's parent 
+3. shiftDown (see code)
 
 Example Code:
 ```cpp
+#include <iostream>
 #include <algorithm>
+#include <string>
+#include <ctime>
+#include <cmath>
 #include <cassert>
 
 using namespace std;
 
 template<typename Item>
-class MaxHeap{
+class MaxHeap {
 
 private:
     Item *data;
     int count;
     int capacity;
-
-    void shiftUp(int k){
-        while( k > 1 && data[k/2] < data[k] ){
-            swap( data[k/2], data[k] );
+    /// helper func: construct max-heap, shift the last item up
+    void shiftUp(int k) {
+        // k: index of the data array 
+        Item e = data[k];
+        // parent: k/2, child: k
+        // if k >=2 ( count > 2 ), then swap
+        while( k > 1 && data[k/2] < data[k] ) {
+            // swap( data[k/2], data[k] );
+            data[k] = data[k/2];
             k /= 2;
         }
+        data[k] = e;
     }
-
-    void shiftDown(int k){
-        while( 2*k <= count ){
+    /// helper func: shift the root item down
+    void shiftDown(int k) {
+        Item e = data[k];
+        while( 2*k <= count ) {
             int j = 2*k;
-            // which child is larger, then swap
-            if( j+1 <= count && data[j+1] > data[j] ) j ++;
+            // which child is larger. left: j, right: j+1
+            if( j+1 <= count && data[j+1] > data[j] ) j ++; // select right child
             if( data[k] >= data[j] ) break;
-            swap( data[k] , data[j] );
+            // swap( data[k] , data[j] ); // swap parent and child
+            data[k] = data[j];
+            // shift down to child
             k = j;
+            // data[j] 是 data[2*k]和data[2*k+1]中的最大值
         }
+        data[k] = e;
     }
 
 public:
-
     MaxHeap(int capacity){
         data = new Item[capacity+1];
         count = 0;
         this->capacity = capacity;
     }
 
-    MaxHeap(Item arr[], int n){
+    MaxHeap(Item arr[], int n) {
         data = new Item[n+1];
-        capacity = n;
-
+        capacity = n;     
+        // init a new array, store values data[1...]
         for( int i = 0 ; i < n ; i ++ )
-            data[i+1] = arr[i];
+            // note: heap index start position 1
+            data[i+1] = arr[i];  
         count = n;
-
-        for( int i = count/2 ; i >= 1 ; i -- )
+        // construct maxheap
+        for( int i = count/2 ; i >= 1 ; i -- ) 
+            // note: heap index start position 1
             shiftDown(i);
     }
 
-    ~MaxHeap(){
-        delete[] data;
-    }
+    ~MaxHeap(){ delete[] data; }
+    int size(){ return count; }
+    bool isEmpty(){ return count == 0; }
 
-    int size(){
-        return count;
-    }
-
-    bool isEmpty(){
-        return count == 0;
-    }
-
-    void insert(Item item){
+    void insert(Item item) 
+    {
         assert( count + 1 <= capacity );
-        data[count+1] = item;
-        shiftUp(count+1);
+        // note: we init count == 0
+        data[count+1] = item; // append the new item to array.
+        shiftUp(count+1); // the last item
         count ++;
     }
-
-    Item extractMax(){
+    /// heap sort
+    Item extractMax() 
+    {
         assert( count > 0 );
         Item ret = data[1];
+        // put the max element to last node, then heapify again
         swap( data[1] , data[count] );
         count --;
-        shiftDown(1);
+        shiftDown(1); // note: update maxheap, start from root node
         return ret;
     }
 
-    Item getMax(){
+    Item getMax()
+    {
         assert( count > 0 );
         return data[1];
     }
 };
+
+// 测试最大堆
+int main() {
+
+    MaxHeap<int> maxheap = MaxHeap<int>(100);
+
+    srand(time(NULL));
+    int n = 100;    // 随机生成n个元素放入最大堆中
+    // heapify
+    for( int i = 0 ; i < n ; i ++ ){
+        maxheap.insert( rand()%100 );
+    }
+
+    int* arr = new int[n];
+    // heap sort
+    // 将maxheap中的数据逐渐使用extractMax取出来
+    // 取出来的顺序应该是按照从大到小的顺序取出来的
+    for( int i = 0 ; i < n ; i ++ ){
+        arr[i] = maxheap.extractMax();
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    return 0;
+}
 
 ```
 ### 2. IndexMaxHeap  
@@ -158,8 +196,7 @@ Code
 using namespace std;
 
 template<typename Item>
-class IndexMaxHeap{
-
+class IndexMaxHeap {
 private:
     Item *data;
     int *indexes;
@@ -178,9 +215,9 @@ private:
         }
     }
 
-    void shiftDown( int k ){
+    void shiftDown( int k ) {
 
-        while( 2*k <= count ){
+        while( 2*k <= count ) {
             int j = 2*k;
             if( j + 1 <= count && data[indexes[j+1]] > data[indexes[j]] )
                 j += 1;
@@ -214,16 +251,11 @@ public:
         delete[] reverse;
     }
 
-    int size(){
-        return count;
-    }
-
-    bool isEmpty(){
-        return count == 0;
-    }
+    int size() { return count; }
+    bool isEmpty() { return count == 0; }
 
     // 传入的i对用户而言,是从0索引的
-    void insert(int i, Item item){
+    void insert(int i, Item item) {
         assert( count + 1 <= capacity );
         assert( i + 1 >= 1 && i + 1 <= capacity );
 
@@ -232,11 +264,10 @@ public:
         indexes[count+1] = i;
         reverse[i] = count+1;
         count++;
-
         shiftUp(count);
     }
 
-    Item extractMax(){
+    Item extractMax() {
         assert( count > 0 );
 
         Item ret = data[indexes[1]];
@@ -248,7 +279,7 @@ public:
         return ret;
     }
 
-    int extractMaxIndex(){
+    int extractMaxIndex() {
         assert( count > 0 );
 
         int ret = indexes[1] - 1;
@@ -300,43 +331,6 @@ public:
         shiftUp( j );
         shiftDown( j );
     }
-
-    // test reverse index
-    bool testReverseIndex(){
-
-        int *copyIndexes = new int[count+1];
-        int *copyReverseIndexes = new int[count+1];
-
-        for( int i = 0 ; i <= count ; i ++ ){
-            copyIndexes[i] = indexes[i];
-            copyReverseIndexes[i] = reverse[i];
-        }
-
-        copyIndexes[0] = copyReverseIndexes[0] = 0;
-        std::sort(copyIndexes, copyIndexes + count + 1);
-        std::sort(copyReverseIndexes, copyReverseIndexes + count + 1);
-
-        bool res = true;
-        for( int i = 1 ; i <= count ; i ++ )
-            if( copyIndexes[i-1] + 1 != copyIndexes[i] || copyReverseIndexes[i-1] + 1 != copyReverseIndexes[i] )
-                res = res || false;
-
-        delete[] copyIndexes;
-        delete[] copyReverseIndexes;
-
-        if( !res ){
-            cout<<"Error 1"<<endl;
-            return res;
-        }
-
-        for( int i = 1 ; i <= count ; i ++ )
-            if( reverse[ indexes[i] ] != i ){
-                cout<<"Error 2"<<endl;
-                return false;
-            }
-
-        return true;
-    }
 };
 ```
 
@@ -368,13 +362,13 @@ private:
         Node *left;
         Node *right;
 
-        Node(Key key, Value value){
+        Node(Key key, Value value) {
             this->key = key;
             this->value = value;
             this->left = this->right = NULL;
         }
 
-        Node(Node *node){
+        Node(Node *node) {
             this->key = node->key;
             this->value = node->value;
             this->left = node->left;
@@ -394,53 +388,35 @@ public:
         destroy( root );
     }
 
-    int size(){
-        return count;
-    }
-
-    bool isEmpty(){
-        return count == 0;
-    }
-
-    void insert(Key key, Value value){
+    int size() { return count; }
+    bool isEmpty() { return count == 0; }
+    void insert(Key key, Value value) {
         root = insert(root, key, value);
     }
-
-    bool contain(Key key){
+    bool contain(Key key) {
         return contain(root, key);
     }
-
     Value* search(Key key){
         return search( root , key );
     }
 
     // 前序遍历
-    void preOrder(){
-        preOrder(root);
-    }
+    void preOrder() { preOrder(root); }
 
     // 中序遍历
-    void inOrder(){
-        inOrder(root);
-    }
+    void inOrder() { inOrder(root); }
 
     // 后序遍历
-    void postOrder(){
-        postOrder(root);
-    }
+    void postOrder() { postOrder(root); }
 
     // 层序遍历
-    void levelOrder(){
-
+    void levelOrder() {
         queue<Node*> q;
         q.push(root);
-        while( !q.empty() ){
-
+        while( !q.empty() ) {
             Node *node = q.front();
             q.pop();
-
             cout<<node->key<<endl;
-
             if( node->left )
                 q.push( node->left );
             if( node->right )
@@ -449,21 +425,21 @@ public:
     }
 
     // 寻找最小的键值
-    Key minimum(){
+    Key minimum() {
         assert( count != 0 );
         Node* minNode = minimum( root );
         return minNode->key;
     }
 
     // 寻找最大的键值
-    Key maximum(){
+    Key maximum() {
         assert( count != 0 );
         Node* maxNode = maximum(root);
         return maxNode->key;
     }
 
     // 从二叉树中删除最小值所在节点
-    void removeMin(){
+    void removeMin() {
         if( root )
             root = removeMin( root );
     }
@@ -475,16 +451,15 @@ public:
     }
 
     // 从二叉树中删除键值为key的节点
-    void remove(Key key){
+    void remove(Key key) {
         root = remove(root, key);
     }
 
 private:
     // 向以node为根的二叉搜索树中,插入节点(key, value)
     // 返回插入新节点后的二叉搜索树的根
-    Node* insert(Node *node, Key key, Value value){
-
-        if( node == NULL ){
+    Node* insert(Node *node, Key key, Value value) {
+        if( node == NULL ) {
             count ++;
             return new Node(key, value);
         }
@@ -500,7 +475,7 @@ private:
     }
 
     // 查看以node为根的二叉搜索树中是否包含键值为key的节点
-    bool contain(Node* node, Key key){
+    bool contain(Node* node, Key key) {
 
         if( node == NULL )
             return false;
@@ -514,7 +489,7 @@ private:
     }
 
     // 在以node为根的二叉搜索树中查找key所对应的value
-    Value* search(Node* node, Key key){
+    Value* search(Node* node, Key key) {
 
         if( node == NULL )
             return NULL;
@@ -528,9 +503,9 @@ private:
     }
 
     // 对以node为根的二叉搜索树进行前序遍历
-    void preOrder(Node* node){
+    void preOrder(Node* node) {
 
-        if( node != NULL ){
+        if( node != NULL ) {
             cout<<node->key<<endl;
             preOrder(node->left);
             preOrder(node->right);
@@ -538,9 +513,9 @@ private:
     }
 
     // 对以node为根的二叉搜索树进行中序遍历
-    void inOrder(Node* node){
+    void inOrder(Node* node) {
 
-        if( node != NULL ){
+        if( node != NULL ) {
             inOrder(node->left);
             cout<<node->key<<endl;
             inOrder(node->right);
@@ -548,18 +523,18 @@ private:
     }
 
     // 对以node为根的二叉搜索树进行后序遍历
-    void postOrder(Node* node){
+    void postOrder(Node* node) {
 
-        if( node != NULL ){
+        if( node != NULL ) {
             postOrder(node->left);
             postOrder(node->right);
             cout<<node->key<<endl;
         }
     }
 
-    void destroy(Node* node){
+    void destroy(Node* node) {
 
-        if( node != NULL ){
+        if( node != NULL ) {
             destroy( node->left );
             destroy( node->right );
 
@@ -569,7 +544,7 @@ private:
     }
 
     // 在以node为根的二叉搜索树中,返回最小键值的节点
-    Node* minimum(Node* node){
+    Node* minimum(Node* node) {
         if( node->left == NULL )
             return node;
 
@@ -577,7 +552,7 @@ private:
     }
 
     // 在以node为根的二叉搜索树中,返回最大键值的节点
-    Node* maximum(Node* node){
+    Node* maximum(Node* node) {
         if( node->right == NULL )
             return node;
 
@@ -586,9 +561,9 @@ private:
 
     // 删除掉以node为根的二分搜索树中的最小节点
     // 返回删除节点后新的二分搜索树的根
-    Node* removeMin(Node* node){
+    Node* removeMin(Node* node) {
 
-        if( node->left == NULL ){
+        if ( node->left == NULL ) {
 
             Node* rightNode = node->right;
             delete node;
@@ -602,9 +577,9 @@ private:
 
     // 删除掉以node为根的二分搜索树中的最大节点
     // 返回删除节点后新的二分搜索树的根
-    Node* removeMax(Node* node){
+    Node* removeMax(Node* node) {
 
-        if( node->right == NULL ){
+        if ( node->right == NULL ) {
 
             Node* leftNode = node->left;
             delete node;
@@ -618,29 +593,29 @@ private:
 
     // 删除掉以node为根的二分搜索树中键值为key的节点
     // 返回删除节点后新的二分搜索树的根
-    Node* remove(Node* node, Key key){
+    Node* remove(Node* node, Key key) {
 
-        if( node == NULL )
+        if ( node == NULL )
             return NULL;
 
-        if( key < node->key ){
+        if ( key < node->key ){
             node->left = remove( node->left , key );
             return node;
         }
-        else if( key > node->key ){
+        else if ( key > node->key ){
             node->right = remove( node->right, key );
             return node;
         }
-        else{   // key == node->key
+        else {   // key == node->key
 
-            if( node->left == NULL ){
+            if( node->left == NULL ) {
                 Node *rightNode = node->right;
                 delete node;
                 count --;
                 return rightNode;
             }
 
-            if( node->right == NULL ){
+            if ( node->right == NULL ) {
                 Node *leftNode = node->left;
                 delete node;
                 count--;

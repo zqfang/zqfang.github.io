@@ -31,7 +31,7 @@ The min-max heap `property` is: each node at an even level in the tree is less t
 1. A-Max Heap is a Complete Binary Tree. A-Max heap is typically represented as an array. 
 
 
-if the root element index starts from [1]
+if the root element index starts from Array[1]
  
 ```
 Arr[i/2] Returns the parent node. 
@@ -42,7 +42,7 @@ Arr[2*i+1] Returns the right child node.
 ![heap1](/images/algorithm/heap1.png)
 
 
-if the root element index starts from [0]
+if the root element index starts from Array[0]
  
 ```
 Arr[(i-1)/2] Returns the parent node. 
@@ -50,7 +50,7 @@ Arr[2*i + 1] Returns the left child node.
 Arr[2*i + 2] Returns the right child node.
 ```
 
-![heap1](/images/algorithm/heap1.png)
+![heap1](/images/algorithm/heap0.png)
 
 
 2. How to construct MaxHeap:

@@ -7,7 +7,7 @@ Binary trees
 Difference
 ![Trees](/images/algorithm/binarytree.png)
 
-### Some data structures to keep in my mind.
+## Some data structures to keep in my mind.
 * BinaryHeap: Complete binary tree
   - MaxHeap: Parent > Both Children
   - IndexMaxHeap
@@ -22,13 +22,13 @@ Difference
 
 Code snippets are taken from [Play with Algorithm](https://github.com/liuyubobobo/Play-with-Algorithms) 
 
-### 1. MaxHeap
+## Heap
 
 The min-max heap `property` is: each node at an even level in the tree is less than all of its descendants, while each node at an odd level in the tree is greater than all of its descendants
 
+### 1. MaxHeap
 
-
-1. A-Max Heap is a Complete Binary Tree. A-Max heap is typically represented as an array. 
+A-Max Heap is a Complete Binary Tree. A-Max heap is typically represented as an array. 
 
 
 if the root element index starts from Array[1]
@@ -53,10 +53,11 @@ Arr[2*i + 2] Returns the right child node.
 ![heap1](/images/algorithm/heap0.png)
 
 
-2. How to construct MaxHeap:
-    - find the last node's parent 
-    - shiftup
+####  How to construct MaxHeap:
+1. find the last node's parent 
+2. shiftup
 
+Example Code:
 ```cpp
 #include <algorithm>
 #include <cassert>
@@ -339,7 +340,16 @@ public:
 };
 ```
 
-### 3. BinarySearchTree
+## BinarySearchTree
+
+All property see the code. 
+- preorder
+- inorder
+- postorder
+- BFS
+- DFS
+
+Example Code:
 
 ```cpp
 #include <iostream>

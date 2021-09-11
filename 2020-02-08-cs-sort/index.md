@@ -117,7 +117,8 @@ void mergeSortBU(T arr[], int n){
 ```
 ### 3. qucikSort
 
-3 Way QuickSort
+3 Way QuickSort   
+
 ![3wayQuickSort](/images/algorithm/3WayQuickSort-01.png)
 
 ```cpp

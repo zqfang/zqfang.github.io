@@ -7,6 +7,7 @@ tags: ["Deep Learning", "Graph"]
 math: true
 ---
 
+
 ## Mini-batch Sampling
 
 Real world graphs can be very large with millions or even billions of nodes and edges. But the naive full-batch implementation of GNN cannot be feasible to these large-scale graphs. 
@@ -15,12 +16,29 @@ Two frequently used methods are summarized here:
 - Neighbor Sampling ([Hamilton et al. (2017)](https://arxiv.org/abs/1706.02216)) 
 - Cluster-GCN ([Chiang et al. (2019)](https://arxiv.org/abs/1905.07953)).
 
-Please see the full docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html) 
-
-The content blew is almost the same as in `colab notebooks`.  It's just for easy and quick viewing in any devices.
-
 ## Neighbor Sampling with Different Ratios
 
+In PyG 2.0, `NeighborLoader` allows for mini-batch training of GNNs on large-scale graphs
+where full-batch training is not feasible
+
+```python
+#import torch_geometric.transforms as T
+from torch_geometric.loader import NeighborLoader
+train_loader = NeighborLoader(
+    data,
+    # Sample 15 neighbors for each node and each edge type for 2 iterations:
+    num_neighbors= {key: [15] * 2 for key in data.edge_types}[15] * 2 # heterograph
+    # Use a batch size of 128 for sampling training nodes of type "paper":
+    batch_size=128,
+    input_nodes='paper', data['paper'].train_mask,
+)
+
+batch = next(iter(train_loader))
+```
+
+Please see the full deepsnap's docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html) 
+
+The content blew is almost the same as in `colab notebooks`.  It's just for easy and quick viewing in any devices.
 ### 1. Neighbor Sampling
 sampling code using networkX as backend
 ```python
@@ -109,8 +127,6 @@ def neighbor_sampling(graph, K=2, ratios=(0.1, 0.1, 0.1)):
     return node_feature, edge_indices, node_label_index
 
 ```
-### 2. training
-see the full docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html) 
 
 ## Sampling with Clusters
 

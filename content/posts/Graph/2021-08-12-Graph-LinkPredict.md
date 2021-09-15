@@ -18,7 +18,7 @@ Option 1: PyG's `RandomLinkSplit`
 from torch_geometric.transforms import RandomLinkSplit, RandomNodeSplit
 
 tfs = RandomLinkSplit(is_undirected=True, 
-                      add_negative_train_samples=True, # assume that you did not use NeigborLoader
+                      add_negative_train_samples=True,
                       neg_sampling_ratio=1.0)
 train_data, val_data, test_data = tfs(data)
 ```

@@ -14,7 +14,15 @@ Real world graphs can be very large with millions or even billions of nodes and 
 
 Two frequently used methods are summarized here:
 - Neighbor Sampling ([Hamilton et al. (2017)](https://arxiv.org/abs/1706.02216)) 
+    -  `torch_geometric.loader.NeighborLoader`
 - Cluster-GCN ([Chiang et al. (2019)](https://arxiv.org/abs/1905.07953)).
+    - `torch_geometric.loader.ClusterLoader`
+
+Other samplers in PyG
+- `HGTLoader`
+- `GraphSAINTLoader`
+
+Overall, all heterogeneous graph loaders will produce a HeteroData object as output, holding a subset of the original data, and mainly differ in the way their sampling procedures works
 
 ## Neighbor Sampling with Different Ratios
 
@@ -132,6 +140,9 @@ def neighbor_sampling(graph, K=2, ratios=(0.1, 0.1, 0.1)):
 
 Instead of the Neighbor Sampling, we can use another approach, subgraph (cluster) sampling, to scale up GNNs. This approach is proposed in Cluster-GCN ([Chiang et al. (2019)](https://arxiv.org/abs/1905.07953)).
 
+see PyG's `torch_geometric.loader.ClusterLoader`
+
+
 ### 1. Partition the Graph into Clusters
 
 Three community detection / partition algorithms to partition the graph into different clusters:
@@ -188,11 +199,3 @@ def preprocess(G, node_label_index, method="louvain"):
     return graphs
     
 ```
-
-For large graphs, we might need to replace NetworkX backend by [Snap Python](https://github.com/snap-stanford/snap-python).
-
-[Next: Switching DeepSNAP Backend](https://colab.research.google.com/drive/1HcuCbOtOoNA55ehgymxYUZWEXcb-68i7?usp=sharing)
-
-### 2. Training
-
-see the full docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html) 

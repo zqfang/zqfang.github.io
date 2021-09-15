@@ -5,7 +5,20 @@
 Link prediction is a common task in knowledgegraph's link completeion. 
 
 How to prepare train, valid, test datasets ?  
-- Use `deepsnap`'s `GraphDataset` to rescue ! It's just 2 line of code. 
+
+Option 1: PyG's `RandomLinkSplit`
+
+```python
+from torch_geometric.transforms import RandomLinkSplit, RandomNodeSplit
+
+tfs = RandomLinkSplit(is_undirected=True, 
+                      add_negative_train_samples=True, # assume that you did not use NeigborLoader
+                      neg_sampling_ratio=1.0)
+train_data, val_data, test_data = tfs(data)
+```
+
+Option 2: `deepsnap`'s `GraphDataset`
+
 - The `GraphDataset` is compatible with `Pytorch Geometric` ! 
 ```python
 from deepsnap.dataset import GraphDataset

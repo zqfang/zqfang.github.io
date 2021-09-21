@@ -21,6 +21,8 @@ tfs = RandomLinkSplit(is_undirected=True,
                       add_negative_train_samples=True,
                       neg_sampling_ratio=1.0)
 train_data, val_data, test_data = tfs(data)
+# Here, *_data.edge_index denotes the graph structure used for message passing,
+# *_data.edge_label_index and *_data.edge_label denote the training/evaluation edges and their corresponding labels. 
 ```
 
 Option 2: `deepsnap`'s `GraphDataset`

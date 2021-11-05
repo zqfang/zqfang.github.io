@@ -1,22 +1,74 @@
-# Graph: Train, valid, test datasets for link prediction
+# Graph: Train, valid, and test dataset split for link prediction
 
 
 ## Link Prediction
-Link prediction is a common task in knowledgegraph's link completeion. 
 
-How to prepare train, valid, test datasets ?  
+- Link prediction is a common task in knowledgegraph's link completeion. 
+- Link prediction is usually an **unsupervised or self-supervised task**, which means that sometimes we need to split the dataset and create corresponding labels on our own.
 
+## How to prepare train, valid, test datasets ?  
+
+For link prediction, we will split edges twice 
+
+- Step 1: Assign 2 types of edges in the original graph
+    - Message edges: Used for GNN message passing 
+    - Supervision edges: Use for computing objectives 
+-  After step 1:
+    - Only message edges will remain in the graph 
+    - Supervision edges are used as supervision for edge predictions made by the model, will not be fed into GNN!
+- Step 2: Split edges into train / validation / test
+
+### Option 1: Inductive setting
+
+- training / validation / test sets are on **different graphs**
+- The dataset consists of multiple graphs
+- Each split can only observe the graph(s) within the split. A successful model should generalize to unseen graphs
+- Applicable to node / edge / graph tasks
+
+![inductive](/images/ml/data.split.edge.inductive.png)
+
+### Option 2: Transductive 
+
+- training / validation / test sets are on the **same graph**
+- The dataset consists of one graph
+- The entire graph can be observed in all dataset splits, we only split the labels
+- Only applicable to node / edge prediction tasks
+
+![inductive](/images/ml/data.split.edge.transductive.png)
+
+
+
+### Code
 Option 1: PyG's `RandomLinkSplit`
 
 ```python
 from torch_geometric.transforms import RandomLinkSplit, RandomNodeSplit
 
+## designed for transductive learning
 tfs = RandomLinkSplit(is_undirected=True, 
                       add_negative_train_samples=True,
-                      neg_sampling_ratio=1.0)
+                      neg_sampling_ratio=1.0,
+                      key = "edge_label", # supervision label
+                      disjoint_train_ratio=0,# disjoint mode if > 0
+                      # edge_types=None, # for heteroData
+                      # rev_edge_types=None, # for heteroData
+                      )
 train_data, val_data, test_data = tfs(data)
 # Here, *_data.edge_index denotes the graph structure used for message passing,
 # *_data.edge_label_index and *_data.edge_label denote the training/evaluation edges and their corresponding labels. 
+
+## if inductive learning, need subgraph. e.g 
+from torch_geometric.utils import subgraph
+train_mask = torch.rand(data.num_nodes) < 0.5
+test_mask = ~train_mask
+
+train_data = copy.copy(data)
+train_data.edge_index, _ = subgraph(train_mask, data.edge_index, relabel_nodes=True)
+train_data.x = data.x[train_mask]
+
+test_data = copy.copy(data)
+test_data.edge_index, _ = subgraph(test_mask, data.edge_index, relabel_nodes=True)
+test_data.x = data.x[test_mask]
 ```
 
 Option 2: `deepsnap`'s `GraphDataset`
@@ -41,9 +93,6 @@ Check the all docs [here](https://snap.stanford.edu/deepsnap/notes/colab.html)
 
 The content blew is almost the same as in `colab notebooks`.  It's just for easy and quick viewing in any devices.
 
-## Transductive Link Prediction Split
-
-Link prediction is usually an **unsupervised or self-supervised task**, which means that sometimes we need to split the dataset and create corresponding labels on our own.
 
 ### General rules
 In general, edges in the graph will be splitted to two types: 
@@ -60,13 +109,15 @@ DeepSNAP's `GraphDataset` will automatically generate labels for all edges.
 In addition to edges split and negative edge sampling, edges in each of the train, validation and test sets usually need to be **disjoint**.
 
 
+## Transductive Link Prediction Split
+
 `DeepSNAP` link prediction contains two main split modes (edge_train_mode: all, disjoin)
 
-### Mode: All
+### Split Mode: All
 
 The figure blew shows the supervision edges in train (blue), validation (red) and test (green) sets. Notice that all original edges in `all` mode will be included in the supervision edges.
 
-![All](/images/ml/edge_train_mode_all.png)
+
 
 **To be more specific**:
 
@@ -80,11 +131,9 @@ The figure blew shows the supervision edges in train (blue), validation (red) an
     - The $\text{test message passing edges} = \text{validation supervison edges} + \text{training message passing edges} + \text{training supervision edges}$
 
 
-### Mode: Disjoint
+### Split Mode: Disjoint
 
 The figure blow shows the supervision edges in train (blue), validation (red), test (green) sets and the training message passing edges (grey). Notice that not all original edges in `disjoint` mode will be included in the supervision edges.
-
-![Disjoin](/images/ml/edge_train_mode_disjoint.png)
 
 
 **To be more specific**:
@@ -133,6 +182,14 @@ dataloaders = {
 Here is an example of adjusting the number of message passing edges and supervision edges in `disjoint` mode. We can control the number of edges by adjusting the `edge_message_ratio`, which defines the ratio between message-passing edges and supervision edges in the training set.
 
 
+## Node Split
+See also dataset split for node classification
 
 
-[See all full docs at DeepSnap](https://snap.stanford.edu/deepsnap/modules/dataset.html#deepsnap-graphdataset)
+![NodeSplit](/images/ml/data.split.node.png)
+
+
+## Reference
+
+1. [DeepSnap](https://snap.stanford.edu/deepsnap/modules/dataset.html#deepsnap-graphdataset)
+2. [Jure Leskovec, Stanford CS224W: Machine Learning with Graphs](http://cs224w.stanford.edu) 

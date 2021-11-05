@@ -50,12 +50,31 @@ Option 1: PyG's `RandomLinkSplit`
 ```python
 from torch_geometric.transforms import RandomLinkSplit, RandomNodeSplit
 
+## designed for transductive learning
 tfs = RandomLinkSplit(is_undirected=True, 
                       add_negative_train_samples=True,
-                      neg_sampling_ratio=1.0)
+                      neg_sampling_ratio=1.0,
+                      key = "edge_label", # supervision label
+                      disjoint_train_ratio=0,# disjoint mode if > 0
+                      # edge_types=None, # for heteroData
+                      # rev_edge_types=None, # for heteroData
+                      )
 train_data, val_data, test_data = tfs(data)
 # Here, *_data.edge_index denotes the graph structure used for message passing,
 # *_data.edge_label_index and *_data.edge_label denote the training/evaluation edges and their corresponding labels. 
+
+## if inductive learning, need subgraph. e.g 
+from torch_geometric.utils import subgraph
+train_mask = torch.rand(data.num_nodes) < 0.5
+test_mask = ~train_mask
+
+train_data = copy.copy(data)
+train_data.edge_index, _ = subgraph(train_mask, data.edge_index, relabel_nodes=True)
+train_data.x = data.x[train_mask]
+
+test_data = copy.copy(data)
+test_data.edge_index, _ = subgraph(test_mask, data.edge_index, relabel_nodes=True)
+test_data.x = data.x[test_mask]
 ```
 
 Option 2: `deepsnap`'s `GraphDataset`

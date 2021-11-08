@@ -8,6 +8,16 @@ Before you start, something you need to know.
 - `aggregate`: scatter_add, scatter_mean, scatter_min, scatter_max
 - PyG `MessagePassing` framework only works for `node_graph`. 
 
+
+```python
+x = ...           # Node features of shape [num_nodes, num_features]
+edge_index = ...  # Edge indices of shape [2, num_edges]
+
+x_j = x[edge_index[0]]  # Source node features [num_edges, num_features]
+x_i = x[edge_index[1]]  # Target node features [num_edges, num_features]
+```
+
+
 ## MessagePassing in PyTorch Geometric
 
 ### Principal

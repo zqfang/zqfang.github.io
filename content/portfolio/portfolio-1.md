@@ -1,6 +1,6 @@
 ---
 title: "GSEApy"
-excerpt: "GSEApy is a python wrapper for GSEA and Enrichr<br/><img src='/images/gseapy_OCT4_KD.png'>"
+excerpt: "GSEApy is a python/Rust implementation for GSEA and wrapper for Enrichr<br/><img src='/images/gseapy_OCT4_KD.png'>"
 collection: portfolio
 permalink: /portfolio/portfolio-1
 ---

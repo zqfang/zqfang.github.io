@@ -1,0 +1,92 @@
+# Bayesian Data Analysis: Basics
+
+
+
+# The three steps of Bayesian data analysis
+
+1. Setting up a `full probability model`—a joint probability distribution for all observable and unobservable quantities in a problem.
+
+2. Conditioning on observed data: calculating and interpreting the appropriate `posterior distribution`—the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
+
+3. Evaluating the ﬁt of the model and the implications of the resulting posterior distribution.
+
+
+# Bayes' rule
+
+
+$$ p (\theta, y) = p(\theta)p(y | \theta)$$
+
+- $p (\theta, y)$: joint probability distribution for $\theta$ and $y$ .
+- $p (\theta)$: prior distribution
+- $p (\theta | y)$: sampling distritbuion (data distitbution).
+
+# Bayesian Inference
+
+Simply conditioning on the known value of the data $y$, using the basic property of conditional probability known as Bayes's rule, yields the posterior density:
+
+$$
+p(\theta \mid y)=\frac{p(\theta, y)}{p(y)}=\frac{p(\theta) p(y \mid \theta)}{p(y)}
+$$
+
+
+where $p (y) = \sum_{\theta} p(\theta) p(y \mid \theta)$ , and the sum is over all possible values of $\theta$.  or $p(y) = \int p(\theta) p(y \mid \theta) d \theta$.
+
+
+
+$p(y)$ is fixed, thus can be considered a constant, yielding the `unnormalized posterior density` :
+
+$$
+p(\theta \mid y) \propto p(\theta) p(y \mid \theta)
+$$
+
+
+# Prediction
+To make inferences about an unknown observable, often valled predictive inferences.
+
+The distribution of the unknown but observablle $y$ is 
+
+$$
+p(y) = \int p(y, \theta) d \theta = \int p(\theta) p (y \mid \theta) d \theta
+$$
+
+This is often called the `marginal distibution` of $y$, but a more informative name is the `prior predictive distritbuition`.
+
+prior because it is not conditional on a previous observvation of the process, and predictive because it is the distribution for a quantity that is observable.
+
+
+$\tilde{y}$ : `posterior predictive distribution`. posterior because it is conditional on the observed $y$ and predictive because it is a prediction for an observable $\tilde{y}$.
+
+
+$$
+\begin{aligned}
+p(\tilde{y} \mid y) &=\int p(\tilde{y}, \theta \mid y) d \theta \\\ 
+&=\int p(\tilde{y} \mid \theta, y) p(\theta \mid y) d \theta \\\ 
+&=\int p(\tilde{y} \mid \theta) p(\theta \mid y) d \theta
+\end{aligned}
+$$
+
+
+# Likelihood and odds ratios
+
+Using Bayes’ rule with a chosen probability model means that the data $y$ affect the posterior inference only through $p(y| \theta$, which, when regarded as a function of θ, for fixed $y$, is called the `likelihood function`. In this way Bayesian inference is obeying what is sometimes called the `likelihood principle`.
+
+the ratio of the posterior density $p(\theta \mid y)$ evaluated at the points $\theta_1$ and $\theta_2$ under a given model is called the `posterior odds` for  $\theta_1$ compared to  $\theta_2$ 
+
+
+$$
+\frac{p\left(\theta_{1} \mid y\right)}{p\left(\theta_{2} \mid y\right)}=\frac{p\left(\theta_{1}\right) p\left(y \mid \theta_{1}\right) / p(y)}{p\left(\theta_{2}\right) p\left(y \mid \theta_{2}\right) / p(y)}=\frac{p\left(\theta_{1}\right)}{p\left(\theta_{2}\right)} \frac{p\left(y \mid \theta_{1}\right)}{p\left(y \mid \theta_{2}\right)}
+$$
+
+
+the posterior odds are equal to the prior odds multiplied byu the likelihood ratio.
+
+
+
+
+# Probability
+
+
+the mathmatical definition of probabilty: probablities are numerical quantities, defined on a set of "outcomes", that are non-negative, additive over mutually exclusive outcomes, and sum to 1 over all possible mutally exclusive outcomes.
+
+
+In Bayesian statistics, probability is used as the fundamental measure or yardstick of uncertainty.

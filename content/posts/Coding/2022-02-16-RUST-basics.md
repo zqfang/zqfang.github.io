@@ -1,13 +1,309 @@
 ---
-title: "Rust Notes: NDarray"
+title: "Rus: Advanced Trait"
 date: 2022-02-10
 categories: ["Coding"]
 tags: ["Rust"]
 comments: true
 description: ""
 hiddenFromHomePage: true
-draft: true
+draft: false
 ---
+
+Some codesnape for the usage of Trait
+## Trait
+A trait defines functionality a particular type has and can share with other types.
+
+### Defined and Implement a Trait
+
+```rust
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+
+pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+}
+
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.username, self.content)
+    }
+}
+
+```
+
+
+### Default Implementataions
+```rust
+pub trait Summary {
+    fn summarize(&self) -> String {
+        String::from("(Read more...)")
+    }
+}
+
+```
+You could overwirte trait methods when implement structs!
+
+### Trait as Parameters
+
+
+```rust
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+```
+
+### Trait Bound Synatx
+
+- `<T: Trait1 + Trait2>`
+- `function<T, U>() -> T where T: Trait1, U: Trait2`
+
+```rust
+pub fn notify<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+// multiple trait bound
+pub fn notify<T: Summary + Display>(item: &T) {}
+
+// where
+fn some_function<T, U>(t: &T, u: &U) -> i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
+    unimplemented!()
+}
+
+```
+
+### Returning Instances that implement Traits
+
+- `-> impl SomeTrait `
+
+```rust
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+}
+
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.username, self.content)
+    }
+}
+
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
+    }
+}
+
+```
+
+
+### Trait Object
+Define
+- `Box<dyn Draw>`
+- `&dyn Draw`
+- `impl<T> SomeStruct<T> where T: Draw `
+
+```rust
+trait Draw {
+    fn draw(&self) -> String;
+}
+
+// NOTE: Box<dyn Draw> and &dyn Draw are both worked 
+fn draw1(x: Box<dyn Draw>) {
+    x.draw(); // Deref to .
+}
+
+fn draw2(x: &dyn Draw) {
+    x.draw();
+}
+
+// NOTE: used in a vec
+pub struct Screen {
+    pub components: Vec<Box<dyn Draw>>,
+}
+impl Screen {
+    pub fn run(&self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
+```
+
+use generic 
+```rust
+pub struct Screen<T: Draw> {
+    pub components: Vec<T>,
+}
+impl<T> Screen<T>
+    where T: Draw {
+    pub fn run(&self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
+```
+
+### Associated Type
+Note: Associated Type has nothing to do with associated function
+- define inside trait
+- has to be assign a type in `impl`
+- `type Ithem`
+
+```rust
+// Item has to be defined in the impl
+pub trait Iterator {
+    type Item;
+    fn next(&mut self) -> Option<Self::Item>;
+}
+
+```
+
+### Default generic type's parameter
+
+
+```rust
+// RHS=Self -> default to its own type 
+trait Add<RHS=Self> {
+    type Output;
+    fn add(self, rhs: RHS) -> Self::Output;
+}
+
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Add for Point {
+    type Output = Point; // defined here
+
+    fn add(self, other: Point) -> Point {
+        Point {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
+
+fn main() {
+    assert_eq!(Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
+               Point { x: 3, y: 3 });
+}
+```
+
+### Call method with same name
+
+Struct's member function has priority!
+
+```rust
+trait Pilot {
+    fn fly(&self);
+}
+
+trait Wizard {
+    fn fly(&self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&self) {
+        println!("*waving arms furiously*");
+    }
+}
+```
+
+example
+```rust
+fn main() {
+    let person = Human;
+    Pilot::fly(&person); // call Pilot's fly 
+    Wizard::fly(&person); // call Wizard's fly 
+    person.fly(); // call self.fly.  Human's fly 
+}
+```
+
+### Call method (without &self) with same name 
+
+use `as` to limit!!!
+- `<Dog as Animal>::baby_name()`
+
+```rust
+trait Animal {
+    fn baby_name() -> String;
+}
+
+struct Dog;
+
+impl Dog {
+    fn baby_name() -> String {
+        String::from("Spot")
+    }
+}
+
+impl Animal for Dog {
+    fn baby_name() -> String {
+        String::from("puppy")
+    }
+}
+```
+
+```rust
+fn main() {
+    println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
+}
+```
+
+
+
+
+
 
 
 

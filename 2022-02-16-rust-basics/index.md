@@ -1,4 +1,4 @@
-# Rus: Advanced Trait
+# Rust: Advanced Trait
 
 
 Some codesnape for the usage of Trait
@@ -38,7 +38,7 @@ pub trait Summary {
 }
 
 ```
-You could overwirte trait methods when implement structs!
+You could overwrite trait methods when implement structs!
 
 ### Trait as Parameters
 
@@ -49,11 +49,17 @@ pub fn notify(item: &impl Summary) {
 }
 ```
 
-### Trait Bound Synatx
+### Trait Bound and inherit
 
 - `<T: Trait1 + Trait2>`
 - `function<T, U>() -> T where T: Trait1, U: Trait2`
+- Inherit
+```rust
+trait B{}
+trait A: B{}
+```
 
+Example
 ```rust
 pub fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());

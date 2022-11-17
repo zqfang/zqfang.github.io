@@ -8,24 +8,56 @@ published: true
 comments: true
 ---
 
-## IMPORTANT UPATE: 2021-04-15
+## IMPORTANT UPDATE: 2021-04-15
 
-Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy. It is a life saver ...
+## SeuratDisk
+Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy.
 
 **Tips**:
-set default assay to `RNA` before covert to h5ad.
+1. set default assay to `RNA` before covert to h5ad. 
+2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before converstion 
+
 
 ```R
 library(SeuratDisk)
-DefaultAssay(sce) <- "RNA"
-SaveH5Seurat(sce, "sce.h5seurat")
-Convert("sce.h5seurat", dest="h5ad") # or set assay="RNA".
+# convert factor to character 
+i <- sapply(srt@meta.data, is.factor)
+srt@meta.data[i] <- lapply(srt@meta.data[i], as.character)
+# set default assay
+DefaultAssay(srt) <- "RNA"
+SaveH5Seurat(srt, filename = "srt.h5seurat", overwrite = TRUE)
+Convert("srt.h5seurat", "srt.h5ad", assay="RNA", overwrite = TRUE)
 ```
 
-## This is the old way using rpy2
+## Seurat -> loom -> scanpy
+
+**The best way to convert**: seurat -> loom -> scanpy
+
+It's much easier, since both seurat and scanpy support loom.
+
+1. save to `loom` format.
+```R
+pbmc.loom <- as.loom(pbmc.seurat.object, filename = "../output/pbmc3k.loom", verbose = FALSE)
+pbmc.loom$close_all() # alway close when done 
+```
+2. read into scanpy
+```python
+import scanpy as sc
+pbmc = sc.read_loom("../output/pbmc.loom", obsm_mapping={"X_umap": ["UMAP_1", "UMAP_2"]})
+```
+
+3. open loom in R
+```R
+immune <- Connect(filename = "../data/mmune_cells.loom", mode = "r")
+seurat <- as.Seurat(immune)
+immune$close_all() # alway close when done 
+```
+
+
+## rpy2
+This is the old way. Very hard to make it work. **Not recommended!**
 
 Convert `Seurat` to `Scanpy` costed me a lot of time to convert seurat objects to scanpy. It's not a pleasant experience.  
-Finally, I solved it.  
 
 ### 1. Install `Seurat v3.0.2`, or python kernel will always died!!!
 Don't know why latest seurat not work.
@@ -72,19 +104,5 @@ for robj in robjs:
     adata.write_h5ad(filename=robj.replace("Robj","h5ad"))
 ```
 
-### 4. other way
-seurat -> loom -> scanpy
 
-It's much easier, but I did not test.
-
-1. save to `loom` format fist.
-```R
-pbmc.loom <- as.loom(pbmc.seurat, filename = "../output/pbmc3k.loom", verbose = FALSE)
-pbmc.loom
-```
-read into scanpy
-```python
-pbmc3k = sc.read_loom("../output/pbmc3k.loom")
-```
-2. use ``sceasy`` to save h5ad.
 

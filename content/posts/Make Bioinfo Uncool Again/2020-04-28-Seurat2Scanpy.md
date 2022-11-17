@@ -31,19 +31,35 @@ Convert("srt.h5seurat", "srt.h5ad", assay="RNA", overwrite = TRUE)
 
 ## Seurat -> loom -> scanpy
 
-**The best way to convert**: seurat -> loom -> scanpy
+You actually neeed additional steps when seurat -> loom -> scanpy
 
-It's much easier, since both seurat and scanpy support loom.
+see [here](https://github.com/basilkhuder/Seurat-to-RNA-Velocity)
 
 1. save to `loom` format.
 ```R
-pbmc.loom <- as.loom(pbmc.seurat.object, filename = "../output/pbmc3k.loom", verbose = FALSE)
+pbmc.loom <- as.loom(seurat_object, filename = "../output/pbmc.loom", verbose = FALSE)
 pbmc.loom$close_all() # alway close when done 
+
+write.csv(Cells(seurat_object), file = "cellID_obs.csv", row.names = FALSE)
+write.csv(Embeddings(seurat_object, reduction = "umap"), file = "cell_embeddings.csv")
+write.csv(seurat_object@meta.data$seurat_clusters, file = "clusters.csv")
+
 ```
 2. read into scanpy
 ```python
 import scanpy as sc
-pbmc = sc.read_loom("../output/pbmc.loom", obsm_mapping={"X_umap": ["UMAP_1", "UMAP_2"]})
+adata = sc.read_loom("../output/pbmc.loom")
+
+sample_obs = pd.read_csv("cellID_obs.csv")
+umap_cord = pd.read_csv("cell_embeddings.csv")
+cell_clusters = pd.read_csv("clusters_obs.csv")
+
+
+# now add metadata to the adata 
+# e.g.
+adata.obsm['X_umap'] = umap_ordered.values # cellID should be matched first
+adata.uns['Cluster_colors'] = ...
+...
 ```
 
 3. open loom in R

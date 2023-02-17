@@ -12,13 +12,29 @@ Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Conv
 
 
 ```R
+library(Seurat)
 library(SeuratDisk)
-# convert factor to character 
-i <- sapply(srt@meta.data, is.factor)
-srt@meta.data[i] <- lapply(srt@meta.data[i], as.character)
-# set default assay
-DefaultAssay(srt) <- "RNA"
-SaveH5Seurat(srt, filename = "srt.h5seurat", overwrite = TRUE)
+
+# step 1: Slim down a Seurat object. So you get raw counts, lognorm counts
+
+seu = DietSeurat(
+  srt,
+  counts = TRUE, # so, raw counts save to adata.raw.X 
+  data = TRUE, # so, log1p counts save to adata.X
+  scale.data = FALSE, # set to false, or else will save to adata.X
+  features = rownames(srt), # export all genes, not just top highly variable genes
+  assays = "RNA",
+  dimreducs = c("pca","umap"),
+  graphs = NULL,
+  misc = TRUE
+)
+
+# step 2: factor to character, or else your factor will be number in adata 
+i <- sapply(seu@meta.data, is.factor)
+seu@meta.data[i] <- lapply(seu@meta.data[i], as.character)
+
+# step 3: convert 
+SaveH5Seurat(seu, filename = "srt.h5seurat", overwrite = TRUE)
 Convert("srt.h5seurat", "srt.h5ad", assay="RNA", overwrite = TRUE)
 ```
 

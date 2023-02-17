@@ -38,6 +38,19 @@ SaveH5Seurat(seu, filename = "srt.h5seurat", overwrite = TRUE)
 Convert("srt.h5seurat", "srt.h5ad", assay="RNA", overwrite = TRUE)
 ```
 
+```python
+# load h5ad
+import scanpy as sc
+adata = sc.read_h5ad("srt.h5ad")
+# save counts to layers
+adata.layers['counts'] = adata.raw.X.copy()
+adata.layers['log1p'] = data.X.copy()
+
+# you need to scale data for downsream tasks if needed.
+```
+
+
+
 ## Seurat -> loom -> scanpy
 
 You actually neeed additional steps when seurat -> loom -> scanpy

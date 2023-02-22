@@ -13,11 +13,6 @@ comments: true
 ## SeuratDisk
 Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy.
 
-**Tips**:
-1. set default assay to `RNA` before covert to h5ad. 
-2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before converstion 
-
-
 ```R
 library(Seurat)
 library(SeuratDisk)
@@ -32,7 +27,7 @@ seu = DietSeurat(
   features = rownames(srt), # export all genes, not just top highly variable genes
   assays = "RNA",
   dimreducs = c("pca","umap"),
-  graphs = NULL,
+  graphs = c("RNA_nn", "RNA_snn"), # to RNA_nn -> distances, RNA_snn -> connectivities
   misc = TRUE
 )
 

@@ -9,7 +9,9 @@ comments: true
 ---
 
 ## IMPORTANT UPDDATE: 2023-02-21
-Refer to `MuDataSeurat` 
+Best 
+
+Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 ```R
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad")
@@ -17,6 +19,11 @@ MuDataSeurat::WriteH5AD(srt, "srt.h5ad")
 # multi modality
 MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
 ```
+
+- `ReadH5AD()`: Read an .h5mu file and create a Seurat object.
+- `ReadH5MU()`: Create a Seurat object from .h5mu file contents
+- `WriteH5AD()`: Write one assay to .h5ad
+- `WriteH5MU()`: Create an .h5mu file with data from a Seurat object
 
 
 ## IMPORTANT UPDATE: 2021-04-15

@@ -14,10 +14,20 @@ Best
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 ```R
 # single modality
-MuDataSeurat::WriteH5AD(srt, "srt.h5ad")
-
+MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
 # multi modality
 MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
+
+## data mapping
+## GEX
+# counts -> adata.layers['counts']
+# data -> adata.layers['data'] # log1p data
+# scale.data -> adata.X
+# adata.raw.X set to None
+## Graph
+# RNA_nn -> adata.obsp['nn'] # this is knn adjmat. the old .uns['neighbors']['distance']
+# RNA_snn -> adata.obsp['snn] # umap graph. the old .uns['neighbors']['connectivies']
+## 
 ```
 
 - `ReadH5AD()`: Read an .h5mu file and create a Seurat object.

@@ -8,6 +8,17 @@ published: true
 comments: true
 ---
 
+## IMPORTANT UPDDATE: 2023-02-21
+Refer to `MuDataSeurat` 
+```R
+# single modality
+MuDataSeurat::WriteH5AD(srt, "srt.h5ad")
+
+# multi modality
+MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
+```
+
+
 ## IMPORTANT UPDATE: 2021-04-15
 
 ## SeuratDisk

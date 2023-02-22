@@ -6,9 +6,22 @@ Best
 
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 ```R
+
+# step 1: Slim down a Seurat object. So you get raw counts, lognorm counts
+seu = DietSeurat(
+  srt,
+  counts = TRUE, # so, raw counts save to adata.layers['counts']
+  data = TRUE, # so, log1p counts save to adata.X when scale.data = False, else adata.layers['data']
+  scale.data = FALSE, # set to false, better. because scale only scale highly variable genes by default.
+  features = rownames(srt), # export all genes, not just top highly variable genes
+  assays = "RNA",
+  dimreducs = c("pca","umap"),
+  graphs = c("RNA_nn", "RNA_snn"), # to RNA_nn -> distances, RNA_snn -> connectivities
+  misc = TRUE
+)
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
-# multi modality
+# multi modality, ATAC+RNA, CITE-seq 
 MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
 
 ## data mapping

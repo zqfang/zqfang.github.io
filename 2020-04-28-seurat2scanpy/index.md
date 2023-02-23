@@ -12,13 +12,23 @@ seu = DietSeurat(
   srt,
   counts = TRUE, # so, raw counts save to adata.layers['counts']
   data = TRUE, # so, log1p counts save to adata.X when scale.data = False, else adata.layers['data']
-  scale.data = FALSE, # set to false, better. because scale only scale highly variable genes by default.
+  scale.data = FALSE, # if only scaled highly variable gene, the export to h5ad would fail. set to false
   features = rownames(srt), # export all genes, not just top highly variable genes
   assays = "RNA",
   dimreducs = c("pca","umap"),
   graphs = c("RNA_nn", "RNA_snn"), # to RNA_nn -> distances, RNA_snn -> connectivities
   misc = TRUE
 )
+
+
+# .X, .layers['counts']. .raw.X
+# Assumptions:
+#   1. counts/data/scale.data -> X
+#   3. counts & data -> layers['counts'], X
+#   2. data & scale.data -> layers['data'], X
+#   4. counts & scale.data -> layers['counts'], X
+#   5. counts & data & scale.data -> layers['counts'], layers['data'], X
+
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
 # multi modality, ATAC+RNA, CITE-seq 

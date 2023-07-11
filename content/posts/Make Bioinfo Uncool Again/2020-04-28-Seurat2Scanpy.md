@@ -15,7 +15,7 @@ Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Conv
 
 **Tips**:
 1. set default assay to `RNA` before covert to h5ad. 
-2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before converstion 
+2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before convertion 
 
 
 ```R

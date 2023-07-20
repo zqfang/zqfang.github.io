@@ -1,13 +1,31 @@
 # Convert Seurat to Scanpy h5ad
 
 
-## IMPORTANT UPDDATE: 2023-02-21
-Best 
+
+IMPORTANT UPDDATE: 2023-02-21
+
+## MuDataSeurat
+
+**Recommended!!!**
+
+MuDataSeurat write h5ad file directly. easy install and simple use
 
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
-```R
 
-# step 1: Slim down a Seurat object. So you get raw counts, lognorm counts
+### Install
+The main repo seem not updated anymore. So, please **Install my fork** which works for anndata >=0.8
+```R
+# in R console
+## install the dev branch, which compatible with latest anndata 
+remotes::install_github("zqfang/MuDataSeurat", ref='dev', force = T)
+```
+
+
+### Usage
+
+#### (Optional) Step 1: Slim down a Seurat object.
+```R
+# (optional) step 1: Slim down a Seurat object. So you get raw counts, lognorm counts
 seu = DietSeurat(
   srt,
   counts = TRUE, # so, raw counts save to adata.layers['counts']
@@ -28,7 +46,11 @@ seu = DietSeurat(
 #   2. data & scale.data -> layers['data'], X
 #   4. counts & scale.data -> layers['counts'], X
 #   5. counts & data & scale.data -> layers['counts'], layers['data'], X
+```
+#### Step 2. Write seurat to h5ad
 
+You **MUST** make sure the `scale.data` has the same `dim` with `counts`.
+```R
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
 # multi modality, ATAC+RNA, CITE-seq 
@@ -52,10 +74,15 @@ MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
 - `WriteH5MU()`: Create an .h5mu file with data from a Seurat object
 
 
-## IMPORTANT UPDATE: 2021-04-15
 
-## SeuratDisk
+## SeuratDisk (NOT RECOMMENED )
+
 Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy.
+
+**Tips**:
+1. set default assay to `RNA` before covert to h5ad. 
+2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before convertion 
+
 
 ```R
 library(Seurat)
@@ -98,6 +125,9 @@ adata.layers['log1p'] = data.X.copy()
 
 
 ## Seurat -> loom -> scanpy
+
+**NOT RECOMMENED**
+
 
 You actually neeed additional steps when seurat -> loom -> scanpy
 

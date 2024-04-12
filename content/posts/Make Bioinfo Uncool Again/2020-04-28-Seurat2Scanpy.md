@@ -1,7 +1,7 @@
 ---
 title: "Convert Seurat to Scanpy h5ad"
 description: The correct way to convert seurat to Scanpy h5ad
-date: 2020-04-28
+date: 2023-02-21
 categories: ["Make bioinfo uncool again"]
 tags: ["scRNA-seq", "Scanpy", "Seurat", "Bioinformatics"]
 published: true
@@ -20,11 +20,11 @@ MuDataSeurat write h5ad file directly. easy install and simple use
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 
 ### Install
-The main repo seem not updated anymore. So, please **Install my fork** which works for anndata >=0.8
+Please **Install my fork** which works for anndata >=0.8
 ```R
 # in R console
-## install the dev branch, which compatible with latest anndata 
-remotes::install_github("zqfang/MuDataSeurat", ref='dev', force = T)
+## install myfork, which compatible with latest anndata 
+remotes::install_github("zqfang/MuDataSeurat", force = T)
 ```
 
 
@@ -56,7 +56,6 @@ seu = DietSeurat(
 ```
 #### Step 2. Write seurat to h5ad
 
-You **MUST** make sure the `scale.data` has the same `dim` with `counts`.
 ```R
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
@@ -82,9 +81,11 @@ MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
 
 
 
-## SeuratDisk (NOT RECOMMENED )
+## SeuratDisk
 
-Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy.
+Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy. 
+
+Not recommend, since it's not fully compatitble with anndata standards.
 
 **Tips**:
 1. set default assay to `RNA` before covert to h5ad. 
@@ -193,7 +194,7 @@ os.environ['R_HOME'] = '/home/fangzq/miniconda/envs/seurat/lib/R'
 # path depends on where you installed Python.
 os.environ['R_USER'] = '/home/fangzq/miniconda/lib/python3.7/site-packages/rpy2' 
 ```
-### 3. Now, you'er good to go
+### 3. Now, you're good to go
 ```python
 import scanpy as sc
 import glob

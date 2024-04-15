@@ -13,7 +13,8 @@ MuDataSeurat write h5ad file directly. easy install and simple use
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 
 ### Install
-Please **Install my fork** which works for anndata >=0.8
+
+I have add some extra features. Please **Install my fork** which works for anndata >=0.8
 ```R
 # in R console
 ## install myfork, which compatible with latest anndata 
@@ -30,7 +31,7 @@ seu = DietSeurat(
   srt,
   counts = TRUE, # so, raw counts save to adata.layers['counts']
   data = TRUE, # so, log1p counts save to adata.X when scale.data = False, else adata.layers['data']
-  scale.data = FALSE, # if only scaled highly variable gene, the export to h5ad would fail. set to false
+  scale.data = FALSE, # set to false
   features = rownames(srt), # export all genes, not just top highly variable genes
   assays = "RNA",
   dimreducs = c("pca","umap"),

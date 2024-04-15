@@ -2,7 +2,7 @@
 MuDataSeurat Recommended!!!
 MuDataSeurat write h5ad file directly. easy install and simple use
 Refer to MuDataSeurat
-Install Please Install my fork which works for anndata &amp;gt;=0.8
+Install I have add some extra features. Please Install my fork which works for anndata &amp;gt;=0.8
 1 2 3 # in R console ## install myfork, which compatible with latest anndata remotes::install_github(&amp;#34;zqfang/MuDataSeurat&amp;#34;, force = T) Usage (Optional) Step 1: Slim down a Seurat object.</description></item><item><title>Deploy IGV webapp on linux server</title><link>https://zqfang.github.io/2020-11-16-igvweb/</link><pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate><author>Author</author><guid>https://zqfang.github.io/2020-11-16-igvweb/</guid><description>Config IGV on the server.
 I have to share the inteactive results with my colleague. But I don&amp;rsquo;t like to install UCSC genomebrower in local. Instead, a light-weight one is what I need.
 1. Installation Install nodejs if you have conda, just

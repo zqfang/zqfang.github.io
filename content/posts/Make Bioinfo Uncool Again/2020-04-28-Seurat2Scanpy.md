@@ -1,6 +1,6 @@
 ---
 title: "Convert Seurat to Scanpy h5ad"
-description: The correct way to convert seurat to Scanpy h5ad
+description: The correct way to convert Seurat to Scanpy h5ad
 date: 2023-02-21
 categories: ["Make bioinfo uncool again"]
 tags: ["scRNA-seq", "Scanpy", "Seurat", "Bioinformatics"]
@@ -8,20 +8,22 @@ published: true
 comments: true
 ---
 
+MuDataSeurat and sceasy are recommended
 
-IMPORTANT UPDDATE: 2023-02-21
 
+    
 ## MuDataSeurat
 
 **Recommended!!!**
 
-MuDataSeurat write h5ad file directly. easy install and simple use
+MuDataSeurat directly writes h5ad file without requiring Python runtime. All dependencies exist in R and can be easily installed and used.
 
 Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
 
+
 ### Install
 
-I have add some extra features. Please **Install my fork** which works for anndata >=0.8
+I have added some extra features. Please **Install my fork** which works for anndata >=0.8 and Seurat V5.
 ```R
 # in R console
 ## install myfork, which compatible with latest anndata 
@@ -55,7 +57,7 @@ seu = DietSeurat(
 #   4. counts & scale.data -> layers['counts'], X
 #   5. counts & data & scale.data -> layers['counts'], layers['data'], X
 ```
-#### Step 2. Write seurat to h5ad
+#### Step 2. Write Seurat to h5ad
 
 ```R
 # single modality
@@ -81,6 +83,27 @@ MuDataSeurat::WriteH5MU(srt, "srt.h5mu")
 - `WriteH5MU()`: Create an .h5mu file with data from a Seurat object
 
 
+## sceasy
+The painless way. Try [sceasy](https://github.com/cellgeni/sceasy)
+
+However, the configuration of the running environment is complicated. Need Python and R runtime
+
+
+```R
+library(sceasy)
+library(reticulate)
+use_condaenv('EnvironmentName')
+loompy <- reticulate::import('loompy')
+
+# seurat to anndata
+sceasy::convertFormat(seurat_object, from="seurat", to="anndata",
+                       outFile='filename.h5ad')
+
+# anndata to seurat
+sceasy::convertFormat(h5ad_file, from="anndata", to="seurat",
+                       outFile='filename.rds')
+```
+        
 
 ## SeuratDisk
 
@@ -133,8 +156,7 @@ adata.layers['log1p'] = data.X.copy()
 
 
 
-## Seurat -> loom -> scanpy
-
+## Seurat -> loom -> scanpy (OUTDATED)
 **NOT RECOMMENED**
 
 

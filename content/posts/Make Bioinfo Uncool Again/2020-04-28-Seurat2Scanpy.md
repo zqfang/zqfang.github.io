@@ -109,11 +109,11 @@ sceasy::convertFormat(h5ad_file, from="anndata", to="seurat",
 
 Please see [SeuratDisk](https://mojaveazure.github.io/seurat-disk/reference/Convert.html) to convert seurat to scanpy. 
 
-Not recommend, since it's not fully compatitble with anndata standards.
+Not recommend, since it's not fully compatible with anndata standards.
 
 **Tips**:
 1. set default assay to `RNA` before covert to h5ad. 
-2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before convertion 
+2. if raw read count need to be imported to anndata, you should only contain counts slot in your seurat object before convertion
 
 
 ```R
@@ -200,9 +200,7 @@ immune$close_all() # alway close when done
 
 
 ## rpy2
-This is the old way. Very hard to make it work. **Not recommended!**
-
-Convert `Seurat` to `Scanpy` costed me a lot of time to convert seurat objects to scanpy. It's not a pleasant experience.  
+This is the old way. Very hard to make it work. **Not recommended!*Converting `Seurat` to `Scanpy` cost me a lot of time to convert seurat objects to scanpy. It's not a pleasant experience.  
 
 ### 1. Install `Seurat v3.0.2`, or python kernel will always died!!!
 Don't know why latest seurat not work.

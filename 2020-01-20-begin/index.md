@@ -3,7 +3,7 @@
 
 usefull tools for linux command line
 
-### a. Make terminal cool, install `OhMyZsh`
+### Make terminal cool, install `OhMyZsh`
 
 ```shell
 # install zsh
@@ -16,22 +16,61 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 source ~/.zshrc
 ```
 
-### b. Terminal keyboard short cuts
+### ssh login withoutpassword
+
+1. on your local machine
+```bash
+ssh-keygen
+```
+press Enter 3 time until finished. a `"~/.ssh/id_rsa.pub"` and `"~/.ssh.id_rsa"` will be generated.
+
+2. copy the public key file to the remote machine
+```bash
+ssh-copy-id remote_username@remote_server_ip_address
+```
+
+3. then you can login without password
+```bash
+ssh remote_username@remote_server_ip_address
+```
+
+
+### Terminal keyboard shortcuts
 
 - Jump to head: `Ctrl + a`  
 - Jump to end: `Ctrl + e`  
 - Delete strings ahead: `Ctrl + u`
 - Delete strings follow: `Ctrl + k`
 
-### c. Program keeps running in the background  
+### Program keeps running in the background  
 
-#### 1. Run cmd using `nohup`
+#### Run cmd using `nohup`
 
 ```shell
 nohup command [options] &
 ```
 
-#### 2. Run cmd using `Tmux`
+#### Run cmd using `zellij`. this is dropin replacement of tmux
+```shell
+
+# create a new session
+zellij 
+# specify a new session, named bio
+zellij -s bio
+
+# subcommds 
+zellij ls # list all session
+zellij a bio # attach session
+zellij ka # kill all sessions
+zellij k bio # kill a specfic session, bio
+zellij da # delete all session
+zellji d bio # detelete a specifc session, bio
+```
+
+
+
+
+#### Run cmd using `Tmux`
 
 **Outside Tmux:**  
 Typically these are run outside, but you can also run them inside an existing session  
@@ -78,7 +117,7 @@ Start each command with `CTRL + b`, release, then press one of the following:
 | : + resize-pane -D 20      | Resizes the current pane down by 20 cells                |
 
 
-### d. File compression and decompression
+### File compression and decompression
 
 Decompression  
 
@@ -115,7 +154,7 @@ For rar installation
 sudo apt-get install rar
 ```
 
-### e. Handy tricks for handling filepath
+### Handy tricks for handling filepath
 
 very useful to strip file sufix, path et.al.
 
@@ -136,7 +175,7 @@ var2=$(basename "${var}" .fq.gz) #-> filename_R1
 ```
 
 
-### f. `vim` shortcuts
+###  `vim` shortcuts
 
 In view mode, curso movement
 ```
@@ -150,3 +189,5 @@ H: move to the top of screen
 M: move to the middle of screen
 L: move to the bottom of screen
 ```
+
+### 

@@ -50,7 +50,9 @@ ssh remote_username@remote_server_ip_address
 nohup command [options] &
 ```
 
-#### Run cmd using `zellij`. this is dropin replacement of tmux
+#### Run cmd using `zellij`. 
+
+`zellij` is drop-in replacement of tmux
 ```shell
 
 # create a new session

@@ -4,6 +4,17 @@
 
 # Probability, P-value, Likelihood
 
+1. **Probability**: the level of possibility of something happening or being true.
+   - We determine the possibility of an event.
+   - We know the parameters associated with the event and assume them to be trustworthy.
+
+2. **Likelihood**: the chance that something will happen.
+   - We have some observations.
+   - We have an explanation (or parameters).
+   - Likelihood helps us quantify whether the explanation is trustworthy.
+
+If you notice closely, “likelihood” is the only synonym of “probability”.
+
 ## Probability and likelihood 
 
 [likehood & maximum likehood](http://fangs.in/post/thinkstats/likelihood/)

@@ -42,16 +42,16 @@ int main() {
     for (int i = 1; i < v; i++) {
         int cur = -1;
         int minVal = INT_MAX;
-        // 1、prim三部曲，第一步：选距离生成树最近节点
+        // 1、第一步：选距离生成树最近节点
         for (int j = 1; j <= v; j++) {
             if (!isInTree[j] &&  minDist[j] < minVal) {
                 minVal = minDist[j];
                 cur = j;
             }
         }
-        // 2、prim三部曲，第二步：最近节点（cur）加入生成树
+        // 2、第二步：最近节点（cur）加入生成树
         isInTree[cur] = true;
-        // 3、prim三部曲，第三步：更新非生成树节点到生成树的距离（即更新minDist数组）
+        // 3、第三步：更新非生成树节点到生成树的距离（即更新minDist数组）
         for (int j = 1; j <= v; j++) {
             if (!isInTree[j] && grid[cur][j] < minDist[j]) {
                 minDist[j] = grid[cur][j];
@@ -66,3 +66,6 @@ int main() {
     }
 }
 ```
+
+## Reference
+代码随想录: [prim](https://programmercarl.com/kamacoder/0053.%E5%AF%BB%E5%AE%9D-prim.html)

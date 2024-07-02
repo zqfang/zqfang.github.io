@@ -2,7 +2,7 @@
 title: 'Priority Queque'
 date: 2020-02-09
 categories: ["Algorithm and data structure"]
-tags: ["Python"]
+tags: ["Python", "C++"]
 comments: true
 ---
 

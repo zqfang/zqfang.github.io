@@ -1,0 +1,68 @@
+# Prim
+
+
+最小生成树是所有节点的最小连通子图， 即：以最小的成本（边的权值）将图中所有节点链接到一起。
+
+图中有n个节点，那么一定可以用 n - 1 条边将所有节点连接到一起。
+
+那么如何选择 这 n-1 条边 就是 最小生成树算法的任务所在。
+
+prim算法核心就是三步：
+
+第一步，选距离生成树最近节点
+第二步，最近节点加入生成树
+第三步，更新非生成树节点到生成树的距离（即更新minDist数组）
+
+minDist数组 用来记录 每一个节点距离最小生成树的最近距离。
+
+
+```cpp
+#include<iostream>
+#include<vector>
+#include <climits>
+
+using namespace std;
+int main() {
+    int v, e;
+    int x, y, k;
+    cin >> v >> e;
+    vector<vector<int>> grid(v + 1, vector<int>(v + 1, 10001));
+    while (e--) {
+        cin >> x >> y >> k;
+        grid[x][y] = k;
+        grid[y][x] = k;
+    }
+
+    vector<int> minDist(v + 1, 10001);
+    vector<bool> isInTree(v + 1, false);
+
+    //加上初始化
+    vector<int> parent(v + 1, -1);
+
+    for (int i = 1; i < v; i++) {
+        int cur = -1;
+        int minVal = INT_MAX;
+        // 1、prim三部曲，第一步：选距离生成树最近节点
+        for (int j = 1; j <= v; j++) {
+            if (!isInTree[j] &&  minDist[j] < minVal) {
+                minVal = minDist[j];
+                cur = j;
+            }
+        }
+        // 2、prim三部曲，第二步：最近节点（cur）加入生成树
+        isInTree[cur] = true;
+        // 3、prim三部曲，第三步：更新非生成树节点到生成树的距离（即更新minDist数组）
+        for (int j = 1; j <= v; j++) {
+            if (!isInTree[j] && grid[cur][j] < minDist[j]) {
+                minDist[j] = grid[cur][j];
+
+                parent[j] = cur; // 记录边
+            }
+        }
+    }
+    // 输出 最小生成树边的链接情况
+    for (int i = 1; i <= v; i++) {
+        cout << i << "->" << parent[i] << endl;
+    }
+}
+```

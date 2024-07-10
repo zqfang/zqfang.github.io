@@ -45,6 +45,8 @@ $$\mathcal{L}(\theta | x)=P(x | \theta)$$
 
 A `p-value` is the probability that random chance generated the data, or something else that is equal or rarer.
 
+The p-value tells you the probability of observing the data (or something more extreme) if the null hypothesis were true.
+
 A p-value is composed of three parts:
 
 1. The probability random chance would result in the observation.  

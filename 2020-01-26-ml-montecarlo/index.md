@@ -8,10 +8,20 @@
 Metropolis-Hastings算法是最基本的MCMC。
 Gibbs sampling是更简单、使用更广泛的MCMC。
 
+
+强烈建议先阅读这里（解释最清楚）： https://zhuanlan.zhihu.com/p/37121528
+
+
 # Markov Chain Monte Carlo (MCMC)
+
+## 为什么需要MCMC ？
+1. 概率密度函数未知，累计分布函数没有反函数
+2. 高维随机变量
 
 ## 蒙特卡罗法（Monte Carlo）
 蒙特卡罗法要解决的问题是，假设概率分布的定义己知，**通过抽样获得概率分布的随机样本**，并通过得到的随机样本对概率分布的特征进行分析
+
+蒙特卡罗方法于20世纪40年代美国在第二次世界大战中研制原子弹的“曼哈顿计划”计划时首先提出，为保密选择用赌城摩纳哥的Monte Carlo作为代号。
 
 ### 1. 蒙特卡罗方法的核心  
 
@@ -30,6 +40,10 @@ Gibbs sampling是更简单、使用更广泛的MCMC。
 - 当x为高维数据时，很难寻找合适的建议分布
 
 一个解决办法就是MCMC.
+
+### MCMC
+
+MCMC是一种对高维随机向量抽样的方法， 此方法模拟一个马氏链， 使马氏链的平稳分布（(Stationary Distribution)）为目标分布， 由此产生大量的近似服从目标分布的样本， 但样本不是相互独立的。 MCMC的目标分布密度函数或概率函数可以只计算到差一个常数倍的值。
 
 ### 2. 数学期望估计(Estimation of mathematical expectation)
 
@@ -87,7 +101,7 @@ $$
 
 ## Markov Chain
 ### 定义
-
+#### 离散状态马可夫链
 马可夫性：
 随机变量$X_t$只依赖$X_{t-1}$，而不依赖过去的随机变量 $\lbrace X_{0}, X_{1}, \cdots, X_{t-2} \rbrace$。即
 
@@ -100,12 +114,14 @@ $$
 
 马可夫链的转移条件概率分布为 $P(X_t | X_{t-1})$ 。转移概率分布决定马可夫链的特性。
 
+
 时间齐次马可夫链（time homogenous Markov Chain）是指转移状态分布于t无关的马可夫链
 
-#### 离散状态马可夫链
-状态转移矩阵
+状态转移矩阵: $$P_{m \times m}$$
 
 平稳分布：
+
+
 马可夫链 $X$， 其状态空间为$\mathcal{S}$， 转移矩阵为 $P = (p_{ij})$， 如果存在状态空间 $\mathcal{S}$ 上的一个分布 
 
 $$
@@ -215,6 +231,52 @@ Metropolis-Hasting是马尔可夫链蒙特卡罗法的代表算法
 
 可以对多元变量的每一变量的条件分布依次分别进行抽样， 从而实现对整个多元变量的一次抽样，这就是单分量 Metropolis- Hastings (singlecomponent Metropolis- Hastings) 算法。
 
+
+#### M-H采样python实现  
+https://zhuanlan.zhihu.com/p/37121528
+
+假设目标平稳分布是一个均值3，标准差2的正态分布，而选择的马尔可夫链状态转移矩阵 $Q(i,j)$ 的条件转移概率是以 $i$ 为均值,方差1的正态分布在位置 $j$ 的值。
+
+```python
+
+from scipy.stats import norm
+
+
+def norm_dist_prob(theta):
+    y = norm.pdf(theta, loc=3, scale=2)
+    return y
+
+
+T = 5000
+pi = [0 for i in range(T)]
+sigma = 1
+t = 0
+while t < T - 1:
+    t = t + 1
+    pi_star = norm.rvs(loc=pi[t - 1], scale=sigma, size=1,
+                       random_state=None)  #状态转移进行随机抽样
+    alpha = min(
+        1, (norm_dist_prob(pi_star[0]) / norm_dist_prob(pi[t - 1])))  #alpha值
+
+    u = random.uniform(0, 1)
+    if u < alpha:
+        pi[t] = pi_star[0]
+    else:
+        pi[t] = pi[t - 1]
+
+plt.scatter(pi, norm.pdf(pi, loc=3, scale=2), label='Target Distribution')
+num_bins = 50
+plt.hist(pi,
+         num_bins,
+         density=1,
+         facecolor='red',
+         alpha=0.7,
+         label='Samples Distribution')
+plt.legend()
+plt.show()
+
+```
+
 ### Gibbs Sampling
 吉布斯抽样，可以认为是 Metropolis-Hastings 算法的特殊情况，但是更容易实现，因而被广泛使用。
 
@@ -225,6 +287,66 @@ Metropolis-Hasting是马尔可夫链蒙特卡罗法的代表算法
 
 
 
+#### 二维Gibbs采样实例python实现  
+(阅读：https://zhuanlan.zhihu.com/p/37121528)
+假设我们要采样的是一个二维正态分布 $N(\mu, \Sigma)$ ，其中： $\mu=(\mu_{1}, \mu_{2})= (5, -1)$ , $\Sigma = \begin{pmatrix}
+\sigma^{2}_{1} &   \rho \sigma_{1}\sigma_{2}b\rho \sigma_{2}& 
+\sigma^{2}_{2}\end{pmatrix} = \begin{pmatrix}
+ 1& 1b1 & 
+4\end{pmatrix}$;
+
+而采样过程中的需要的状态转移条件分布为：
+
+$P(x_{1}|x_{2}) = N(\mu_{1}+ \rho \sigma_{1}/\sigma_{2}(x_{2} - \mu_{2}), (1 - \rho^{2})\sigma^{2}_{1})$
+
+$P(x_{2}|x_{1}) = N(\mu_{2}+ \rho \sigma_{2}/\sigma_{1}(x_{1} - \mu_{1}), (1 - \rho^{2})\sigma^{2}_{2})$
 
 
-参考： 李航《统计学习方法》
+
+```python
+from mpl_toolkits.mplot3d import Axes3D
+from scipy.stats import multivariate_normal
+
+samplesource = multivariate_normal(mean=[5,-1], cov=[[1,0.5],[0.5,2]])
+
+def p_ygivenx(x, m1, m2, s1, s2):
+    return (random.normalvariate(m2 + rho * s2 / s1 * (x - m1), math.sqrt(1 - rho ** 2) * s2))
+
+def p_xgiveny(y, m1, m2, s1, s2):
+    return (random.normalvariate(m1 + rho * s1 / s2 * (y - m2), math.sqrt(1 - rho ** 2) * s1))
+
+N = 5000
+K = 20
+x_res = []
+y_res = []
+z_res = []
+m1 = 5
+m2 = -1
+s1 = 1
+s2 = 2
+
+rho = 0.5
+y = m2
+
+for i in range(N):
+    for j in range(K):
+        x = p_xgiveny(y, m1, m2, s1, s2)   #y给定得到x的采样
+        y = p_ygivenx(x, m1, m2, s1, s2)   #x给定得到y的采样
+        z = samplesource.pdf([x,y])
+        x_res.append(x)
+        y_res.append(y)
+        z_res.append(z)
+
+num_bins = 50
+plt.hist(x_res, num_bins,density=1, facecolor='green', alpha=0.5,label='x')
+plt.hist(y_res, num_bins, density=1, facecolor='red', alpha=0.5,label='y')
+plt.title('Histogram')
+plt.legend()
+plt.show()
+```
+
+
+
+参考：
+1. 李航《统计学习方法》
+2. https://zhuanlan.zhihu.com/p/37121528

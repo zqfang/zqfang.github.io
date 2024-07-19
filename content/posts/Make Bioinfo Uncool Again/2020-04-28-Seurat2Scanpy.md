@@ -18,12 +18,13 @@ MuDataSeurat and sceasy are recommended
 
 MuDataSeurat directly writes h5ad file without requiring Python runtime. All dependencies exist in R and can be easily installed and used.
 
-Refer to [MuDataSeurat](https://pmbio.github.io/MuDataSeurat/index.html)
-
-
 ### Install
 
 I have added some extra features. Please **Install my fork** which works for anndata >=0.8 and Seurat V5.
+
+Refer to [MuDataSeurat](https://github.com/zqfang/MuDataSeurat)
+
+
 ```R
 # in R console
 ## install myfork, which compatible with latest anndata 
@@ -60,6 +61,9 @@ seu = DietSeurat(
 #### Step 2. Write Seurat to h5ad
 
 ```R
+# for seurat v5, need to JoinLayer first
+DefaultAssay(srt) = "RNA"
+srt <- JoinLayers(srt)
 # single modality
 MuDataSeurat::WriteH5AD(srt, "srt.h5ad", assay="RNA")
 # multi modality, ATAC+RNA, CITE-seq 

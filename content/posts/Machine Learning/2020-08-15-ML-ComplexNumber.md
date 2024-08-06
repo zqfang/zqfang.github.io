@@ -58,3 +58,8 @@ $$
 
 Example:  
 ![representation2](/images/ml/complexnumber2.png)
+
+
+## Reference
+
+[e](https://en.wikipedia.org/wiki/E_(mathematical_constant))

@@ -43,6 +43,9 @@ $$\mathcal{L}(\theta | x)=P(x | \theta)$$
 
 ## Probability and P-value
 
+The P value is defined as the probability under the assumption of no effect or no difference (null hypothesis), of obtaining a result equal to or more extreme than what was actually observed. The P stands for probability and measures how likely it is that any observed difference between groups is due to chance.
+
+
 A `p-value` is the probability that random chance generated the data, or something else that is equal or rarer.
 
 The p-value tells you the probability of observing the data (or something more extreme) if the null hypothesis were true.
@@ -58,7 +61,6 @@ But `probability`
 $$ \text{Probalibility} = \frac{ \text{Number of outcomes of interest}} { \text{The total number of outcomes}}$$
 
 
-In `hypothesis testing`, p-values are numbers, between 0 and 1, that, how small does a p-value have to be before we are confident that interested A is different from B.
 
 Statquest: `P Values, clearly explained`  
 

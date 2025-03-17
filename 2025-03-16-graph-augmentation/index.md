@@ -17,7 +17,6 @@ HalfHop adds a “slow node” to all edges with some probability p . Note that 
 VirtualNode (Gilmer 2017) appends a virtual node to the given homogeneous graph that is connected to all other nodes. This allows information to travel long distances during the propagation phase, especially if such paths are normally sparse.
 
 ## Node Feature Transformation
-
 ### Random Walk Positional Encoding (RWPE)
 
 this method is based on the random walk diffusion process. 

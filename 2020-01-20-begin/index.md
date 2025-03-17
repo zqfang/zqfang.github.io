@@ -9,7 +9,8 @@ usefull tools for linux command line
 # install zsh
 sudo apt-get install zsh # ubuntu
 # change default shell to zsh
-chsh -s /usr/bin/zsh
+sudo chsh -s $(which zsh) $USER
+## chsh -s /usr/bin/zsh 
 # install ohmyzsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
